@@ -1,0 +1,405 @@
+Script started on Fri 06 Apr 2018 08:01:14 PM WIB
+syandal@remoteshare:~$ pwd
+/home/syandal
+syandal@remoteshare:~$ cd belajar\ sqlite3/
+syandal@remoteshare:~/belajar sqlite3$ ls
+hasilcsv.csv   KodingKafe      KodingKafe.db   KodingSusu.db    tabelkaryawan1.sql
+hasilkita.csv  KodingKafe2.db  KodingKafe.sql  Perusahaanku.db
+syandal@remoteshare:~/belajar sqlite3$ # Demmo [K[K[K[Kmo diskusi online materi [K[K[K[K[K[K[Kkanal irc #ubuntu-ndo[K[K[Kindonesia 
+syandal@remoteshare:~/belajar sqlite3$ # materi sqlite3 pertemuan 6
+syandal@remoteshare:~/belajar sqlite3$ # di materi ini kita akan membahas
+syandal@remoteshare:~/belajar sqlite3$ # foreign key
+syandal@remoteshare:~/belajar sqlite3$ #  [Kone-to-one relationship
+syandal@remoteshare:~/belajar sqlite3$ # one-to-many relationship
+syandal@remoteshare:~/belajar sqlite3$ # many-to-many relationship
+syandal@remoteshare:~/belajar sqlite3$ # contoh skrip php untuk mengakses database sqlite (tentative kalo  skripnya ga error :v)
+syandal@remoteshare:~/belajar sqlite3$ # kita liat dulu database yang ada
+syandal@remoteshare:~/belajar sqlite3$ ls
+hasilcsv.csv   KodingKafe      KodingKafe.db   KodingSusu.db    tabelkaryawan1.sql
+hasilkita.csv  KodingKafe2.db  KodingKafe.sql  Perusahaanku.db
+syandal@remoteshare:~/belajar sqlite3$ # kita bikin db baru kodingsusu3.db
+syandal@remoteshare:~/belajar sqlite3$ sqlite3 KodingSusu.db [K[K[K[K3.[K[K[K[K[K[KKafe3.db
+SQLite version 3.11.0 2016-02-15 17:29:24
+Enter ".help" for usage hints.
+sqlite> -- ane ingetnya grup lelegram kodingsusu mulu :v
+sqlite> -- ok [K[K[K[K[K[K-- table nya harusnya masi kosong
+sqlite> .table
+sqlite> -- ok kita buat dua buah tabel untuk mendo[Kemmo[K[Kokan tentang kter[K[K[Ketergantungan foreign key
+sqlite> -- tabel pertama kategoari[K[K[Krim[K menu
+sqlite> CREATE TABLE "kategorimenu" (
+   ...> id_kategori int(1) [K[K[K[K[K[K[KINT(1) PRIMARY KEY NOT NULL,
+   ...> nama CH[K[KVARCHAR(50) );
+sqlite> -- kita liat hasilnya
+sqlite> .table
+kategorimenu
+sqlite> -- ok tabel kedua menu
+sqlite> CREATE TABLE "menu" (
+   ...> id INT(3) PRIMARY KEY NOT NULL,
+   ...> NAMA[K[K[K[Knama VARCHAR(75),
+   ...> harga REAL,
+   ...> id_kategori INT(1),
+   ...> FOREIGN KEY(id_kategori) REFERENCES kategorimenu(id) );
+sqlite> -- kita liat hasilnya
+sqlite> .table
+kategorimenu  menu        
+sqlite> -- seharusnya tabel menu bergantung ke table kategori menu[K[K[K[K[K[Kimenu .. kita coba masukin data ke tabel menu M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ku
+sqlite> INSERT INTO menu (id, nama, harga, id_kategori) VALUES (1, 'Nasi Goreng', 12000.00 [K, 1);
+sqlite> -- bisa masuk uih :v
+sqlite> SELECT * from menu;
+1|Nasi Goreng|12000.0|1
+sqlite> SELECT count[K[K[K[K[K[K COUNT FROM menu;
+Error: no such column: COUNT
+sqlite> SELECT COUNT FROM menu;[1@([1@i[1@d[1@)
+1
+sqlite> -- kita liat schema nya udah bener apa nggak
+sqlite> .schema menu;
+sqlite> .schema menu;[K
+CREATE TABLE "menu" (
+id INT(3) PRIMARY KEY NOT NULL,
+nama VARCHAR(75),
+harga REAL,
+id_kategori INT(1),
+FOREIGN KEY(id_kategori) REFERENCES kategorimenu(id) );
+sqlite> .shcema [K[K[K[K[K[Kchema kategorimenu;[K
+CREATE TABLE "kategorimenu" (
+id_kategori INT(1) PRIMARY KEY NOT NULL,
+nama VARCHAR(50) );
+sqlite> -- mangap salah ada typo :v 
+sqlite> kita [K[K[K[K[K-- kita bah[K[K[Khapus duu[Klu tabel menu
+sqlite> DROP TABLE menu;
+sqlite> -- kita buat ulang
+sqlite> CREATE TABLE "menu" (
+   ...> id INT [K(3) PRIMARY KEY NOT NULL,
+   ...> nama VARCHARA[K(75),
+   ...> harga REAL,
+   ...> id_kategori INT(1),
+   ...> FOREIGN KEY [K (id_kategori) REFERENCES kategorimenu(id)[K_kategori);[K ) [K; -- typo nya di bagian terakhir
+sqlite> -- coba kita masukin data lagi
+sqlite> -- coba kita masukin data lagi[C[C[C[C[C[C[C[CFOREIGN KEY (id_kategori) REFERENCES kategorimenu(id_kategori) ); -- typo nya di bagian terakhir[C[C[C[C[C[C[C[Cid_kategori INT(1),[K[C[C[C[C[C[C[C[C[8Pharga REAL,[C[C[C[C[C[C[C[Cnama VARCHAR(75),[C[C[C[C[C[C[C[Cid INT(3) PRIMARY KEY NOT NULL,[C[C[C[C[C[C[C[C[10PCREATE TABLE "menu" ([C[C[C[C[C[C[C[C[3P-- kita buat ulang[C[C[C[C[C[C[C[C[2PDROP TABLE menu;[C[C[C[C[C[C[C[C-- kita hapus dulu tabel menu[C[C[C[C[C[C[C[C[C[C[C[1Pmangap salah ada typo :v [C[C[C[C[C[C[C[C[8P.schema kategorimenu[8Pmenu;[C[C[C[C[C[C[C[C-- kita liat schema nya udah bener apa nggak[C[C[C[C[C[C[C[C[17PSELECT COUNT(id) FROM menu;[4P[C[C[C[C[C[C[C[C[C[C[C[4P* from[C[C[C[C[C[C[C[C[C[C[C[C[C[C-- bisa masuk uih :v[C[C[C[C[C[C[C[CINSERT INTO menu (id, nama, harga, id_kategori) VALUES (1, 'Nasi Goreng', 12000.00, 1);
+sqlite> -- waduh bisa masuk lagi
+sqlite> -- a[Kharusnya error
+sqlite> .schmea [K[K[K[Kema menu;
+sqlite> .schema menu;[K
+CREATE TABLE "menu" (
+id INT(3) PRIMARY KEY NOT NULL,
+nama VARCHAR(75),
+harga REAL,
+id_kategori INT(1),
+FOREIGN KEY (id_kategori) REFERENCES kategorimenu(id_kategori) );
+sqlite> -- ok kita skip
+sqlite> -- ato nggak datanya kita hapus dulu
+sqlite> DELET [KE from menu[K[K[K[K[K[K[K[K[KFROM menu;
+sqlite> SELECT COUNT [K(*) FROM menu;
+0
+sqlite> -- ok kita masukin data kategori dulu
+sqlite> INSERT INTO kategorimenu(id_kategori, nama) VALUES (1, 'Makanan');
+sqlite> SELECT * FROM kategorimenu;
+1|Makanan
+sqlite> -- ok kita masukin data ke menu yang kategorinya ada
+sqlite> -- ok kita masukin data ke menu yang kategorinya ada[C[C[C[C[C[C[C[C[25PSELECT * FROM kategorimenu;[C[C[C[C[C[C[C[CINSERT INTO kategorimenu(id_kategori, nama) VALUES (1, 'Makanan');[C[C[C[C[C[C[C[C[29P-- ok kita masukin data kategori dulu[C[C[C[C[C[C[C[C[11PSELECT COUNT(*) FROM menu;[C[C[C[C[C[C[C[C[9PDELETE[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C-- ato nggak datanya kita hapus dulu[C[C[C[C[C[C[C[C[C[C[C[21Pok kita skip[C[C[C[C[C[C[C[C[3P.schema menu;[C[C[C[C[C[C[C[C-- harusnya error[C[C[C[C[C[C[C[C[C[C[Cwaduh bisa masuk lagi[C[C[C[C[C[C[C[CINSERT INTO menu (id, nama, harga, id_kategori) VALUES (1, 'Nasi Goreng', 12000.00, 1);
+sqlite> -- sekarang kita masukin ddata yang kategoarinya ga ada 
+sqlite> -- sekarang kita masukin ddata yang kategoarinya ga ada [C[C[C[C[C[C[C[CINSERT INTO menu (id, nama, harga, id_kategori) VALUES (1, 'Nasi Goreng', 12000.00, 1);[C[C[1P[1@2[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@E[1@S[1@ [1@T[1@e[1@h[1@ [1@m[1@a[1@n[1@i[1@s[C[C[C[C[1P[1@s[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[1P[1@4[C[C[C[C[C[C[C[C[C[1P);2);
+sqlite> -- waduh [K , dta[K[Katanya tetep masuk :'(
+sqlite> SELECT * FROM menu;
+1|Nasi Goreng|12000.0|1
+2|Es Teh manis|4000.0|2
+sqlite> -- ok kita skip begitulah contoh FOREIGEN KEY
+sqlite> -- ---------------------------------------
+sqlite> imba[K[K[K[K-- im back
+sqlite> -- kita lanjut ke pembahasan kedua 
+sqlite> -- one to one relationsihi[K[K[Khip
+sqlite> -- adalah relationship paling dasar pada konsep database. aturannya setiap sebuah baris di tabel  pertama hanya cocok ke satu baris pada tabel kedua. biasanya one-to-one relationship direpresentasikan me nggunakan foreign key yang unique pada sebuah tabel yang referensi ke primary ke pada tabel lain.
+sqlite> -- misalnya tabel pertama tabel menu dan tabel kedua adalah tabel resep
+sqlite> -- tiap baris pada tabel resep hanya berisi [K[K[K[K[K[K[Kterhubung ke sebuah baris di tabel menu dan sebaliknya
+sqlite> -- kita membuatnya dengan constaint UNIQUE
+sqlite> -- kita liat tabel menu
+sqlite> .schema menu
+CREATE TABLE "menu" (
+id INT(3) PRIMARY KEY NOT NULL,
+nama VARCHAR(75),
+harga REAL,
+id_kategori INT(1),
+FOREIGN KEY (id_kategori) REFERENCES kategorimenu(id_kategori) );
+sqlite> -- ok kita buat tabel resepnya
+sqlite> CREATE TABLE "resep" (
+   ...> id_resep INT [K(3) NOT NULL PRIMARY KEY,
+   ...> id_menu INT(3) NOT NULL UNIQUEY, -- consta[Kraint disini akan foreigne ke [K[K[K[K[K[Kn key ke di[K[Kid di tabel menu
+   ...> resepnya TEXT NOT NULL,
+   ...> FOREIGN KEY (id_menu) REFERENCES menu(id) );
+Error: near "UNIQUEY": syntax error
+sqlite> -- yah tipy [K[K[K[Kypo .. syalala kampret 
+sqlite> -- ok kita ulang lagi
+sqlite> -- ok kita ulang lagi[C[C[C[C[C[C[C[C[C[C[Cyah typo .. syalala kampret [C[C[C[C[C[C[C[CFOREIGN KEY (id_menu) REFERENCES menu(id) );[C[C[C[C[C[C[C[C[21Presepnya TEXT NOT NULL,[C[C[C[C[C[C[C[Cid_menu INT(3) NOT NULL UNIQUEY, -- constraint disini akan foreign key ke id di tabel menu[C[C[C[C[C[C[C[C[C[C[C[53Presep INT(3) NOT NULL PRIMARY KEY,[C[C[C[C[C[C[C[C[15PCREATE TABLE "resep" ([C[C[C[C[C[C[C[C-- ok kita buat tabel resepnya[C[C[C[C[C[C[C[C[8PCREATE TABLE "resep" (
+   ...> CREATE TABLE "resep" ([C[C[C[C[C[C[C[C[1P-- ok kita ulang lagi[C[C[C[C[C[C[C[C[C[C[Cyah typo .. syalala kampret [C[C[C[C[C[C[C[CFOREIGN KEY (id_menu) REFERENCES menu(id) );[C[C[C[C[C[C[C[C[21Presepnya TEXT NOT NULL,[C[C[C[C[C[C[C[Cid_menu INT(3) NOT NULL UNIQUEY, -- constraint disini akan foreign key ke id di tabel menu[C[C[C[C[C[C[C[C[C[C[C[53Presep INT(3) NOT NULL PRIMARY KEY,
+   ...> id_resep INT(3) NOT NULL PRIMARY KEY,[C[C[C[C[C[C[C[C[15PCREATE TABLE "resep" ([C[C[C[C[C[C[C[C[1P-- ok kita ulang lagi[C[C[C[C[C[C[C[C[C[C[Cyah typo .. syalala kampret [C[C[C[C[C[C[C[CFOREIGN KEY (id_menu) REFERENCES menu(id) );[C[C[C[C[C[C[C[C[21Presepnya TEXT NOT NULL,[C[C[C[C[C[C[C[Cid_menu INT(3) NOT NULL UNIQUEY, -- constraint disini akan foreign key ke id di tabel menu[1P
+   ...> id_menu INT(3) NOT NULL UNIQUE, -- constraint disini akan foreign key ke id di tabel menu[C[C[C[C[C[C[C[C[C[C[C[52Presep INT(3) NOT NULL PRIMARY KEY,[C[C[C[C[C[C[C[C[15PCREATE TABLE "resep" ([C[C[C[C[C[C[C[C[1P-- ok kita ulang lagi[C[C[C[C[C[C[C[C[C[C[Cyah typo .. syalala kampret [C[C[C[C[C[C[C[CFOREIGN KEY (id_menu) REFERENCES menu(id) );[C[C[C[C[C[C[C[C[21Presepnya TEXT NOT NULL,
+   ...> resepnya TEXT NOT NULL,[C[C[C[C[C[C[C[Cid_menu INT(3) NOT NULL UNIQUE, -- constraint disini akan foreign key ke id di tabel menu[C[C[C[C[C[C[C[C[C[C[C[52Presep INT(3) NOT NULL PRIMARY KEY,[C[C[C[C[C[C[C[C[15PCREATE TABLE "resep" ([C[C[C[C[C[C[C[C[1P-- ok kita ulang lagi[C[C[C[C[C[C[C[C[C[C[Cyah typo .. syalala kampret [C[C[C[C[C[C[C[CFOREIGN KEY (id_menu) REFERENCES menu(id) );
+sqlite> -- \(^_^)/
+sqlite> -- kita liat hasilnya
+sqlite> .schme[K[Kema resep
+CREATE TABLE "resep" (
+id_resep INT(3) NOT NULL PRIMARY KEY,
+id_menu INT(3) NOT NULL UNIQUE, -- constraint disini akan foreign key ke id di tabel menu
+resepnya TEXT NOT NULL,
+FOREIGN KEY (id_menu) REFERENCES menu(id) );
+sqlite> -- constraint unni[K[Kique tersebut akan memaksa kolom id_menu unique[K[K[Kk.. alias sekali [K[K[K[K[K[K[Kseb[Ktiap baris harus beda
+sqlite> - ok[K[K[K- ok kita balik ke kanal
+sqlite> --  -------------------------------
+sqlite> pembahasan berikutnya
+   ...> ONE T[K[K[K[K[K;
+Error: near "pembahasan": syntax error
+sqlite> -- pembahasan selanjutnya
+sqlite> -- ONE TO MANY F[KRELATIONSHIP
+sqlite> -- One-to-many relationship adalah menghubungkan diantara baris tunggal pada sebuah tabel ke bany ak baris pada tabel lain. perbedaan dengan one to one relationship, adalah one-to-many mengijinkan duplik asi baris pada salah satu tabel yang mengacu ke baris tunggal di tabel sebelahnya.
+sqlite> 
+sqlite> -- contohnya sama kayak FOREIGN KEY jadi tidak perllu kiita demoin
+sqlite> -- _/|\_
+sqlite> -- _/|\_contohnya sama kayak FOREIGN KEY jadi tidak perllu kiita demoin[C[C[C[C[C[C[C[C[C[C[COne-to-many relationship adalah menghubungkan diantara baris tunggal pada sebuah tabel ke banyaak baris pada tabel lain. perbedaan dengan one to one relationship, adalah one-to-many mengijinkan duplikaasi baris pada salah satu tabel yang mengacu ke baris tunggal di tabel sebelahnya.MM[C[C[C[C[C[C[C[C[C[C[C[CNE TO MANY RELATIONSHIP[K
+[K
+[KMM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[2Ppembahasan selanjutnya[C[C[C[C[C[C[C[C;[Kpembahasan berikutnya[C[C[C[C[C[C[C[C--  -------------------------------
+sqlite> -- pembahasan selanjutnya
+sqlite> -- MANY TO MANY RELATII[KONSHIP
+sqlite> -- Berikutnya adalah many-to-many relationship, adalah hubungan asosiatif dua buah tabel dimana k edua tabel bisa memiliki banyak hubungan terhadap keduanya.
+sqlite> -- Misalnya ada tabel artikel dan tabel tag, setiap baris artikel bisa memiliki banyak tag dan se tiap baris di tabel tag bisa memiliki banyak artikel. atau contohnya tabel manusia dan tabel grup, setiap  manusia bisa bergabung di banyak grup dan setiap grup bisa berisi banyak manusia.
+sqlite> -- Karna di sqlite tidak mendukung many-to-many relationship maka kita menggunakan tabel bantuan  untuk membuat relasi tersebut, berikut ilustrasinya
+sqlite> -- ga usah ilustrasi
+sqlite> -- kita langsung aja
+sqlite> -- bikin 3 tabel, tabel pertama meja
+sqlite> CREATE TABLE "menja" (
+   ...> id_meja INT(2) PRIMARY KEY NOT NULL,
+   ...> nama VARCHAR(50) );
+sqlite> -- TABEL K[K[K[K[K[K[K[Ktabel kedua transaksi
+sqlite> CREATE TABLE "TRAN[K[K[K[Ktransaksi" (
+   ...> id_transaksi INTEGER PRIMARY KEY NOT NULL,
+   ...> nama VARCHAR(50),
+   ...> no_hp VARCHAR(20),
+   ...> id_menu INT(3),
+   ...> jumlah INTEGER,
+   ...> total REAL);
+sqlite> -- tabel ked[Ktiga bantuan
+sqlite> CREATE TABLE "mt_bantuan" (
+   ...> id_meja INT(2) NOT NULL REFERENC[KCES meja(id_meja),
+   ...> id_transaksi INTEGER NOT NULL REFERENCES transaksi(id_transaksi),
+   ...> PRIMARY KEY (id_meja, id_transaksi) );
+sqlite> --- ---------
+sqlite> -- /me back
+sqlite> -- materi selanjutnya
+sqlite> -- PHP & SQLITE
+sqlite> - [K- kita keluar dulu
+sqlite> .quit
+syandal@remoteshare:~/belajar sqlite3$ pwd
+/home/syandal/belajar sqlite3
+syandal@remoteshare:~/belajar sqlite3$ cd code/
+syandal@remoteshare:~/belajar sqlite3/code$ ls
+cobasqlite1.php  kode1.php  kode2.php  kode3.php  kode4.php  kode5.php
+syandal@remoteshare:~/belajar sqlite3/code$ # kode php pertama untuk membuat database .. berikut kodenya
+syandal@remoteshare:~/belajar sqlite3/code$ c[Knano kode1.php 
+(B)0[?1049h[1;21r[m[4l[?1h=[?1h=[?1h=[39;49m[?25l[39;49m[m[H[J[19;45H[0;7m[ Reading File ][16A[m[19;51H[0;7m 17 lines ][16A[m[34h[?25h[H[39;49m[0;7m  GNU nano 2.5.3                      File: kode1.php                                                    [3;1H[0;1m[32m<?php[4;3H[34m// buka database[5;3H[39m[m$file_db = [0;1m[33mnew[39m[m PDO('sqlite:cobapesan.db');[7;3H[0;1m[34m// set atribut[8;3H[39m[m$file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);[10;3H[0;1m[34m// buat tabel[11;3H[39m[m$file_db->[37mexec([39m[m"CREATE TABLE IF NOT EXISTS pesan ([12;19Hid INTEGER PRIMARY KEY,[13;19Hjudul TEXT,[14;19Hpesan TEXT,[15;19Hwaktu INTEGER)");[5B[0;7m^G[m Get Help    [0;7m^O[m Write Out   [0;7m^W[m Where Is    [0;7m^K[m Cut Text    [0;7m^J[m Justify     [0;7m^C[m Cur Pos     [0;7m^Y[m Prev Page[1B[0;7m^X[m Exit[21;16H[0;7m^R[m Read File   [0;7m^\[m Replace     [0;7m^U[m Uncut Text  [0;7m^T[m To Spell    [0;7m^_[m Go To Line  [0;7m^V[m Next Page[18A[1B[1B[1B[1B[1B[1B[1B[1B[1B[1B[1B[1B[1B[1B[1B[2;18r[2;1H[9M[1;21r[2;1H[K[8B[0;1m[32m?>[39m[mMMMMMMM[2;18r[2;1H[9L[1;21r[3;1H[0;1m[32m<?php[4;3H[34m// buka database[5;3H[39m[m$file_db = [0;1m[33mnew[39m[m PDO('sqlite:cobapesan.db');[7;3H[0;1m[34m// set atribut[8;3H[39m[m$file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);[10;3H[0;1m[34m// buat tabel[11;3H[39m[m$file_db->[37mexec([39m[m"CREATE TABLE IF NOT EXISTS pesan ([8B[J[21;105H[21;1H[?1049l[?1l>syandal@remoteshare:~/belajar sqlite3/code$ ok k[K[K[K[K# kita pastiin dulu kalo db nya belum ada 
+syandal@remoteshare:~/belajar sqlite3/code$ ls -al
+total 32
+drwxrwxr-x 2 syandal syandal 4096 Apr  6 21:24 [0m[01;34m.[0m
+drwxrwxr-x 3 syandal syandal 4096 Apr  6 21:20 [01;34m..[0m
+-rw-r----- 1 syandal syandal 1937 Apr  6 21:20 cobasqlite1.php
+-rw-r--r-- 1 syandal syandal  370 Apr  6 21:20 kode1.php
+-rw-r--r-- 1 syandal syandal  694 Apr  6 21:20 kode2.php
+-rw-r--r-- 1 syandal syandal  484 Apr  6 21:20 kode3.php
+-rw-r--r-- 1 syandal syandal  688 Apr  6 21:20 kode4.php
+-rw-r--r-- 1 syandal syandal  344 Apr  6 21:20 kode5.php
+syandal@remoteshare:~/belajar sqlite3/code$ # kita coba jalanin kode1.php 
+syandal@remoteshare:~/belajar sqlite3/code$ php kode1.php 
+The program 'php' can be found in the following packages:
+ * php7.0-cli
+ * hhvm
+Try: sudo apt install <selected package>
+syandal@remoteshare:~/belajar sqlite3/code$ yah php [K[K[K[K[K[K[K[K# yah php ga ada
+syandal@remoteshare:~/belajar sqlite3/code$ sudo apt-[K install php
+[sudo] password for syandal: 
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  adwaita-icon-theme dconf-gsettings-backend dconf-service ffmpeg fontconfig fontconfig-config
+  fonts-dejavu-core glib-networking glib-networking-common glib-networking-services
+  gsettings-desktop-schemas gstreamer1.0-plugins-base gstreamer1.0-plugins-good hicolor-icon-theme
+  humanity-icon-theme libaa1 libasound2 libasound2-data libass5 libasyncns0 libatk-bridge2.0-0
+  libatk1.0-0 libatk1.0-data libatspi2.0-0 libavahi-client3 libavahi-common-data libavahi-common3
+  libavc1394-0 libavcodec-ffmpeg56 libavdevice-ffmpeg56 libavfilter-ffmpeg5 libavformat-ffmpeg56
+  libavresample-ffmpeg2 libavutil-ffmpeg54 libbluray1 libboost-filesystem1.58.0 libboost-system1.58.0
+  libbs2b0 libcaca0 libcairo-gobject2 libcairo2 libcapnp-0.5.3 libcdio-cdda1 libcdio-paranoia1
+  libcdio13 libcdparanoia0 libcolord2 libcroco3 libcrystalhd3 libcups2 libdatrie1 libdc1394-22
+  libdconf1 libdrm-amdgpu1 libdrm-intel1 libdrm-nouveau2 libdrm-radeon1 libdv4 libegl1-mesa libepoxy0
+  libflac8 libflite1 libfontconfig1 libgbm1 libgdk-pixbuf2.0-0 libgdk-pixbuf2.0-common libgl1-mesa-dri
+  libgl1-mesa-glx libglapi-mesa libgme0 libgomp1 libgraphite2-3 libgsm1 libgstreamer-plugins-base1.0-0
+  libgstreamer-plugins-good1.0-0 libgstreamer1.0-0 libgtk-3-0 libgtk-3-bin libgtk-3-common
+  libgudev-1.0-0 libharfbuzz0b libiec61883-0 libjack-jackd2-0 libjbig0 libjpeg-turbo8 libjpeg8
+  libjson-glib-1.0-0 libjson-glib-1.0-common libkeybinder-3.0-0 liblcms2-2 libllvm5.0 libmirclient9
+  libmircommon7 libmircore1 libmirprotobuf3 libmodplug1 libmp3lame0 libogg0 libopenal-data libopenal1
+  libopencv-core2.4v5 libopencv-imgproc2.4v5 libopenjpeg5 libopus0 liborc-0.4-0 libpango-1.0-0
+  libpangocairo-1.0-0 libpangoft2-1.0-0 libpciaccess0 libpixman-1-0 libpostproc-ffmpeg53
+  libprotobuf-lite9v5 libproxy1v5 libpulse0 libraw1394-11 librest-0.7-0 librsvg2-2 librsvg2-common
+  libsamplerate0 libschroedinger-1.0-0 libsdl1.2debian libsensors4 libshine3 libshout3 libsnappy1v5
+  libsndfile1 libsodium18 libsoup-gnome2.4-1 libsoup2.4-1 libsoxr0 libspeex1 libssh-gcrypt-4
+  libswresample-ffmpeg1 libswscale-ffmpeg3 libtag1v5 libtag1v5-vanilla libtbb2 libthai-data libthai0
+  libtheora0 libtiff5 libtwolame0 libv4l-0 libv4lconvert0 libva1 libvdpau1 libvisual-0.4-0 libvorbis0a
+  libvorbisenc2 libvpx3 libwavpack1 libwayland-client0 libwayland-cursor0 libwayland-egl1-mesa
+  libwayland-server0 libwebp5 libx11-xcb1 libx264-148 libx265-79 libxcb-dri2-0 libxcb-dri3-0
+  libxcb-glx0 libxcb-present0 libxcb-render0 libxcb-shape0 libxcb-shm0 libxcb-sync1 libxcb-xfixes0
+  libxcomposite1 libxcursor1 libxdamage1 libxfixes3 libxi6 libxinerama1 libxkbcommon0 libxrandr2
+  libxrender1 libxshmfence1 libxv1 libxvidcore4 libxxf86vm1 libzmq5 libzvbi-common libzvbi0
+  linux-headers-4.4.0-87 linux-headers-4.4.0-87-generic linux-image-4.4.0-87-generic
+  linux-image-extra-4.4.0-87-generic ubuntu-mono
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  php-common php7.0 php7.0-cli php7.0-common php7.0-fpm php7.0-json php7.0-opcache php7.0-readline
+Suggested packages:
+  php-pear
+The following NEW packages will be installed:
+  php php-common php7.0 php7.0-cli php7.0-common php7.0-fpm php7.0-json php7.0-opcache php7.0-readline
+0 upgraded, 9 newly installed, 0 to remove and 79 not upgraded.
+Need to get 3,532 kB of archives.
+After this operation, 14.1 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y' 
+[33m0% [Working][0m            Get:1 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 php-common all 1:35ubuntu6.1 [10.8 kB]
+[33m0% [1 php-common 0 B/10.8 kB 0%][0m[33m                                2% [Working][0m            Get:2 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 php7.0-common amd64 7.0.28-0ubuntu0.16.04.1 [840 kB]
+[33m2% [2 php7.0-common 0 B/840 kB 0%][0m[33m                                  24% [Working][0m             Get:3 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 php7.0-json amd64 7.0.28-0ubuntu0.16.04.1 [16.9 kB]
+[33m24% [3 php7.0-json 0 B/16.9 kB 0%][0m[33m                                  26% [Working][0m             Get:4 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 php7.0-opcache amd64 7.0.28-0ubuntu0.16.04.1 [77.1 kB]
+[33m26% [4 php7.0-opcache 0 B/77.1 kB 0%][0m[33m                                     30% [Working][0m             Get:5 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 php7.0-readline amd64 7.0.28-0ubuntu0.16.04.1 [12.8 kB]
+[33m30% [5 php7.0-readline 0 B/12.8 kB 0%][0m[33m                                      33% [Working][0m             Get:6 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 php7.0-cli amd64 7.0.28-0ubuntu0.16.04.1 [1,282 kB]
+[33m33% [6 php7.0-cli 0 B/1,282 kB 0%][0m[33m                                  64% [Working][0m             Get:7 http://archive.ubuntu.com/ubuntu xenial-updates/universe amd64 php7.0-fpm amd64 7.0.28-0ubuntu0.16.04.1 [1,288 kB]
+[33m64% [7 php7.0-fpm 0 B/1,288 kB 0%][0m[33m                                  95% [Working][0m             Get:8 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 php7.0 all 7.0.28-0ubuntu0.16.04.1 [1,290 B]
+[33m95% [8 php7.0 0 B/1,290 B 0%][0m[33m                             98% [Working][0m             Get:9 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 php all 1:7.0+35ubuntu6.1 [2,862 B]
+[33m98% [9 php 0 B/2,862 B 0%][0m[33m                          100% [Working][0m              Fetched 3,532 kB in 0s (4,706 kB/s)
+
+7[0;20r8[1ASelecting previously unselected package php-common.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 139954 files and directories currently installed.)
+Preparing to unpack .../php-common_1%3a35ubuntu6.1_all.deb ...
+7[21;0f[42m[30mProgress: [  0%][49m[39m [...................................................................................] 87[21;0f[42m[30mProgress: [  2%][49m[39m [##.................................................................................] 8Unpacking php-common (1:35ubuntu6.1) ...
+7[21;0f[42m[30mProgress: [  4%][49m[39m [####...............................................................................] 87[21;0f[42m[30mProgress: [  6%][49m[39m [######.............................................................................] 8Selecting previously unselected package php7.0-common.
+Preparing to unpack .../php7.0-common_7.0.28-0ubuntu0.16.04.1_amd64.deb ...
+7[21;0f[42m[30mProgress: [  8%][49m[39m [########...........................................................................] 8Unpacking php7.0-common (7.0.28-0ubuntu0.16.04.1) ...
+7[21;0f[42m[30mProgress: [ 10%][49m[39m [##########.........................................................................] 87[21;0f[42m[30mProgress: [ 13%][49m[39m [###########........................................................................] 8Selecting previously unselected package php7.0-json.
+Preparing to unpack .../php7.0-json_7.0.28-0ubuntu0.16.04.1_amd64.deb ...
+7[21;0f[42m[30mProgress: [ 15%][49m[39m [#############......................................................................] 8Unpacking php7.0-json (7.0.28-0ubuntu0.16.04.1) ...
+7[21;0f[42m[30mProgress: [ 17%][49m[39m [###############....................................................................] 87[21;0f[42m[30mProgress: [ 19%][49m[39m [#################..................................................................] 8Selecting previously unselected package php7.0-opcache.
+Preparing to unpack .../php7.0-opcache_7.0.28-0ubuntu0.16.04.1_amd64.deb ...
+7[21;0f[42m[30mProgress: [ 21%][49m[39m [###################................................................................] 8Unpacking php7.0-opcache (7.0.28-0ubuntu0.16.04.1) ...
+7[21;0f[42m[30mProgress: [ 23%][49m[39m [####################...............................................................] 87[21;0f[42m[30mProgress: [ 26%][49m[39m [######################.............................................................] 8Selecting previously unselected package php7.0-readline.
+Preparing to unpack .../php7.0-readline_7.0.28-0ubuntu0.16.04.1_amd64.deb ...
+7[21;0f[42m[30mProgress: [ 28%][49m[39m [########################...........................................................] 8Unpacking php7.0-readline (7.0.28-0ubuntu0.16.04.1) ...
+7[21;0f[42m[30mProgress: [ 30%][49m[39m [##########################.........................................................] 87[21;0f[42m[30mProgress: [ 32%][49m[39m [############################.......................................................] 8Selecting previously unselected package php7.0-cli.
+Preparing to unpack .../php7.0-cli_7.0.28-0ubuntu0.16.04.1_amd64.deb ...
+7[21;0f[42m[30mProgress: [ 34%][49m[39m [#############################......................................................] 8Unpacking php7.0-cli (7.0.28-0ubuntu0.16.04.1) ...
+7[21;0f[42m[30mProgress: [ 36%][49m[39m [###############################....................................................] 87[21;0f[42m[30mProgress: [ 39%][49m[39m [#################################..................................................] 8Selecting previously unselected package php7.0-fpm.
+Preparing to unpack .../php7.0-fpm_7.0.28-0ubuntu0.16.04.1_amd64.deb ...
+7[21;0f[42m[30mProgress: [ 41%][49m[39m [###################################................................................] 8Unpacking php7.0-fpm (7.0.28-0ubuntu0.16.04.1) ...
+7[21;0f[42m[30mProgress: [ 43%][49m[39m [#####################################..............................................] 87[21;0f[42m[30mProgress: [ 45%][49m[39m [######################################.............................................] 8Selecting previously unselected package php7.0.
+Preparing to unpack .../php7.0_7.0.28-0ubuntu0.16.04.1_all.deb ...
+7[21;0f[42m[30mProgress: [ 47%][49m[39m [########################################...........................................] 8Unpacking php7.0 (7.0.28-0ubuntu0.16.04.1) ...
+7[21;0f[42m[30mProgress: [ 50%][49m[39m [##########################################.........................................] 87[21;0f[42m[30mProgress: [ 52%][49m[39m [############################################.......................................] 8Selecting previously unselected package php.
+Preparing to unpack .../php_1%3a7.0+35ubuntu6.1_all.deb ...
+7[21;0f[42m[30mProgress: [ 54%][49m[39m [##############################################.....................................] 8Unpacking php (1:7.0+35ubuntu6.1) ...
+7[21;0f[42m[30mProgress: [ 56%][49m[39m [###############################################....................................] 87[21;0f[42m[30mProgress: [ 58%][49m[39m [#################################################..................................] 8Processing triggers for man-db (2.7.5-1) ...
+Processing triggers for systemd (229-4ubuntu21) ...
+Processing triggers for ureadahead (0.100.0-19) ...
+Setting up php-common (1:35ubuntu6.1) ...
+7[21;0f[42m[30mProgress: [ 60%][49m[39m [###################################################................................] 87[21;0f[42m[30mProgress: [ 63%][49m[39m [#####################################################..............................] 8Setting up php7.0-common (7.0.28-0ubuntu0.16.04.1) ...
+7[21;0f[42m[30mProgress: [ 65%][49m[39m [#######################################################............................] 8
+Creating config file /etc/php/7.0/mods-available/calendar.ini with new version
+
+Creating config file /etc/php/7.0/mods-available/ctype.ini with new version
+
+Creating config file /etc/php/7.0/mods-available/exif.ini with new version
+
+Creating config file /etc/php/7.0/mods-available/fileinfo.ini with new version
+
+Creating config file /etc/php/7.0/mods-available/ftp.ini with new version
+
+Creating config file /etc/php/7.0/mods-available/gettext.ini with new version
+
+Creating config file /etc/php/7.0/mods-available/iconv.ini with new version
+
+Creating config file /etc/php/7.0/mods-available/pdo.ini with new version
+
+Creating config file /etc/php/7.0/mods-available/phar.ini with new version
+
+Creating config file /etc/php/7.0/mods-available/posix.ini with new version
+
+Creating config file /etc/php/7.0/mods-available/shmop.ini with new version
+
+Creating config file /etc/php/7.0/mods-available/sockets.ini with new version
+
+Creating config file /etc/php/7.0/mods-available/sysvmsg.ini with new version
+
+Creating config file /etc/php/7.0/mods-available/sysvsem.ini with new version
+
+Creating config file /etc/php/7.0/mods-available/sysvshm.ini with new version
+
+Creating config file /etc/php/7.0/mods-available/tokenizer.ini with new version
+7[21;0f[42m[30mProgress: [ 67%][49m[39m [########################################################...........................] 8Setting up php7.0-json (7.0.28-0ubuntu0.16.04.1) ...
+7[21;0f[42m[30mProgress: [ 69%][49m[39m [##########################################################.........................] 8
+Creating config file /etc/php/7.0/mods-available/json.ini with new version
+7[21;0f[42m[30mProgress: [ 71%][49m[39m [############################################################.......................] 8Setting up php7.0-opcache (7.0.28-0ubuntu0.16.04.1) ...
+7[21;0f[42m[30mProgress: [ 73%][49m[39m [##############################################################.....................] 8
+Creating config file /etc/php/7.0/mods-available/opcache.ini with new version
+7[21;0f[42m[30mProgress: [ 76%][49m[39m [################################################################...................] 8Setting up php7.0-readline (7.0.28-0ubuntu0.16.04.1) ...
+7[21;0f[42m[30mProgress: [ 78%][49m[39m [#################################################################..................] 8
+Creating config file /etc/php/7.0/mods-available/readline.ini with new version
+7[21;0f[42m[30mProgress: [ 80%][49m[39m [###################################################################................] 8Setting up php7.0-cli (7.0.28-0ubuntu0.16.04.1) ...
+7[21;0f[42m[30mProgress: [ 82%][49m[39m [#####################################################################..............] 8update-alternatives: using /usr/bin/php7.0 to provide /usr/bin/php (php) in auto mode
+update-alternatives: using /usr/bin/phar7.0 to provide /usr/bin/phar (phar) in auto mode
+update-alternatives: using /usr/bin/phar.phar7.0 to provide /usr/bin/phar.phar (phar.phar) in auto mode
+
+Creating config file /etc/php/7.0/cli/php.ini with new version
+7[21;0f[42m[30mProgress: [ 84%][49m[39m [#######################################################################............] 8Setting up php7.0-fpm (7.0.28-0ubuntu0.16.04.1) ...
+7[21;0f[42m[30mProgress: [ 86%][49m[39m [#########################################################################..........] 8
+Creating config file /etc/php/7.0/fpm/php.ini with new version
+7[21;0f[42m[30mProgress: [ 89%][49m[39m [##########################################################################.........] 8Setting up php7.0 (7.0.28-0ubuntu0.16.04.1) ...
+7[21;0f[42m[30mProgress: [ 91%][49m[39m [############################################################################.......] 87[21;0f[42m[30mProgress: [ 93%][49m[39m [##############################################################################.....] 8Setting up php (1:7.0+35ubuntu6.1) ...
+7[21;0f[42m[30mProgress: [ 95%][49m[39m [################################################################################...] 87[21;0f[42m[30mProgress: [ 97%][49m[39m [##################################################################################.] 8Processing triggers for systemd (229-4ubuntu21) ...
+Processing triggers for ureadahead (0.100.0-19) ...
+
+7[0;21r8[1A[Jsyandal@remoteshare:~/belajar sqlite3/code$ php --version
+PHP 7.0.28-0ubuntu0.16.04.1 (cli) ( NTS )
+Copyright (c) 1997-2017 The PHP Group
+Zend Engine v3.0.0, Copyright (c) 1998-2017 Zend Technologies
+    with Zend OPcache v7.0.28-0ubuntu0.16.04.1, Copyright (c) 1999-2017, by Zend Technologies
+syandal@remoteshare:~/belajar sqlite3/code$ # yah php 7 lagi :(
+syandal@remoteshare:~/belajar sqlite3/code$ # mangap pak netstars[K[K[K[K[K[Ktarsl serverya diaca2 [K[Kk2 _/|\_
+syandal@remoteshare:~/belajar sqlite3/code$ # ok kita coba
+syandal@remoteshare:~/belajar sqlite3/code$ # baca doa dulu
+syandal@remoteshare:~/belajar sqlite3/code$ ls -al
+total 32
+drwxrwxr-x 2 syandal syandal 4096 Apr  6 21:24 [0m[01;34m.[0m
+drwxrwxr-x 3 syandal syandal 4096 Apr  6 21:20 [01;34m..[0m
+-rw-r----- 1 syandal syandal 1937 Apr  6 21:20 cobasqlite1.php
+-rw-r--r-- 1 syandal syandal  370 Apr  6 21:20 kode1.php
+-rw-r--r-- 1 syandal syandal  694 Apr  6 21:20 kode2.php
+-rw-r--r-- 1 syandal syandal  484 Apr  6 21:20 kode3.php
+-rw-r--r-- 1 syandal syandal  688 Apr  6 21:20 kode4.php
+-rw-r--r-- 1 syandal syandal  344 Apr  6 21:20 kode5.php
+syandal@remoteshare:~/belajar sqlite3/code$ php kode1.php 
+PHP Fatal error:  Uncaught PDOException: could not find driver in /home/syandal/belajar sqlite3/code/kode1.php:3
+Stack trace:
+#0 /home/syandal/belajar sqlite3/code/kode1.php(3): PDO->__construct('sqlite:cobapesa...')
+#1 {main}
+  thrown in /home/syandal/belajar sqlite3/code/kode1.php on line 3
+syandal@remoteshare:~/belajar sqlite3/code$ # yah error kan
+syandal@remoteshare:~/belajar sqlite3/code$ nano kode1.php 
+(B)0[?1049h[1;21r[m[4l[?1h=[?1h=[?1h=[39;49m[?25l[39;49m[m[H[J[19;45H[0;7m[ Reading File ][16A[m[19;51H[0;7m 17 lines ][16A[m[34h[?25h[H[39;49m[0;7m  GNU nano 2.5.3                      File: kode1.php                                                    [3;1H[0;1m[32m<?php[4;3H[34m// buka database[5;3H[39m[m$file_db = [0;1m[33mnew[39m[m PDO('sqlite:cobapesan.db');[7;3H[0;1m[34m// set atribut[8;3H[39m[m$file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);[10;3H[0;1m[34m// buat tabel[11;3H[39m[m$file_db->[37mexec([39m[m"CREATE TABLE IF NOT EXISTS pesan ([12;19Hid INTEGER PRIMARY KEY,[13;19Hjudul TEXT,[14;19Hpesan TEXT,[15;19Hwaktu INTEGER)");[5B[0;7m^G[m Get Help    [0;7m^O[m Write Out   [0;7m^W[m Where Is    [0;7m^K[m Cut Text    [0;7m^J[m Justify     [0;7m^C[m Cur Pos     [0;7m^Y[m Prev Page[1B[0;7m^X[m Exit[21;16H[0;7m^R[m Read File   [0;7m^\[m Replace     [0;7m^U[m Uncut Text  [0;7m^T[m To Spell    [0;7m^_[m Go To Line  [0;7m^V[m Next Page[18A[1B[1B[1B[5;45H[1;96H[0;7mModified[5;41H[m[1P[1Ps');q');l');i');t');e');[14B[0;7mFile Name to Write: kode1.php                                                                            [20;16H[m      [0;7mM-D[m DOS Format       [0;7mM-A[m Append           [0;7mM-B[m Backup File[K[21;2H[0;7mC[m Cancel[6C      [0;7mM-M[m Mac Format       [0;7mM-P[m Prepend          [0;7m^T[m To Files[K[19;30H[?25l[19;43H[39;49m[m[1K [0;7m[ Wrote 17 lines ][m[K[5;46H[34h[?25h[1;96H[0;7m        [20;16H^O[m Write Out   [0;7m^W[m Where Is    [0;7m^K[m Cut Text    [0;7m^J[m Justify     [0;7m^C[m Cur Pos     [0;7m^Y[m Prev Page[21;2H[0;7mX[m Exit  [6C[0;7m^R[m Read File   [0;7m^\[m Replace     [0;7m^U[m Uncut Text  [0;7m^T[m To Spell    [0;7m^_[m Go To Line  [0;7m^V[m Next Page[5;46H[14B[J[21;105H[21;1H[?1049l[?1l>syandal@remoteshare:~/belajar sqlite3/code$ nano kode1.php # yah error kan[1Pphp kode1.php 
+PHP Fatal error:  Uncaught PDOException: could not find driver in /home/syandal/belajar sqlite3/code/kode1.php:3
+Stack trace:
+#0 /home/syandal/belajar sqlite3/code/kode1.php(3): PDO->__construct('sqlite:cobapesa...')
+#1 {main}
+  thrown in /home/syandal/belajar sqlite3/code/kode1.php on line 3
+syandal@remoteshare:~/belajar sqlite3/code$ # ###########################
+syandal@remoteshare:~/belajar sqlite3/code$ # ok karnae[K[K[Kna kode nya ga jalan, contoh [K[K[K[K[K[K[Kmaterinya kita anggak [K[Kp selesai
+syandal@remoteshare:~/belajar sqlite3/code$ # nanti k[K[K[K[Ki [K[Kti kode nya ane taruh di fole sh[K[K[K[K[K[Kilesharing :s[K sf1.hashbang.sh:8 228
+syandal@remoteshare:~/belajar sqlite3/code$ # user : ubuntuid pass:ubuntuid
+syandal@remoteshare:~/belajar sqlite3/code$ # sekian materi hari ini 
+syandal@remoteshare:~/belajar sqlite3/code$ # mangap a[Kkalo ada kekurangan 
+syandal@remoteshare:~/belajar sqlite3/code$ # see you next workshop _/|\_
+syandal@remoteshare:~/belajar sqlite3/code$ # Wassalamu alaikum warrah[K[K[K[K[K[KWarrahmatullahi Wabarakatuh
+syandal@remoteshare:~/belajar sqlite3/code$ exit
+exit
+
+Script done on Fri 06 Apr 2018 09:31:44 PM WIB

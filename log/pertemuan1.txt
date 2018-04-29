@@ -1,0 +1,603 @@
+Feb 23 20:00:13 *	Mr1NK has quit (Ping timeout: 256 seconds)
+Feb 23 20:11:54 *	suka|baik (~aa@120.188.66.29) has joined
+Feb 23 20:15:08 *	suka|baik2 (~aa@120.188.65.161) has joined
+Feb 23 20:15:22 *	Syandal_ back
+Feb 23 20:15:24 <Syandal_>	!salam
+Feb 23 20:15:25 <Ayana>	Syandal_ mengucapkan salam :
+Feb 23 20:15:26 <Ayana>	Assalamu Alaikum
+Feb 23 20:15:26 <presiden>	Ayana, Waalaikumsalam Warahmatullahi Wabarakatuh
+Feb 23 20:15:27 <Syandal_>	!baris
+Feb 23 20:15:28 <Ayana>	================================
+Feb 23 20:15:31 <Syandal_>	!pengumuman
+Feb 23 20:15:32 <Ayana>	Argumennya harus diisi pilihannya sqlite, linux atau python3
+Feb 23 20:15:39 <Syandal_>	!pengumuman sqlite
+Feb 23 20:15:39 <Ayana>	Pengumuman
+Feb 23 20:15:40 <Ayana>	==========
+Feb 23 20:15:40 <Ayana>	Dear penghuni kanal #ubuntu-indonesia, kali ini kita akan mengadakan kegiatan Belajar Bersama SQLite3
+Feb 23 20:15:40 <Ayana>	Untuk info silabus dan browsur silahkan buka dihalaman ini >> https://git.io/vNa41, Pertemuan 1 Jumat 23 Feb 2018
+Feb 23 20:15:40 <Ayana>	Untuk demo live selama kegiatan diskusi bisa menggunakan remote ssh view@free01.remoteshare.xyz, password : rahasia123, powered by : netarsl
+Feb 23 20:15:40 <Ayana>	Untuk file sharing komunitas #ubuntu-indonesia >> sf1.hashbang.sh:8228, untuk gallery sf1.hashbang.sh:8229
+Feb 23 20:15:41 <Ayana>	Log pertemuan 1 :     (belum ada)
+Feb 23 20:15:41 <Ayana>	Log pertemuan 2 :     (belum ada)
+Feb 23 20:15:42 <Ayana>	Log pertemuan 3 :     (belum ada)
+Feb 23 20:15:42 <Ayana>	Log pertemuan 4 :     (belum ada)
+Feb 23 20:15:43 <Ayana>	Log pertemuan 5 :     (belum ada)
+Feb 23 20:15:43 <Ayana>	Log pertemuan 6 :     (belum ada)
+Feb 23 20:15:44 <Ayana>	Regards
+Feb 23 20:15:44 <Ayana>	~annonimouse
+Feb 23 20:15:46 <Syandal_>	!baris
+Feb 23 20:15:47 <Ayana>	================================
+Feb 23 20:16:00 *	suka|baik2 has quit (Client Quit)
+Feb 23 20:16:15 *	suka|baik has quit (Ping timeout: 248 seconds)
+Feb 23 20:16:29 *	suka|baik (~aa@120.188.65.161) has joined
+Feb 23 20:17:22 <Syandal_>	kalo mau lita tampilan demonya bisa remote ke alamat view@sqlite.remoteshare.xyz 
+Feb 23 20:17:35 <Syandal_>	remote nya dari sekarang aja
+Feb 23 20:18:03 <suka|baik>	halo, izin nyimak
+Feb 23 20:19:07 <Syandal_>	hi pak suka|baik 
+Feb 23 20:19:09 <Syandal_>	!wb
+Feb 23 20:19:10 <Ayana>	Welcome back
+Feb 23 20:19:38 <Syandal_>	sesuai perjanjian kita, hari ini kita mau mengadakan kegiatan 'belajar bersama sqlite3'
+Feb 23 20:20:02 <Syandal_>	sebelumnya kita absen dulu kalo yang hadir uda > 50 orang baru kegiatannya kita mulai ..
+Feb 23 20:20:04 <suka|baik>	hi 
+Feb 23 20:20:04 <suka|baik>	hi hi
+Feb 23 20:20:04 <suka|baik>	hi hi hi
+Feb 23 20:20:14 <Syandal_>	1) Syandal_
+Feb 23 20:20:19 <Syandal_>	..
+Feb 23 20:20:29 <suka|baik>	2 ....
+Feb 23 20:20:35 <Syandal_>	:3
+Feb 23 20:20:43 <Syandal_>	uda 2 orang kita mulai aja nggak yaa\
+Feb 23 20:21:11 <suka|baik>	ntar nunggu triawarman 
+Feb 23 20:21:18 <Syandal_>	ok .. dimengerti
+Feb 23 20:21:28 <Syandal_>	beliau uda 3 nick nya ..
+Feb 23 20:21:40 *	triawarman hadir
+Feb 23 20:21:46 <triawarman>	walau rada ngantuk dari tadi
+Feb 23 20:21:50 <Syandal_>	hmm
+Feb 23 20:22:09 <Syandal_>	gimana kabarnya pak ?
+Feb 23 20:22:18 <triawarman>	kabar siapa ?
+Feb 23 20:22:54 <Syandal_>	sampean
+Feb 23 20:23:28 <Syandal_>	untuk contoh database bisa di download di file sharing kita.. sf1.hashbang.sh:8228
+Feb 23 20:23:42 <Syandal_>	user : ubuntuid pass: ubuntuid
+Feb 23 20:24:05 <triawarman>	sperti biasa
+Feb 23 20:24:06 <Syandal_>	nama file nya KodingKafe.db
+Feb 23 20:24:09 *	suka|baik has quit (Remote host closed the connection)
+Feb 23 20:24:10 <triawarman>	suka|baik: lama tak bersua :)
+Feb 23 20:24:21 <localanu[m]>	disini engga ada kompotan FG?
+Feb 23 20:24:27 <localanu[m]>	-_-
+Feb 23 20:24:51 <Syandal_>	belum ada
+Feb 23 20:24:56 <Syandal_>	ga ada yang berani iklanin
+Feb 23 20:25:03 <triawarman>	localanu[m]: salam kenal :)
+Feb 23 20:25:12 <Syandal_>	idem 
+Feb 23 20:25:14 <Syandal_>	!wb
+Feb 23 20:25:15 <Ayana>	Welcome back
+Feb 23 20:25:15 <localanu[m]>	hi
+Feb 23 20:25:28 <Syandal_>	sambil nunggu yang lain kita liat rencana pembahasan hari ini 
+Feb 23 20:25:30 <Syandal_>	!baris
+Feb 23 20:25:31 <Ayana>	================================
+Feb 23 20:25:35 <Syandal_>	pertemuan pertama
+Feb 23 20:25:35 *	triawarman install sqlite dahulu
+Feb 23 20:25:37 <Syandal_>	1 pengenalan sqlite
+Feb 23 20:25:37 <Syandal_>	2 menginstall sqlite
+Feb 23 20:25:37 <Syandal_>	3 menjalankan sqlite
+Feb 23 20:25:37 <Syandal_>	4 membuat database
+Feb 23 20:25:37 <Syandal_>	5 menghapus database
+Feb 23 20:25:37 <Syandal_>	6 membuat tabel
+Feb 23 20:25:37 <Syandal_>	7 menghapus tabel
+Feb 23 20:25:37 <Syandal_>	8 dump database ke file sql 
+Feb 23 20:25:37 <Syandal_>	9 import file sql ke database
+Feb 23 20:25:40 <Syandal_>	!baris
+Feb 23 20:25:49 <Ayana>	================================
+Feb 23 20:25:54 <Syandal_>	iya .. yang mau install sqlite3 silahkan di install dulu
+Feb 23 20:28:01 <localanu[m]>	triawarman: yoi
+Feb 23 20:28:01 <localanu[m]>	elah,kaya belum kenal aja,ane kan kadang nongkrong di KS
+Feb 23 20:28:17 <triawarman>	KS ?
+Feb 23 20:28:32 <Syandal_>	kakak semok ?
+Feb 23 20:28:42 <triawarman>	owww
+Feb 23 20:28:49 <Syandal_>	Kasak kuSuk ?
+Feb 23 20:28:52 *	triawarman baru tau, tapi g ada ikut ggituan
+Feb 23 20:29:37 <Syandal_>	sama
+Feb 23 20:29:59 <localanu[m]>	koding susu
+Feb 23 20:30:03 <Syandal_>	hmm
+Feb 23 20:30:30 <triawarman>	hmm salah orag kali
+Feb 23 20:30:41 <triawarman>	ada 3 orang tria disini, mgkkin salah satunya
+Feb 23 20:31:08 <localanu[m]>	Syandal_: maklum sih kalau engga ada yang berani
+Feb 23 20:31:24 <Syandal_>	hmm.. alasannya
+Feb 23 20:31:32 <localanu[m]>	3 kepribadian?
+Feb 23 20:31:33 <localanu[m]>	horor
+Feb 23 20:31:38 <localanu[m]>	engga sih
+Feb 23 20:31:38 <Syandal_>	:v
+Feb 23 20:31:39 <localanu[m]>	normal
+Feb 23 20:31:45 <Syandal_>	bisa jadi
+Feb 23 20:32:06 <localanu[m]>	bouncernya lupa password?
+Feb 23 20:32:08 <localanu[m]>	pakai matrix ae?
+Feb 23 20:32:23 *	triawarman dlu ada sqlite manager di FF
+Feb 23 20:32:29 <triawarman>	tapi dari tadi cari ga nemu
+Feb 23 20:32:37 <Syandal_>	FF apan lagi ?
+Feb 23 20:32:43 <triawarman>	FireFox
+Feb 23 20:32:59 <localanu[m]>	kayak ane,akhirnya pakai matrix gara gara salah register
+Feb 23 20:33:13 <localanu[m]>	firefox?
+Feb 23 20:33:59 <Syandal_>	kalo di linux .. gui untuk sqlite namanya sqlitebrowser 
+Feb 23 20:34:39 *	rizal (7da18b71@gateway/web/freenode/ip.125.161.139.113) has joined
+Feb 23 20:34:41 <Syandal_>	<triawarman> FireFox << ow ..
+Feb 23 20:34:43 <Syandal_>	i see
+Feb 23 20:34:51 <triawarman>	ok uda
+Feb 23 20:34:55 <Syandal_>	ok udah 4 orang random ngumpul disini
+Feb 23 20:35:17 *	suka|baik (~aa@120.188.65.161) has joined
+Feb 23 20:35:19 <Syandal_>	kayaknya kita bakalan malem sabtu-an bersama di kanal ini 
+Feb 23 20:35:23 <localanu[m]>	eh,mending ui atau command way?
+Feb 23 20:35:42 *	Syandal_ kurang tau sih.. tapi di silabus kita membahas yang command line
+Feb 23 20:35:52 <Syandal_>	jadi dasar2 sqlite yang kita bahas
+Feb 23 20:35:53 *	triawarman GUI lover
+Feb 23 20:35:54 <suka|baik>	mending kiyosaki way
+Feb 23 20:36:01 <Syandal_>	:3
+Feb 23 20:36:13 <triawarman>	localanu[m]: suka|baik === @kucingKu
+Feb 23 20:36:28 <Syandal_>	:v
+Feb 23 20:36:36 <Syandal_>	dia ada dimana2
+Feb 23 20:36:53 <tria[m]>	begitulah
+Feb 23 20:37:03 <rizal>	tapi tidak dihati aku
+Feb 23 20:37:31 <triawarman>	alo rizal
+Feb 23 20:37:37 <triawarman>	lama tak bersua
+Feb 23 20:37:46 <Syandal_>	hi pak rizal localanu[m] 
+Feb 23 20:37:48 <Syandal_>	!wb
+Feb 23 20:37:48 <Ayana>	Welcome back
+Feb 23 20:38:16 <Syandal_>	di daftar nick banyak nama.. tapi yang aktif kita2 doang sama bot
+Feb 23 20:38:45 <Syandal_>	yang belum remote view, bisa konek ke remote view untuk liat demo nya
+Feb 23 20:38:55 <Syandal_>	atau nggak coba sendiri juga nggak apa2 sih
+Feb 23 20:38:59 *	triawarman gunakan kuota terbatas
+Feb 23 20:39:00 <localanu[m]>	pakai bouncer kali pada
+Feb 23 20:39:12 <Syandal_>	kurang tau deh
+Feb 23 20:39:34 <Syandal_>	nanti kasi tau aja kalo uda waktunya mulai
+Feb 23 20:39:51 <localanu[m]>	triawarman: hm,kini ane tau
+Feb 23 20:39:57 <triawarman>	kan dirmuu yg pegang kendali
+Feb 23 20:40:11 <Syandal_>	hmm dulu
+Feb 23 20:40:15 *	Syandal_ seruput air putih
+Feb 23 20:40:31 *	suka|baik has quit (Ping timeout: 264 seconds)
+Feb 23 20:40:35 <Syandal_>	:3
+Feb 23 20:40:35 *	tria[m] ga tau apa2
+Feb 23 20:40:56 <Syandal_>	baiklah untuk mempersingkat waktu kita mulai kegiatan kita
+Feb 23 20:40:58 <Syandal_>	!baris
+Feb 23 20:40:59 <Ayana>	================================
+Feb 23 20:41:07 <Syandal_>	Belajar Bersama SQLite3
+Feb 23 20:41:09 <Syandal_>	!baris
+Feb 23 20:41:10 <Ayana>	================================
+Feb 23 20:41:20 <Syandal_>	1) Pengenalan sqlite
+Feb 23 20:42:02 <Syandal_>	untuk penjelasan resminya disini >> https://id.wikipedia.org/wiki/SQLite
+Feb 23 20:42:03 <Ayana>	^ SQLite - Wikipedia bahasa Indonesia, ensiklopedia bebas
+Feb 23 20:42:19 <Syandal_>	yang mau bantuin jelasin dipersilahkan
+Feb 23 20:42:23 *	Syandal_ ringkasin dikit
+Feb 23 20:42:33 <Syandal_>	sqlite adalah sistem manajemen database tertanam (embedded), dia sangat ringan tidak terlalu banyak installasi pada aplikasi, tidak perlu konfigurasi dan tidak membutuhkan server
+Feb 23 20:42:34 <Mr1NK_>	sorry telat
+Feb 23 20:42:48 <Syandal_>	:) (y)
+Feb 23 20:43:07 *	Syandal_ kasi kesempatan 5 menit buat baca wiki abis itu kita diskusiin 
+Feb 23 20:43:25 <Syandal_>	meskipun sederhana tapi sarat fitur seperti sistem manajemen database yang lain
+Feb 23 20:43:42 <Syandal_>	apa itu sqlite :
+Feb 23 20:43:42 <Syandal_>	Sqlite adalah sistem manajemen basis data relational yang bersifat opensource
+Feb 23 20:44:17 <Syandal_>	- sqlite sangat kecil yang ukurannya kurang dari 500kb tidak seperti database lain
+Feb 23 20:44:17 <Syandal_>	- sqlite bukan bertipe client - server, dia berupa pustaka memory yang bisa kita panggil langsung untuk menggunakannya
+Feb 23 20:44:17 <Syandal_>	- umumnya database sqlite disimpan pada file tunggal didalam harddrive komputer. semua obyek (table, view, triger, dll) sudah termasuk kedalam file tersebut.
+Feb 23 20:44:52 <Syandal_>	Penggunaan :
+Feb 23 20:44:52 <Syandal_>	- saat membutuhkan database ringan seperti untuk embedded system, misalnya tv, smartphone, camera, home electronic devices, dll
+Feb 23 20:44:52 <Syandal_>	- saat membutuhkan penyimpanan data temporary pada aplikasi
+Feb 23 20:44:52 <Syandal_>	- dll
+Feb 23 20:45:07 <Syandal_>	Keuntungan
+Feb 23 20:45:07 <Syandal_>	- free dan opensource
+Feb 23 20:45:07 <Syandal_>	- cross platform
+Feb 23 20:45:07 <Syandal_>	- mendukung API yang luas untuk bahasa pemrograman lain, misalnya VB, C#, java, python, php, c++, dll
+Feb 23 20:45:07 <Syandal_>	- flexibel
+Feb 23 20:45:17 <Syandal_>	yang mau menambahkand dipersilahkan
+Feb 23 20:48:01 <triawarman>	next
+Feb 23 20:48:56 <Syandal_>	bentar
+Feb 23 20:49:05 <Syandal_>	karna ada kelebihan harus ada kekurangannya juga
+Feb 23 20:50:41 <Syandal_>	kekurangan
+Feb 23 20:50:41 <Syandal_>	- tidak suport right outer join dan full outer join, hanya dukung left
+Feb 23 20:50:41 <Syandal_>	- Statemen alter table nya hanya nambah colom atau rename tabel
+Feb 23 20:50:41 <Syandal_>	- view nya mode hanya baca 
+Feb 23 20:50:41 <Syandal_>	- perintah grant dan revoke tidak diimplementasikan di sqlite
+Feb 23 20:50:41 <Syandal_>	- triger hanya mendukung setiap baris, tidak mendukung triger di setiap statemen
+Feb 23 20:50:45 <Syandal_>	!baris
+Feb 23 20:50:46 <Ayana>	================================
+Feb 23 20:51:01 <localanu[m]>	kemungkinan engga cocok buat db besar?
+Feb 23 20:51:12 <localanu[m]>	kek AI?
+Feb 23 20:51:20 <Syandal_>	untuk bagian 1 pengelan sqlite3 silahkan kalo ada yang mau ngajuin pertanyaan ..
+Feb 23 20:51:28 <Syandal_>	^ pertanyaan dia berat
+Feb 23 20:51:50 <localanu[m]>	bukan ai = love (japanese) tapi kecerdasan buatan
+Feb 23 20:51:53 <Syandal_>	kalo di game itu pake sqlite ga sih database nya
+Feb 23 20:52:05 <Mr1NK_>	langsung nanya kaya gtu boleh kah pak ?
+Feb 23 20:52:11 <Syandal_>	boleh aja 
+Feb 23 20:52:18 <Syandal_>	kan kita sifatnya belajar bersama
+Feb 23 20:54:23 <Mr1NK_>	malah bnyak perintah penting yg g bisa dipake ya ?
+Feb 23 20:54:31 <localanu[m]>	Syandal_: kan game termasuk butuh db besar sih?
+Feb 23 20:54:35 <localanu[m]>	yah tergantung gamenya sih
+Feb 23 20:55:09 <Syandal_>	<Mr1NK_> malah bnyak perintah penting yg g bisa dipake ya ? << contohnya ?
+Feb 23 20:57:33 <Syandal_>	untuk penggunaan data besar di sqlite3 infonya disini >> https://stackoverflow.com/questions/1033309/sqlite-for-large-data-sets
+Feb 23 20:57:34 <Ayana>	^ SQLite for large data sets? - Stack Overflow
+Feb 23 20:59:05 <Syandal_>	disitu katanya data sebesar 739 GB bisa disimpen di satu file sqlite
+Feb 23 20:59:49 <Syandal_>	ada yang mau didiskusiin lagi nggak
+Feb 23 21:00:54 <Syandal_>	untuk limitnya disini >> https://www.sqlite.org/limits.html
+Feb 23 21:00:55 <Ayana>	^ Implementation Limits For SQLite
+Feb 23 21:00:56 <rizal>	kalo waktu load data nya bagaimana pak? misal 1 juta baris di file txt/csv, sama 1 juga baris di sqlite
+Feb 23 21:01:11 *	Syandal_ belum pernah nyoba.. 
+Feb 23 21:01:27 <Syandal_>	jadi belum bisa bandingin
+Feb 23 21:01:32 <rizal>	lalu kalo untuk json bagaimana, saya sih biasanya naro nya di file json, kalo dengan sqlite bagaimana
+Feb 23 21:01:47 <rizal>	maksud nya, mana yang lebih efisien
+Feb 23 21:02:24 <Syandal_>	^ emang ente datanya berapa baris
+Feb 23 21:02:32 <localanu[m]>	Syandal_: hm,700GB?
+Feb 23 21:03:06 <rizal>	ga sampe ratusan giga sih
+Feb 23 21:03:06 <Syandal_>	<localanu[m]> Syandal_: hm,700GB? << di link diatas ia
+Feb 23 21:03:09 <localanu[m]>	sepertinya,buat game bisa deh
+Feb 23 21:03:18 <localanu[m]>	cuma buat game yang sifatnya offline
+Feb 23 21:03:25 <Syandal_>	^ nah iya..
+Feb 23 21:03:31 <localanu[m]>	non multiplayer
+Feb 23 21:03:41 <Syandal_>	kemungkinan buat perangkat2 offline yang ga terkoneksi ke server
+Feb 23 21:03:56 <rizal>	ratusan ribu baris, kayanya ga sampe pulahan giga juga
+Feb 23 21:04:00 <Syandal_>	pak rizal emang data json buat aplikasi apaan
+Feb 23 21:04:12 <Syandal_>	iya kayaknya
+Feb 23 21:04:24 <localanu[m]>	> Creation time took little over 22 hours and the post-index creation takes about 4 hours per column
+Feb 23 21:04:25 <localanu[m]>	hm,wah lelet ini buat bikinya
+Feb 23 21:04:27 <rizal>	data crawling om
+Feb 23 21:04:33 <localanu[m]>	Syandal_: saia udah buka linknya
+Feb 23 21:04:35 <Syandal_>	ow
+Feb 23 21:04:39 <rizal>	buat di tampilin
+Feb 23 21:04:45 <rizal>	eh di load di aplikasi sorry
+Feb 23 21:04:56 <rizal>	baru nanti setelah di olah di tampilin
+Feb 23 21:05:02 <Syandal_>	iya serem
+Feb 23 21:05:03 <localanu[m]>	hm,engga cocok buat IoT?
+Feb 23 21:06:14 *	sora (~user@120.188.4.213) has joined
+Feb 23 21:06:18 <localanu[m]>	serem banget
+Feb 23 21:07:16 <localanu[m]>	keknya sih
+Feb 23 21:07:50 <localanu[m]>	data di ambil
+Feb 23 21:07:55 <localanu[m]>	merinding
+Feb 23 21:08:05 <Syandal_>	ini perbandingan kegunaan sqlite vs json >> https://stackoverflow.com/questions/8652005/json-file-vs-sqlite-android
+Feb 23 21:08:06 <Ayana>	^ performance - JSON file VS SQLite android - Stack Overflow
+Feb 23 21:08:32 <triawarman>	ringkasannya pak
+Feb 23 21:08:46 <Syandal_>	Sqlite is mostly used when you want data to be saved and used in future. In your case data is changing every 5 minutes so its better to have JSON because every time to make the Database connection store and retrieve after 5 minutes will take some time. 
+Feb 23 21:09:17 <Syandal_>	<localanu[m]> hm,engga cocok buat IoT? << alasannya pak
+Feb 23 21:09:49 <Syandal_>	baiklah sambil lanjutin diskusinya kita sambil lanjut ke bagian 2
+Feb 23 21:09:58 <Syandal_>	!baris
+Feb 23 21:09:59 <Ayana>	================================
+Feb 23 21:10:06 <Syandal_>	2. menginstall sqlite3
+Feb 23 21:10:18 <localanu[m]>	bentar sepertinya ane salah bayangan
+Feb 23 21:10:30 <Syandal_>	- di linux >> lansung lewat packet manajer
+Feb 23 21:10:36 <rizal>	wah berarti mending sqlite ya, ini datanya statis sih ... (maksud nya ga sering berubah, paling nambah), oke pak silaken lanjut
+Feb 23 21:10:59 <localanu[m]>	keknya engga deh,ane juga lagi mikir mau pakai apa seh -_-
+Feb 23 21:11:10 *	triawarman ijin sesuatu dulu, ga bisa mantau
+Feb 23 21:11:47 <Syandal_>	ok see you next time
+Feb 23 21:11:48 <localanu[m]>	> itu pun kalau ane udah ada perangkat IoT
+Feb 23 21:12:39 <Syandal_>	hmm
+Feb 23 21:12:52 <Syandal_>	untuk install di windows bisa download installer nya disini >> http://www.sqlite.org/download.html
+Feb 23 21:12:53 <Ayana>	^ SQLite Download Page
+Feb 23 21:13:01 <localanu[m]>	* localanu multi tasking
+Feb 23 21:13:31 <Syandal_>	 - untuk macos juga untuk halaman download nya disitu
+Feb 23 21:13:47 <Syandal_>	uda pada berhasil nginstall belum
+Feb 23 21:13:51 *	sora has quit (Ping timeout: 248 seconds)
+Feb 23 21:14:05 <Syandal_>	kalo uda .. bisa jalanin perintah $ sqlite3 --version 
+Feb 23 21:14:11 *	sora (~user@120.188.94.165) has joined
+Feb 23 21:14:19 <Syandal_>	perintah itu gunanya untuk melihat versi sqlite kita
+Feb 23 21:14:28 <Syandal_>	kalo di windows perintahnya .. bentar
+Feb 23 21:16:08 <Syandal_>	> cd "c:\sqlite"
+Feb 23 21:16:32 <Syandal_>	c:\sqlite> sqlite3 --version
+Feb 23 21:16:41 <Syandal_>	kita nggak usah bahas di windows kali ya
+Feb 23 21:17:11 <Syandal_>	untuk yang mau liat demo nya bisa remote ke view@sqlite.remoteshare.xyz
+Feb 23 21:17:15 <Syandal_>	!baris
+Feb 23 21:17:16 <Ayana>	================================
+Feb 23 21:17:32 <Syandal_>	ok sambil kita nginstall dipersilahkan untuk diskusi lagi
+Feb 23 21:18:48 <Mugiono>	Iklan.
+Feb 23 21:18:58 <Syandal_>	:3
+Feb 23 21:19:02 <Syandal_>	baru muncul om
+Feb 23 21:19:10 <localanu[m]>	Syandal_: ini forum linux gan -_-
+Feb 23 21:19:11 <Syandal_>	udah install sqlite2 belum om
+Feb 23 21:19:36 <Syandal_>	<localanu[m]> Syandal_: ini forum linux gan -_- <<< ok dimengerti
+Feb 23 21:19:41 <Mugiono>	Syandal_: biasa, sesuatu.
+Feb 23 21:20:04 <Syandal_>	kita ga support windows.. tapi kalo mau nyoba di windows dipersilahkan cari bantuan di google..
+Feb 23 21:20:13 <Syandal_>	kita fokus bahas sqlite3
+Feb 23 21:20:41 <Syandal_>	untuk file latihan databasenya silahkan download disini >> http://sf1.hashbang.sh:8228/KodingKafe.db
+Feb 23 21:20:42 <Ayana>	^ File Sharing Komunitas Kanal IRC #ubuntu-indonesia
+Feb 23 21:21:01 <Syandal_>	user : ubuntuid password: ubuntuid
+Feb 23 21:21:12 <Syandal_>	ada yang mau nanya2 dulu nggak seputar install sqlite3
+Feb 23 21:21:23 *	Syandal_ jeda 5 menit
+Feb 23 21:23:23 <sora>	test
+Feb 23 21:23:31 <Syandal_>	:3
+Feb 23 21:23:33 <localanu[m]>	install sqlite3 di debian based
+Feb 23 21:23:33 <localanu[m]>	> apt install sqlite3
+Feb 23 21:23:36 <Syandal_>	!wb sora
+Feb 23 21:23:37 <Ayana>	Welcome back sora
+Feb 23 21:23:43 *	alunux (~alunux@61.94.198.186) has joined
+Feb 23 21:23:51 <Syandal_>	<localanu[m]> > apt install sqlite3 << nah ini
+Feb 23 21:24:08 <Syandal_>	untuk install di rpm based tanya member dibawah
+Feb 23 21:24:46 <Syandal_>	kalo udah diinstall file KodingKafe.db silahkan di download
+Feb 23 21:25:19 <Syandal_>	harusnya bikin file latihannya database member femalegeek.db ya.. pasti banyak yang hadir
+Feb 23 21:27:06 <rizal>	setuju pak
+Feb 23 21:27:40 <Syandal_>	:3
+Feb 23 21:27:51 <Syandal_>	ok udah selesai install nggak
+Feb 23 21:28:04 <sora>	sudah kang
+Feb 23 21:28:05 <Syandal_>	kalo udah kita lanjut ke bagian 3
+Feb 23 21:28:09 <Syandal_>	!baris
+Feb 23 21:28:10 <Ayana>	================================
+Feb 23 21:28:17 <Syandal_>	3) menjalankan sqlite
+Feb 23 21:28:45 <Syandal_>	menjalankan sqlite ada 2 cara, 1, nama perintahnya saja dan 2, nama perintah + nama database
+Feb 23 21:29:24 <Syandal_>	!baris
+Feb 23 21:29:25 <Ayana>	================================
+Feb 23 21:29:27 <Syandal_>	contoh
+Feb 23 21:29:30 <Syandal_>	bash-4.2$ sqlite3
+Feb 23 21:29:30 <Syandal_>	SQLite version 3.7.17 2013-05-20 00:56:22
+Feb 23 21:29:30 <Syandal_>	Enter ".help" for instructions
+Feb 23 21:29:30 <Syandal_>	Enter SQL statements terminated with a ";"
+Feb 23 21:29:30 <Syandal_>	sqlite> 
+Feb 23 21:29:33 <Syandal_>	!baris
+Feb 23 21:29:34 <Ayana>	================================
+Feb 23 21:29:56 <Syandal_>	itu contoh menjalankan perintah tanpa namanya .. 
+Feb 23 21:30:34 <Syandal_>	kalo di sqlite ada perintah dot command.. yaitu perintah2 yang spesifik punya nya sqlite, misalnya .help .open .quit dll
+Feb 23 21:31:45 <Syandal_>	saat kita sudah menjalankan perintah sqlite3 maka akan masuk ke prompt sqlite .. bentuk prompt nya kaya gini
+Feb 23 21:31:49 <Syandal_>	sqlite> 
+Feb 23 21:31:57 <Syandal_>	contoh kasih perintahnya 
+Feb 23 21:32:03 <Syandal_>	sqlite> .help
+Feb 23 21:32:11 <Syandal_>	sqlite> .quit
+Feb 23 21:32:34 <Syandal_>	sqlite> .database
+Feb 23 21:32:34 <Syandal_>	seq  name             file                                                      
+Feb 23 21:32:34 <Syandal_>	---  ---------------  ----------------------------------------------------------
+Feb 23 21:32:34 <Syandal_>	0    main             /home/syandal/belajar sqlite3/KodingSusu.db               
+Feb 23 21:32:34 <Syandal_>	sqlite> 
+Feb 23 21:34:07 *	Mugiono engga bisa ikutan sampai selesai. Bye... bye...
+Feb 23 21:34:17 <Syandal_>	ok
+Feb 23 21:34:29 <rizal>	dek kamana tuh mang Mugiono 
+Feb 23 21:35:03 <Syandal_>	nah kalo kita waktu jalanin perintah sqlite2 tidak pakai nama database.. nanti untuk manggil databasenya pake perintah .open
+Feb 23 21:35:11 <Syandal_>	sqlite> .open KodingSusu.db
+Feb 23 21:35:46 <Syandal_>	!baris
+Feb 23 21:35:46 <Ayana>	================================
+Feb 23 21:36:03 <Syandal_>	selain itu saat di shell linux kita bisa menjalankan perintah sqlite + nama file database
+Feb 23 21:36:07 <Syandal_>	contohnya 
+Feb 23 21:36:19 <Syandal_>	bash$ sqlite3 KodingSusu.db
+Feb 23 21:36:23 <Syandal_>	sqlite>
+Feb 23 21:36:56 <Syandal_>	kalau nama file KodingSusu.db sudah ada maka akan membuka file tersebut
+Feb 23 21:37:13 <Syandal_>	sedangkan jika file database KodingSusu.db belum ada maka akan dibuatkan file baru
+Feb 23 21:37:37 <Syandal_>	berarti untuk 4) membuat database :
+Feb 23 21:37:53 <Syandal_>	bash$ sqlite3 namadatabase.db
+Feb 23 21:38:53 <Syandal_>	!baris
+Feb 23 21:38:54 <Ayana>	================================
+Feb 23 21:39:04 <Syandal_>	ada pertanyaan dulu nggak untuk membuka database
+Feb 23 21:39:18 *	presiden back
+Feb 23 21:39:23 <Syandal_>	:3
+Feb 23 21:39:28 <Syandal_>	cek log pak
+Feb 23 21:39:34 <presiden>	mangap, baru pulang, monggo dilanjut
+Feb 23 21:39:36 *	alunux mau nanya
+Feb 23 21:39:37 <Syandal_>	cek juga remote view
+Feb 23 21:39:43 <Syandal_>	ya
+Feb 23 21:40:33 <alunux>	pas bikin db pakai `sqlite3 neko.db` dan langsuing `.quit`, file DBnya gak kesimpen ya?
+Feb 23 21:41:29 <alunux>	mirip kayak `nano file.txt` kalau gak ada isinya, filenya gak kebikin ya?
+Feb 23 21:41:34 <presiden>	^ dia suka kucing
+Feb 23 21:41:48 <Syandal_>	bentar
+Feb 23 21:43:38 <Syandal_>	iya ternyata 
+Feb 23 21:43:41 <Syandal_>	penemuan menarik
+Feb 23 21:44:00 <Syandal_>	kita harus bikin isinya dulu, minimal tabel agar file db tersebut tersimpan
+Feb 23 21:44:12 <Syandal_>	nah ada pertanyaan lagi nggak
+Feb 23 21:44:14 <alunux>	affirmative, lanjut pak
+Feb 23 21:45:20 <presiden>	lanjut mang
+Feb 23 21:45:53 <Syandal_>	!baris
+Feb 23 21:45:54 <Ayana>	================================
+Feb 23 21:46:12 <Syandal_>	5) menghapus database (drop
+Feb 23 21:46:31 <Syandal_>	untuk menghapus tidak ada perintah drop tetapi kita langsung menghapus file nya
+Feb 23 21:47:33 <Syandal_>	saat kita membuat sebuah database pada satu direktori .. nama databasenya harus unik.. alias satu nama untuk satu database
+Feb 23 21:47:45 <Syandal_>	kita ga bisa bikin nama yang sama untuk dua database
+Feb 23 21:47:59 <Syandal_>	ada pertanyaan ga
+Feb 23 21:48:35 *	alunux no
+Feb 23 21:48:45 <Syandal_>	:3
+Feb 23 21:48:47 <rizal>	ga ada om
+Feb 23 21:48:56 <Syandal_>	ok
+Feb 23 21:48:58 <Syandal_>	!baris
+Feb 23 21:48:59 <Ayana>	================================
+Feb 23 21:49:12 <Syandal_>	6 membuat tabel
+Feb 23 21:49:52 <Syandal_>	berikut dibawah ini saya akan membuat database baru bernama 'perusahaan' dan tabel baru bernama 'karyawan' 
+Feb 23 21:51:08 <Syandal_>	bash-4.2$ sqlite3 perusahaan
+Feb 23 21:51:21 <Syandal_>	sqlite> CREATE TABLE "karyawan" (
+Feb 23 21:51:21 <Syandal_>	   ...> id int primary key not null,
+Feb 23 21:51:21 <Syandal_>	   ...> nama text not null,
+Feb 23 21:51:21 <Syandal_>	   ...> umur int not null,
+Feb 23 21:51:21 <Syandal_>	   ...> alamat char(75),
+Feb 23 21:51:21 <Syandal_>	   ...> gapok real , jenis_kelamin char(1));
+Feb 23 21:51:32 <Syandal_>	!baris
+Feb 23 21:51:33 <Ayana>	================================
+Feb 23 21:52:22 <Syandal_>	itu contoh membuat tabel baru .. CREATE TABLE untuk membuat tabel baru "karyawan" nama tabel nya 
+Feb 23 21:52:44 <Syandal_>	nah, id nama umur alamat gapok itu nama kolom
+Feb 23 21:53:15 <Syandal_>	int text char real itu tipe data untuk input ke tabel
+Feb 23 21:54:01 <Syandal_>	untuk perintah melihat tabel yang uda pernah kita buat di database yaitu :
+Feb 23 21:54:06 <Syandal_>	sqlite> .table
+Feb 23 21:54:15 <Syandal_>	!baris
+Feb 23 21:54:16 <Ayana>	================================
+Feb 23 21:54:18 <Syandal_>	ada pertanyaan ga
+Feb 23 21:54:24 *	Syandal_ disini hujan deres
+Feb 23 21:56:19 <rizal>	lanjut OM
+Feb 23 21:56:21 <Syandal_>	berikut ini contoh perintah menginput data ke table
+Feb 23 21:56:26 <sora>	lanjut kang
+Feb 23 21:56:51 <Syandal_>	sqlite> INSERT INTO "karyawan" VALUES(1,'Annonimouse',17,'Tangerang',3000000.0,NULL);
+Feb 23 21:56:51 <Syandal_>	sqlite> INSERT INTO "karyawan" VALUES(2,'Slamet',18,'Banyumas',3500000.0,NULL);
+Feb 23 21:56:51 <Syandal_>	sqlite> INSERT INTO "karyawan" VALUES(3,'Paul',28,'California',2750000.0,NULL);
+Feb 23 21:56:51 <Syandal_>	sqlite> INSERT INTO "karyawan" VALUES(4,'Alen',25,'Texas',2000000.0,NULL);
+Feb 23 21:56:51 <Syandal_>	sqlite> INSERT INTO "karyawan" VALUES(5,'Teddy',23,'Norway',2500000.0,NULL);
+Feb 23 21:56:51 <Syandal_>	sqlite> INSERT INTO "karyawan" VALUES(6,'Mark',25,'Rich-Mond',4500000.0,NULL);
+Feb 23 21:56:51 <Syandal_>	sqlite> INSERT INTO "karyawan" VALUES(7,'David',27,'Montana',5000000.0,NULL);
+Feb 23 21:56:51 <Syandal_>	sqlite> INSERT INTO "karyawan" VALUES(8,'Paul',32,'Kelipornia',2250000.0,NULL);
+Feb 23 22:00:47 *	Mr1NK_ has quit (Ping timeout: 248 seconds)
+Feb 23 22:01:42 <Syandal_>	ada pertanyaan nggak
+Feb 23 22:01:55 <Syandal_>	kalo males ngetik bisa download file perusahaan.sql >> http://sf1.hashbang.sh:8228/perusahaan.sql
+Feb 23 22:01:56 <Ayana>	^ File Sharing Komunitas Kanal IRC #ubuntu-indonesia
+Feb 23 22:02:18 <Syandal_>	file itu kalo di buka isinya perintah buat bikin tabel karyawan dan input datanya
+Feb 23 22:03:11 <Syandal_>	!baris
+Feb 23 22:03:12 <Ayana>	================================
+Feb 23 22:03:18 <Syandal_>	ada yang mau di tanyain ga
+Feb 23 22:03:30 <Syandal_>	7, menghapus table
+Feb 23 22:03:37 <Syandal_>	sintaks nya 
+Feb 23 22:03:59 <Syandal_>	sqlite3> DROP TABLE namadatabase.namatabel;
+Feb 23 22:04:03 <Syandal_>	contoh 
+Feb 23 22:04:12 <localanu[m]>	mengapa harus huruf kapital?
+Feb 23 22:04:17 <Syandal_>	hmm
+Feb 23 22:04:36 <Syandal_>	sebenernya perintah DDL standarnya pake huruf kapital
+Feb 23 22:04:41 <Syandal_>	#cmiiw
+Feb 23 22:05:12 <Syandal_>	jadi resmi nya di semua database yang genre nya sql .. perintah data definition languagenya huruf besar
+Feb 23 22:05:19 <localanu[m]>	DDL?
+Feb 23 22:05:30 <Syandal_>	misalnya CREATE TABLE, DROP TABLE, INSERT INTO, dst
+Feb 23 22:05:47 <Syandal_>	cuman biasanya mengijinkan huruf kecil juga, tapi ga sesuai standart aja
+Feb 23 22:06:07 <localanu[m]>	hm,oke
+Feb 23 22:06:08 <localanu[m]>	> mari kita mengenang kembali saat ane membaca buku dos
+Feb 23 22:06:14 <Syandal_>	mungkin yang biasa koding pake framework perintah DDL nya pake huruf besar di kodingnya
+Feb 23 22:06:39 <localanu[m]>	kaget aja sih pakai huruf besar,ane biasa pakai huruf kecil pas di linux
+Feb 23 22:06:49 <Syandal_>	hmm iya
+Feb 23 22:07:15 <Syandal_>	kalo biasa belajar mysql perintah CREATE TABLE, DROP TABLE, INSERT, UPDATE, dst pake huruf besar biasanya
+Feb 23 22:07:26 <Syandal_>	coba kita tanya pakde presiden 
+Feb 23 22:08:08 <presiden>	pake huruf kecil aja kalo males nekan capslock
+Feb 23 22:08:15 <Syandal_>	:3
+Feb 23 22:08:17 <Syandal_>	emejing
+Feb 23 22:08:50 <rizal>	setuju sama pak presiden 
+Feb 23 22:08:52 <rizal>	hahaha
+Feb 23 22:09:10 <Syandal_>	untuk contoh menghapus table bisa diliat di remoteview
+Feb 23 22:09:20 <Syandal_>	itu contoh menghapus table karyawan
+Feb 23 22:10:17 <Syandal_>	sqlite> DROP TABLE karyawan;                                                                                                           
+Feb 23 22:10:17 <Syandal_>	sqlite> .table
+Feb 23 22:10:17 <Syandal_>	sqlite> 
+Feb 23 22:10:23 <Syandal_>	!baris
+Feb 23 22:10:24 <Ayana>	================================
+Feb 23 22:10:38 *	alunux has quit (Ping timeout: 240 seconds)
+Feb 23 22:11:02 <Syandal_>	malem sabtu yang berat ya .. #ehh
+Feb 23 22:11:51 <Syandal_>	misalnya kita punya sebuah file database sqlite.. dan kita mau mengeksport jadi file *.sql .. 
+Feb 23 22:12:03 <Syandal_>	8) dumb database
+Feb 23 22:12:06 <Syandal_>	perintahnya
+Feb 23 22:12:25 <Syandal_>	$ sqlite3 namadb.db .dump > namaSQL.sql 
+Feb 23 22:12:44 <Syandal_>	demo nya bisa dilihat di remoteview
+Feb 23 22:14:36 <Syandal_>	syandal@remoteshare:~/belajar sqlite3$ sqlite3 KodingKafe.db .dump > KodingKafe.sql
+Feb 23 22:15:03 <Syandal_>	nanti akan membuat sebuah file *.sql .. dan isinya bia kita liat adalah perintah2 sql
+Feb 23 22:15:45 <Syandal_>	ada pertanyaan ga
+Feb 23 22:16:07 <Syandal_>	tadi kan uda download file KodingKafe.db coba di dump biar jadi file sql
+Feb 23 22:17:50 <Syandal_>	nah perintah dump bisa digunain buat backup database
+Feb 23 22:18:16 <Syandal_>	sedangkan untuk merestore dari file sql menjadi database sqlite adalah
+Feb 23 22:18:31 <Syandal_>	9) import file sql ke database
+Feb 23 22:18:33 <Syandal_>	!baris
+Feb 23 22:18:34 <Ayana>	================================
+Feb 23 22:18:37 <Syandal_>	sintaksnya
+Feb 23 22:19:03 <Syandal_>	$ sqlite3 namadb.db < namaSQL.sql 
+Feb 23 22:19:25 <Syandal_>	demo bisa di liat di remoteview
+Feb 23 22:20:44 <rizal>	kalo dari database lain bisa di import ke sqlite?, atau dari sqlite bisa di import ke database lain dengan syntax di atas?, atau ada cara lain?
+Feb 23 22:22:21 <Syandal_>	belum pernah coba sih.. 
+Feb 23 22:22:44 <Syandal_>	mungki bawah ada yang tau
+Feb 23 22:24:03 <Syandal_>	secara teori file nya ga kompatibel
+Feb 23 22:24:42 <Syandal_>	kalo ane liat di file sql punyanya mysql ada baris2 spesifik punya nya mysql.. misalnya karakter utf .. dst
+Feb 23 22:25:05 <Syandal_>	atau nggak cari konverter online
+Feb 23 22:25:12 <rizal>	i see
+Feb 23 22:25:14 <presiden>	kalo dari database lain di export berupa perintah sql yang gak ada fitur khusus atau tipe data tertentu yang spesifik ke database tersebut, bisa aja
+Feb 23 22:25:43 <presiden>	kalo gak gitu, export ke csv, trus import ke sqlite
+Feb 23 22:25:45 <Syandal_>	^ bisa jadi
+Feb 23 22:25:53 <Syandal_>	hmm 
+Feb 23 22:25:57 *	Syandal_ cek google
+Feb 23 22:26:14 <Syandal_>	terakhir tambahan 
+Feb 23 22:26:30 <Syandal_>	saat kita di prompt sqlite> ada beberapa perintah
+Feb 23 22:26:36 <Syandal_>	untuk melihat database
+Feb 23 22:26:41 <Syandal_>	sqlite> .database
+Feb 23 22:26:46 <Syandal_>	melihat table
+Feb 23 22:26:51 <Syandal_>	sqlite> .table
+Feb 23 22:27:08 <Syandal_>	melihat schema
+Feb 23 22:27:14 <Syandal_>	sqlite> .schema
+Feb 23 22:27:18 <Syandal_>	sqlite> .schema namatable
+Feb 23 22:27:21 <Syandal_>	!baris
+Feb 23 22:27:22 <Ayana>	================================
+Feb 23 22:27:51 <Syandal_>	ada yang tau ga perintah untuk conver sqlite3 ke csv
+Feb 23 22:29:46 <sora>	sqlite3 namadb.db .dump > namacsv.csv (?)
+Feb 23 22:29:59 <Syandal_>	bentar tak coba
+Feb 23 22:30:55 <Syandal_>	bukan kayakya
+Feb 23 22:31:01 <Syandal_>	isinya masi perintah sql
+Feb 23 22:31:41 <Syandal_>	kalo csv harusnya file matrik dengan tanda pemisah tiap data
+Feb 23 22:31:49 <Syandal_>	!baris
+Feb 23 22:31:50 <Ayana>	================================
+Feb 23 22:31:54 <Syandal_>	tambahan lagi
+Feb 23 22:32:10 <Syandal_>	misalnya kita punya tabel karyawan yang mau kita tampilkan dengan perintah select
+Feb 23 22:32:21 <Syandal_>	sqlite> select * from karyawan;
+Feb 23 22:32:29 <Syandal_>	hasilnya
+Feb 23 22:32:38 <Syandal_>	1|Annonimouse|17|Tangerang|3000000.0|
+Feb 23 22:32:38 <Syandal_>	2|Slamet|18|Banyumas|3500000.0|
+Feb 23 22:32:38 <Syandal_>	3|Paul|28|California|2750000.0|
+Feb 23 22:32:38 <Syandal_>	4|Alen|25|Texas|2000000.0|
+Feb 23 22:32:38 <Syandal_>	5|Teddy|23|Norway|2500000.0|
+Feb 23 22:32:38 <Syandal_>	6|Mark|25|Rich-Mond|4500000.0|
+Feb 23 22:32:38 <Syandal_>	7|David|27|Montana|5000000.0|
+Feb 23 22:32:38 <Syandal_>	8|Paul|32|Kelipornia|2250000.0|
+Feb 23 22:32:42 <Syandal_>	!baris
+Feb 23 22:32:46 <Ayana>	================================
+Feb 23 22:32:53 <Syandal_>	nah biar penampilannya rapi kita kasi perintah header
+Feb 23 22:33:01 <Syandal_>	sqlite> .header on
+Feb 23 22:33:10 <Syandal_>	sqlite> .mode column
+Feb 23 22:33:21 <Syandal_>	sqlite> select * from karyawan;
+Feb 23 22:33:21 <Syandal_>	id          nama         umur        alamat      gapok       jenis_kelamin
+Feb 23 22:33:21 <Syandal_>	----------  -----------  ----------  ----------  ----------  -------------
+Feb 23 22:33:21 <Syandal_>	1           Annonimouse  17          Tangerang   3000000.0                
+Feb 23 22:33:21 <Syandal_>	2           Slamet       18          Banyumas    3500000.0                
+Feb 23 22:33:21 <Syandal_>	3           Paul         28          California  2750000.0                
+Feb 23 22:33:21 <Syandal_>	4           Alen         25          Texas       2000000.0                
+Feb 23 22:33:21 <Syandal_>	5           Teddy        23          Norway      2500000.0                
+Feb 23 22:33:21 <Syandal_>	6           Mark         25          Rich-Mond   4500000.0                
+Feb 23 22:33:21 <Syandal_>	7           David        27          Montana     5000000.0                
+Feb 23 22:33:21 <Syandal_>	8           Paul         32          Kelipornia  2250000.0                
+Feb 23 22:33:21 <Syandal_>	sqlite> 
+Feb 23 22:33:28 <Syandal_>	!baris
+Feb 23 22:33:36 <Ayana>	================================
+Feb 23 22:33:51 <Syandal_>	untuk perintah eksport ke csv pake perintah header juga
+Feb 23 22:34:02 <Syandal_>	bisa liat di demo remote view
+Feb 23 22:36:05 <Syandal_>	sqlite> .headers on
+Feb 23 22:36:05 <Syandal_>	sqlite> .mode csv
+Feb 23 22:36:05 <Syandal_>	sqlite> select * from karyawan;
+Feb 23 22:36:12 <Syandal_>	sqlite> .quit
+Feb 23 22:36:51 <Syandal_>	mangap salah
+Feb 23 22:36:55 <Syandal_>	#abaikan
+Feb 23 22:36:57 <Syandal_>	!baris
+Feb 23 22:36:58 <Ayana>	================================
+Feb 23 22:37:06 <Syandal_>	sqlite> .headers on
+Feb 23 22:37:12 <Syandal_>	sqlite> .mode csv
+Feb 23 22:37:13 <rizal>	pamit dlu Om
+Feb 23 22:37:14 <rizal>	bye
+Feb 23 22:37:26 <Syandal_>	ok .. materinya juga udah selesai semua 
+Feb 23 22:37:30 <Syandal_>	see you next week
+Feb 23 22:37:35 <Syandal_>	^ dia ganggu aja
+Feb 23 22:37:46 <Syandal_>	sqlite> .headers on
+Feb 23 22:37:53 <Syandal_>	sqlite> .mode csv
+Feb 23 22:38:12 <Syandal_>	sqlite> .output namadata.csv
+Feb 23 22:38:22 <Syandal_>	sqlite> select * from karyawan;
+Feb 23 22:38:28 <Syandal_>	sqlite> .quit
+Feb 23 22:38:33 <Syandal_>	!baris
+Feb 23 22:38:34 <Ayana>	================================
+Feb 23 22:38:39 <Syandal_>	nanti hasilnya namadata.csv
+Feb 23 22:38:46 <Syandal_>	kesimpulan
+Feb 23 22:38:52 <Syandal_>	hari ini kita uda bahas 
+Feb 23 22:39:02 <Syandal_>	1 pengenalan sqlite
+Feb 23 22:39:02 <Syandal_>	2 menginstall sqlite
+Feb 23 22:39:02 <Syandal_>	3 menjalankan sqlite
+Feb 23 22:39:02 <Syandal_>	4 membuat database
+Feb 23 22:39:02 <Syandal_>	5 menghapus database
+Feb 23 22:39:02 <Syandal_>	6 membuat tabel
+Feb 23 22:39:02 <Syandal_>	7 menghapus tabel
+Feb 23 22:39:02 <Syandal_>	8 dump database ke file sql 
+Feb 23 22:39:02 <Syandal_>	9 import file sql ke database
+Feb 23 22:39:16 <Syandal_>	10. perintah header
+Feb 23 22:39:18 <Syandal_>	!baris
+Feb 23 22:39:19 <Ayana>	================================
+Feb 23 22:39:28 <Syandal_>	ada yang mau ditanyain dulu ga
+Feb 23 22:41:40 *	rizal has quit (Ping timeout: 260 seconds)
+Feb 23 22:41:42 <Syandal_>	ok Kegiatan Belajar Bersama sqlite3 pertemuan pertama kita akhiri sampai disini
+Feb 23 22:41:44 <Syandal_>	!wasalam
+Feb 23 22:41:45 <Ayana>	Syandal_ membalas salam :  >> Waalaikum Salam Warrahmatullahi Wabarakatuh
+Feb 23 22:41:53 <Syandal_>	^ bot nya masi bug
+Feb 23 22:42:07 <lappet>	terima kasih bang Syandal_ 
+Feb 23 22:42:16 <Syandal_>	:3
+Feb 23 22:42:24 <Syandal_>	^ ternyata ada member silent
+Feb 23 22:42:43 <lappet>	telat masuk bg. abis ada keperluan
+Feb 23 22:42:51 <Syandal_>	ok :)
+Feb 23 22:42:56 *	lappet internetnya ga jd padam
+Feb 23 22:43:02 <Syandal_>	:3
+Feb 23 22:43:08 *	Syandal_ afk dulu
+Feb 23 22:43:25 FiSHLiM plugin unloaded
+Feb 23 22:43:25 Python interface unloaded
+**** ENDING LOGGING AT Fri Feb 23 22:43:25 2018
+
+**** BEGIN LOGGING AT Fri Feb 23 22:45:35 2018
+
+Feb 23 22:45:35 *	Now talking on #ubuntu-indonesia
+Feb 23 22:45:35 *	Topic for #ubuntu-indonesia is: https://git.io/lui#log :: Beladjar, diskoesi, berbagi, ataoe bertjanda tentoenja di Kanal ter-HOT dan ter-BOMBASTIS se-Indonesia :: Github: https://git.io/pui :: Kegiatan Belajar Bersama SQLite3, Pertemuan Perdana > Jum'at 23 Feb 2018 :: https://git.io/vNa41 :p
+Feb 23 22:45:35 *	Topic for #ubuntu-indonesia set by Syandal_ (Fri Jan 26 10:54:08 2018)
+Feb 23 22:25:36 <lappet>	o/
+ 
+https://asciinema.org/a/EKByjxvBcNawR7LJOmXHpdoZ6
+

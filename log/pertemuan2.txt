@@ -1,0 +1,530 @@
+ 
+Mar 02 19:48:58 *	Now talking on #ubuntu-indonesia
+Mar 02 19:48:58 *	Topic for #ubuntu-indonesia is: https://git.io/lui#log :: Beladjar, diskoesi, berbagi, ataoe bertjanda tentoenja di Kanal ter-HOT dan ter-BOMBASTIS se-Indonesia :: Github: https://git.io/pui :: Kegiatan Belajar Bersama SQLite3, Pertemuan Kedua > Jum'at 2 Mar 2018, Pukul 20.00Wib :: https://git.io/vNa41 :p
+Mar 02 19:48:58 *	Topic for #ubuntu-indonesia set by Syandal_ (Fri Mar  2 11:30:26 2018)
+Mar 02 19:48:58 -*status-	Welcome to EliteBNC free IRC bouncer service!
+Mar 02 19:48:58 -*status-	You are using the Pi server.
+Mar 02 19:48:58 -*status-	Please read our rules at http://elitebnc.org/uap/
+Mar 02 19:48:58 -*status-	For bnc problems, you can use: /znc *report help
+Mar 02 19:50:46 <Syandal_>	!baris
+Mar 02 19:50:47 <Ayana>	================================
+Mar 02 20:06:42 <Syandal_>	sebelum kita mulai, seperti biasa absen dulu.. kalo pesertanya uda >= 50 nickname kegiatannya baru bisa dimulai ..
+Mar 02 20:06:46 <Syandal_>	1. Syandal_
+Mar 02 20:06:50 <Syandal_>	2. Ayana
+Mar 02 20:07:22 <Ayana>	2. Ayana
+Mar 02 20:11:29 <Syandal_>	silabus pertemuan 2
+Mar 02 20:11:32 <Syandal_>	Pertemuan 2 - Sqlite3
+Mar 02 20:11:32 <Syandal_>	---------------------
+Mar 02 20:11:32 <Syandal_>	1. Syntax dasar Sqlite 
+Mar 02 20:11:32 <Syandal_>	2. Tipe Data
+Mar 02 20:11:32 <Syandal_>	3. Constraint
+Mar 02 20:11:32 <Syandal_>	4. Alter & Drop table
+Mar 02 20:11:32 <Syandal_>	5. Views & Index
+Mar 02 20:11:37 <Syandal_>	--------------------
+Mar 02 20:11:50 <Syandal_>	!salam
+Mar 02 20:11:51 <Ayana>	Syandal_ mengucapkan salam :
+Mar 02 20:11:51 <Ayana>	Assalamu Alaikum
+Mar 02 20:11:51 <presiden>	Ayana, Waalaikumsalam Warahmatullahi Wabarakatuh
+Mar 02 20:11:58 <Syandal_>	--------------------
+Mar 02 20:25:34 <Syandal_>	jam nya uda lewat 
+Mar 02 20:26:02 <Syandal_>	tapi belum ada tanda2 peserta diskusi yang bakal muncul
+Mar 02 20:26:23 *	Syandal_ nungguin 5 menit lagi
+Mar 02 20:29:33 <Syandal_>	ok baiklah.. mengingat waktunya terbatas kegiatan belajar bersamanya kita mulai aja
+Mar 02 20:30:09 <Syandal_>	maksudnya ane mulai sendirian aja.. ntar kalo ada member lain yang muncul mereka diskusi sendiri aja .. ane ga ngikut
+Mar 02 20:30:21 <Syandal_>	--------------------
+Mar 02 20:30:33 <Syandal_>	1) Syntax Dasar SQLite
+Mar 02 20:31:22 <Syandal_>	Syntax dasar sqlite diantaranya :
+Mar 02 20:31:22 <Syandal_>	- case sensitive
+Mar 02 20:31:22 <Syandal_>	- komentar
+Mar 02 20:31:43 <Syandal_>	case sensitive maksudnya huruf kecil dan besar dianggap beda
+Mar 02 20:33:10 <Syandal_>	untuk komentar per baris menggunakan tanda dua minus kaya gini --
+Mar 02 20:33:12 <Syandal_>	contoh
+Mar 02 20:33:23 <Syandal_>	sqlite> .table -- ini adalah komentar
+Mar 02 20:34:21 <Syandal_>	untuk komentar yang lebih dari satu baris menggunakan pasangan ini /*   .. ini bagian komentar .. sampe sini */
+Mar 02 20:35:06 <Syandal_>	komentar tergantung versi sqlite nya.. ada yang support komentar ada yang ga
+Mar 02 20:36:36 <Syandal_>	bisa di liat di demo dialamat ini view@sqlite.remoteshare.xyz pass : rahasia123
+Mar 02 20:37:09 <Syandal_>	baiklah jeda 5 menit
+Mar 02 20:37:24 <Ayana>	----------
+Mar 02 20:40:32 <Syandal_>	ok balik lagi
+Mar 02 20:40:44 <Syandal_>	1a) review ulang pertemuan kemarin
+Mar 02 20:41:04 <Syandal_>	Membuat database
+Mar 02 20:41:04 <Syandal_>	Pada sqlite tidak ada perintah khusus membuat database, caranya adalah saat menjalankan perintah sqlite3 diikuti nama databasenya, contoh
+Mar 02 20:41:23 <Syandal_>	bash_$ sqlite3 NamaFileDatabase.db
+Mar 02 20:41:23 <Syandal_>	pada perintah diatas akan membuat file database baru di current directory (direktori aktif), 
+Mar 02 20:41:23 <Syandal_>	untuk memastikan database telah dibuat dengan perintah
+Mar 02 20:41:23 <Syandal_>	sqlite> .database
+Mar 02 20:41:39 <Syandal_>	atau dilihat isi direktori nya
+Mar 02 20:41:53 <Syandal_>	demo nya bisa di lihat di remote share
+Mar 02 20:43:04 <triawarman>	:)
+Mar 02 20:43:19 <Syandal_>	:3
+Mar 02 20:44:37 *	triawarman lagi ga enek badan sedikit, jadi kalau di pertengahan badan menghilang, mohon maaf
+Mar 02 20:44:45 <Syandal_>	ok
+Mar 02 20:45:03 <Syandal_>	nggak enak badan mulu om
+Mar 02 20:45:24 <Syandal_>	disini biasanya suka ada member silet.. mereka ga mau join tapi mantau di log kanal
+Mar 02 20:45:24 <triawarman>	baru ini, mggu kemarin jam2 segini, jam nya ngantuk...
+Mar 02 20:45:30 *	greenshirt (~greenshir@203.78.117.74) has joined
+Mar 02 20:45:33 <Syandal_>	:3
+Mar 02 20:45:36 <Syandal_>	dan terjadi lagi
+Mar 02 20:45:36 *	greenshirt is now known as Guest93192
+Mar 02 20:45:42 <Syandal_>	jeda dulu 5 menit
+Mar 02 20:45:46 <Syandal_>	!baris
+Mar 02 20:45:46 <Ayana>	================================
+Mar 02 20:46:39 *	Guest93192 is now known as maotzethunk
+Mar 02 20:47:14 <maotzethunk>	Tes
+Mar 02 20:47:42 <maotzethunk>	Salim op syandal
+Mar 02 20:49:26 <triawarman>	Syandal_: tuk live code bisa dicoba https://sqliteonline.com atau http://sqlfiddle.com/
+Mar 02 20:49:28 <Ayana>	^ Sqlite Browser
+Mar 02 20:49:28 <Ayana>	^ SQL Fiddle
+Mar 02 20:49:34 <triawarman>	krn tuk bentuk video agak berat
+Mar 02 20:49:43 <triawarman>	salam maotzethunk
+Mar 02 20:50:12 <triawarman>	sama seperti JSFiddle or jsbin
+Mar 02 20:51:31 <maotzethunk>	Salim triawarman,tumben
+Mar 02 20:51:56 <triawarman>	me perlu belajar tuk hal2 baru (atau mengignat kemli)
+Mar 02 20:52:21 *	Syandal_ cek tkp
+Mar 02 20:52:50 <Syandal_>	jeda selesai
+Mar 02 20:52:57 <Syandal_>	kita lanjut 
+Mar 02 20:53:35 <Syandal_>	kita juga bisa mengimport dari file *.sql
+Mar 02 20:53:53 <Syandal_>	misalnya kita punya sebuah file yang bernama tabelkaryawan.sql
+Mar 02 20:54:02 <Syandal_>	isinya seperti berikut :
+Mar 02 20:54:16 <Syandal_>	CREATE TABLE karyawan (
+Mar 02 20:54:16 <Syandal_>	  id int PRIMARY KEY NOT NULL,
+Mar 02 20:54:16 <Syandal_>	  nama text NOT NULL,
+Mar 02 20:54:16 <Syandal_>	  umur int NOT NULL,
+Mar 02 20:54:16 <Syandal_>	  alamat char(75),
+Mar 02 20:54:16 <Syandal_>	  gaji real);
+Mar 02 20:54:21 <Syandal_>	!baris
+Mar 02 20:54:22 <Ayana>	================================
+Mar 02 20:55:14 <Syandal_>	jika kita ingin membuat tabel pada database yang kita miliki misalnya database Perusahaanku.db dari file tabelkaryawan.sql tadi caranya 
+Mar 02 20:55:40 <Syandal_>	bash_$ sqlite3 Perusahaanku.db < tabelkaryawan.sql
+Mar 02 20:56:43 *	maotzethunk has quit (Remote host closed the connection)
+Mar 02 20:56:47 <triawarman>	http://sqlfiddle.com/#!5/b5362/1/0
+Mar 02 20:56:47 <Ayana>	^ SQL Fiddle
+Mar 02 20:57:02 <Syandal_>	bentar
+Mar 02 20:58:26 <Syandal_>	disini loadingnya lama uih
+Mar 02 20:58:38 <triawarman>	pakai https://sqliteonline.com/#/ aja 
+Mar 02 20:58:39 <Ayana>	^ Sqlite Browser
+Mar 02 20:58:59 <triawarman>	https://sqliteonline.com/#fiddle-5a995418294db9gdje9zjsju
+Mar 02 20:59:00 <Ayana>	^ Sqlite Browser
+Mar 02 21:01:11 <Syandal_>	<triawarman> https://sqliteonline.com/#fiddle-5a995418294db9gdje9zjsju << nah iya itu contoh cara membuat tabel nya
+Mar 02 21:01:18 <Syandal_>	ok lanjut
+Mar 02 21:01:45 <Syandal_>	untuk melihat hasilnya menggunakan perintah .table
+Mar 02 21:01:45 <Syandal_>	sqlite> .table
+Mar 02 21:01:45 <Syandal_>	dari perintah diatas akan menampilkan semua tabel yang ada
+Mar 02 21:01:59 <Syandal_>	!baris
+Mar 02 21:02:07 <Syandal_>	baiklah review nya selesai
+Mar 02 21:02:14 <Syandal_>	kita balik ke materi lagi
+Mar 02 21:02:22 <Syandal_>	!baris
+Mar 02 21:05:18 <Syandal_>	!baris
+Mar 02 21:05:29 <Syandal_>	--------------------
+Mar 02 21:05:33 <Syandal_>	2) Tipe data
+Mar 02 21:05:59 <Syandal_>	Tipe Data SQlite 
+Mar 02 21:05:59 <Syandal_>	Tipe data adalah atribut yang mejelaskan tipe data dari tiap obyek, seperti kolom, variabel dan ekspresi.
+Mar 02 21:05:59 <Syandal_>	Tipe kelas
+Mar 02 21:05:59 <Syandal_>	----------
+Mar 02 21:05:59 <Syandal_>	ada 5 tipe yang bisa dipakai saat memasukan data ke database sqlite
+Mar 02 21:05:59 <Syandal_>	- NULL
+Mar 02 21:05:59 <Syandal_>	- INTEGER
+Mar 02 21:05:59 <Syandal_>	- REAL
+Mar 02 21:05:59 <Syandal_>	- TEXT
+Mar 02 21:05:59 <Syandal_>	- BLOB
+Mar 02 21:06:21 <Syandal_>	berikut list lengkapnya
+Mar 02 21:06:21 <Syandal_>	- INT
+Mar 02 21:06:21 <Syandal_>	- INTEGER
+Mar 02 21:06:21 <Syandal_>	- TINYINT
+Mar 02 21:06:21 <Syandal_>	- SMALLINT
+Mar 02 21:06:21 <Syandal_>	- MEDIUMINT          =>  INTEGER
+Mar 02 21:06:21 <Syandal_>	- BIGINT
+Mar 02 21:06:21 <Syandal_>	- UNSIGNED BIG INT
+Mar 02 21:06:21 <Syandal_>	- INT2
+Mar 02 21:06:21 <Syandal_>	- INT8
+Mar 02 21:06:21 <Syandal_>	---------------------------
+Mar 02 21:06:21 <Syandal_>	- CHARACTER(n)
+Mar 02 21:06:21 <Syandal_>	- VARCHAR(n)
+Mar 02 21:06:21 <Syandal_>	- VARYING CHARACTER(n)
+Mar 02 21:06:21 <Syandal_>	- NCHAR(n)               => TEXT
+Mar 02 21:06:21 <Syandal_>	- NATIVE CHARACTER(n)
+Mar 02 21:06:21 <Syandal_>	- NVARCHAR(n)
+Mar 02 21:06:21 <Syandal_>	- TEXT
+Mar 02 21:06:21 <Syandal_>	- CLOB
+Mar 02 21:06:21 <Syandal_>	---------------------------
+Mar 02 21:06:21 <Syandal_>	- BLOB
+Mar 02 21:06:21 <Syandal_>	- no datatype specified    => NONE
+Mar 02 21:06:21 <Syandal_>	---------------------------
+Mar 02 21:06:41 <Syandal_>	- REAL                     
+Mar 02 21:06:41 <Syandal_>	- DOUBLE
+Mar 02 21:06:41 <Syandal_>	- DOUBLE PRECISION    => REAL
+Mar 02 21:06:41 <Syandal_>	- FLOAT
+Mar 02 21:06:41 <Syandal_>	---------------------------
+Mar 02 21:06:41 <Syandal_>	- NUMERIC
+Mar 02 21:06:41 <Syandal_>	- DECIMAL
+Mar 02 21:06:41 <Syandal_>	- BOOLEAN             => NUMERIC
+Mar 02 21:06:41 <Syandal_>	- DATE
+Mar 02 21:06:41 <Syandal_>	- DATETIME
+Mar 02 21:06:49 <Syandal_>	------------------------------
+Mar 02 21:06:54 <Syandal_>	jeda 5 menit
+Mar 02 21:11:46 <Syandal_>	jadi syntax membuat tabel pada sqlite adalah
+Mar 02 21:11:46 <Syandal_>	 CREATE TABLE namatable (
+Mar 02 21:11:46 <Syandal_>	    namakolom typedata constraint[optional],
+Mar 02 21:11:46 <Syandal_>	    namakolom typedata constraint[optional],
+Mar 02 21:11:46 <Syandal_>	    ..
+Mar 02 21:11:46 <Syandal_>	 );
+Mar 02 21:11:54 <Syandal_>	------------------------------
+Mar 02 21:14:03 <Syandal_>	lanjut
+Mar 02 21:14:35 <Syandal_>	cara memasukkan nilai kedalam tabel
+Mar 02 21:15:03 <Syandal_>	untuk memasukkan nilai dengan perintah "INSERT INTO" contohnya
+Mar 02 21:15:03 <Syandal_>	sqlite> INSERT INTO "menu" VALUES(46,'Sambel Kecap',2000.0,6);
+Mar 02 21:15:40 <Syandal_>	atau kalo contoh pada tabel karyawan perintahnya seperti ini
+Mar 02 21:15:49 *	Disconnected (Invalid argument)
+**** ENDING LOGGING AT Fri Mar  2 21:15:49 2018
+
+**** BEGIN LOGGING AT Fri Mar  2 21:16:06 2018
+
+Mar 02 21:16:06 *	Now talking on #ubuntu-indonesia
+Mar 02 21:16:06 *	Topic for #ubuntu-indonesia is: https://git.io/lui#log :: Beladjar, diskoesi, berbagi, ataoe bertjanda tentoenja di Kanal ter-HOT dan ter-BOMBASTIS se-Indonesia :: Github: https://git.io/pui :: Kegiatan Belajar Bersama SQLite3, Pertemuan Kedua > Jum'at 2 Mar 2018, Pukul 20.00Wib :: https://git.io/vNa41 :p
+Mar 02 21:16:06 *	Topic for #ubuntu-indonesia set by Syandal_ (Fri Mar  2 11:30:26 2018)
+Mar 02 21:16:06 -*status-	Welcome to EliteBNC free IRC bouncer service!
+Mar 02 21:16:06 -*status-	You are using the Pi server.
+Mar 02 21:16:06 -*status-	Please read our rules at http://elitebnc.org/uap/
+Mar 02 21:16:09 -*status-	For bnc problems, you can use: /znc *report help
+Mar 02 21:16:34 <Syandal_>	maap ane dc
+Mar 02 21:16:42 <Syandal_>	cek log dulu yang putus dimana
+Mar 02 21:17:26 <Syandal_>	:3 
+Mar 02 21:17:33 <Syandal_>	padahal uda ngirim banyak chat dari tadi
+Mar 02 21:17:38 <Syandal_>	ok kirim ulang lagi
+Mar 02 21:17:46 <triawarman>	yg mn?
+Mar 02 21:18:05 <Syandal_>	untuk melihat hasilnya menggunakan perintah .table
+Mar 02 21:18:05 <Syandal_>	sqlite> .table
+Mar 02 21:18:05 <Syandal_>	dari perintah diatas akan menampilkan semua tabel yang ada
+Mar 02 21:18:20 <Syandal_>	------------------
+Mar 02 21:18:32 <Syandal_>	2) Tipe Data
+Mar 02 21:18:50 <Syandal_>	tadi uda kirim chat tipe data panjang .. ternyata dc
+Mar 02 21:18:57 <Syandal_>	ok yang panjang dibawah
+Mar 02 21:19:20 <Syandal_>	Tipe data adalah atribut yang mejelaskan tipe data dari tiap obyek, seperti kolom, variabel dan ekspresi.
+Mar 02 21:19:20 <Syandal_>	Tipe kelas
+Mar 02 21:19:20 <Syandal_>	----------
+Mar 02 21:19:20 <Syandal_>	ada 5 tipe yang bisa dipakai saat memasukan data ke database sqlite
+Mar 02 21:19:20 <Syandal_>	- NULL
+Mar 02 21:19:20 <Syandal_>	- INTEGER
+Mar 02 21:19:20 <Syandal_>	- REAL
+Mar 02 21:19:20 <Syandal_>	- TEXT
+Mar 02 21:19:20 <Syandal_>	- BLOB
+Mar 02 21:19:27 <Syandal_>	---
+Mar 02 21:19:44 <Syandal_>	berikut list lengkapnya
+Mar 02 21:19:44 <Syandal_>	- INT
+Mar 02 21:19:44 <Syandal_>	- INTEGER
+Mar 02 21:19:44 <Syandal_>	- TINYINT
+Mar 02 21:19:44 <Syandal_>	- SMALLINT
+Mar 02 21:19:44 <Syandal_>	- MEDIUMINT          =>  INTEGER
+Mar 02 21:19:44 <Syandal_>	- BIGINT
+Mar 02 21:19:44 <Syandal_>	- UNSIGNED BIG INT
+Mar 02 21:19:44 <Syandal_>	- INT2
+Mar 02 21:19:44 <Syandal_>	- INT8
+Mar 02 21:19:44 <Syandal_>	---------------------------
+Mar 02 21:19:44 <Syandal_>	- CHARACTER(n)
+Mar 02 21:19:44 <Syandal_>	- VARCHAR(n)
+Mar 02 21:19:44 <Syandal_>	- VARYING CHARACTER(n)
+Mar 02 21:19:44 <Syandal_>	- NCHAR(n)               => TEXT
+Mar 02 21:19:44 <Syandal_>	- NATIVE CHARACTER(n)
+Mar 02 21:19:44 <Syandal_>	- NVARCHAR(n)
+Mar 02 21:19:44 <Syandal_>	- TEXT
+Mar 02 21:19:44 <Syandal_>	- CLOB
+Mar 02 21:19:44 <Syandal_>	---------------------------
+Mar 02 21:19:44 <Syandal_>	- BLOB
+Mar 02 21:19:44 <Syandal_>	- no datatype specified    => NONE
+Mar 02 21:19:44 <Syandal_>	---------------------------
+Mar 02 21:19:44 <Syandal_>	- REAL                     
+Mar 02 21:19:44 <Syandal_>	- DOUBLE
+Mar 02 21:19:44 <Syandal_>	- DOUBLE PRECISION    => REAL
+Mar 02 21:19:44 <Syandal_>	- FLOAT
+Mar 02 21:19:44 <Syandal_>	---------------------------
+Mar 02 21:19:44 <Syandal_>	- NUMERIC
+Mar 02 21:19:44 <Syandal_>	- DECIMAL
+Mar 02 21:19:44 <Syandal_>	- BOOLEAN             => NUMERIC
+Mar 02 21:19:44 <Syandal_>	- DATE
+Mar 02 21:19:44 <Syandal_>	- DATETIME
+Mar 02 21:19:44 <Syandal_>	---------------------------
+Mar 02 21:19:48 <Syandal_>	jeda dulu 5 menit
+Mar 02 21:21:02 <Syandal_>	jadi syntax membuat tabel pada sqlite adalah
+Mar 02 21:21:02 <Syandal_>	CREATE TABLE namatable (
+Mar 02 21:21:02 <Syandal_>	   namakolom typedata constraint[optional],
+Mar 02 21:21:02 <Syandal_>	   namakolom typedata constraint[optional],
+Mar 02 21:21:02 <Syandal_>	   ..
+Mar 02 21:21:02 <Syandal_>	);
+Mar 02 21:21:21 *	Ayana (imanulyaqi@sf1.hashbang.sh) has joined
+Mar 02 21:26:23 <Syandal_>	contoh membuat tabel, di link yang di share pak tria warman tadi
+Mar 02 21:26:41 <Syandal_>	selanjutnya memasukkan nilai kedalam tabel
+Mar 02 21:26:44 <triawarman>	:)
+Mar 02 21:26:53 <Syandal_>	untuk memasukkan nilai dengan perintah "INSERT INTO" contohnya
+Mar 02 21:27:14 <Syandal_>	INSERT INTO karyawan VALUES (1, 'Iyon', 22, 'Banyumas', 2500000);
+Mar 02 21:27:14 <Syandal_>	INSERt into karyawan values (2, 'Sora', 21, 'Tokyo', 4000000);
+Mar 02 21:27:35 <Syandal_>	ini contohnya > https://sqliteonline.com/#fiddle-5a995a5d294dd9gdjea0i7eb
+Mar 02 21:27:37 <Ayana>	^ Sqlite Browser
+Mar 02 21:28:13 <Syandal_>	jadi printah INSERT INTO diikuti namatabel dan daftar nilai yang ingin dimasukan ke setiap kolomnya
+Mar 02 21:29:08 <Syandal_>	!baris
+Mar 02 21:29:09 <Ayana>	================================
+Mar 02 21:29:27 <Syandal_>	Selanjutnya menghapus tabel
+Mar 02 21:29:38 <Syandal_>	untuk menghapus tabel menggunakan perintah "DROP TABLE" diikuti nama tabel, contohnya 
+Mar 02 21:29:52 <Syandal_>	sqlite> DROP TABLE karyawan;
+Mar 02 21:30:01 <Syandal_>	jeda
+Mar 02 21:30:03 <Syandal_>	!baris
+Mar 02 21:30:04 <Ayana>	================================
+Mar 02 21:33:26 <Syandal_>	selanjutnya mengganti nama tabel
+Mar 02 21:33:36 <Syandal_>	Untuk mengganti nama tabel kita bisa menggunakan perintah "ALTER TABLE" contohnya
+Mar 02 21:34:18 <Syandal_>	alter table karyawan Rename to kuliit;
+Mar 02 21:34:24 <Syandal_>	salah
+Mar 02 21:34:51 <Syandal_>	sqlite> ALTER TABL karyawan RENAME TO kuliit;
+Mar 02 21:34:58 <Syandal_>	salah lagi
+Mar 02 21:35:03 <Syandal_>	sqlite> ALTER TABLE karyawan RENAME TO kuliit;
+Mar 02 21:35:19 <Syandal_>	ini contohnya > https://sqliteonline.com/#fiddle-5a995c99294de9gdjea0ugz2
+Mar 02 21:35:22 <Ayana>	^ Sqlite Browser
+Mar 02 21:35:50 <Syandal_>	untuk melihat perubahan nama table dengan perintah .table
+Mar 02 21:35:56 <Syandal_>	sqlite> .table
+Mar 02 21:36:34 <Syandal_>	!baris
+Mar 02 21:36:36 <Ayana>	================================
+Mar 02 21:37:02 <Syandal_>	selanjutnya menambah kolom pada tabel
+Mar 02 21:37:34 <Syandal_>	Untuk mnambahkan kolom bisa menggunakan perintah "ALTER TABLE", misalnya kita menambahkan sebuah kolom
+Mar 02 21:38:53 <Syandal_>	sqlite> ALTER TABLE kuliit ADD COLUMN lamamengabdi INT(3);
+Mar 02 21:39:08 <Syandal_>	untuk melihat hasilnya dengan perintah .schema
+Mar 02 21:39:19 <Syandal_>	sqlite> .schema kuliit
+Mar 02 21:39:40 <Syandal_>	biar ga bosen kita demo di remote view
+Mar 02 21:39:55 <Ayana>	--------------------
+Mar 02 21:40:54 <lappet>	user@host bg ?
+Mar 02 21:41:30 <Syandal_>	:3
+Mar 02 21:41:43 <Syandal_>	view@sqlite.remoteshare.xyz
+Mar 02 21:41:50 <Syandal_>	pass : rahasia123
+Mar 02 21:48:42 <Syandal_>	jeda 4 menit
+Mar 02 21:48:48 <Syandal_>	!baris
+Mar 02 21:48:49 <Ayana>	================================
+Mar 02 21:49:48 <Syandal_>	ada yang tau pengertian constraint ga?
+Mar 02 21:50:18 <lappet>	kendala
+Mar 02 21:50:26 <Syandal_>	bisa jadi
+Mar 02 21:50:30 <lappet>	kata kamus
+Mar 02 21:50:38 <Syandal_>	constraint di database masksudnya apaan
+Mar 02 21:50:51 <Syandal_>	biasanya pak kaus ijo jago masalah database
+Mar 02 21:51:16 <lappet>	mohon pencerahan
+Mar 02 21:51:23 <Syandal_>	:3
+Mar 02 21:51:32 <Syandal_>	sama disini juga redup
+Mar 02 21:51:40 <lappet>	:3
+Mar 02 21:52:39 <Syandal_>	misalnya ada member femalegeek.. dia constraint sejatinya kek gini >> ganteng, mapan, perhatian, dst
+Mar 02 21:52:56 <triawarman>	https://translate.google.com/#en/id/constraint
+Mar 02 21:52:58 <Ayana>	^ Google Translate
+Mar 02 21:53:31 <Syandal_>	kalo di database constraint kek gini >> primary key, not null, default, unique, check, foreign key, dst
+Mar 02 21:53:45 *	Syandal_ cek tkp
+Mar 02 21:53:49 *	lappet got ya
+Mar 02 21:54:34 <Syandal_>	disini constraint = paksaan
+Mar 02 21:54:39 <Syandal_>	rudapaksa?
+Mar 02 21:54:46 <Syandal_>	ok lanjut
+Mar 02 21:54:49 <Syandal_>	!baris
+Mar 02 21:54:54 <Ayana>	================================
+Mar 02 21:54:59 *	Guns1 (728eac3e@gateway/web/freenode/ip.114.142.172.62) has joined
+Mar 02 21:55:02 <Syandal_>	Pengenalan Constraint
+Mar 02 21:55:02 <Syandal_>	Constraint memberlakukan batasan dan aturan pada nilai yang dimasukan ke kolom untuk validasi data
+Mar 02 21:55:15 <Syandal_>	- Primary key
+Mar 02 21:55:15 <Syandal_>	  semua nilai unik dan digunakan untuk identitas tabel
+Mar 02 21:55:15 <Syandal_>	  contoh
+Mar 02 21:55:15 <Syandal_>	  NamaKolom INTEGER NOT NULL PRIMARY KEY;
+Mar 02 21:55:15 <Syandal_>	  atau
+Mar 02 21:55:15 <Syandal_>	  PRIMARY KEY(NamaKolom);
+Mar 02 21:55:15 <Syandal_>	  atau
+Mar 02 21:55:15 <Syandal_>	  PRIMARY KEY (NamaKolom1, NamaKolom2);
+Mar 02 21:55:21 <Syandal_>	-----------------------
+Mar 02 21:55:57 <Syandal_>	- Not Null
+Mar 02 21:55:57 <Syandal_>	  Mencegah nilai kosong, dan nilai kolom harus diisi saat memasukan data
+Mar 02 21:55:57 <Syandal_>	  contoh
+Mar 02 21:55:57 <Syandal_>	  NamaKolom INTEGER NOT NULL
+Mar 02 21:56:02 <Syandal_>	-----------------------
+Mar 02 21:56:16 <Syandal_>	- Default
+Mar 02 21:56:16 <Syandal_>	  Jika nilai tidak dimasukan saat memasukan data nilai default yang akan dimasukan ke kolom
+Mar 02 21:56:16 <Syandal_>	  contoh
+Mar 02 21:56:16 <Syandal_>	  NamaKolom INTEGER DEFAULT 0;
+Mar 02 21:56:22 <Syandal_>	-----------------------
+Mar 02 21:56:45 <Syandal_>	- Unique
+Mar 02 21:56:45 <Syandal_>	  Mencegah nilai ganda dalam suatu kolom
+Mar 02 21:56:45 <Syandal_>	  contoh
+Mar 02 21:56:45 <Syandal_>	  IdKaryawan INTEGER NOT NULL UNIQUE;
+Mar 02 21:56:48 <Syandal_>	-----------------------
+Mar 02 21:56:58 <Syandal_>	- Chek
+Mar 02 21:56:58 <Syandal_>	  Mengecek kondisi nilai saat dimasukan, jika nilai tidak cuco dengan kondisi maka tidak akan dimasukan.
+Mar 02 21:56:58 <Syandal_>	  contoh
+Mar 02 21:56:58 <Syandal_>	  JumlahPesan INTEGER NOT NULL CHECK(JumlahPesan >= 1);
+Mar 02 21:57:01 <Syandal_>	-----------------------
+Mar 02 21:57:16 <Syandal_>	- Foreign Key
+Mar 02 21:57:16 <Syandal_>	  Saat menggunakan banyak tabel dan saling relasi satu sama lain dan kita menginginkan nilai yang dimasukan harus ada di tabel lain maka kita membutuhkan Foreign Key
+Mar 02 21:57:16 <Syandal_>	  Di Sqlite Foreign Key di nonaktifkan secara default, untuk mengaktifkannya dengan perintah 
+Mar 02 21:57:19 <Syandal_>	-----------------------
+Mar 02 21:57:33 <Syandal_>	  PRAGMA foreign_keys = ON;
+Mar 02 21:57:47 <Syandal_>	  Contoh
+Mar 02 21:57:47 <Syandal_>	  |-----menu-----|            |--kategorimenu--|
+Mar 02 21:57:47 <Syandal_>	  | id           |      |------> id            |
+Mar 02 21:57:47 <Syandal_>	  | nama         |      |     |  nama          |
+Mar 02 21:57:47 <Syandal_>	  | harga        |      |     |----------------|
+Mar 02 21:57:47 <Syandal_>	  | id_kategori <-------|
+Mar 02 21:57:47 <Syandal_>	  |--------------|
+Mar 02 21:58:26 <Syandal_>	  perintah membuat tabelnya adalah 
+Mar 02 21:58:26 <Syandal_>	  
+Mar 02 21:58:26 <Syandal_>	    CREATE TABLE "kategorimenu" (
+Mar 02 21:58:26 <Syandal_>	    id int(1) primary key not null,
+Mar 02 21:58:26 <Syandal_>	    nama char(50)
+Mar 02 21:58:26 <Syandal_>	    );
+Mar 02 21:58:26 <Syandal_>	    CREATE TABLE "menu" (
+Mar 02 21:58:26 <Syandal_>	    id int(3) primary key not null,
+Mar 02 21:58:26 <Syandal_>	    nama char(75),
+Mar 02 21:58:26 <Syandal_>	    harga real,
+Mar 02 21:58:26 <Syandal_>	    FOREIGN KEY(id_kategori) REFERENCES kategorimenu(id)
+Mar 02 21:58:26 <Syandal_>	    );
+Mar 02 21:58:39 <Syandal_>	------------------------
+Mar 02 22:00:15 <Syandal_>	sebenernya kalo kita sering belajar database, hampir selalu bersentuhan sama constraint ..
+Mar 02 22:00:19 <Syandal_>	jeda dulu 5 menit
+Mar 02 22:00:24 <triawarman>	iiyup9
+Mar 02 22:00:30 <Syandal_>	bisa jadi
+Mar 02 22:02:25 <triawarman>	22:49wita
+Mar 02 22:02:36 <triawarman>	+ g enak badan. 
+Mar 02 22:02:52 *	triawarman mohon undur diri
+Mar 02 22:03:34 *	lappet dada bg tria
+Mar 02 22:04:04 *	presiden back
+Mar 02 22:04:26 <Syandal_>	ok
+Mar 02 22:04:51 <presiden>	Syandal_: diagramnya bagus om
+Mar 02 22:05:14 <Syandal_>	:3
+Mar 02 22:05:15 <presiden>	bikin manual ya
+Mar 02 22:05:19 <Syandal_>	emberan
+Mar 02 22:05:55 <Syandal_>	kabar buruknya di SQLite kita nggak bisa mengubah kolom ..
+Mar 02 22:06:12 <Syandal_>	There's no ALTER COLUMN in sqlite.
+Mar 02 22:06:12 <Syandal_>	I believe your only option is to:
+Mar 02 22:06:12 <Syandal_>	    Rename the table to a temporary name
+Mar 02 22:06:12 <Syandal_>	    Create a new table without the NOT NULL constraint
+Mar 02 22:06:12 <Syandal_>	    Copy the content of the old table to the new one
+Mar 02 22:06:12 <Syandal_>	    Remove the old table
+Mar 02 22:07:34 *	Guns1_ (728eac3e@gateway/web/freenode/ip.114.142.172.62) has joined
+Mar 02 22:08:26 <Syandal_>	masalahnnya karna constrain banyak membatasi waktu memasukan nilai ke dalam kolom, jadi kalo kita ga hati2 sama tipe data bisa rawan error saat membuat aplikasi dengan bahasa pemrograman lain
+Mar 02 22:09:07 *	Guns1 has quit (Ping timeout: 260 seconds)
+Mar 02 22:10:37 <presiden>	masuk akal
+Mar 02 22:17:05 <Syandal_>	mangap contoh diatas salah
+Mar 02 22:17:07 <Syandal_>	!baris
+Mar 02 22:17:09 <Ayana>	================================
+Mar 02 22:18:34 <Syandal_>	    CREATE TABLE "kategorimenu" (
+Mar 02 22:18:34 <Syandal_>	    id int(1) PRIMARY KEY NOT NULL,
+Mar 02 22:18:34 <Syandal_>	    nama VARCHAR(50)
+Mar 02 22:18:34 <Syandal_>	    );
+Mar 02 22:18:35 <Syandal_>	    CREATE TABLE "menu" (
+Mar 02 22:18:35 <Syandal_>	    id INT(3) PRIMARY KEY NOT NULL,
+Mar 02 22:18:35 <Syandal_>	    nama VARCHAR(75),
+Mar 02 22:18:35 <Syandal_>	    harga REAL,
+Mar 02 22:18:35 <Syandal_>	    id_kategori INT,
+Mar 02 22:18:35 <Syandal_>	    FOREIGN KEY(id_kategori) REFERENCES kategorimenu(id)
+Mar 02 22:18:35 <Syandal_>	    );
+Mar 02 22:18:37 <Syandal_>	!baris
+Mar 02 22:18:50 <Ayana>	================================
+Mar 02 22:19:21 <Syandal_>	nambah 1 baris id_kategori INT,
+Mar 02 22:19:42 <Syandal_>	contoh nya bisa dilihat di demo remote view
+Mar 02 22:21:28 <Syandal_>	selanjutnya 
+Mar 02 22:21:42 <Syandal_>	4) Alter & Drop table
+Mar 02 22:21:46 <Syandal_>	uda sering kita bahas 
+Mar 02 22:21:48 <Syandal_>	skip
+Mar 02 22:21:52 <Syandal_>	jeda 5 menit
+Mar 02 22:22:26 <Syandal_>	!baris
+Mar 02 22:22:27 <Ayana>	================================
+Mar 02 22:22:31 <Syandal_>	selanjutnya
+Mar 02 22:22:35 <Syandal_>	5) Views & Index
+Mar 02 22:23:00 <Syandal_>	View
+Mar 02 22:23:00 <Syandal_>	View digunakan untuk menyajikan data dari tabel. view sangat mirip dengan tabel tetapi tidak bisa digunakan untuk menyimpan ke dalam tabel. view dibuat menggunakan statemen select.
+Mar 02 22:23:07 *	Guns1_ has quit (Ping timeout: 260 seconds)
+Mar 02 22:23:17 <Syandal_>	:3 dan terjadi lagi
+Mar 02 22:23:29 <Syandal_>	Membuat statemn view
+Mar 02 22:23:29 <Syandal_>	Untuk membuatnya kita mnggunakan statemen CREATE VIEW diikuti dengan nama view dan isikan query.
+Mar 02 22:24:20 <Syandal_>	contoh 
+Mar 02 22:24:20 <Syandal_>	pertama kita buka file latihan database yang bernama KodingKafe.db
+Mar 02 22:24:20 <Syandal_>	bash-4.2$ sqlite3 KodingKafe.db 
+Mar 02 22:24:20 <Syandal_>	setelah itu kita buat sebuah view dengan perintah berikut 
+Mar 02 22:24:34 <Syandal_>	sqlite> CREATE VIEW SemuaMenuView
+Mar 02 22:24:34 <Syandal_>	   ...> AS
+Mar 02 22:24:34 <Syandal_>	   ...>   SELECT
+Mar 02 22:24:34 <Syandal_>	   ...>     m.id,
+Mar 02 22:24:34 <Syandal_>	   ...>     m.nama,
+Mar 02 22:24:34 <Syandal_>	   ...>     m.harga,
+Mar 02 22:24:35 <Syandal_>	   ...>     m.id_kategori
+Mar 02 22:24:35 <Syandal_>	   ...> FROM menu AS m
+Mar 02 22:24:35 <Syandal_>	   ...> INNER JOIN kategorimenu AS k ON m.id_kategori = k.id;
+Mar 02 22:24:35 <Syandal_>	sqlite>
+Mar 02 22:24:46 <Syandal_>	---------
+Mar 02 22:24:46 <Syandal_>	untuk melihat hasilnya menggunakan perintah .table
+Mar 02 22:24:46 <Syandal_>	sqlite> .table
+Mar 02 22:25:07 <Syandal_>	ok kita coba di demo remote view
+Mar 02 22:32:24 <Syandal_>	atau
+Mar 02 22:32:24 <Syandal_>	sqlite> SELECT name FROM sqlite_master WHERE type = 'view';
+Mar 02 22:32:42 <lappet>	ikan manis 'kek'. Kakek ?
+Mar 02 22:33:34 <Syandal_>	:3
+Mar 02 22:35:51 <Syandal_>	lanjut
+Mar 02 22:36:13 <Syandal_>	itu coba aja buka database KodingKafe.db trus liat isi datanya
+Mar 02 22:36:31 <Syandal_>	Temporary View
+Mar 02 22:36:31 <Syandal_>	adalah view yang digunakan pada koneksi database saat ini, jika kita keluar dari database, temporary view akan dihapus secara otomatis.
+Mar 02 22:36:31 <Syandal_>	perintahnya sama dengan view hanya bedanya menggunakan statemen CREATE TEMP VIEW atau
+Mar 02 22:36:31 <Syandal_>	CREATE TEMPORARY VIEW
+Mar 02 22:36:38 <Ayana>	--------------------
+Mar 02 22:37:07 <Syandal_>	Hapus View
+Mar 02 22:37:07 <Syandal_>	untuk menghapus view dengan perintah DROP
+Mar 02 22:37:07 <Syandal_>	contoh
+Mar 02 22:37:07 <Syandal_>	sqlite> DROP VIEW SemuaMenuView;
+Mar 02 22:37:14 <Ayana>	--------------------
+Mar 02 22:37:38 <Syandal_>	jeda 5 menit sebelum sub bahasan terakhir
+Mar 02 22:37:45 *	Syandal_ malem sabtuan yang berat ya
+Mar 02 22:37:51 <Syandal_>	#ehh
+Mar 02 22:38:32 <lappet>	perubahan di view atau table sinkron bg ?
+Mar 02 22:38:41 <Syandal_>	sinkron
+Mar 02 22:38:46 <Syandal_>	*kayaknya sih
+Mar 02 22:39:14 <lappet>	ok. ntar sya coba juga
+Mar 02 22:46:55 <Syandal_>	uda ngikut berubah
+Mar 02 22:47:13 <Syandal_>	view mungkin digunakan untuk menyajikan data doang
+Mar 02 22:47:19 <Syandal_>	atau untuk laporan2
+Mar 02 22:48:46 <Syandal_>	waktu itu supervisor ane bilang .. kalo untuk tujuan prusaan produksi.. aplikasi sistem informasinya .. pengolahannya disarankan di sisi database nya.. mulai dari query.. triger.. stored procedure .. dst.. biar beban kerja nya ada di server semua
+Mar 02 22:49:14 <Syandal_>	jadi di aplikasi nya tinggal manggil2 doang
+Mar 02 22:49:20 <Syandal_>	ok lanjut 
+Mar 02 22:49:23 <Syandal_>	terakhir
+Mar 02 22:49:27 <Syandal_>	!baris
+Mar 02 22:49:28 <Ayana>	================================
+Mar 02 22:49:44 <Syandal_>	Index
+Mar 02 22:49:44 <Syandal_>	index pada sqlite fungsinya sama seperti daftar isi pada buku, saat kita mencari sebuah baris pada tabel sqlite dengan kriteria pencarian maka sqlite akan mencari semua baris sampe menemukan baris yang cuco dengan kriteria pencarian kita. proses pencarian akan menjadi lambat ketika kita punya tabel besar
+Mar 02 22:49:44 <Syandal_>	index digunakan untuk speed up dan optimasi database untuk menambah performa
+Mar 02 22:50:10 <Syandal_>	ketika index dibuat pada sebuah kolom, sqlite akan membuat struktur data index dimana setiap field sebagai pointer untuk setiap baris tempat nilainya berada
+Mar 02 22:50:21 <Syandal_>	saat kita menjalankan query dengan kondisi pencarian pada kolom bagian dari index, sqlite akan melihat nilai pada index pertama kali.
+Mar 02 22:50:21 <Syandal_>	tapi jika kolom yang kita cari bukan bagian index, sqlite akan mencari pada nilai kolom untuk menemukan data, proses ini lebih lambat dari index
+Mar 02 22:50:39 <Syandal_>	Membuat Index
+Mar 02 22:50:39 <Syandal_>	Untuk membuat index dengan perintah CREATE INDEX
+Mar 02 22:50:39 <Syandal_>	- diikuti nama index
+Mar 02 22:50:39 <Syandal_>	- setelah nama index kita harus memasukkan kata "ON" diikuti nama tabel
+Mar 02 22:50:39 <Syandal_>	- setelah itu list dari nama kolom untuk digunakan sebagai index
+Mar 02 22:50:39 <Syandal_>	- bisa menggunakan salah satu 'ASC' atau 'DESC' untuk pengurutan
+Mar 02 22:50:45 <Ayana>	--------------------
+Mar 02 22:51:17 <Syandal_>	Contoh
+Mar 02 22:51:17 <Syandal_>	pertama kita buka file latihan database yang bernama KodingKafe.db
+Mar 02 22:51:17 <Syandal_>	bash-4.2$ sqlite3 KodingKafe.db 
+Mar 02 22:51:17 <Syandal_>	setelah itu kita buat index untuk tabel menu dan kolom nama
+Mar 02 22:51:17 <Syandal_>	sqlite> CREATE INDEX NamaMenuIndex ON menu(nama);
+Mar 02 22:51:17 <Syandal_>	Setelah itu kita liat apakah index telah berhasil dibuat dengan perintah
+Mar 02 22:51:17 <Syandal_>	sqlite> PRAGMA index_list(menu);
+Mar 02 22:51:17 <Syandal_>	seq         name           unique    
+Mar 02 22:51:17 <Syandal_>	----------  -------------  ----------
+Mar 02 22:51:17 <Syandal_>	0           NamaMenuIndex  0         
+Mar 02 22:51:17 <Syandal_>	1           sqlite_autoin  1         
+Mar 02 22:51:17 <Syandal_>	sqlite> 
+Mar 02 22:51:35 <Ayana>	--------------------
+Mar 02 22:51:50 <Syandal_>	index bukan hanya dibuat berdasarkan kolom tetapi bisa juga berdasarkan ekspresi seperti contoh berikut
+Mar 02 22:51:50 <Syandal_>	sqlite> CREATE INDEX JumlahOrderIndex ON transaksi(id, id_menu*jumlah); 
+Mar 02 22:51:56 <Ayana>	--------------------
+Mar 02 22:53:55 <Syandal_>	bisa liat de demo remote view
+Mar 02 22:54:16 <Syandal_>	Ok sekian kegiatan belajar bersama sqlite3 kita untuk pertemuan ke 2 malam ini
+Mar 02 22:54:21 <Syandal_>	see you next time
+Mar 02 22:54:30 <Syandal_>	!wasalam
+Mar 02 22:54:31 <Ayana>	Syandal_ membalas salam :  >> Waalaikum Salam Warrahmatullahi Wabarakatuh
+Mar 02 22:54:47 <lappet>	terima kasih bg. Maaf telat tadi
+Mar 02 22:55:01 <lappet>	log ssh nya bisa copy bg ?
+Mar 02 22:55:28 <Syandal_>	bentar
+Mar 02 22:55:40 <Syandal_>	kalo log ssh nya minta sama bapak netarsl
+Mar 02 22:55:46 <Syandal_>	beliau yang punya server nya
+Mar 02 22:56:44 <lappet>	ok bg. ntar sya pke lagi materiny ya
+Mar 02 22:57:03 <Syandal_>	ok dipersilahkan
+Mar 02 22:57:08 <Syandal_>	nanti kabari aja lagi kesini
+Mar 02 22:57:15 <lappet>	siap bg
+
+https://asciinema.org/a/5sLK37d2p3OOH13pfERUD6Sxa
+
+

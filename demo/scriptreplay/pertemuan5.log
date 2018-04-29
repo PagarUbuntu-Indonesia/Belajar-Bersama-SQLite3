@@ -1,0 +1,733 @@
+Script started on Fri 23 Mar 2018 07:54:37 PM WIB
+syandal@remoteshare:~$ cd belajar\ sqlite3/
+syandal@remoteshare:~/belajar sqlite3$ ls
+hasilcsv.csv   KodingKafe      KodingKafe.db   KodingSusu.db    tabelkaryawan1.sql
+hasilkita.csv  KodingKafe2.db  KodingKafe.sql  Perusahaanku.db
+syandal@remoteshare:~/belajar sqlite3$ # ki[K[Kk[Kdiskusi online sqlite pertemuan 5
+syandal@remoteshare:~/belajar sqlite3$ # pembahasan
+syandal@remoteshare:~/belajar sqlite3$ # inner join
+syandal@remoteshare:~/belajar sqlite3$ # left outer join
+syandal@remoteshare:~/belajar sqlite3$ # cross join
+syandal@remoteshare:~/belajar sqlite3$ # having
+syandal@remoteshare:~/belajar sqlite3$ # distinc
+syandal@remoteshare:~/belajar sqlite3$ # limit
+syandal@remoteshare:~/belajar sqlite3$ # ok kita buka database latihan kita
+syandal@remoteshare:~/belajar sqlite3$ sqlite3 KodingKafe.db [K[K[K[K2.db 
+SQLite version 3.11.0 2016-02-15 17:29:24
+Enter ".help" for usage hints.
+sqlite> -- kita format tampla[K[Kilannya
+sqlite> .header on
+sqlite> .mode column
+sqlite> -- 1) inner join
+sqlite> -- diangram[K[K[K[K[Kgramnya
+sqlite> --    /\  /\
+sqlite> --   /  \/  \
+sqlite> --  /   /\   \
+sqlite> -- /A  /xx\   \
+sqlite> -- \   \xx/ B /
+sqlite> --  \   \/   /
+sqlite> --   \  /\  /
+sqlite> --   \/  \/  [C[1@ [C[C[C[C[C[C[C[C
+sqlite> -- ok kita akan menggabung [Kkan dua buah tabel.. yaitu tabel menu sebagai left tabel
+sqlite> -- dan tabel kategorimenu sebagai right tabel dengan gabungan inner join
+sqlite> -- berikut contoh perintahnya
+sqlite> .schema menu
+CREATE TABLE "menu" (
+id int(3) primary key not null,
+nama char(75),
+harga real,
+id_kategori int(1)
+);
+CREATE INDEX IndexMenu ON menu(nama);
+sqlite> .schema kategorimenu
+CREATE TABLE "kategorimenu" (
+id int(1) primary key not null,
+nama char(50)
+);
+sqlite> SELECT menu.nama, kategorimenu.nama FROM menu INNER JOIN kategorimenu ON menu.id_kategori = kateg orimenu.id;
+nama         nama      
+-----------  ----------
+Nasi Goreng  makanan   
+Nasi Lemes   makanan   
+Nasi Putih   makanan   
+Nasi Kuning  makanan   
+Nasi Uduk    makanan   
+Nasi Kibuli  makanan   
+Ikan Kangma  lauk      
+Ikan Kangma  lauk      
+Ikan Kangma  lauk      
+Ikan Lele G  lauk      
+Ikan Lele B  lauk      
+Ayam Goreng  lauk      
+Ayam Goreng  lauk      
+Ayam Bakar   lauk      
+Bebek Goren  lauk      
+Bebek Kreme  lauk      
+Bebek Bakar  lauk      
+Kepiting Ka  lauk      
+Kepiting Kr  lauk      
+Kerang Kari  lauk      
+Kerang Masa  lauk      
+Air Jeruk A  minuman   
+Es Jeruk Ma  minuman   
+Es Teh Mani  minuman   
+Teh Anget M  minuman   
+Es Terong B  minuman   
+Es Timun Se  minuman   
+Es Kelapa M  minuman   
+Sayur Asem   sayur     
+Sayur Sop    sayur     
+Sayur Benin  sayur     
+Oseng Kangk  sayur     
+Oseng Teron  sayur     
+Terong Dica  sayur     
+Sambel Tera  sambel    
+Sambel Ijo   sambel    
+Sambel Toma  sambel    
+Sambel Dabu  sambel    
+sqlite> -- sekarang hasilnya kita batasi 10 baris aja
+sqlite> -- sekarang hasilnya kita batasi 10 baris aja[C[C[C[C[C[C[C[CSELECT menu.nama, kategorimenu.nama FROM menu INNER JOIN kategorimenu ON menu.id_kategori = kategoorimenu.id; ;L;I;M;I;T; ;1;0;
+nama         nama      
+-----------  ----------
+Nasi Goreng  makanan   
+Nasi Lemes   makanan   
+Nasi Putih   makanan   
+Nasi Kuning  makanan   
+Nasi Uduk    makanan   
+Nasi Kibuli  makanan   
+Ikan Kangma  lauk      
+Ikan Kangma  lauk      
+Ikan Kangma  lauk      
+Ikan Lele G  lauk      
+sqlite> -- hasilnya seperti iut[K[Ktu
+sqlite> -- hasilnya seperti itu[C[C[C[C[C[C[C[CSELECT menu.nama, kategorimenu.nama FROM menu INNER JOIN kategorimenu ON menu.id_kategori = kategoorimenu.id LIMIT 10;M[C[C[C[C[C[C[C[C[52P-- sekarang hasilnya kita batasi 10 baris aja
+[KM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CSELECT menu.nama, kategorimenu.nama FROM menu INNER JOIN kategorimenu ON menu.id_kategori = kategoorimenu.id LIMIT 10;M[C[C[C[C[C[C[C[C-- hasilnya seperti itu[K
+[KM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K-- kita mau[K[K[K[K[K[K[K[K[K berikutnya kita mau nyoba J[KINNER JOIN - USING
+sqlite> -- syaratn[Kn[Knya .. kedua buah tabel harus punya nama kolom yang sama
+sqlite> -- contoh
+sqlite> S[KSELECT menu.nama, kategorimenu.nama FOR[K[KROM menu INNER JOIN kategorimenu USING(id)[K_kategeori);
+Error: cannot join using column id_kategeori - column not present in both tables
+sqlite> -- itu pesan error karna nama kolomnya tidak sama
+sqlite> -- kita cek dulu
+sqlite> .schema menu
+CREATE TABLE "menu" (
+id int(3) primary key not null,
+nama char(75),
+harga real,
+id_kategori int(1)
+);
+CREATE INDEX IndexMenu ON menu(nama);
+sqlite> .schema katgorimenu
+sqlite> .schema kategorimenu
+CREATE TABLE "kategorimenu" (
+id int(1) primary key not null,
+nama char(50)
+);
+sqlite> di [K[K[K-- k[Kdi tabel kateegor[K[K[K[Kgorimenu .. nama kolom id kita ubah jadi id_kategori dulu
+sqlite> -- --------------
+sqlite> -- karna di sqlite nggak bisa la[K[Kganti nama kolom.. caranya jadi berbelit2
+sqlite> -- kita ganti nama tabel jadi tmp dulu
+sqlite> ALTER TABLE kategorimenu RENAME TO tmp_kategorimenu;
+sqlite> .schema kategorimenu
+sqlite> -- ok kita buat lagi tabel kategorimenu
+sqlite> CREATE [K[K[K[K[K[K[K-[KCREATE TABLE kategorimenu (
+   ...> id_kategori INT [K(1) PRIMARY KEY NOT NULL,
+   ...> nama CHAR(50) );
+sqlite> -- trus dari ta[K[K[K[K[K[K[K[K datanya kita salin dari tabel lama ke tabel baru
+sqlite> INSERT INTO kategorimenu(id_kategori, nama) SELECT id_kategor[K[K[K[K[K[K[K[K, nama FROM tmp_kategorimenu;
+sqlite> --- [K[K[K[K-- trus kita hapus tabel tmp
+sqlite> DROP TABLE tmp_kategorimenu;
+sqlite> ok [K[K[KSELE[K[K[K[K-- kita cek isi tabel kategorimenu yang baru;
+sqlite> SELECT COUNT kategorimenu;[C[C[C[C
+Error: no such column: COUNT
+sqlite> -- mangap salah
+sqlite> SELECT COUNT(nama) FROM kategorimenu;
+COUNT(nama)
+-----------
+6          
+sqlite> -- ok kita ulang lagi perintah INNER JOIN - USING
+sqlite> SELECT menu.nama, kategorimenu.nama FROM menu INNER JOIN kategorimenu USING(id_kategori);
+nama         nama      
+-----------  ----------
+Nasi Goreng  makanan   
+Nasi Lemes   makanan   
+Nasi Putih   makanan   
+Nasi Kuning  makanan   
+Nasi Uduk    makanan   
+Nasi Kibuli  makanan   
+Ikan Kangma  lauk      
+Ikan Kangma  lauk      
+Ikan Kangma  lauk      
+Ikan Lele G  lauk      
+Ikan Lele B  lauk      
+Ayam Goreng  lauk      
+Ayam Goreng  lauk      
+Ayam Bakar   lauk      
+Bebek Goren  lauk      
+Bebek Kreme  lauk      
+Bebek Bakar  lauk      
+Kepiting Ka  lauk      
+Kepiting Kr  lauk      
+Kerang Kari  lauk      
+Kerang Masa  lauk      
+Air Jeruk A  minuman   
+Es Jeruk Ma  minuman   
+Es Teh Mani  minuman   
+Teh Anget M  minuman   
+Es Terong B  minuman   
+Es Timun Se  minuman   
+Es Kelapa M  minuman   
+Sayur Asem   sayur     
+Sayur Sop    sayur     
+Sayur Benin  sayur     
+Oseng Kangk  sayur     
+Oseng Teron  sayur     
+Terong Dica  sayur     
+Sambel Tera  sambel    
+Sambel Ijo   sambel    
+Sambel Toma  sambel    
+Sambel Dabu  sambel    
+sqlite> -- hasilnya gitu
+sqlite> -- coba kita batase[Kin jadi 10 baris
+sqlite> -- coba kita batasin jadi 10 baris[C[C[C[C[C[C[C[C[C[C[C[18Phasilnya gitu[C[C[C[C[C[C[C[CSELECT menu.nama, kategorimenu.nama FROM menu INNER JOIN kategorimenu USING(id_kategori); ;L;I;M;I;T; ;1; M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C0;;
+nama         nama      
+-----------  ----------
+Nasi Goreng  makanan   
+Nasi Lemes   makanan   
+Nasi Putih   makanan   
+Nasi Kuning  makanan   
+Nasi Uduk    makanan   
+Nasi Kibuli  makanan   
+Ikan Kangma  lauk      
+Ikan Kangma  lauk      
+Ikan Kangma  lauk      
+Ikan Lele G  lauk      
+sqlite> -- i[Kkita coba natural join
+sqlite> SELECT menu.nama [K, kategoir[K[Krimenu.nama FROM menu NAURAL [K[K[K[K[KTURAL JOIN kategorimenu;
+sqlite> -- hasilnya ga muncul
+sqlite> -- kita coba query lain
+sqlite> SELECT * FROM menu NATURL[KAL JOIN ke[Kategorimenu;
+sqlite> -- tetep ga muncul
+sqlite> -- ok materi kedua LEFT OUTER JOIN
+sqlite> -- berikut diagramnya
+sqlite> --    /\  /\
+sqlite> --   /xx\/  \
+sqlite> --  /xxx/\   \
+sqlite> -- /A x/xx\   \
+sqlite> -- \xxx\xx/ B /
+sqlite> --  \xxx\/   /
+sqlite> --   \xx/\  /
+sqlite> --    \/  \/  
+sqlite> -- contoh nya kita mau menga[K[K[Kngambil kolom nama dari tabel menu dan nama dari tabel kategorimenu 
+sqlite> -- dengan digabung menggunakan LEFT OUTER JOIN
+sqlite> -- perintahnya
+sqlite> SELECT menu.nama, kategorimenu.nama FROM menu LEFT JIO[K[KOIN kategorimenu ON menu.id)ka[K[K[K_kategoir[K[Kri = katego rimenu.id_kategori;
+nama         nama      
+-----------  ----------
+Nasi Goreng  makanan   
+Nasi Lemes   makanan   
+Nasi Putih   makanan   
+Nasi Kuning  makanan   
+Nasi Uduk    makanan   
+Nasi Kibuli  makanan   
+Ikan Kangma  lauk      
+Ikan Kangma  lauk      
+Ikan Kangma  lauk      
+Ikan Lele G  lauk      
+Ikan Lele B  lauk      
+Ayam Goreng  lauk      
+Ayam Goreng  lauk      
+Ayam Bakar   lauk      
+Bebek Goren  lauk      
+Bebek Kreme  lauk      
+Bebek Bakar  lauk      
+Kepiting Ka  lauk      
+Kepiting Kr  lauk      
+Kerang Kari  lauk      
+Kerang Masa  lauk      
+Air Jeruk A  minuman   
+Es Jeruk Ma  minuman   
+Es Teh Mani  minuman   
+Teh Anget M  minuman   
+Es Terong B  minuman   
+Es Timun Se  minuman   
+Es Kelapa M  minuman   
+Sayur Asem   sayur     
+Sayur Sop    sayur     
+Sayur Benin  sayur     
+Oseng Kangk  sayur     
+Oseng Teron  sayur     
+Terong Dica  sayur     
+Sambel Tera  sambel    
+Sambel Ijo   sambel    
+Sambel Toma  sambel    
+Sambel Dabu  sambel    
+sqlite> -- kepanjangan
+sqlite> -- kepanjangan[C[C[C[C[C[C[C[CSELECT menu.nama, kategorimenu.nama FROM menu LEFT JOIN kategorimenu ON menu.id_kategori = kategorrimenu.id_kategori; ;L;I;M;I;T; ;1;0;
+nama         nama      
+-----------  ----------
+Nasi Goreng  makanan   
+Nasi Lemes   makanan   
+Nasi Putih   makanan   
+Nasi Kuning  makanan   
+Nasi Uduk    makanan   
+Nasi Kibuli  makanan   
+Ikan Kangma  lauk      
+Ikan Kangma  lauk      
+Ikan Kangma  lauk      
+Ikan Lele G  lauk      
+sqlite> -- contoh using
+sqlite> -- contoh using[C[C[C[C[C[C[C[CSELECT menu.nama, kategorimenu.nama FROM menu LEFT JOIN kategorimenu ON menu.id_kategori = kategorrimenu.id_kategori LIMIT 10;[C[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1PM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C L[1PM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C LI[1PM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C LIM[1PM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C LIMI[1PM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C LIMIT[1P 10;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C LIMIT [1P10;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CLIMIT 1[1P0;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C LIMIT 10[1P;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CLIMIT 10;[KM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C LIMIT 10; [KM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P
+[KM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@S[1@U[1P[1P[1@U[1@S[1@I[1@N[1@G[1@([1@i[1@d[1@_[1@k[1@a[1@t[1@e[1@g[1@o[1@r[1@i) LIMIT 10; M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+
+nama         nama      
+-----------  ----------
+Nasi Goreng  makanan   
+Nasi Lemes   makanan   
+Nasi Putih   makanan   
+Nasi Kuning  makanan   
+Nasi Uduk    makanan   
+Nasi Kibuli  makanan   
+Ikan Kangma  lauk      
+Ikan Kangma  lauk      
+Ikan Kangma  lauk      
+Ikan Lele G  lauk      
+sqlite> [Ksqlite> -- ok kita latihan ketiga CROSS JOIN
+sqlite> -- berikut [Ksqlite> -- berikut diagramnya
+sqlite> --    /\  /\
+sqlite> --   /xx\/xx\
+sqlite> --  /xxx/\xx \
+sqlite> -- A x/xx\xxx\[1@/[C[C[C[C[C[C[C[C[C[C[C
+sqlite> -- \xxx\xx/ B /
+sqlite> --  \xxx\/xxx/
+sqlite> --   \xx/\xx/
+sqlite> --    \/  \/   
+sqlite> -- pada contoh berikut kita akan mengambil data pada semua kolom di tabel menu dan dia[Kgabungk an dengan tabel kategorimenu menggunakan CC[KROSS JOIN
+sqlite> -- berikut contoh perintahnya
+sqlite> SELECT * FROM menu CROSS JOIN kategorimenu;
+id          nama         harga       id_kategori  id_kategori  nama      
+----------  -----------  ----------  -----------  -----------  ----------
+1           Nasi Goreng  13000.0     1            1            makanan   
+1           Nasi Goreng  13000.0     1            2            lauk      
+1           Nasi Goreng  13000.0     1            3            minuman   
+1           Nasi Goreng  13000.0     1            4            sayur     
+1           Nasi Goreng  13000.0     1            5            cuci mulut
+1           Nasi Goreng  13000.0     1            6            sambel    
+2           Nasi Lemes   15000.0     1            1            makanan   
+2           Nasi Lemes   15000.0     1            2            lauk      
+2           Nasi Lemes   15000.0     1            3            minuman   
+2           Nasi Lemes   15000.0     1            4            sayur     
+2           Nasi Lemes   15000.0     1            5            cuci mulut
+2           Nasi Lemes   15000.0     1            6            sambel    
+3           Nasi Putih   4000.0      1            1            makanan   
+3           Nasi Putih   4000.0      1            2            lauk      
+3           Nasi Putih   4000.0      1            3            minuman   
+3           Nasi Putih   4000.0      1            4            sayur     
+3           Nasi Putih   4000.0      1            5            cuci mulut
+3           Nasi Putih   4000.0      1            6            sambel    
+4           Nasi Kuning  5000.0      1            1            makanan   
+4           Nasi Kuning  5000.0      1            2            lauk      
+4           Nasi Kuning  5000.0      1            3            minuman   
+4           Nasi Kuning  5000.0      1            4            sayur     
+4           Nasi Kuning  5000.0      1            5            cuci mulut
+4           Nasi Kuning  5000.0      1            6            sambel    
+5           Nasi Uduk    5000.0      1            1            makanan   
+5           Nasi Uduk    5000.0      1            2            lauk      
+5           Nasi Uduk    5000.0      1            3            minuman   
+5           Nasi Uduk    5000.0      1            4            sayur     
+5           Nasi Uduk    5000.0      1            5            cuci mulut
+5           Nasi Uduk    5000.0      1            6            sambel    
+6           Nasi Kibuli  10000.0     1            1            makanan   
+6           Nasi Kibuli  10000.0     1            2            lauk      
+6           Nasi Kibuli  10000.0     1            3            minuman   
+6           Nasi Kibuli  10000.0     1            4            sayur     
+6           Nasi Kibuli  10000.0     1            5            cuci mulut
+6           Nasi Kibuli  10000.0     1            6            sambel    
+7           Ikan Kangma  10000.0     2            1            makanan   
+7           Ikan Kangma  10000.0     2            2            lauk      
+7           Ikan Kangma  10000.0     2            3            minuman   
+7           Ikan Kangma  10000.0     2            4            sayur     
+7           Ikan Kangma  10000.0     2            5            cuci mulut
+7           Ikan Kangma  10000.0     2            6            sambel    
+8           Ikan Kangma  12000.0     2            1            makanan   
+8           Ikan Kangma  12000.0     2            2            lauk      
+8           Ikan Kangma  12000.0     2            3            minuman   
+8           Ikan Kangma  12000.0     2            4            sayur     
+8           Ikan Kangma  12000.0     2            5            cuci mulut
+8           Ikan Kangma  12000.0     2            6            sambel    
+9           Ikan Kangma  12000.0     2            1            makanan   
+9           Ikan Kangma  12000.0     2            2            lauk      
+9           Ikan Kangma  12000.0     2            3            minuman   
+9           Ikan Kangma  12000.0     2            4            sayur     
+9           Ikan Kangma  12000.0     2            5            cuci mulut
+9           Ikan Kangma  12000.0     2            6            sambel    
+10          Ikan Lele G  8000.0      2            1            makanan   
+10          Ikan Lele G  8000.0      2            2            lauk      
+10          Ikan Lele G  8000.0      2            3            minuman   
+10          Ikan Lele G  8000.0      2            4            sayur     
+10          Ikan Lele G  8000.0      2            5            cuci mulut
+10          Ikan Lele G  8000.0      2            6            sambel    
+11          Ikan Lele B  8000.0      2            1            makanan   
+11          Ikan Lele B  8000.0      2            2            lauk      
+11          Ikan Lele B  8000.0      2            3            minuman   
+11          Ikan Lele B  8000.0      2            4            sayur     
+11          Ikan Lele B  8000.0      2            5            cuci mulut
+11          Ikan Lele B  8000.0      2            6            sambel    
+12          Ayam Goreng  13000.0     2            1            makanan   
+12          Ayam Goreng  13000.0     2            2            lauk      
+12          Ayam Goreng  13000.0     2            3            minuman   
+12          Ayam Goreng  13000.0     2            4            sayur     
+12          Ayam Goreng  13000.0     2            5            cuci mulut
+12          Ayam Goreng  13000.0     2            6            sambel    
+13          Ayam Goreng  13000.0     2            1            makanan   
+13          Ayam Goreng  13000.0     2            2            lauk      
+13          Ayam Goreng  13000.0     2            3            minuman   
+13          Ayam Goreng  13000.0     2            4            sayur     
+13          Ayam Goreng  13000.0     2            5            cuci mulut
+13          Ayam Goreng  13000.0     2            6            sambel    
+14          Ayam Bakar   14000.0     2            1            makanan   
+14          Ayam Bakar   14000.0     2            2            lauk      
+14          Ayam Bakar   14000.0     2            3            minuman   
+14          Ayam Bakar   14000.0     2            4            sayur     
+14          Ayam Bakar   14000.0     2            5            cuci mulut
+14          Ayam Bakar   14000.0     2            6            sambel    
+15          Bebek Goren  14000.0     2            1            makanan   
+15          Bebek Goren  14000.0     2            2            lauk      
+15          Bebek Goren  14000.0     2            3            minuman   
+15          Bebek Goren  14000.0     2            4            sayur     
+15          Bebek Goren  14000.0     2            5            cuci mulut
+15          Bebek Goren  14000.0     2            6            sambel    
+16          Bebek Kreme  15000.0     2            1            makanan   
+16          Bebek Kreme  15000.0     2            2            lauk      
+16          Bebek Kreme  15000.0     2            3            minuman   
+16          Bebek Kreme  15000.0     2            4            sayur     
+16          Bebek Kreme  15000.0     2            5            cuci mulut
+16          Bebek Kreme  15000.0     2            6            sambel    
+17          Bebek Bakar  15000.0     2            1            makanan   
+17          Bebek Bakar  15000.0     2            2            lauk      
+17          Bebek Bakar  15000.0     2            3            minuman   
+17          Bebek Bakar  15000.0     2            4            sayur     
+17          Bebek Bakar  15000.0     2            5            cuci mulut
+17          Bebek Bakar  15000.0     2            6            sambel    
+18          Kepiting Ka  16000.0     2            1            makanan   
+18          Kepiting Ka  16000.0     2            2            lauk      
+18          Kepiting Ka  16000.0     2            3            minuman   
+18          Kepiting Ka  16000.0     2            4            sayur     
+18          Kepiting Ka  16000.0     2            5            cuci mulut
+18          Kepiting Ka  16000.0     2            6            sambel    
+19          Kepiting Kr  16000.0     2            1            makanan   
+19          Kepiting Kr  16000.0     2            2            lauk      
+19          Kepiting Kr  16000.0     2            3            minuman   
+19          Kepiting Kr  16000.0     2            4            sayur     
+19          Kepiting Kr  16000.0     2            5            cuci mulut
+19          Kepiting Kr  16000.0     2            6            sambel    
+20          Kerang Kari  15000.0     2            1            makanan   
+20          Kerang Kari  15000.0     2            2            lauk      
+20          Kerang Kari  15000.0     2            3            minuman   
+20          Kerang Kari  15000.0     2            4            sayur     
+20          Kerang Kari  15000.0     2            5            cuci mulut
+20          Kerang Kari  15000.0     2            6            sambel    
+21          Kerang Masa  14000.0     2            1            makanan   
+21          Kerang Masa  14000.0     2            2            lauk      
+21          Kerang Masa  14000.0     2            3            minuman   
+21          Kerang Masa  14000.0     2            4            sayur     
+21          Kerang Masa  14000.0     2            5            cuci mulut
+21          Kerang Masa  14000.0     2            6            sambel    
+22          Air Jeruk A  6000.0      3            1            makanan   
+22          Air Jeruk A  6000.0      3            2            lauk      
+22          Air Jeruk A  6000.0      3            3            minuman   
+22          Air Jeruk A  6000.0      3            4            sayur     
+22          Air Jeruk A  6000.0      3            5            cuci mulut
+22          Air Jeruk A  6000.0      3            6            sambel    
+23          Es Jeruk Ma  7000.0      3            1            makanan   
+23          Es Jeruk Ma  7000.0      3            2            lauk      
+23          Es Jeruk Ma  7000.0      3            3            minuman   
+23          Es Jeruk Ma  7000.0      3            4            sayur     
+23          Es Jeruk Ma  7000.0      3            5            cuci mulut
+23          Es Jeruk Ma  7000.0      3            6            sambel    
+24          Es Teh Mani  5000.0      3            1            makanan   
+24          Es Teh Mani  5000.0      3            2            lauk      
+24          Es Teh Mani  5000.0      3            3            minuman   
+24          Es Teh Mani  5000.0      3            4            sayur     
+24          Es Teh Mani  5000.0      3            5            cuci mulut
+24          Es Teh Mani  5000.0      3            6            sambel    
+25          Teh Anget M  4000.0      3            1            makanan   
+25          Teh Anget M  4000.0      3            2            lauk      
+25          Teh Anget M  4000.0      3            3            minuman   
+25          Teh Anget M  4000.0      3            4            sayur     
+25          Teh Anget M  4000.0      3            5            cuci mulut
+25          Teh Anget M  4000.0      3            6            sambel    
+26          Es Terong B  4000.0      3            1            makanan   
+26          Es Terong B  4000.0      3            2            lauk      
+26          Es Terong B  4000.0      3            3            minuman   
+26          Es Terong B  4000.0      3            4            sayur     
+26          Es Terong B  4000.0      3            5            cuci mulut
+26          Es Terong B  4000.0      3            6            sambel    
+27          Es Timun Se  4000.0      3            1            makanan   
+27          Es Timun Se  4000.0      3            2            lauk      
+27          Es Timun Se  4000.0      3            3            minuman   
+27          Es Timun Se  4000.0      3            4            sayur     
+27          Es Timun Se  4000.0      3            5            cuci mulut
+27          Es Timun Se  4000.0      3            6            sambel    
+28          Es Kelapa M  4000.0      3            1            makanan   
+28          Es Kelapa M  4000.0      3            2            lauk      
+28          Es Kelapa M  4000.0      3            3            minuman   
+28          Es Kelapa M  4000.0      3            4            sayur     
+28          Es Kelapa M  4000.0      3            5            cuci mulut
+28          Es Kelapa M  4000.0      3            6            sambel    
+29          Sayur Asem   6000.0      4            1            makanan   
+29          Sayur Asem   6000.0      4            2            lauk      
+29          Sayur Asem   6000.0      4            3            minuman   
+29          Sayur Asem   6000.0      4            4            sayur     
+29          Sayur Asem   6000.0      4            5            cuci mulut
+29          Sayur Asem   6000.0      4            6            sambel    
+30          Sayur Sop    6000.0      4            1            makanan   
+30          Sayur Sop    6000.0      4            2            lauk      
+30          Sayur Sop    6000.0      4            3            minuman   
+30          Sayur Sop    6000.0      4            4            sayur     
+30          Sayur Sop    6000.0      4            5            cuci mulut
+30          Sayur Sop    6000.0      4            6            sambel    
+31          Sayur Benin  6000.0      4            1            makanan   
+31          Sayur Benin  6000.0      4            2            lauk      
+31          Sayur Benin  6000.0      4            3            minuman   
+31          Sayur Benin  6000.0      4            4            sayur     
+31          Sayur Benin  6000.0      4            5            cuci mulut
+31          Sayur Benin  6000.0      4            6            sambel    
+32          Oseng Kangk  6000.0      4            1            makanan   
+32          Oseng Kangk  6000.0      4            2            lauk      
+32          Oseng Kangk  6000.0      4            3            minuman   
+32          Oseng Kangk  6000.0      4            4            sayur     
+32          Oseng Kangk  6000.0      4            5            cuci mulut
+32          Oseng Kangk  6000.0      4            6            sambel    
+33          Oseng Teron  6000.0      4            1            makanan   
+33          Oseng Teron  6000.0      4            2            lauk      
+33          Oseng Teron  6000.0      4            3            minuman   
+33          Oseng Teron  6000.0      4            4            sayur     
+33          Oseng Teron  6000.0      4            5            cuci mulut
+33          Oseng Teron  6000.0      4            6            sambel    
+34          Terong Dica  6000.0      4            1            makanan   
+34          Terong Dica  6000.0      4            2            lauk      
+34          Terong Dica  6000.0      4            3            minuman   
+34          Terong Dica  6000.0      4            4            sayur     
+34          Terong Dica  6000.0      4            5            cuci mulut
+34          Terong Dica  6000.0      4            6            sambel    
+40          Sambel Tera  2000.0      6            1            makanan   
+40          Sambel Tera  2000.0      6            2            lauk      
+40          Sambel Tera  2000.0      6            3            minuman   
+40          Sambel Tera  2000.0      6            4            sayur     
+40          Sambel Tera  2000.0      6            5            cuci mulut
+40          Sambel Tera  2000.0      6            6            sambel    
+41          Sambel Ijo   2000.0      6            1            makanan   
+41          Sambel Ijo   2000.0      6            2            lauk      
+41          Sambel Ijo   2000.0      6            3            minuman   
+41          Sambel Ijo   2000.0      6            4            sayur     
+41          Sambel Ijo   2000.0      6            5            cuci mulut
+41          Sambel Ijo   2000.0      6            6            sambel    
+42          Sambel Toma  2000.0      6            1            makanan   
+42          Sambel Toma  2000.0      6            2            lauk      
+42          Sambel Toma  2000.0      6            3            minuman   
+42          Sambel Toma  2000.0      6            4            sayur     
+42          Sambel Toma  2000.0      6            5            cuci mulut
+42          Sambel Toma  2000.0      6            6            sambel    
+43          Sambel Dabu  2000.0      6            1            makanan   
+43          Sambel Dabu  2000.0      6            2            lauk      
+43          Sambel Dabu  2000.0      6            3            minuman   
+43          Sambel Dabu  2000.0      6            4            sayur     
+43          Sambel Dabu  2000.0      6            5            cuci mulut
+43          Sambel Dabu  2000.0      6            6            sambel    
+sqlite> -- hasilnya banyak :v
+sqlite> -- kita itung baris hasilnya
+sqlite> SELECT COUNT(*) FROM menu CROSS JOIN kategorimenu;
+COUNT(*)  
+----------
+228       
+sqlite> -- hasl[Kilnya 228 baris
+sqlite> -- kita ke pembahasan ke 4
+sqlite> -- KLAUSA HAVING
+sqlite> -- digunakan untuk mef[Kmfilter hasil keluaran gr[K[K[K GROUP BY
+sqlite> -- berikut contohnya
+sqlite> SELECT * FROM menu GROUP BY nama HAVING (count(nama) < 2);
+id          nama             harga       id_kategori
+----------  ---------------  ----------  -----------
+22          Air Jeruk Anget  6000.0      3          
+14          Ayam Bakar       14000.0     2          
+12          Ayam Goreng      13000.0     2          
+13          Ayam Goreng Gep  13000.0     2          
+17          Bebek Bakar      15000.0     2          
+15          Bebek Goreng     14000.0     2          
+16          Bebek Kremes     15000.0     2          
+23          Es Jeruk Manis   7000.0      3          
+28          Es Kelapa Muda   4000.0      3          
+24          Es Teh Manis     5000.0      3          
+26          Es Terong Belan  4000.0      3          
+27          Es Timun Serut   4000.0      3          
+9           Ikan Kangmas As  12000.0     2          
+8           Ikan Kangmas Ba  12000.0     2          
+7           Ikan Kangmas Go  10000.0     2          
+11          Ikan Lele Bakar  8000.0      2          
+10          Ikan Lele Goren  8000.0      2          
+18          Kepiting Kari    16000.0     2          
+19          Kepiting Kremes  16000.0     2          
+20          Kerang Kari      15000.0     2          
+21          Kerang Masak Be  14000.0     2          
+1           Nasi Goreng      13000.0     1          
+6           Nasi Kibuli      10000.0     1          
+4           Nasi Kuning      5000.0      1          
+2           Nasi Lemes       15000.0     1          
+3           Nasi Putih       4000.0      1          
+5           Nasi Uduk        5000.0      1          
+32          Oseng Kangkung   6000.0      4          
+33          Oseng Terong     6000.0      4          
+43          Sambel Dabu-dab  2000.0      6          
+41          Sambel Ijo       2000.0      6          
+40          Sambel Terasi    2000.0      6          
+42          Sambel Tomat     2000.0      6          
+29          Sayur Asem Kek   6000.0      4          
+31          Sayur Bening     6000.0      4          
+30          Sayur Sop        6000.0      4          
+25          Teh Anget Manis  4000.0      3          
+34          Terong Dicabein  6000.0      4          
+sqlite> -- kita pem[Krocobaan materi ke [Klima
+sqlite> -- DISTINC Keyword
+sqlite> -- digunakan me[K[Kuntuk menghapus duplikat data
+sqlite> -- contohnya kita akan mengambil data dari kolom nama pada tabel menu
+sqlite> SELECT DISTINC naama[K[K[Kma FROM menu;
+Error: no such column: DISTINC
+sqlite> SELECT DI[K[KDISTINC nama f[KFROM menu;
+Error: no such column: DISTINC
+sqlite> SELECT DISTINC nama FROM menu;[1@T
+nama           
+---------------
+Air Jeruk Anget
+Ayam Bakar     
+Ayam Goreng    
+Ayam Goreng Gep
+Bebek Bakar    
+Bebek Goreng   
+Bebek Kremes   
+Es Jeruk Manis 
+Es Kelapa Muda 
+Es Teh Manis   
+Es Terong Belan
+Es Timun Serut 
+Ikan Kangmas As
+Ikan Kangmas Ba
+Ikan Kangmas Go
+Ikan Lele Bakar
+Ikan Lele Goren
+Kepiting Kari  
+Kepiting Kremes
+Kerang Kari    
+Kerang Masak Be
+Nasi Goreng    
+Nasi Kibuli    
+Nasi Kuning    
+Nasi Lemes     
+Nasi Putih     
+Nasi Uduk      
+Oseng Kangkung 
+Oseng Terong   
+Sambel Dabu-dab
+Sambel Ijo     
+Sambel Terasi  
+Sambel Tomat   
+Sayur Asem Kek 
+Sayur Bening   
+Sayur Sop      
+Teh Anget Manis
+Terong Dicabein
+sqlite> -- kurang kuruf T nya :v
+sqlite> -- kalo da[K[Kada duplikat baris yang sama akan diabaikan
+sqlite> -- baiklah kita k [Ke pembahasan ke enam
+sqlite> -- ORDER BY
+sqlite> -- digunakan untuk mengurutkan data
+sqlite> -- sintaks
+sqlite> -- SELECT datar[K[K[Kftar [Kkolom FROM tabel OD[KRDER BY kolom1 ASC, kolom2 DESC;
+sqlite> -- contoh
+sqlite> --[K[KSELECT * FROM menu OD[KRDER BY id_kategori ASC, id DESC;
+id          nama         harga       id_kategori
+----------  -----------  ----------  -----------
+6           Nasi Kibuli  10000.0     1          
+5           Nasi Uduk    5000.0      1          
+4           Nasi Kuning  5000.0      1          
+3           Nasi Putih   4000.0      1          
+2           Nasi Lemes   15000.0     1          
+1           Nasi Goreng  13000.0     1          
+21          Kerang Masa  14000.0     2          
+20          Kerang Kari  15000.0     2          
+19          Kepiting Kr  16000.0     2          
+18          Kepiting Ka  16000.0     2          
+17          Bebek Bakar  15000.0     2          
+16          Bebek Kreme  15000.0     2          
+15          Bebek Goren  14000.0     2          
+14          Ayam Bakar   14000.0     2          
+13          Ayam Goreng  13000.0     2          
+12          Ayam Goreng  13000.0     2          
+11          Ikan Lele B  8000.0      2          
+10          Ikan Lele G  8000.0      2          
+9           Ikan Kangma  12000.0     2          
+8           Ikan Kangma  12000.0     2          
+7           Ikan Kangma  10000.0     2          
+28          Es Kelapa M  4000.0      3          
+27          Es Timun Se  4000.0      3          
+26          Es Terong B  4000.0      3          
+25          Teh Anget M  4000.0      3          
+24          Es Teh Mani  5000.0      3          
+23          Es Jeruk Ma  7000.0      3          
+22          Air Jeruk A  6000.0      3          
+34          Terong Dica  6000.0      4          
+33          Oseng Teron  6000.0      4          
+32          Oseng Kangk  6000.0      4          
+31          Sayur Benin  6000.0      4          
+30          Sayur Sop    6000.0      4          
+29          Sayur Asem   6000.0      4          
+43          Sambel Dabu  2000.0      6          
+42          Sambel Toma  2000.0      6          
+41          Sambel Ijo   2000.0      6          
+40          Sambel Tera  2000.0      6          
+sqlite> -- ok kita sudah sampe ke pembahasan terakhri ke 7
+sqlite> -- Klausa LIMIT
+sqlite> -- digunakan untuk membatasi jumlah baris kluar[K[K[K[Keluaran
+sqlite> -- contoh
+sqlite> SELECT * FROM menu LIMIT 10;
+id          nama         harga       id_kategori
+----------  -----------  ----------  -----------
+1           Nasi Goreng  13000.0     1          
+2           Nasi Lemes   15000.0     1          
+3           Nasi Putih   4000.0      1          
+4           Nasi Kuning  5000.0      1          
+5           Nasi Uduk    5000.0      1          
+6           Nasi Kibuli  10000.0     1          
+7           Ikan Kangma  10000.0     2          
+8           Ikan Kangma  12000.0     2          
+9           Ikan Kangma  12000.0     2          
+10          Ikan Lele G  8000.0      2          
+sqlite> -- contoh ke 2
+sqlite> SLE[K[KELECT * FROM menu LIMIT 3 OFFSET 10;
+id          nama             harga       id_kategori
+----------  ---------------  ----------  -----------
+11          Ikan Lele Bakar  8000.0      2          
+12          Ayam Goreng      13000.0     2          
+13          Ayam Goreng Gep  13000.0     2          
+sqlite> co[K[K-- contoh 3
+sqlite> SELECT * FROM menu LIMIT 3, 10;
+id          nama         harga       id_kategori
+----------  -----------  ----------  -----------
+4           Nasi Kuning  5000.0      1          
+5           Nasi Uduk    5000.0      1          
+6           Nasi Kibuli  10000.0     1          
+7           Ikan Kangma  10000.0     2          
+8           Ikan Kangma  12000.0     2          
+9           Ikan Kangma  12000.0     2          
+10          Ikan Lele G  8000.0      2          
+11          Ikan Lele B  8000.0      2          
+12          Ayam Goreng  13000.0     2          
+13          Ayam Goreng  13000.0     2          
+sqlite> -- ok karna semua pembahasa udah selesai maka demi [K[Ko ii[Kni [K[K[K[K[Kp[K pertemuan kali ini sampe disini
+sqlite> -- see you next time
+sqlite> \(^_^)/-\(^_^)/-\(^_^)/ \(^_^)/
+sqlite> .quit
+syandal@remoteshare:~/belajar sqlite3$ exit
+exit
+
+Script done on Fri 23 Mar 2018 09:55:08 PM WIB

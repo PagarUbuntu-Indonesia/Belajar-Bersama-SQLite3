@@ -1,0 +1,362 @@
+**** BEGIN LOGGING AT Fri Mar  9 19:03:48 2018
+
+Mar 09 19:03:48 *	Now talking on #ubuntu-indonesia
+Mar 09 19:03:48 *	Topic for #ubuntu-indonesia is: https://git.io/lui#log :: Beladjar, diskoesi, berbagi, ataoe bertjanda tentoenja di Kanal ter-HOT dan ter-BOMBASTIS se-Indonesia :: Github: https://git.io/pui :: Kegiatan Belajar Bersama SQLite3, Pertemuan Kedua > Jum'at 2 Mar 2018, Pukul 20.00Wib :: https://git.io/vNa41 :p
+Mar 09 19:03:48 *	Topic for #ubuntu-indonesia set by Syandal_ (Fri Mar  2 11:30:26 2018)
+Mar 09 19:03:48 -*status-	Welcome to EliteBNC free IRC bouncer service!
+Mar 09 19:03:48 -*status-	You are using the Pi server.
+Mar 09 19:03:48 -*status-	Please read our rules at http://elitebnc.org/uap/
+Mar 09 19:03:48 -*status-	For bnc problems, you can use: /znc *report help
+Mar 09 19:04:37 -*status-	*** [GLOBAL] (from Robby) Pi/Zeta users: These servers will be changing ownership and moved to new hosts before the end of month. Neither will have rDNS (vhosts) and Zeta will lose IPv6, but it will be better than the total loss of the servers. More info will be posted as it becomes available.
+Mar 09 19:14:53 *	Rifki has quit (Quit: Konversation terminated!)
+Mar 09 19:57:14 <Mugiono>	Syandal_: kanal IRC #ubuntu-indonesia ga akan tumbang selama ada om Syandal_. :3
+Mar 09 20:01:03 *	fathurhoho has quit (Ping timeout: 260 seconds)
+Mar 09 20:02:25 <Syandal_>	^hoax
+Mar 09 20:05:28 <presiden>	laporin ke polisi
+Mar 09 20:05:59 *	fathurhoho (~Thunderbi@125.161.249.146) has joined
+Mar 09 20:09:43 <Syandal_>	!baris
+Mar 09 20:09:44 <Ayana>	================================
+Mar 09 20:10:02 <Syandal_>	Hari ini agenda kita diskusi online materi sqlite3 pertemuan 3
+Mar 09 20:10:32 <Syandal_>	sebelum mulai seperti biasa kita absen dulu.. kalo membernya udah sekampung baru diskusi bisa kita mulai
+Mar 09 20:10:37 <Syandal_>	1. Syandal_
+Mar 09 20:14:39 <presiden>	nah, Syandal_ ada dimana-mana, apalagi di masjid pas sholat, jadi udah sekampung lebih
+Mar 09 20:15:52 <Syandal_>	:3
+Mar 09 20:16:08 <Ayana>	2. Ayana
+Mar 09 20:16:33 <Syandal_>	ok karna udah > 1 orang yang absen kegiatan diskusi online kita kita mulai aja
+Mar 09 20:16:37 <Syandal_>	!baris
+Mar 09 20:16:38 <Ayana>	================================
+Mar 09 20:16:40 <Syandal_>	!salam
+Mar 09 20:16:40 <Ayana>	Syandal_ mengucapkan salam :
+Mar 09 20:16:41 <Ayana>	Assalamu Alaikum
+Mar 09 20:16:42 <presiden>	Ayana, Waalaikumsalam Warahmatullahi Wabarakatuh
+Mar 09 20:17:18 <Syandal_>	Review ulang pertemuan2 sebelumnya
+Mar 09 20:17:18 <Syandal_>	Perintah2 pada sqlite adalah mengikuti perintah standart dari bahasa sql, contohnya : CREATE, SELECT, INSERT, UPDATE, dst. Pada sqlite perintah tersebut dibagi menjadi beberapa grup yaitu :
+Mar 09 20:17:18 <Syandal_>	Data Definition Language
+Mar 09 20:17:18 <Syandal_>	- CREATE      membuat tabel, view atau obyek database lain
+Mar 09 20:17:18 <Syandal_>	- ALTER       mengubah obyek database yang ada misalnya tabel
+Mar 09 20:17:18 <Syandal_>	- DROP        menghapus tabel, view atau obyek lain di database
+Mar 09 20:17:18 <Syandal_>	Data Manipulation Language
+Mar 09 20:17:18 <Syandal_>	- INSERT      membuat record (atau istilahnya memasukan baris data)
+Mar 09 20:17:18 <Syandal_>	- UPDATE      mengubah record
+Mar 09 20:17:18 <Syandal_>	- DELETE      menghapus record
+Mar 09 20:17:18 <Syandal_>	Data Query Language
+Mar 09 20:17:18 <Syandal_>	- SELECT      menarik sekumpulan record dari satu atau lebih tabel
+Mar 09 20:17:45 <Syandal_>	!baris
+Mar 09 20:17:45 <Ayana>	================================
+Mar 09 20:20:34 <Syandal_>	Untuk pertemuan 3 kali ini kita akan membahas tentang :
+Mar 09 20:20:34 <Syandal_>	- Perintah DML 
+Mar 09 20:20:34 <Syandal_>	- Penanganan Konflik
+Mar 09 20:20:34 <Syandal_>	- Transaksi
+Mar 09 20:20:50 <Syandal_>	seperti biasa untuk demonya bisa liat di remote share
+Mar 09 20:20:59 <Syandal_>	view@sqlite.remoteshare.xyz
+Mar 09 20:21:07 <Syandal_>	password rahasia123
+Mar 09 20:22:30 <Syandal_>	ok kita langsung aja ke perintah DML yang pertama
+Mar 09 20:22:32 <presiden>	lanjut om
+Mar 09 20:22:54 *	Syandal_ mangap bingung contekannya yang mana.. soalnya kebanyakan contekan jadi lupa
+Mar 09 20:23:08 <Syandal_>	Perintah Insert
+Mar 09 20:23:08 <Syandal_>	Perintah insert digunakan untuk membuat record pada tabel database (atau disebut juga memasukan satu baris data kedalam tabel)
+Mar 09 20:23:27 *	Rifki (~user@120.188.35.133) has joined
+Mar 09 20:23:34 <presiden>	bisa jadi
+Mar 09 20:23:39 <Syandal_>	sintaks
+Mar 09 20:23:39 <Syandal_>	sqlite> INSERT INTO namatabel (kolom1, kolom2, ...) VALUES ( datakolom1, datakolom2, ...);
+Mar 09 20:23:39 <Syandal_>	satu perintah INSERT hanya untuk memasukan data satu baris, untuk memasukan data banyak baris kita harus membuat banyak perintah INSERT
+Mar 09 20:24:00 <presiden>	lebih dari satu baris gak bisa om?
+Mar 09 20:24:56 <Syandal_>	secara teori ga bisa
+Mar 09 20:25:14 <Syandal_>	kalo lebih dari satu baris harus banyak perintah insert
+Mar 09 20:25:43 <Syandal_>	makannya kalo kita buka file *.sql pake teks editor, biasanya baris yang paling banyak itu INSERT INTO bla.. bla 
+Mar 09 20:26:02 <Syandal_>	ok kita latihannya pake file latihan database yang bernama KodingKafe.db
+Mar 09 20:26:24 <Syandal_>	kita asumsikan file database tersebut sudah di current directory kita
+Mar 09 20:26:29 <Syandal_>	cara menggunakannya adalah
+Mar 09 20:26:45 <Syandal_>	bash-4.2$ sqlite3 KodingKafe.db
+Mar 09 20:27:05 <Syandal_>	trus kita liat dulu daftar tabel yang ada
+Mar 09 20:27:09 <Syandal_>	sqlite> .table
+Mar 09 20:27:51 <Syandal_>	kita akan coba memasukan record baru ke tabel menu.. sebelumnya kita lihat dulu schema untuk table menu
+Mar 09 20:28:11 <presiden>	Syandal_: insert into namatabel (kolom1, kolom2, ...) values (a1, a2, ...), (b1, b2, ...), ...;
+Mar 09 20:28:16 <Syandal_>	sqlite> .schema menu
+Mar 09 20:28:39 <Syandal_>	^ nah iya sintaks nya kaya gitu
+Mar 09 20:28:44 <Syandal_>	sekarang bisa liat di demo nya
+Mar 09 20:28:57 <presiden>	Syandal_: syntax buat isi lebih dari satu baris
+Mar 09 20:29:20 <presiden>	perhatikan (a1, a2, ...), (b1, b2, ...), (dst.);
+Mar 09 20:29:55 <Syandal_>	oww baru tau .. bentar ane coba dulu di sini
+Mar 09 20:30:01 <Syandal_>	!baris
+Mar 09 20:30:01 <Ayana>	================================
+Mar 09 20:30:06 <Syandal_>	jeda 5 menit
+Mar 09 20:30:20 <presiden>	oke om
+Mar 09 20:30:53 <Rifki>	ane juga diajar begitu kalo mau isi tabel yang isinya banyak
+Mar 09 20:31:34 *	Tla_zz (cb4e754d@gateway/web/freenode/ip.203.78.117.77) has joined
+Mar 09 20:34:14 <Syandal_>	oh ya bener bisa
+Mar 09 20:34:22 <Syandal_>	+1 untuk presiden 
+Mar 09 20:34:43 <Syandal_>	di contekan ane katanya ga bisa uih
+Mar 09 20:34:51 <Syandal_>	untuk contoh perintah insert kek gini
+Mar 09 20:35:18 <Syandal_>	sqlite> INSERT INTO menu(id, nama, harga, id_kategori) VALUES (46, "Es Kosong", 2000.0, 3), (47, "Cah Jamur", 6000.0, 4);
+Mar 09 20:35:43 <Syandal_>	kalo mau liat di demo remote share
+Mar 09 20:35:54 *	Tla_zz has quit (Ping timeout: 260 seconds)
+Mar 09 20:37:32 <presiden>	oke om
+Mar 09 20:39:51 <Syandal_>	bentar
+Mar 09 20:39:56 <presiden>	pesen cabe-cabean dulu?
+Mar 09 20:40:57 <Syandal_>	:3
+Mar 09 20:41:13 <Syandal_>	di halaman ini disebutin ga bisa lebih dari satu record >> https://www.guru99.com/sqlite-query-insert-update.html
+Mar 09 20:41:28 <Syandal_>	Each INSERT clause inserts only one row. If you want to insert multiple rows, you should write multiple INSERT clauses, one for each row.
+Mar 09 20:41:38 <Syandal_>	ok kita skip dulu isue itu
+Mar 09 20:41:45 <Syandal_>	kita lanjut ke pembahasan berikutnya
+Mar 09 20:41:48 <Syandal_>	!baris
+Mar 09 20:41:48 <Ayana>	================================
+Mar 09 20:42:11 <presiden>	dia gak update
+Mar 09 20:43:01 <Syandal_>	bisa jadi
+Mar 09 20:44:54 <Syandal_>	Perintah Update
+Mar 09 20:44:54 <Syandal_>	Digunakan untuk memperbaharui satu atau lebih kolom dalam satu record
+Mar 09 20:44:54 <Syandal_>	Sintaksnya 
+Mar 09 20:44:54 <Syandal_>	sqlite> UPDATE namatabel SET kolom1 = 'nilai1', kolom2 = 'nilai2', .. WHERE ekspresi;
+Mar 09 20:48:10 <Syandal_>	contohnya kita mau ubah harga Nasi Goreng harga awalnya 15000 jadi 13000 perintahnya gini
+Mar 09 20:48:15 <Syandal_>	sqlite> UPDATE menu SET harga=13000.0 WHERE nama="Nasi Goreng";
+Mar 09 20:48:24 <Syandal_>	sekarang kita pindah ke demo
+Mar 09 20:50:30 <presiden>	oke
+Mar 09 20:52:22 <Syandal_>	untuk melihat semua record yang kolom nama dimulai pake kata Nasi kaya gini 
+Mar 09 20:52:24 <Syandal_>	sqlite> SELECT * FROM menu WHERE nama LIKE 'Nasi%';
+Mar 09 20:52:27 <presiden>	Syandal_: pake huruf kecil semua juga gak apa kok om, dimaklumi trutama soalnya emang sql case insensitive 
+Mar 09 20:52:37 <Syandal_>	^ nah itu
+Mar 09 20:52:52 <Syandal_>	ga apa2 pake hurup besar aja
+Mar 09 20:53:08 <Syandal_>	!baris
+Mar 09 20:53:09 <Ayana>	================================
+Mar 09 20:53:11 <Syandal_>	jeda lagi
+Mar 09 20:54:04 <Syandal_>	btw lupa .. untuk kondisi WHERE harus selalu diisi, kalo nggak, sqlite mengasumsikan mengubah semua record yang ada
+Mar 09 20:54:06 <Syandal_>	contoh
+Mar 09 20:54:24 <Syandal_>	sqlite> UPDATE menu SET harga=13000.0;
+Mar 09 20:54:46 <Syandal_>	^ hasil dari perintah itu keseluruhan baris yang ada harganya jadi 13k semua
+Mar 09 20:54:55 <Syandal_>	jeda lagi
+Mar 09 20:58:00 <Syandal_>	ok lanjut
+Mar 09 20:58:03 <Syandal_>	!baris
+Mar 09 20:58:04 <Ayana>	================================
+Mar 09 20:58:06 <presiden>	tarik mang
+Mar 09 20:58:12 <Syandal_>	:3
+Mar 09 20:58:30 <Syandal_>	Perintah Delete record
+Mar 09 20:58:30 <Syandal_>	Untuk menghapus satu atau lebih record (baris) pada database menggunakan perintah DELETE
+Mar 09 20:58:30 <Syandal_>	sintaks
+Mar 09 20:58:30 <Syandal_>	sqlite> DELETE FROM namatabel WHERE ekspresi;
+Mar 09 20:59:13 *	hakiri (~root@114.125.40.110) has joined
+Mar 09 20:59:27 <Syandal_>	untuk contohnya kita mau menghapus record pada tabel menu yang nama nya 'Cah Jamur'
+Mar 09 20:59:27 *	hakiri (~root@114.125.40.110) has left
+Mar 09 20:59:38 <Syandal_>	^ dia harakiri di kanal.. serem
+Mar 09 20:59:54 <Syandal_>	pertama kita liat dulu datanya
+Mar 09 21:00:04 <Syandal_>	sqlite> SELECT * FROM menu WHERE nama='Cah Jamur';
+Mar 09 21:00:15 <Syandal_>	abis itu kita hapus recordnya
+Mar 09 21:00:50 <Syandal_>	sqlite> DELETE FROM menu WHERE nama='Cah Jamur';
+Mar 09 21:00:58 <Syandal_>	abis itu kita liat lagi data nya
+Mar 09 21:01:11 <Syandal_>	sqlite> SELECT * FROM menu WHERE nama='Cah Jamur';
+Mar 09 21:01:21 <Syandal_>	ok kita pindah ke remote demo
+Mar 09 21:05:02 <presiden>	Cah Jamur adiknya Cah Lontong
+Mar 09 21:05:10 <Syandal_>	sekarang kita coba hapus 2 record yaitu record yang memiliki id 45 dan 46
+Mar 09 21:05:14 <Syandal_>	:3
+Mar 09 21:05:22 <Syandal_>	Sepupunya Cah Malang
+Mar 09 21:05:34 <Syandal_>	pertama kita liat dulu
+Mar 09 21:05:56 <Syandal_>	sqlite> SELECT * FROM menu WHERE id > 40;
+Mar 09 21:06:03 <Syandal_>	trus kita hapus
+Mar 09 21:06:40 <Syandal_>	sqlite> DELETE FROM menu WHERE id=45 OR id=46;
+Mar 09 21:06:53 <Syandal_>	trus kita lihat lagi hasilnya
+Mar 09 21:07:03 <Syandal_>	sqlite> SELECT * FROM menu WHERE id > 40;
+Mar 09 21:07:15 <Syandal_>	sekarang kita pindah ke demo remoteshare
+Mar 09 21:08:52 <Syandal_>	!baris
+Mar 09 21:08:53 <Ayana>	================================
+Mar 09 21:08:54 <Syandal_>	jeda dulu
+Mar 09 21:08:55 <presiden>	untung yang dihapus data di tabel, bukan kenangan mantan
+Mar 09 21:09:05 *	Rifki has quit (Ping timeout: 240 seconds)
+Mar 09 21:10:54 *	Rifki (~user@120.188.6.185) has joined
+Mar 09 21:11:51 <Syandal_>	:3
+Mar 09 21:12:11 <Syandal_>	justru yang dihapus tuh masalalu
+Mar 09 21:12:26 <Syandal_>	yang mau nanya silahkan nanya dulu
+Mar 09 21:13:21 <Syandal_>	ada yang tau transaksi ga
+Mar 09 21:14:55 *	Syandal_ juga ga tau sih
+Mar 09 21:14:58 <Syandal_>	ok kita lanjut
+Mar 09 21:15:23 <Syandal_>	!baris
+Mar 09 21:15:24 <Ayana>	================================
+Mar 09 21:15:27 <Syandal_>	TRANSAKSI
+Mar 09 21:15:45 <Syandal_>	Transaksi Database (database transaction) adalah daftar operasi sqlite (insert / update / delete) yang dieksekusi sebagai satuan unit. artinya keseluruhan operasi harus berhasil di eksekusi atau tidak sama sekali. semua operasi bisa dibatalkan jika salah satu gagal tereksekusi.
+Mar 09 21:16:00 <Syandal_>	Contoh kasus transaksi
+Mar 09 21:16:00 <Syandal_>	transaksi pada sebuah pengiriman uang via rekening sebuah bank akan melibatkan beberapa aktivitas. operasi transaksi meliputi penarikan uang (withdrawal) dari akun pertama dan penambahan uang (depositing) pada akun kedua. transaksi ini harus semua selesai atau semua dibatalkan. tidak boleh hanya separuhnya yang dijalankan.
+Mar 09 21:16:45 <Syandal_>	!baris
+Mar 09 21:16:46 <Ayana>	================================
+Mar 09 21:16:50 <Syandal_>	Kontrol Transaksi
+Mar 09 21:16:50 <Syandal_>	perintah2 berikut untuk mengontrol transaksi
+Mar 09 21:16:50 <Syandal_>	BEGIN TRANSACTION     untuk memulai transaksi
+Mar 09 21:16:50 <Syandal_>	COMMIT                menyimpan perubahan, alternative nya bisa menggunakan perntah END
+Mar 09 21:16:50 <Syandal_>	ROLLBACK              untuk mengembalikan perubahan
+Mar 09 21:17:16 <Syandal_>	perintah2 tranksaksi hanya digunakan pada perintah DML (INSERT, UPDATE, and DELETE) dan tidak bisa digunakan untuk pembuatan dan penghapusan tabel.
+Mar 09 21:17:24 <Syandal_>	!baris
+Mar 09 21:17:24 <Ayana>	================================
+Mar 09 21:18:29 <Syandal_>	Perintah BEGIN
+Mar 09 21:18:29 <Syandal_>	sintaks
+Mar 09 21:18:29 <Syandal_>	BEGIN;
+Mar 09 21:18:29 <Syandal_>	atau 
+Mar 09 21:18:29 <Syandal_>	BEGIN TRANSACTION;
+Mar 09 21:18:34 <Syandal_>	!baris
+Mar 09 21:18:35 <Ayana>	================================
+Mar 09 21:19:05 <Syandal_>	Perintah COMMIT
+Mar 09 21:19:05 <Syandal_>	Digunakan untuk menyimpan perubahan dari transaksi, perintah COMMIT menyimpan semua transaksi ke database sejak perintah COMMIT 
+Mar 09 21:19:05 <Syandal_>	sintaks
+Mar 09 21:19:05 <Syandal_>	COMMIT;
+Mar 09 21:19:05 <Syandal_>	atau
+Mar 09 21:19:05 <Syandal_>	END TRANSACTION;
+Mar 09 21:19:09 <Syandal_>	!baris
+Mar 09 21:19:10 <Ayana>	================================
+Mar 09 21:19:43 <Syandal_>	Perintah ROLLBACK
+Mar 09 21:19:43 <Syandal_>	adalah perintah transaksi untuk pembatalan (undo) transaksi yang belum tersimpan perubahan.
+Mar 09 21:19:43 <Syandal_>	perintah ROLLBACK hanya pembatalan sampe perintah COMMIT terakhir.
+Mar 09 21:19:50 <Syandal_>	!baris
+Mar 09 21:19:51 <Ayana>	================================
+Mar 09 21:22:44 <presiden>	kek clbk
+Mar 09 21:23:01 <Syandal_>	hmm
+Mar 09 21:23:05 <Syandal_>	ok contoh
+Mar 09 21:23:42 <Syandal_>	diasumsikan kita masih membuka database KodingKafe.db
+Mar 09 21:23:53 <Syandal_>	pertama kita liat dulu isi tabel menu;
+Mar 09 21:24:59 <Syandal_>	sqlite> SELECT * FROM menu;
+Mar 09 21:25:10 <Syandal_>	trus kita jalankan BEGIN;
+Mar 09 21:25:31 <Syandal_>	sqlite> BEGIN;
+Mar 09 21:25:42 <Syandal_>	trus kita hapus beberapa baris dari record dan lihat hasilnya
+Mar 09 21:26:03 <Syandal_>	sqlite> DELETE from MENU WHERE id > 10 AND id < 40;
+Mar 09 21:26:03 <Syandal_>	sqlite> SELECT * FROM menu;
+Mar 09 21:26:15 <Syandal_>	trus kita jalankan ROLLBACK; dan lihat hasilnya 
+Mar 09 21:26:31 <Syandal_>	sqlite> ROLLBACK;
+Mar 09 21:26:31 <Syandal_>	sqlite> SELECT * FROM menu;
+Mar 09 21:26:52 <Syandal_>	kita pindah ke demo remoteshare
+Mar 09 21:26:55 <Syandal_>	!baris
+Mar 09 21:26:55 <Ayana>	================================
+Mar 09 21:30:45 <Syandal_>	jadi kalo mau menyimpan transaksi kita harus pake perintah commit
+Mar 09 21:31:02 <Syandal_>	contohnya kita mau hapus record yang id nya 44 .. 
+Mar 09 21:31:05 <Syandal_>	caranya 
+Mar 09 21:31:11 <presiden>	mungkin bisa pakai perintah SELECT COUNT(*) WHERE namatabel; om
+Mar 09 21:31:29 <Syandal_>	^ id nya bagus
+Mar 09 21:31:36 <Syandal_>	bentar kita pindah ke demo
+Mar 09 21:31:45 <Syandal_>	ini >> 
+Mar 09 21:31:47 <Syandal_>	sqlite> BEGIN;
+Mar 09 21:31:47 <Syandal_>	sqlite> DELETE FROM menu where id = 44;
+Mar 09 21:31:47 <Syandal_>	sqlite> COMMIT;
+Mar 09 21:33:17 <presiden>	um, bukan where, tapi from
+Mar 09 21:33:44 *	Rifki has quit (Quit: Konversation terminated!)
+Mar 09 21:36:05 <Syandal_>	ok
+Mar 09 21:36:10 <Syandal_>	!baris
+Mar 09 21:36:10 <Ayana>	================================
+Mar 09 21:37:04 <Syandal_>	kesimpulannya : transaksi dimulai dengan BEGIN, diikuti perintah2, diikuti COMMIT .. diikuti perintah2 lagi, diikuti END;
+Mar 09 21:37:45 <Syandal_>	perintah ROLLBACK akan mengembalikan ke posisi COMMIT terakhir, kalau sudah kita kasih perintah COMMIT tidak bisa dikembalikan lagi
+Mar 09 21:37:49 <Syandal_>	!baris
+Mar 09 21:37:50 <Ayana>	================================
+Mar 09 21:37:56 <Syandal_>	jeda dulu ada yang mau ditanya ga
+Mar 09 21:40:07 <Syandal_>	ada yang tau konflik ga
+Mar 09 21:41:24 <Syandal_>	ok kita lanjut
+Mar 09 21:41:50 <Syandal_>	Klausa Conflict
+Mar 09 21:41:50 <Syandal_>	Saat kita mempunyai kolom yang diberlakukan constraint (UNIQUE, NOT NULL, CHECK / PRIMARY KEY) dan kita mencoba melakukan aksi INSERT atau UPDATE dengan nilai kolom yang ternyata conflict dengan constraint.
+Mar 09 21:42:09 <Syandal_>	contoh
+Mar 09 21:42:09 <Syandal_>	Jika kolom memiliki constraint UNIQUE dan kita mencoba INSERT nilai yang sama (duplikat nilai) dengan baris lain maka akan terjadi conflict dengan constraint. 
+Mar 09 21:42:09 <Syandal_>	klausa CONFLICT akan memberikan pilihan yang dilakukan untuk menyelesaikan conflict tersebut.
+Mar 09 21:42:14 <Syandal_>	!baris
+Mar 09 21:42:15 <Ayana>	================================
+Mar 09 21:42:25 <Syandal_>	begitulah konflik dari dulu deritanya ga pernah berakhir
+Mar 09 21:42:28 <Syandal_>	!baris
+Mar 09 21:42:29 <Ayana>	================================
+Mar 09 21:42:58 <Syandal_>	ada yang tau ga penyelesaian konflik di database
+Mar 09 21:43:33 <Syandal_>	Pada sqlite ada 5 penyelesaian (resolve) conflict :
+Mar 09 21:43:42 <Syandal_>	1. Rollback
+Mar 09 21:43:42 <Syandal_>	Adalah aktivitas yang melakukan operasi kebalikan dari transaksi, yaitu membatalkan operasi-operasi sebelumnya yang sudah terlanjut berjalan sampai keadaan database kembali ke awal sebelum transaksi dijalankan. 
+Mar 09 21:43:45 <Syandal_>	!baris
+Mar 09 21:43:45 <Ayana>	================================
+Mar 09 21:43:59 <Syandal_>	contoh
+Mar 09 21:43:59 <Syandal_>	ketika kita mencoba memperbaharui (update) 10 baris dan 5 baris terjadi konflik karena nilai tidak cuco dengan kondisi constraint maka tidak ada baris yang diperbaharui, 10 baris tetap sama dan pesan error akan dimunculkan.
+Mar 09 21:44:03 <Syandal_>	!baris
+Mar 09 21:44:04 <Ayana>	================================
+Mar 09 21:44:28 <Syandal_>	2. ABORT
+Mar 09 21:44:28 <Syandal_>	Adalah pembatalan (cancel) statemen sqlite hanya pada posisi conflict dan transaksi tidak akan dibatalkan.
+Mar 09 21:44:28 <Syandal_>	contoh
+Mar 09 21:44:28 <Syandal_>	ketika kita mencoba memperbaharui 10 baris dan 5 baris terjadi conflict dengan constraint maka hanya 5 yang gagal diperbaharui tetapi 5 baris lainnya berhasil diperbaharui, pesan error akan dimunculkan
+Mar 09 21:44:32 <Syandal_>	!baris
+Mar 09 21:44:33 <Ayana>	================================
+Mar 09 21:45:05 <Syandal_>	3. FAIL
+Mar 09 21:45:05 <Syandal_>	Adalah pembatalan statemen sqlite terakhir yang terjadi conflict dengan constraint, akhirnya transaksi tidak bisa dilanjutkan tetapi perubahan terakhir akan di prioritaskan pada keadaan commited.
+Mar 09 21:45:05 <Syandal_>	contoh
+Mar 09 21:45:05 <Syandal_>	ketika kita mencoba memperbaharui 10 baris, dan nilai pada 5 baris terjadi conflict dengan constraint, maka hanya 4 baris yang diupdate sisanya tidak, pesan error akan dimunculkan
+Mar 09 21:45:08 <Syandal_>	!baris
+Mar 09 21:45:10 <Ayana>	================================
+Mar 09 21:45:33 <Syandal_>	4. IGNORE
+Mar 09 21:45:33 <Syandal_>	Adalah akan mengabaikan baris yang conflict dengan constraint dan melanjutkan baris berikutnya dari statemen sqlite. 
+Mar 09 21:45:33 <Syandal_>	contoh
+Mar 09 21:45:33 <Syandal_>	ketika kita mencoba memperbaharui 10 baris, dan nilai pada 5 baris terjadi conflict dengan constraint, maka hanya 4 baris yang diupdate sisanya tidak, pesan error tidak dimunculkan.
+Mar 09 21:45:35 <Syandal_>	!baris
+Mar 09 21:45:36 <Ayana>	================================
+Mar 09 21:45:49 <Syandal_>	5. REPLACE
+Mar 09 21:45:49 <Syandal_>	tergantung tipe constraint:
+Mar 09 21:45:49 <Syandal_>	- Ketika constraint nya UNIQUE atau PRIMARY KEY, REPLACE akan pengganti baris yang melanggar constraint dengan nilai masukan baru
+Mar 09 21:45:49 <Syandal_>	- Ketika constraintnya NOT NULL, REPLACE akan mengganti nilai NULL dengan nilai default, jika tidak ada nilai default maka statemen akan di batalkan (abort)
+Mar 09 21:45:49 <Syandal_>	- Ketika constraintnya CHECK, statemen akan dibatalkan
+Mar 09 21:45:52 <Syandal_>	!baris
+Mar 09 21:45:53 <Ayana>	================================
+Mar 09 21:45:57 <Syandal_>	jeda
+Mar 09 21:52:32 <Syandal_>	im back
+Mar 09 21:52:36 <Syandal_>	ok kita langsung latihan
+Mar 09 21:52:51 <Syandal_>	pertama kita buat tabel baru buat latihan namanya kategorimenu2
+Mar 09 21:53:13 <Syandal_>	CREATE TABLE "kategorimenu" (
+Mar 09 21:53:13 <Syandal_>	id INT(1) PRIMARY KEY NOT NULL ON CONFLICT IGNORE,
+Mar 09 21:53:13 <Syandal_>	nama VARCHAR(50)
+Mar 09 21:53:13 <Syandal_>	);
+Mar 09 21:53:42 <Syandal_>	pada contoh itu penyelesaian konfliknya ignore
+Mar 09 21:53:58 <Syandal_>	setelah itu kita masukin data yang konflik di kolom id
+Mar 09 21:54:51 <Syandal_>	sqlite> INSERT INTO "kategorimenu" VALUES(1,'makanan');
+Mar 09 21:54:51 <Syandal_>	sqlite> INSERT INTO "kategorimenu" VALUES(2,'lauk');
+Mar 09 21:54:51 <Syandal_>	sqlite> INSERT INTO "kategorimenu" VALUES(2,'minuman');
+Mar 09 21:54:51 <Syandal_>	sqlite> INSERT INTO "kategorimenu" VALUES(4,'sayur');
+Mar 09 21:54:51 <Syandal_>	sqlite> INSERT INTO "kategorimenu" VALUES(4,'cuci mulut');
+Mar 09 21:54:51 <Syandal_>	sqlite> INSERT INTO "kategorimenu" VALUES(6,'sambel');
+Mar 09 21:56:02 <Syandal_>	disitu kolom id constraintnya PRIMARY KEY yang syarat nya harus unik ga boleh ada duplikat nilai
+Mar 09 21:56:16 <Syandal_>	ok kitaliat efek nya di demo remoteshare
+Mar 09 21:57:46 <presiden>	oke
+Mar 09 21:58:04 <presiden>	huruf kecil oke om
+Mar 09 22:02:22 <Syandal_>	:3
+Mar 09 22:02:46 <Syandal_>	udah nanggung biar seragam sama huruf yang tadi
+Mar 09 22:02:48 <Syandal_>	!baris
+Mar 09 22:02:50 <Ayana>	================================
+Mar 09 22:03:14 <Syandal_>	sekarang kita lakukan percobaan ke2 yaitu membuat table baru untuk latihan namanya kategorimenu3
+Mar 09 22:03:28 <Syandal_>	CREATE TABLE "kategorimenu3" (
+Mar 09 22:03:28 <Syandal_>	id INT(1) PRIMARY KEY NOT NULL ON CONFLICT IGNORE,
+Mar 09 22:03:28 <Syandal_>	nama VARCHAR(50)
+Mar 09 22:03:28 <Syandal_>	);
+Mar 09 22:03:53 <Syandal_>	mangap salah
+Mar 09 22:04:15 <Syandal_>	penyelesaiannya bukan IGNORE tapi REPLACE
+Mar 09 22:04:30 <Syandal_>	CREATE TABLE "kategorimenu3" (
+Mar 09 22:04:30 <Syandal_>	id INT(1) PRIMARY KEY NOT NULL ON CONFLICT REPLACE,
+Mar 09 22:04:30 <Syandal_>	nama VARCHAR(50)
+Mar 09 22:04:30 <Syandal_>	);
+Mar 09 22:04:47 <Syandal_>	ok trus kita isi dengan data yang konflik dengan constraint nya
+Mar 09 22:04:58 <Syandal_>	INSERT INTO "kategorimenu3" VALUES(1,'makanan');
+Mar 09 22:04:58 <Syandal_>	INSERT INTO "kategorimenu3" VALUES(2,'lauk');
+Mar 09 22:04:58 <Syandal_>	INSERT INTO "kategorimenu3" VALUES(2,'minuman');
+Mar 09 22:04:58 <Syandal_>	INSERT INTO "kategorimenu3" VALUES(4,'sayur');
+Mar 09 22:04:58 <Syandal_>	INSERT INTO "kategorimenu3" VALUES(4,'cuci mulut');
+Mar 09 22:04:58 <Syandal_>	INSERT INTO "kategorimenu3" VALUES(6,'sambel');
+Mar 09 22:05:17 <Syandal_>	kita pindah ke demo
+Mar 09 22:06:34 *	candragati (~yaaic@115.178.216.237) has joined
+Mar 09 22:08:36 <candragati>	diskusinya udah bubar? 
+Mar 09 22:09:24 <Syandal_>	dikit lagi
+Mar 09 22:10:48 <candragati>	ane boleh nanya gak? hari ini tentang sqlite kan ya?
+Mar 09 22:13:44 <Syandal_>	iya
+Mar 09 22:13:48 <Syandal_>	tanya aja
+Mar 09 22:13:54 <Syandal_>	yang jawab dia >> presiden 
+Mar 09 22:14:01 <Syandal_>	ok semua materi hari ini udah selesi
+Mar 09 22:14:12 <Syandal_>	jeda 5 menit .. kalo ada yang mau bertanya dipersilahkan
+Mar 09 22:14:14 <Syandal_>	!baris
+Mar 09 22:14:15 <Ayana>	================================
+Mar 09 22:14:20 <Syandal_>	sampe jumpa di pertemuan berikutnya
+Mar 09 22:14:25 <Syandal_>	!wasalam
+Mar 09 22:14:26 <Ayana>	Syandal_ membalas salam :  >> Waalaikum Salam Warrahmatullahi Wabarakatuh
+Mar 09 22:14:33 <Syandal_>	Ayana ada pertanyaan ga
+Mar 09 22:14:41 <Ayana>	ga
+Mar 09 22:16:10 <candragati>	lah? udahan?
+Mar 09 22:17:05 <Syandal_>	udah dari tadi
+Mar 09 22:17:13 <candragati>	#ask sqlite kan mudah di baca isinya. bagaimana mengamankan isi databasenya?
+Mar 09 22:17:30 <Syandal_>	dear bung lappet.. untuk log ssh nya disini >> https://asciinema.org/a/VUko3NAJgbqce6qXnTFQOQMBL
+Mar 09 22:17:32 <Ayana>	^ diskusi online sqlite3 pertemuan 3 - asciinema
+Mar 09 22:17:44 <Syandal_>	nah itu belum tau deh
+Mar 09 22:17:54 <Syandal_>	coba tanya pakde presiden
+Mar 09 22:18:08 <Syandal_>	log lainnya menyusul
+Mar 09 22:18:52 <Syandal_>	fyi, log video itu file nya kecil kayaknya karna cuman string biasa yang dianimasiin pake css dan js .. coba aja video nya bisa diselect .. #cmiiw
+Mar 09 22:20:14 *	greenshirt (~greenshir@203.78.118.42) has joined
+Mar 09 22:20:34 *	Syandal_ saatnya afk dulu
+Mar 09 22:20:34 *	greenshirt is now known as Guest63814
+Mar 09 22:20:40 <Syandal_>	see you next time
+Mar 09 22:20:48 <Guest63814>	Test 

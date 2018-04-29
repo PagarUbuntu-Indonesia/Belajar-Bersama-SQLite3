@@ -1,0 +1,510 @@
+Mar 16 20:12:25 <Ayana>	================================
+Mar 16 20:13:02 <Syandal_>	Hari ini kita mau ngadain diskusi online materi sqlite3 untuk pertemuan 4a.. sebelum mulai kita absen dulu.. kalo uda > 250 orang baru acaranya kita mulai
+Mar 16 20:13:03 <Mugiono>	Syandal_: sebenernya saya mengharap ada yang nanya $PATH python.
+Mar 16 20:13:06 <Syandal_>	1. Syandal_
+Mar 16 20:13:19 <Syandal_>	$PATH nya ptyhon apaan?
+Mar 16 20:13:26 *	triawarman di PM nick triawartini
+Mar 16 20:13:34 *	Mugiono mode silent.
+Mar 16 20:13:54 <Syandal_>	hmm
+Mar 16 20:14:01 <triawarman>	triawartini: Mas, kok sepi forumnya? <<< ttapi sepertinya uda ga ada, entah berapa lama ini pesan
+Mar 16 20:14:02 <Ayana>	4. Ayana
+Mar 16 20:14:05 *	triawarman baru masuk
+Mar 16 20:14:12 <triawarman>	btw sila dilanjut
+Mar 16 20:14:16 <Mugiono>	triawarman: salim bund. Lama tak jumpa.
+Mar 16 20:14:18 <Syandal_>	kemarin lusa mungkin
+Mar 16 20:14:43 <triawarman>	kalau gitu Syandal_ jdi triawartini ?
+Mar 16 20:14:55 <Syandal_>	kita hari ini khusus bahas klausa SELECT .. referensinya ini >> https://www.guru99.com/sqlite-query.html
+Mar 16 20:15:01 <Syandal_>	:3
+Mar 16 20:15:03 <Syandal_>	ga
+Mar 16 20:15:07 <Mugiono>	Cprs tuh triawartini
+Mar 16 20:15:15 <Syandal_>	menarik
+Mar 16 20:15:19 <Mugiono>	Duh ga jadi mode silent.
+Mar 16 20:15:20 <Syandal_>	bukannya pak hatori 
+Mar 16 20:15:54 <Mugiono>	Kurang tahu deh.
+Mar 16 20:16:51 <Mugiono>	Kurang 3 menit jam 8.
+Mar 16 20:17:00 <Mugiono>	Masih boleh oot.
+Mar 16 20:17:04 <triawarman>	btw koneksi inet rada kumat, jadi kalau tiba2 ga bereaksi, artinya DC lama
+Mar 16 20:17:47 *	Mugiono is listening via vallen - bojomu turahanku
+Mar 16 20:20:01 <Syandal_>	hmm
+Mar 16 20:20:08 <Syandal_>	!baris
+Mar 16 20:20:10 <Ayana>	================================
+Mar 16 20:20:45 <Syandal_>	untuk demo kaya biasa di link ini >> ssh view@sqlite.remoteshare.xyz pass: rahasia123
+Mar 16 20:22:16 <Syandal_>	baiklah karna uda 4 ekor member yang muncul kita mulai aja diskusi online kita hari ini
+Mar 16 20:22:19 <Syandal_>	!salam
+Mar 16 20:22:19 <Ayana>	Syandal_ mengucapkan salam :
+Mar 16 20:22:20 <Ayana>	Assalamu Alaikum
+Mar 16 20:22:20 <presiden>	Ayana, Waalaikumsalam Warahmatullahi Wabarakatuh
+Mar 16 20:22:22 <Syandal_>	!baris
+Mar 16 20:22:22 <Ayana>	================================
+Mar 16 20:22:54 <Syandal_>	Diskusi hari ini untuk materi SQLite3 pertemuan 4a
+Mar 16 20:23:02 <Syandal_>	materi yang kita bahas khusus klausa
+Mar 16 20:23:13 <Syandal_>	ok langsung aja kita ke pembahasan pertama
+Mar 16 20:23:58 <Syandal_>	The SELECT Pipeline
+Mar 16 20:24:08 <Syandal_>	Sintaks dari SELECT adalah untuk merepresentasikan data. SELECT mendukung berbagaimacam tipe query. Penggunaan SELECT memiliki klausa opsional yang sangat luas.
+Mar 16 20:24:17 <Syandal_>	Sintaks SELECT yang paling umum seperti ini :
+Mar 16 20:24:26 <Syandal_>	SELECT [DISTINC] select_heading
+Mar 16 20:24:26 <Syandal_>	    FROM source_table
+Mar 16 20:24:26 <Syandal_>	    WHERE filter_expression
+Mar 16 20:24:26 <Syandal_>	    GROUP BY grouping_expressions
+Mar 16 20:24:26 <Syandal_>	        HAVING filter_expression
+Mar 16 20:24:26 <Syandal_>	    ORDER BY ordering_expressions
+Mar 16 20:24:26 <Syandal_>	    LIMIT count
+Mar 16 20:24:26 <Syandal_>	        OFFSET count
+Mar 16 20:24:41 <Syandal_>	setiap klausa yang mengikuti perintah SELECT akhirnya membentuk seperti pipeline. secara konsep hasil dari statemen SELECT adalah memproses pemanggilan tabel, dan meneruskan (passing) tabel itu melewati pipeline. setiap tahapan membuat tabel aktual sebagai input untuk operasi kusus dan melewatkan tabel masilnya ke tahapan berikutnya.  
+Mar 16 20:24:52 <Syandal_>	 SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY -> LIMIT -> OFFSET
+Mar 16 20:24:52 <Syandal_>	 
+Mar 16 20:24:52 <Syandal_>	 ^ pada setiap klausa diatas mewakili satu tahapan pipeline
+Mar 16 20:24:59 <Syandal_>	!baris
+Mar 16 20:25:00 <Ayana>	================================
+Mar 16 20:26:28 <Syandal_>	baiklah kita langsung ke pembahasan yang kedua
+Mar 16 20:26:38 <Syandal_>	Untuk membuat query sqlite kita harus mengetahui tentang klausa SELECT, FROM, WHERE, GROUP BY, ORDER BY, dan LIMIT.
+Mar 16 20:27:04 <Syandal_>	Membaca data menggunakan SELECT
+Mar 16 20:27:04 <Syandal_>	Klausa SELECT adalah pernyataan yang digunakan pada query sqlite. Klausa select biasanya diikuti oleh klausa FROM berikut tentang klausa FROM.
+Mar 16 20:27:21 <Syandal_>	Klausa FROM digunakan untuk menjelaskan dimana kita ingin memilih data menggunakan klausa SELECT. Pada klausa FROM kita bisa menentukan satu atau lebih tabel atau subquery untuk memilih data.
+Mar 16 20:28:14 <Syandal_>	pertama kita buka file latihan database kita
+Mar 16 20:28:25 <Syandal_>	bash-4.2$ sqlite3 KodingKafe.db 
+Mar 16 20:30:46 <Syandal_>	selanjutnya kita jalankan perintah seperti ini 
+Mar 16 20:30:47 <Syandal_>	sqlite> SELECT * FROM menu INNER JOIN kategorimenu ON menu.id_kategori = kategorimenu.id;
+Mar 16 20:31:10 <Syandal_>	ok kita pindah ke demo remoteshare
+Mar 16 20:39:22 <Syandal_>	^ ada yang bisa jelasin ga maksud dari query itu
+Mar 16 20:40:27 <Syandal_>	untuk pembahasan INNER JOIN nanti pertemuan 5
+Mar 16 20:41:46 <Syandal_>	singkatnya perintah diatas akan mengambil data dari tabel menu dan kategori menu dimana memili id yang sama 
+Mar 16 20:42:08 <Syandal_>	!baris
+Mar 16 20:42:09 <Ayana>	================================
+Mar 16 20:42:18 <Syandal_>	baiklah kita lanjut ke pembahasan perikutnya
+Mar 16 20:42:23 <Syandal_>	A Literal Value
+Mar 16 20:42:33 <Syandal_>	Nilai literal adalah konstanta yang bisa digunakan pada SELECT. kita bisa menggunakan nilai literal dengan cara yang sama seperti menggunakan nama kolom pada klausa SELECT. 
+Mar 16 20:42:50 <Syandal_>	berikut beberapa nilai literal yang bisa digunakan :
+Mar 16 20:42:59 <Syandal_>	- Literal Numerik (seperti 1, 2.55, dst)
+Mar 16 20:42:59 <Syandal_>	- Literal String  (semua string seperti 'Astina', 'Hai Dunia..', dst)
+Mar 16 20:42:59 <Syandal_>	- NULL
+Mar 16 20:42:59 <Syandal_>	- CURRENT_TIME  (akan memberikan waktu saat ini)
+Mar 16 20:42:59 <Syandal_>	- CURRENT_DATE  (akan memberikan tanggal saat ini)
+Mar 16 20:43:20 <Syandal_>	Ini berguna saat kita menginginkan SELECT nilai tetap untuk mengambil semua baris. Contohnya : misalnya kita menginginkan SELECT semua daftar nama menu dari tabel menu dengan nama kolom baru kode kategori menu yang berisi kategori 2 seperti berikut:
+Mar 16 20:43:30 <Syandal_>	sqlite> SELECT *, 2 AS 'kode kategori' FROM menu;
+Mar 16 20:45:32 <Syandal_>	ok kita pindah ke demo
+Mar 16 20:47:53 <Syandal_>	^ arti query diatas adalah
+Mar 16 20:48:26 <Syandal_>	SELECT (memilih) semua kolom, juga memilih 2 sebagai kolom 'Kode Kategori' dari tabel menu
+Mar 16 20:48:39 <Syandal_>	2 itu yang kita anggap literal
+Mar 16 20:49:02 <Syandal_>	catatan : kolom 'kode kategori' bukan menambahkan kolom baru pada tabel, ini hanya kolom virtual yang digunakan oleh query untuk menampilkan hasil, kolom ini tidak akan dimasukan ke dalam tabel
+Mar 16 20:49:17 <Syandal_>	alias adalah sebuah nama yang mewakili kolom atau kita melakukan SELECT kolom dengan sebuah nama baru. alias ditentukan menggunakan keyword "AS"
+Mar 16 20:49:31 <Syandal_>	contoh jika kita melakukan SELECT kolom id_kategori dan menampilkannya sebagai 'ID Kategori' kita bisa memberikan perintah
+Mar 16 20:49:42 <Syandal_>	sqlite> SELECT id_kategori AS 'ID Kategori' FROM menu;
+Mar 16 20:49:59 <Syandal_>	!baris
+Mar 16 20:50:00 <Ayana>	================================
+Mar 16 20:50:38 <Syandal_>	kita coba dulu query diatas di demo
+Mar 16 20:50:50 *	triawarman nambahin saran, walaupun sebagai alias dari nama kolum, sebaiknya tidak gunakan spasi
+Mar 16 20:51:02 <Syandal_>	Ow..
+Mar 16 20:51:06 <Syandal_>	contohnya kek gimana
+Mar 16 20:51:08 <triawarman>	tapi tergantung keadaan.
+Mar 16 20:51:54 <Syandal_>	kayaknya pas di aplikasi beneran.. alias nggak pake spasi biar lebih gampang dimanipulasinya lagi .. *keknya sih*
+Mar 16 20:52:04 *	triawarman (dulu) suka buat salah satu column nilainya berupa select .... as "total_harga"
+Mar 16 20:52:35 <Syandal_>	ow
+Mar 16 20:53:03 <Syandal_>	kalo di web programming bisa dipake ga?
+Mar 16 20:53:08 <triawarman>	nah iya, kalau hasil query dipanggil didalam aplikasi lagi
+Mar 16 20:53:35 <triawarman>	bisa
+Mar 16 20:53:37 <Syandal_>	ow
+Mar 16 20:54:20 <triawarman>	(21:33:36) triawarman: nah iya, kalau hasil query dipanggil didalam aplikasi lagi >> nah iya, kalau hasil query dipanggil didalam aplikasi lagi, sebaiknya tanpa spasi, dan huruf kecil semua, terkecuali dalam kondisi ingin memeriksa melalui terminal seperti kasus lattihan ini
+Mar 16 20:54:40 <Syandal_>	ow
+Mar 16 20:54:42 <Syandal_>	ok
+Mar 16 20:54:52 <triawarman>	sila dilanjut pak Syandal_ :)
+Mar 16 20:54:59 <Syandal_>	ok noted >> namaalias bisa dipanggil di aplikasi
+Mar 16 20:55:03 <Syandal_>	ok lanjut
+Mar 16 20:55:05 <Syandal_>	!baris
+Mar 16 20:55:06 <Ayana>	================================
+Mar 16 20:56:09 <Syandal_>	ok kita coba yang ini di demo >> sqlite> SELECT id_kategori AS 'IDKategori' FROM menu;
+Mar 16 20:57:52 <Syandal_>	^ contoh diatas mengambil data dari sebuah kolom yaitu id_kategori dan mengganti jadi nama alias 'IDKategori'
+Mar 16 20:58:13 <Syandal_>	lanjut
+Mar 16 20:58:15 <Syandal_>	Kita juga bisa menggunakan alias pada nama tabel dengan keyword AS. 
+Mar 16 20:58:26 <Syandal_>	contoh
+Mar 16 20:58:27 <Syandal_>	sqlite> SELECT m.* FROM menu AS m;
+Mar 16 20:58:34 <Syandal_>	ok kita coba di demo
+Mar 16 21:01:03 <Syandal_>	ini berguna jika kita mengabungkan lebih dari 1 tabel, daripada mengulang nama tabel dalam query, kita bisa memberikan setiap tabel nama alias pendek, contoh query
+Mar 16 21:01:18 <Syandal_>	sqlite> SELECT menu.nama, kategorimenu.namakategori FROM menu INNER JOIN kategorimenu ON menu.id = kategorimenu.id;
+Mar 16 21:01:28 <Syandal_>	ok kita coba di demo
+Mar 16 21:04:22 <Syandal_>	mangap bukan yang itu
+Mar 16 21:04:25 <Syandal_>	tapi yang ini 
+Mar 16 21:04:26 <Syandal_>	sqlite> SELECT menu.nama, kategorimenu.nama FROM menu INNER JOIN kategorimenu ON menu.id_kategori = kategorimenu.id LIMIT 10;
+Mar 16 21:07:26 <Syandal_>	contoh alias tabel nya seperti ini 
+Mar 16 21:07:27 <Syandal_>	sqlite> SELECT m.nama, k.nama FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id LIMIT 10;
+Mar 16 21:07:32 *	Syandal_ pindah ke demo
+Mar 16 21:09:47 <Syandal_>	^ contoh diatas kita melakukan perintah select kolom nama pada tabel m dan nama pada tabel k dimana m adalah alias tabel menu dan k adalah alias tabel kategorimenu trus kita gabungin pake iner join
+Mar 16 21:10:45 <Syandal_>	!baris
+Mar 16 21:10:46 <Ayana>	================================
+Mar 16 21:10:54 <Syandal_>	pembahasan selanjutnya 
+Mar 16 21:10:59 <Syandal_>	Klausa WHERE
+Mar 16 21:11:17 <Syandal_>	Membuat query menggunakan klausa SELECT dengan klausa FROM akan menampilkan semua baris dari tabel, untuk memfilter data keluaran kita bisa menggunakan klausa WHERE.
+Mar 16 21:11:44 <Syandal_>	Klausa WHERE digunakan untuk memfilter hasil keluaran dari query sqlite, cara kerjanya nya adalah melakukan kalkulasi pada bagian ekspresi, dan hasilnya berupa boolean, true, false, null lalu hanya baris yang bernilai true yang akan di kembalikan (return) untuk yang bernilai false atau null tidak akan dikembalikan.
+Mar 16 21:11:51 <Syandal_>	berikut sintaksnya
+Mar 16 21:12:00 <Syandal_>	sqlite> SELECT ... FROM ... WHERE ekspresi;
+Mar 16 21:13:27 <Syandal_>	contoh 
+Mar 16 21:13:29 <Syandal_>	sqlite> SELECT * FROM menu WHERE id_kategori = 3;
+Mar 16 21:13:34 *	Syandal_ pindah ke demo
+Mar 16 21:14:46 <Syandal_>	!baris
+Mar 16 21:14:47 <Ayana>	================================
+Mar 16 21:15:23 <Syandal_>	Pembahasan selanjutnya 
+Mar 16 21:15:35 <Syandal_>	List of operators in SQLite and how to use them
+Mar 16 21:17:08 <Syandal_>	operator concatenation
+Mar 16 21:17:55 <Syandal_>	digunakan untuk menggabungkan beberapa nilai literal atau kolom menjadi satu
+Mar 16 21:18:00 <Syandal_>	contohnya
+Mar 16 21:18:10 <Syandal_>	sqlite> SELECT 'ID dan Nama' || id || nama AS NamaDanID FROM menu LIMIT 10;
+Mar 16 21:18:10 <Syandal_>	NamaDanID   
+Mar 16 21:18:20 *	Syandal_ pindah ke demo
+Mar 16 21:20:25 *	triawarman saran kalau bisa demonya dipersiapkan dahulu (dalam bentuk link ke https://asciinema.org seperti sebelumnya ) 
+Mar 16 21:20:25 <Syandal_>	^ query itu contoh kita menggabungkan (concatenate) nilai literal + kolom id + kolom nama menjadi sebuah alias NamaDanID
+Mar 16 21:20:27 <Ayana>	^ asciinema - Record and share your terminal sessions, the right way
+Mar 16 21:20:37 <Syandal_>	hmmm
+Mar 16 21:20:38 <triawarman>	jadi disini tinggal nonton + ujicoba
+Mar 16 21:20:41 <Syandal_>	^ sarannya menarik
+Mar 16 21:20:54 <Syandal_>	soalnya nulis contekannya lumayan lama
+Mar 16 21:21:04 <Syandal_>	jadi ga sempet bikin demonya
+Mar 16 21:21:18 <Syandal_>	mangap _/|\_
+Mar 16 21:21:37 <Syandal_>	!baris
+Mar 16 21:21:37 <Ayana>	================================
+Mar 16 21:21:41 <Syandal_>	pembahasan selanjutnya
+Mar 16 21:21:52 <Syandal_>	SQLite CAST operator
+Mar 16 21:22:08 <Syandal_>	Operator Cast digunakan untuk mengubah nilai dari sebuah tipe data ke tipe data lain.
+Mar 16 21:22:15 <Syandal_>	contohnya jika kita memiliki nilai numerik yang disimpan sebagai string kaya '12.5' dan kita menginginkan diubah jadi nilai numerik beneran, kita menggunakan operator CAST contoh
+Mar 16 21:22:24 <Syandal_>	sqlite> SELECT CAST('12.5' AS REAL) ToReal, CAS(12.5 AS INTEGER) As ToInteger;
+Mar 16 21:22:38 *	Syandal_ pindah ke demo
+Mar 16 21:24:57 <Syandal_>	^ pada contoh diatas string '12.5' diubah ke real dan nilai real 12.5 diubah ke integer 12
+Mar 16 21:25:12 <Syandal_>	!baris
+Mar 16 21:25:13 <Ayana>	================================
+Mar 16 21:25:17 <Syandal_>	pembahasan selanjutnya
+Mar 16 21:25:38 <Syandal_>	SQLite Arithmetic Operators
+Mar 16 21:25:59 <Syandal_>	Digunakan untuk melakukan operasi aritmatika pada dua atau lebih literal numerik atau kolom numerik.
+Mar 16 21:26:12 <Syandal_>	- penjumlahan (+)
+Mar 16 21:26:12 <Syandal_>	- pengurangan (-)
+Mar 16 21:26:12 <Syandal_>	- perkalian (*)
+Mar 16 21:26:12 <Syandal_>	- modulo (%)
+Mar 16 21:26:12 <Syandal_>	- pembagian (/)
+Mar 16 21:26:24 <Syandal_>	contoh
+Mar 16 21:26:24 <Syandal_>	sqlite> SELECT 25+6, 25-6, 25%6, 25/6;
+Mar 16 21:26:31 *	Syandal_ pindah ke demo
+Mar 16 21:27:59 <Syandal_>	query SELECT diatas akan menampilkan hasil dari operasi aritmatika
+Mar 16 21:28:15 <Syandal_>	!baris
+Mar 16 21:28:16 <Ayana>	================================
+Mar 16 21:28:24 <Syandal_>	Pembahasan selanjutnya
+Mar 16 21:28:35 <Syandal_>	SQLite Comparison operators
+Mar 16 21:28:47 <Syandal_>	Digunakan untuk membandingkan dua operand dan menghasilkan nilai boolean true atau false
+Mar 16 21:28:57 <Syandal_>	<  (lebih kecil) menghasilkan nilai true jika operand kiri lebih kecil dari operand kanan
+Mar 16 21:28:57 <Syandal_>	<= (lebih kecil samadengan) menghasilkan nilai true jika operand kiri lebih kecil atau sama dengan operand kanan
+Mar 16 21:28:57 <Syandal_>	>  (lebih besar)  menghasilkan nilai true jika operand kiri lebih besar dari operand kanan
+Mar 16 21:28:57 <Syandal_>	>= (lebih besar samadengan) menghasilkan nilai true jika operand kiri lebih besar atau sama dengan operand kanan
+Mar 16 21:28:57 <Syandal_>	= atau == (samadengan) menghasilkan nilai true jika kedua operand bernilai sama
+Mar 16 21:28:57 <Syandal_>	!= atau <> menghasilkan nilai true jika kedua operand bernilai berbeda
+Mar 16 21:29:13 <Syandal_>	contoh
+Mar 16 21:29:13 <Syandal_>	sqlite> SELECT
+Mar 16 21:29:13 <Syandal_>	        10<6 as '<', 10<=6 AS '<=',
+Mar 16 21:29:13 <Syandal_>	        10>6 as '>', 10>=6 AS '>=',
+Mar 16 21:29:13 <Syandal_>	        10=6 as '=', 10==6 AS '==',
+Mar 16 21:29:13 <Syandal_>	        10!=6 as '!=', 10<>6 AS '<>';
+Mar 16 21:29:25 *	Syandal_ pindah ke demo
+Mar 16 21:32:50 <Syandal_>	!baris
+Mar 16 21:32:51 <Ayana>	================================
+Mar 16 21:32:55 <Syandal_>	pembahasan berikutnya
+Mar 16 21:33:04 <Syandal_>	SQLite Pattern Matching operators
+Mar 16 21:33:17 <Syandal_>	Operator LIKE digunakan untuk pencocokan pola, penggunaan LIKE untuk mencari nilai yang cocok dengan pola seperti berikut
+Mar 16 21:33:26 <Syandal_>	- berisi, contoh nama LIKE '%ES'  akan mencari kolom nama yang berisi string ES pada tabel menu
+Mar 16 21:33:26 <Syandal_>	- mulai, contoh nama LIKE 'Nasi%' akan mencari kolom nama yang nilanya dimulai dengan string Nasi
+Mar 16 21:33:26 <Syandal_>	- diakhiri, contoh nama LIKE '%ng' akan mencari kolom nama yang nilai diakhir dengan string *ng
+Mar 16 21:33:26 <Syandal_>	- cuco dengan sebuah karakter, contoh nama LIKE 'N___' akan mencari kolom nama yang nilainya cuco dengan sejumlah karakter
+Mar 16 21:35:08 <Syandal_>	contoh
+Mar 16 21:35:09 <Syandal_>	sqlite> SELECT * FROM menu WHERE nama LIKE 'Nasi%';
+Mar 16 21:35:14 *	Syandal_ pindah ke demo
+Mar 16 21:36:52 <Syandal_>	contoh 2
+Mar 16 21:36:54 <Syandal_>	sqlite> SELECT * FROM menu WHERE nama LIKE '%g';
+Mar 16 21:37:51 <Syandal_>	contoh 3
+Mar 16 21:37:53 <Syandal_>	sqlite> SELECT * FROM menu WHERE nama LIKE '%ng%';
+Mar 16 21:38:58 <Syandal_>	!baris
+Mar 16 21:38:58 <Ayana>	================================
+Mar 16 21:39:00 <Syandal_>	Operator GLOB sama seperti operator LIKE, tetapi operator GLOB bersifat case sensitive.
+Mar 16 21:41:02 <Syandal_>	contoh
+Mar 16 21:41:11 <Syandal_>	sqlite> SELECT 'Jack' GLOB 'j%';
+Mar 16 21:41:18 <Syandal_>	sqlite> SELECT 'Jack' LIKE 'j%';
+Mar 16 21:41:24 <Syandal_>	pindah ke demo
+Mar 16 21:42:15 <Syandal_>	!baris
+Mar 16 21:42:15 <Ayana>	================================
+Mar 16 21:42:19 <Syandal_>	jeda 10 menit
+Mar 16 21:42:21 <Syandal_>	!baris
+Mar 16 21:42:22 <Ayana>	================================
+Mar 16 21:46:47 <Syandal_>	im back
+Mar 16 21:46:56 <Syandal_>	belum ada setengah scrool bar :3
+Mar 16 21:47:15 <Syandal_>	keknya hari ini jadi malem sabtu yang melelahkan :v
+Mar 16 21:47:18 <Syandal_>	ok lanjut
+Mar 16 21:47:20 <Syandal_>	!baris
+Mar 16 21:47:21 <Ayana>	================================
+Mar 16 21:47:34 <Syandal_>	Other operators:
+Mar 16 21:47:36 <Syandal_>	!baris
+Mar 16 21:47:37 <Ayana>	================================
+Mar 16 21:47:58 <Syandal_>	Operator Logikal
+Mar 16 21:47:58 <Syandal_>	Digunakan untuk operasi logikal
+Mar 16 21:47:58 <Syandal_>	- AND  akan mengembalikan true ketika semua operand atau hasil ekspresi bernila true
+Mar 16 21:47:58 <Syandal_>	  Operand1  Operand2    Hasil
+Mar 16 21:47:58 <Syandal_>	  ---------------------------
+Mar 16 21:47:58 <Syandal_>	  false     false  ->   false
+Mar 16 21:47:58 <Syandal_>	  false     true   ->   false
+Mar 16 21:47:58 <Syandal_>	  true      false  ->   false
+Mar 16 21:47:58 <Syandal_>	  true      true   ->   true
+Mar 16 21:48:14 <Syandal_>	  contoh penggunaannya 
+Mar 16 21:48:14 <Syandal_>	  sqlite> SELECT * FROM menu
+Mar 16 21:48:14 <Syandal_>	          WHERE (id > 5) AND (nama LIKE 'N%');
+Mar 16 21:48:19 *	Syandal_ pindah ke demo
+Mar 16 21:49:53 <Syandal_>	^ Contoh diatas adalah kuery untuk SELECT data yang id nya lebih besar dari 5 dan nama dimulai huruf 'N';
+Mar 16 21:50:08 <Syandal_>	!baris
+Mar 16 21:50:08 <Ayana>	================================
+Mar 16 21:50:25 <Syandal_>	- OR akan mengembalikan true ketika salah satu operand atau hasil ekspresi bernilai true
+Mar 16 21:50:25 <Syandal_>	  Operand1  Operand2    Hasil
+Mar 16 21:50:25 <Syandal_>	  ---------------------------
+Mar 16 21:50:25 <Syandal_>	  false     false  ->   false
+Mar 16 21:50:25 <Syandal_>	  false     true   ->   True
+Mar 16 21:50:25 <Syandal_>	  true      false  ->   True
+Mar 16 21:50:25 <Syandal_>	  true      true   ->   True
+Mar 16 21:50:25 <Syandal_>	  contoh penggunaannya
+Mar 16 21:50:25 <Syandal_>	  sqlite> SELECT * FROM menu
+Mar 16 21:50:25 <Syandal_>	          WHERE (id > 5) OR (nama LIKE 'N%'); 
+Mar 16 21:50:32 *	Syandal_ pindah ke demo
+Mar 16 21:51:26 <Syandal_>	^ Contoh diatas adalah kuery untuk SELECT data yang id nya lebih besar dari 5 ATAU nama dimulai huruf 'N';
+Mar 16 21:51:35 <Syandal_>	!baris
+Mar 16 21:51:35 <Ayana>	================================
+Mar 16 21:51:48 <Syandal_>	Sqlite BETWEEN
+Mar 16 21:51:48 <Syandal_>	BETWEEN digunakan untuk memilih nilai diantara range dari dua buah nilai. contoh 'X BETWEEN Y AND Z' akan mengembalikan nilai true (1) jika nilai X berada diantara nilai Y dan Z. selain itu akan mengembalikan nilai false (0). 'X BETWEEN Y AND Z' equivalent dengan 'X >=Y AND X <=Z
+Mar 16 21:51:48 <Syandal_>	contoh
+Mar 16 21:51:48 <Syandal_>	sqlite> SELECT * FROM menu
+Mar 16 21:51:48 <Syandal_>	        WHERE id BETWEEN 5 AND 15;
+Mar 16 21:52:02 *	Syandal_ pindah ke demo
+Mar 16 21:53:40 <Syandal_>	^ query diatas untuk melakukan SELECT data yang kolom id nya bernilai diantara 5 dan 15, 5 dan 15 termasuk ditampilin
+Mar 16 21:53:55 <Syandal_>	!baris
+Mar 16 21:53:55 <Ayana>	================================
+Mar 16 21:53:58 <Syandal_>	Sqlite IN
+Mar 16 21:53:58 <Syandal_>	IN digunakan untuk mengambil sebuah operand dari daftar operand yang ada dan akan mengembalikan true jika operand pertama bernilai sama dengan salah satu nilai dalam list. contoh 'col IN(x, y, z)' akan equivalent dengan '(col=x) or (col=y) or (col=z)'
+Mar 16 21:53:58 <Syandal_>	contoh
+Mar 16 21:53:58 <Syandal_>	sqlite> SELECT * FROM menu WHERE id IN(2, 4, 6, 8, 10);
+Mar 16 21:53:58 <Syandal_>	sqlite> SELECT * FROM menu WHERE (id=2) OR (id=4) OR (id=6) OR (id=8) OR (id=10);
+Mar 16 21:54:07 *	Syandal_ pindah ke demo
+Mar 16 21:56:49 <Syandal_>	^ query diatas untuk mengambil data yang kolom id nya sesuai dengan nilai pada daftar
+Mar 16 21:56:54 <Syandal_>	!baris
+Mar 16 21:56:55 <Ayana>	================================
+Mar 16 21:57:18 <Syandal_>	Sqlite NOT IN
+Mar 16 21:57:18 <Syandal_>	NOT IN digunakan untuk mengambil sebuah operand yang tidak ada dalam daftar operand. contoh 'col NOT IN(x, y, z) akan equivalent dengan '(col<>x) AND (col<>y) AND (col<>z)'
+Mar 16 21:57:18 <Syandal_>	contoh
+Mar 16 21:57:18 <Syandal_>	sqlite> SELECT * FROM menu WHERE id NOT IN(2, 4, 6, 8)
+Mar 16 21:57:18 <Syandal_>	sqlite> SELECT * FROM menu WHERE (id <> 2) AND (id <> 4) AND (id <> 6) AND (id <> 8);
+Mar 16 22:00:14 <Syandal_>	^ query diatas akan mempilkan hasil yang kolom id nya tidak sama dengan di daftar
+Mar 16 22:00:18 <Syandal_>	!baris
+Mar 16 22:00:19 <Ayana>	================================
+Mar 16 22:00:45 <Syandal_>	Sqlite EXISTS
+Mar 16 22:00:45 <Syandal_>	Operator EXISTS tidak menggunakan operand, dia diikut oleh klausa SELECT yang akan menghasilkan nilai true (1) jika ada baris yang dihasilkan dari klausa SELECT, dan akan menghasilkan false (0) jika tidak ada baris yang dihasilkan oleh klausa SELECT
+Mar 16 22:03:18 <Syandal_>	contoh
+Mar 16 22:03:22 <Syandal_>	sqlite> SELECT nama FROM kategorimenu AS k WHERE EXISTS (SELECT id_kategori FROM menu AS m WHERE k.id = m.id_kategori);  
+Mar 16 22:03:39 <Syandal_>	pindah ke demo
+Mar 16 22:06:11 <Syandal_>	^ kuery diatas hanya menyeleksi kolom nama yang eksis pada tabel menu
+Mar 16 22:06:39 <Syandal_>	karna semua id_kategori pada menu dipakai semua, jadi hasilnya akan mengeluarkan semua nama katagori
+Mar 16 22:06:48 <Syandal_>	!baris
+Mar 16 22:06:49 <Ayana>	================================
+Mar 16 22:07:11 <Syandal_>	Sqlite NOT
+Mar 16 22:07:11 <Syandal_>	Digunakan untuk hasil kebalikan dari operator yang mengikutinya
+Mar 16 22:07:11 <Syandal_>	contoh 
+Mar 16 22:07:11 <Syandal_>	NOT BETWEEN     akan menghasilkan true jika hasil keluaran BETWEEN false dst
+Mar 16 22:07:11 <Syandal_>	NOT LIKE        akan menghasilkan true jika hasil keluaran LIKE false dst
+Mar 16 22:07:11 <Syandal_>	NOT GLOB        akan menghasilkan true jika hasil keluaran GLOB false dst
+Mar 16 22:07:11 <Syandal_>	NOT EXISTS      akan menghasilkan true jika hasil keluaran EXISTS false dst
+Mar 16 22:09:05 *	user____ has quit (Ping timeout: 264 seconds)
+Mar 16 22:09:11 <Syandal_>	hmm
+Mar 16 22:09:17 <Syandal_>	^ satu ekor member tumbang
+Mar 16 22:09:21 <Syandal_>	ini contohnya 
+Mar 16 22:09:22 <Syandal_>	sqlite> SELECT nama FROM kategorimenu AS k WHERE NOT EXISTS (SELECT id_kategori FROM menu AS m WHERE k.id = m.id_kategori);
+Mar 16 22:09:26 *	Syandal_ pindah ke demo
+Mar 16 22:09:35 <lappet>	terbaik
+Mar 16 22:09:52 <Syandal_>	apanya
+Mar 16 22:10:22 <lappet>	pengajarny
+Mar 16 22:10:27 <Syandal_>	:3
+Mar 16 22:10:28 *	user____ (~user@103.213.130.86) has joined
+Mar 16 22:10:38 *	Syandal_ lagi diskusi berdua Ayana dari tadi
+Mar 16 22:16:14 <Syandal_>	^  query diatas mengambil data kolom nama dari kategori menu yang kolom id nya NOT EXISTS di tabel menu
+Mar 16 22:16:17 <Syandal_>	!baris
+Mar 16 22:16:18 <Ayana>	================================
+Mar 16 22:16:21 <Syandal_>	jeda 5 menit
+Mar 16 22:17:30 <Syandal_>	ok lanjut
+Mar 16 22:17:35 <Syandal_>	!baris
+Mar 16 22:17:36 <Ayana>	================================
+Mar 16 22:17:47 <Syandal_>	Limiting and Ordering
+Mar 16 22:18:12 <Syandal_>	Sqlite ORDER
+Mar 16 22:18:12 <Syandal_>	Digunakan untuk mengurutkan hasil keluaran dari ekspresi, kita menggunakan klausa ORDER BY;
+Mar 16 22:18:12 <Syandal_>	caranya menggunakan klausa ORDER BY, dia harus ada diakhir query, hanya klausa LIMIT yang boleh dibelakang dia, selanjutnya kita bisa pengarahan DESC dan ASC, jika pengarahan tidak digunakan maka defaultnya akan diurutkan secara ascending.
+Mar 16 22:18:54 <Mugiono>	Lanjut
+Mar 16 22:20:59 <Syandal_>	contoh
+Mar 16 22:21:00 <Syandal_>	sqlite> SELECT m.nama, k.nama FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id ORDER BY k.nama ASC, m.nama DESC;
+Mar 16 22:21:06 *	Syandal_ pindah ke demo
+Mar 16 22:25:35 <Syandal_>	^ query diatas adalah melakukan SELECT kolom nama di tabel m (menu) dan kolom nama di tabel k (kategorimenu) digabungkan inner join .. dimana kolom id_kategori di tabel menu = kolom id di tabel kategori menu.. diurutkan berdasarkan nama ascending (dari kecil ke besar) dan berdasarkan nama menu descending
+Mar 16 22:25:49 <Syandal_>	!baris
+Mar 16 22:25:50 <Ayana>	================================
+Mar 16 22:26:03 <Syandal_>	Sqlite LIMIT
+Mar 16 22:26:03 <Syandal_>	Digunakan untuk membatasi jumlah baris yang dihasilkan oleh query sqlite. contohnya LIMIT 10 akan membatasi hanya menghasilkan 10 baris dan mengabaikan sisanya
+Mar 16 22:26:03 <Syandal_>	Pada klausa LIMIT kita bisa melakukan SELECT pada nomor baris khusus dan dimulai dengan nomor baris tertentu meggunakan klausa OFFSET, contoh 'LIMIT 4 OFFSET 4' akan mengabaikan 4 baris pertama dan menghasilkan 4 haris keluaran yang dimulai dari nomor baris kelima.
+Mar 16 22:26:03 <Syandal_>	kita juga bisa menulis 'LIMIT 4, 4' untuk maksud yang sama
+Mar 16 22:26:23 <Syandal_>	contoh
+Mar 16 22:26:23 <Syandal_>	sqlite> SELECT * FROM menu LIMIT 4, 3;
+Mar 16 22:26:30 <Syandal_>	pindah ke demo
+Mar 16 22:27:51 <Syandal_>	^ query diatas melakukan select dengan membatasi hasil hanya dimulai dari baris ke 4 dan menampilkan sebanyak 3 baris
+Mar 16 22:28:09 <Syandal_>	!baris
+Mar 16 22:28:09 <Ayana>	================================
+Mar 16 22:28:18 <Syandal_>	Removing duplicates
+Mar 16 22:28:36 <Syandal_>	Sqlite DISTINC
+Mar 16 22:28:36 <Syandal_>	Jika query sqlite menghasilkan nilai yang terduplikat kita bisa menggunakan keyword DISTINC untuk menghapus duplicate nya dengan mengembalikan nilai yang distinc. Kita bisa menentukan lebih dari satu kolom setelah DISTINC.
+Mar 16 22:30:14 <lappet>	Syandal_: kalo buat 'view' pake query yg di saring pke filter2 ini boleh bg?
+Mar 16 22:32:11 <Syandal_>	hmm
+Mar 16 22:32:37 <Syandal_>	boleh aja kek nya
+Mar 16 22:32:56 <Syandal_>	contoh
+Mar 16 22:32:59 <Syandal_>	sqlite> SELECT k.nama FROM menu AS m INNER JOIN kategorimenu AS k;
+Mar 16 22:33:08 <Syandal_>	pindah ke demo
+Mar 16 22:35:09 <Syandal_>	lalu jalankan perintah berikut untuk tidak menampilkan distinc
+Mar 16 22:35:18 <Syandal_>	sqlite> SELECT DISTINCT k.nama FROM menu AS m INNER JOIN kategorimenu AS k;
+Mar 16 22:35:23 <Syandal_>	!baris
+Mar 16 22:35:24 <Ayana>	================================
+Mar 16 22:35:50 <Syandal_>	AGREGATE
+Mar 16 22:35:50 <Syandal_>	adalah fungsi builtin pada sqlite yang akan mengelompokkan banyak nilai dari banyak baris ke sebuah nilai.
+Mar 16 22:36:08 <Syandal_>	beberapa agregat seperti berikut
+Mar 16 22:36:18 <Syandal_>	Sqlite AVG()
+Mar 16 22:36:18 <Syandal_>	menghasilkan nilai rata-rata dari beberapa nilai
+Mar 16 22:36:18 <Syandal_>	contoh
+Mar 16 22:36:18 <Syandal_>	sqlite> AVG(harga) FROM menu;
+Mar 16 22:36:24 *	Syandal_ pindah ke demo
+Mar 16 22:37:27 <Syandal_>	mangap salah
+Mar 16 22:37:31 <Syandal_>	harusnya contohnya ini
+Mar 16 22:37:56 <Syandal_>	sqlite> SELECT AVG(harga) FROM menu;
+Mar 16 22:38:04 <Syandal_>	!baris
+Mar 16 22:38:05 <Ayana>	================================
+Mar 16 22:38:43 <Syandal_>	Sqlite COUNT() COUNT(x) or COUNT(*)
+Mar 16 22:38:43 <Syandal_>	menghasilkan banyaknya nilai dari nilai x.
+Mar 16 22:40:15 <Syandal_>	contoh 
+Mar 16 22:40:16 <Syandal_>	sqlite> SELECT COUNT(id), COUNT(DISTINCT id_kategori), COUNT(*) FROM menu;
+Mar 16 22:40:20 <Syandal_>	pindah ke demo
+Mar 16 22:42:06 <Syandal_>	!baris
+Mar 16 22:42:07 <Ayana>	================================
+Mar 16 22:42:18 <Syandal_>	Sqlite GROUP_CONCAT(kolom)
+Mar 16 22:42:18 <Syandal_>	Digunakan untuk menggabungkang concatenate semua nama pada kolom ke sebuah string dibatasi koma. Dia tidak menampilkan daftar nilai, dia hanya menampilkan satu nilai pada satu baris.
+Mar 16 22:43:54 <Syandal_>	contoh
+Mar 16 22:43:56 <Syandal_>	sqlite> SELECT GROUP_CONCAT(k.nama) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id;
+Mar 16 22:44:01 <Syandal_>	pindah kedemo
+Mar 16 22:45:44 <Syandal_>	hasilnya mirip file csv
+Mar 16 22:47:43 <Syandal_>	contoh 2
+Mar 16 22:47:45 <Syandal_>	sqlite> SELECT GROUP_CONCAT(DISTINCT k.nama) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id;
+Mar 16 22:47:54 <Syandal_>	pindah ke demo
+Mar 16 22:48:37 *	user____ has quit (Remote host closed the connection)
+Mar 16 22:49:11 <Syandal_>	hasilnya semua duplikat dihapus
+Mar 16 22:50:18 <Syandal_>	contoh 3
+Mar 16 22:50:20 <Syandal_>	sqlite> SELECT GROUP_CONCAT(k.nama, ' & ') FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id;
+Mar 16 22:51:13 <Syandal_>	!baris
+Mar 16 22:51:14 <Ayana>	================================
+Mar 16 22:51:31 <Syandal_>	Sqlite MAX() dan MIN()
+Mar 16 22:51:31 <Syandal_>	MAX() akan mengembalikan nilai tertinggi dari argumen, MIN() akan mengembalikan nilai terkecil dari argumen.
+Mar 16 22:52:09 <Syandal_>	sqlite> SELECT MAX(harga), MIN(harga) FROM menu;
+Mar 16 22:52:13 *	Syandal_ pindah ke demo
+Mar 16 22:53:01 <Syandal_>	!baris
+Mar 16 22:53:02 <Ayana>	================================
+Mar 16 22:53:12 <Syandal_>	Sqlite SUM(), TOTAL()
+Mar 16 22:53:12 <Syandal_>	Keduanya menghasilkan total jumlah, perbedaannya SUM() akan menghasilkan null jika semua nilai null, tetapi total akan menghasilkan 0, TOTAL() selalu menghasilkan nilai float, sedangkan SUM() menghasilkan integer, jika nilainya bukan integer akan menghasilkan float.
+Mar 16 22:55:39 <Syandal_>	contoh
+Mar 16 22:55:40 <Syandal_>	sqlite> SELECT SUM(harga), TOTAL(harga) FROM menu;
+Mar 16 22:56:36 <Syandal_>	!baris
+Mar 16 22:56:38 <Ayana>	================================
+Mar 16 22:56:56 <Syandal_>	Sqlite GROUP BY
+Mar 16 22:56:56 <Syandal_>	Klausa GROUP BY digunakan khusus untuk satu atau lebih kolom yang akan digunakan sebagai sebuah group. Baris yang bernilai sama akan dikumpulkan ke grup-grup.
+Mar 16 22:59:05 <Syandal_>	contoh 
+Mar 16 22:59:06 <Syandal_>	sqlite> SELECT k.nama, COUNT(m.id) AS HitungMenu FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id GROUP BY k.nama;
+Mar 16 22:59:11 *	Syandal_ pindah kedemo
+Mar 16 23:01:07 <Syandal_>	!baris
+Mar 16 23:01:07 <Ayana>	================================
+Mar 16 23:01:16 <Syandal_>	jeda bentar
+Mar 16 23:04:31 <Syandal_>	kalo tau materinya berat kemarin mendingan bahas postgreesql sekalian ya :'(
+Mar 16 23:04:35 <Syandal_>	ok lanjut
+Mar 16 23:04:42 <Syandal_>	!baris
+Mar 16 23:04:42 <Ayana>	================================
+Mar 16 23:05:00 <lappet>	:D, boleh disambung ntar bg
+Mar 16 23:05:15 <Syandal_>	itu kek nya lebih berat lagi dari sqlite
+Mar 16 23:05:18 <Syandal_>	Klausa HAVING
+Mar 16 23:05:18 <Syandal_>	Digunakan untuk menyaring hasil keluaran grup oleh klausa GROUP BY.
+Mar 16 23:06:56 <Syandal_>	contoh
+Mar 16 23:06:58 <Syandal_>	sqlite> SELECT k.nama, COUNT(m.id) AS HitungMenu FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id GROUP BY k.nama HAVING COUNT(m.id) = 5;
+Mar 16 23:07:04 <Syandal_>	pindah ke demo
+Mar 16 23:08:26 <Syandal_>	!baris
+Mar 16 23:08:27 <Ayana>	================================
+Mar 16 23:08:36 <Syandal_>	SQLite Query & Subquery
+Mar 16 23:08:49 <Syandal_>	Sqlite Query dan Sub Query
+Mar 16 23:08:49 <Syandal_>	Didalam query kita bisa membuat query lain. query bersarang (nested) ini disebut sebagai subquery. 
+Mar 16 23:19:45 *	giri-ng (~giri@116.206.43.120) has joined
+Mar 16 23:24:15 <Syandal_>	contohnya ribet nih
+Mar 16 23:24:45 <lappet>	siap bg. pembaca tinggal coba2 sendiri
+Mar 16 23:27:24 <Syandal_>	contohnya ini
+Mar 16 23:27:26 <Syandal_>	sqlite> SELECT * FROM menu WHERE id IN (SELECT id  FROM menu WHERE harga > 5000);
+Mar 16 23:27:31 <Syandal_>	pindah ke demo
+Mar 16 23:28:29 <Syandal_>	!baris
+Mar 16 23:28:30 <Ayana>	================================
+Mar 16 23:29:10 <Syandal_>	OPERASI SET - UNION, INTERSECT
+Mar 16 23:29:10 <Syandal_>	UNION mengembalikan gabungan dari tabel
+Mar 16 23:30:35 <Syandal_>	contohnya ini
+Mar 16 23:30:36 <Syandal_>	sqlite> SELECT id_kategori AS idGabungan FROM menu UNION SELECT id FROM kategorimenu;
+Mar 16 23:30:39 <Syandal_>	ke demo
+Mar 16 23:31:30 <Syandal_>	!baris
+Mar 16 23:31:31 <Ayana>	================================
+Mar 16 23:31:45 <Syandal_>	INTERSECT
+Mar 16 23:31:45 <Syandal_>	mengembalikan nilai yang ada dari kombinasi dua tabel. nilai yang tidak ada pada salah satunya diabaikan.
+Mar 16 23:32:46 <Syandal_>	contoh
+Mar 16 23:32:47 <Syandal_>	sqlite> SELECT id_kategori FROM menu INTERSECT SELECT id FROM kategorimenu;
+Mar 16 23:32:49 <Syandal_>	ke demo
+Mar 16 23:32:55 *	root (~root@103.213.130.86) has joined
+Mar 16 23:33:00 *	root is now known as Guest41717
+Mar 16 23:33:48 <Syandal_>	!baris
+Mar 16 23:33:50 <Ayana>	================================
+Mar 16 23:34:01 <Syandal_>	EXCEPT
+Mar 16 23:34:01 <Syandal_>	Misalnya kita mempunyai dua buah list yaitu list1 dan list2 jika kita hanya ingin menampilkan hasil baris dari list1 yang tidak terdapat di list2 kita menggunakan EXCEPT
+Mar 16 23:35:19 <Syandal_>	contoh ini
+Mar 16 23:35:20 <Syandal_>	sqlite> SELECT id FROM kategorimenu EXCEPT SELECT id_kategori FROM menu;
+Mar 16 23:35:22 <Syandal_>	ke demo
+Mar 16 23:36:21 <Syandal_>	!baris
+Mar 16 23:36:21 <Ayana>	================================
+Mar 16 23:36:45 <Syandal_>	Null 
+Mar 16 23:36:45 <Syandal_>	adalah nilai khusus di sqlite yang mewakili tidak diketahui (unknown) atau kehilangan nilai (missing value), kalo nilai blank "" atau 0 adalah known value
+Mar 16 23:38:25 <Syandal_>	contoh
+Mar 16 23:38:25 <Syandal_>	sqlite> SELECT * FROM menu WHERE kategorimenu = NULL;
+Mar 16 23:38:25 <Syandal_>	contoh is null
+Mar 16 23:38:25 <Syandal_>	sqlite> SELECT * FROM menu WHERE kategorimenu IS NULL;
+Mar 16 23:40:53 *	Guest41717 has quit (Ping timeout: 265 seconds)
+Mar 16 23:41:35 <Syandal_>	!baris
+Mar 16 23:41:36 <Ayana>	================================
+Mar 16 23:41:37 <Syandal_>	sqlite conditional
+Mar 16 23:41:37 <Syandal_>	WHEN
+Mar 16 23:41:49 <Syandal_>	contoh
+Mar 16 23:41:50 <Syandal_>	sqlite> SELECT nama,
+Mar 16 23:41:50 <Syandal_>	   ...> CASE
+Mar 16 23:41:50 <Syandal_>	   ...>   WHEN id_kategori IS NULL THEN 'Ga ada kategori'
+Mar 16 23:41:50 <Syandal_>	   ...>   ELSE id_kategori
+Mar 16 23:41:50 <Syandal_>	   ...> END
+Mar 16 23:41:50 <Syandal_>	   ...> AS KategoriMenu
+Mar 16 23:41:50 <Syandal_>	   ...> FROM menu;
+Mar 16 23:46:02 *	root____1 (~root@103.213.130.86) has joined
+Mar 16 23:49:52 <Syandal_>	hmm
+Mar 16 23:50:04 <Syandal_>	!baris
+Mar 16 23:50:05 <Ayana>	================================
+Mar 16 23:50:06 <Syandal_>	terakhir
+Mar 16 23:50:19 <Syandal_>	Advanced Query
+Mar 16 23:50:19 <Syandal_>	AQ adalah query yang berisi JOIN, subquery dan beberapa agregate rumit.
+Mar 16 23:51:08 <Syandal_>	biasanya pakai SELECT, GROUP_CONCAT(), INNER JOIN, GROUP BY, HAVING dst
+Mar 16 23:51:13 <Syandal_>	contohnya ga ada 
+Mar 16 23:51:22 <Syandal_>	mangap _/|\_
+Mar 16 23:51:45 <Syandal_>	ok pembahasan diskusi online kita untuk materi sqlite3 hari ini cukup sampe disini
+Mar 16 23:51:51 <Syandal_>	mohom mangap kalo ada keluarangan
+Mar 16 23:51:59 <Syandal_>	Ayana ada yang mau ditanyain ga?
+Mar 16 23:52:03 <lappet>	terima kasih bg Syandal_ 
+Mar 16 23:52:07 <Ayana>	ga
+Mar 16 23:52:11 <Syandal_>	ok
+Mar 16 23:52:14 <Syandal_>	!wasalam
+Mar 16 23:52:16 <Ayana>	Syandal_ membalas salam :  >> Waalaikum Salam Warrahmatullahi Wabarakatuh
+Mar 16 23:52:17 <Syandal_>	!baris
+Mar 16 23:52:17 <Ayana>	================================
+Mar 16 23:52:20 <lappet>	:D
+Mar 16 23:53:26 <Syandal_>	demo nya disini >> https://asciinema.org/a/f3fXm8s8QIIiBkT44g6xbEg8x
+Mar 16 23:53:28 <Ayana>	^ Diskusi Online Ubuntu-Indonesia materi SQLite3 pertemuan 4a - asciinema
+Mar 16 23:54:16 <Syandal_>	log nya cari di file sharing
+Mar 16 23:54:59 *	giri-ng has quit (Ping timeout: 240 seconds)

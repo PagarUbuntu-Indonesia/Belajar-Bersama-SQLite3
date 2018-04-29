@@ -1,0 +1,358 @@
+Script started on Fri 27 Apr 2018 07:56:23 PM WIB
+syandal@remoteshare:~$ # weell .. dini[K[K[K[K[Kkar[K[K[K karna pertemuan 1 dan 2 belum ada long [K[K[K[K[Kdemo tutorial sqlite maka ane bikin u lang
+syandal@remoteshare:~$ # yang dipe[K[K[K[K[K[K[K[K[K[K[K# kita mulai aja
+syandal@remoteshare:~$ # -------------------------- 
+syandal@remoteshare:~$ # demo belajar bersama pertemuan 1 materi sqlite3 kanal irc #ubuntu-idone[K[K[K[K[Kindonesia
+syandal@remoteshare:~$ # yang dipelajari di pertemuan 1
+syandal@remoteshare:~$ # 1 pengenalan sqlite
+syandal@remoteshare:~$ # 2 menginstall sqlite
+syandal@remoteshare:~$ # 3 menjalankan sqlite
+syandal@remoteshare:~$ # 4 membuat database
+syandal@remoteshare:~$ # 5 menghapus database
+syandal@remoteshare:~$ # 6[K6 membuat tabel
+syandal@remoteshare:~$ # 7 menghapus tabel
+syandal@remoteshare:~$ # 8 dump database ke file sql
+syandal@remoteshare:~$ # 9 import file sql ke database
+syandal@remoteshare:~$ # -------------------------------
+syandal@remoteshare:~$ # lanjut
+syandal@remoteshare:~$ # 1) Pengenalan sqlite
+syandal@remoteshare:~$ # untuk penjelasan resminya disini >> https://id.wikipedia.org/wiki/SQLite
+syandal@remoteshare:~$ # sqlite adalah sistem manajemen database tertanam (embedded), dia sangat ringan t idak terlalu banyak installasi pada aplikasi, tidak perlu konfigurasi dan tidak membutuhkan server
+syandal@remoteshare:~$ # meskipun sederhana tapi sarat fitur seperti sistem manajemen database yang lain
+syandal@remoteshare:~$ # apa itu sqlite :
+syandal@remoteshare:~$ # Sqlite adalah sistem manajemen basis data relational yang bersifat opensource
+syandal@remoteshare:~$ # - sqlite sangat kecil yang ukurannya kurang dari 500kb tidak seperti database la in
+syandal@remoteshare:~$ # - sqlite bukan bertipe client - server, dia berupa pustaka memory yang bisa kita  panggil langsung untuk menggunakannya
+syandal@remoteshare:~$ # - umumnya database sqlite disimpan pada file tunggal didalam harddrive komputer.  semua obyek (table, view, triger, dll) sudah termasuk kedalam file tersebut.
+syandal@remoteshare:~$ # Penggunaan :
+syandal@remoteshare:~$ # - saat membutuhkan database ringan seperti untuk embedded system, misalnya tv, s martphone, camera, home electronic devices, dll
+syandal@remoteshare:~$ # - saat membutuhkan penyimpanan data temporary pada aplikasi
+syandal@remoteshare:~$ # - dll
+syandal@remoteshare:~$ # Keuntungan
+syandal@remoteshare:~$ # - free dan opensource
+syandal@remoteshare:~$ # - cross platform
+syandal@remoteshare:~$ # - mendukung API yang luas untuk bahasa pemrograman lain, misalnya VB, C#, java,  python, php, c++, dll
+syandal@remoteshare:~$ # - flexibel
+syandal@remoteshare:~$ # karna ada kelebihan harus ada kekurangannya juga
+syandal@remoteshare:~$ # kekurangan
+syandal@remoteshare:~$ # - tidak suport right outer join dan full outer join, hanya dukung left
+syandal@remoteshare:~$ # - Statemen alter table nya hanya nambah colom atau rename tabel
+syandal@remoteshare:~$ # - view nya mode hanya baca 
+syandal@remoteshare:~$ # - perintah grant dan revoke tidak diimplementasikan di sqlite
+syandal@remoteshare:~$ # - triger hanya mendukung setiap baris, tidak mendukung triger di setiap statemen M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kn
+syandal@remoteshare:~$ # -----------------------
+syandal@remoteshare:~$ # 2. menginstall sqlite3
+syandal@remoteshare:~$ # untuk install di windows bisa download installer nya disini >> http://www.sqlite .org/download.html
+syandal@remoteshare:~$ # kalo uda .. bisa jalanin perintah $ sqlite3 --version 
+syandal@remoteshare:~$ # contoh
+syandal@remoteshare:~$ sqlite3 --version
+3.11.0 2016-02-15 17:29:24 3d862f207e3adc00f78066799ac5a8c282430a5f
+syandal@remoteshare:~$ # ok
+syandal@remoteshare:~$ # ----------------------------------
+syandal@remoteshare:~$ # 3) menjalankan sqlite
+syandal@remoteshare:~$ # menjalankan sqlite ada 2 cara, 1, nama perintahnya saja dan 2, nama perintah + n ama database
+syandal@remoteshare:~$ # ok kita praktekan cara yang kedua .. memb[K[Knjalankan sqlite dan membuka database yan g pernah kita buat
+syandal@remoteshare:~$ # kita liat dulu ddataba[K[K[K[K[K[Katabase yang ada 
+syandal@remoteshare:~$ cd [K[K[Kpwd
+/home/syandal
+syandal@remoteshare:~$ cd belajar\ sqlite3/
+syandal@remoteshare:~/belajar sqlite3$ ls
+[0m[01;34mcode[0m          hasilkita.csv  KodingKafe2.db  KodingKafe.db   KodingSusu.db    tabelkaryawan1.sql
+hasilcsv.csv  KodingKafe     KodingKafe3.db  KodingKafe.sql  Perusahaanku.db
+syandal@remoteshare:~/belajar sqlite3$ # kita buka database KodingKafe
+syandal@remoteshare:~/belajar sqlite3$ sqlite KodingKafe.db
+The program 'sqlite' is currently not installed. You can install it by typing:
+sudo apt install sqlite
+syandal@remoteshare:~/belajar sqlite3$ sqlite KodingKafe.db[C[C[C[C[C[C3 KodingKafe.db
+SQLite version 3.11.0 2016-02-15 17:29:24
+Enter ".help" for usage hints.
+sqlite> .htel[K[K[K[Khelp
+.backup ?DB? FILE      Backup DB (default "main") to FILE
+.bail on|off           Stop after hitting an error.  Default OFF
+.binary on|off         Turn binary output on or off.  Default OFF
+.changes on|off        Show number of rows changed by SQL
+.clone NEWDB           Clone data into NEWDB from the existing database
+.databases             List names and files of attached databases
+.dbinfo ?DB?           Show status information about the database
+.dump ?TABLE? ...      Dump the database in an SQL text format
+                         If TABLE specified, only dump tables matching
+                         LIKE pattern TABLE.
+.echo on|off           Turn command echo on or off
+.eqp on|off            Enable or disable automatic EXPLAIN QUERY PLAN
+.exit                  Exit this program
+.explain ?on|off|auto? Turn EXPLAIN output mode on or off or to automatic
+.fullschema            Show schema and the content of sqlite_stat tables
+.headers on|off        Turn display of headers on or off
+.help                  Show this message
+.import FILE TABLE     Import data from FILE into TABLE
+.indexes ?TABLE?       Show names of all indexes
+                         If TABLE specified, only show indexes for tables
+                         matching LIKE pattern TABLE.
+.limit ?LIMIT? ?VAL?   Display or change the value of an SQLITE_LIMIT
+.load FILE ?ENTRY?     Load an extension library
+.log FILE|off          Turn logging on or off.  FILE can be stderr/stdout
+.mode MODE ?TABLE?     Set output mode where MODE is one of:
+                         ascii    Columns/rows delimited by 0x1F and 0x1E
+                         csv      Comma-separated values
+                         column   Left-aligned columns.  (See .width)
+                         html     HTML <table> code
+                         insert   SQL insert statements for TABLE
+                         line     One value per line
+                         list     Values delimited by .separator strings
+                         tabs     Tab-separated values
+                         tcl      TCL list elements
+.nullvalue STRING      Use STRING in place of NULL values
+.once FILENAME         Output for the next SQL command only to FILENAME
+.open ?FILENAME?       Close existing database and reopen FILENAME
+.output ?FILENAME?     Send output to FILENAME or stdout
+.print STRING...       Print literal STRING
+.prompt MAIN CONTINUE  Replace the standard prompts
+.quit                  Exit this program
+.read FILENAME         Execute SQL in FILENAME
+.restore ?DB? FILE     Restore content of DB (default "main") from FILE
+.save FILE             Write in-memory database into FILE
+.scanstats on|off      Turn sqlite3_stmt_scanstatus() metrics on or off
+.schema ?TABLE?        Show the CREATE statements
+                         If TABLE specified, only show tables matching
+                         LIKE pattern TABLE.
+.separator COL ?ROW?   Change the column separator and optionally the row
+                         separator for both the output mode and .import
+.shell CMD ARGS...     Run CMD ARGS... in a system shell
+.show                  Show the current values for various settings
+.stats on|off          Turn stats on or off
+.system CMD ARGS...    Run CMD ARGS... in a system shell
+.tables ?TABLE?        List names of tables
+                         If TABLE specified, only list tables matching
+                         LIKE pattern TABLE.
+.timeout MS            Try opening locked tables for MS milliseconds
+.timer on|off          Turn SQL timer on or off
+.trace FILE|off        Output each SQL statement as it is run
+.vfsinfo ?AUX?         Information about the top-level VFS
+.vfslist               List all available VFSes
+.vfsname ?AUX?         Print the name of the VFS stack
+.width NUM1 NUM2 ...   Set column widths for "column" mode
+                         Negative values right-justify
+sqlite> .database
+seq  name             file                                                      
+---  ---------------  ----------------------------------------------------------
+0    main             /home/syandal/belajar sqlite3/KodingKafe.db               
+sqlite> -- kita sudah didalam shell sqlite
+sqlite> -- perintah help
+sqlite> .help
+.backup ?DB? FILE      Backup DB (default "main") to FILE
+.bail on|off           Stop after hitting an error.  Default OFF
+.binary on|off         Turn binary output on or off.  Default OFF
+.changes on|off        Show number of rows changed by SQL
+.clone NEWDB           Clone data into NEWDB from the existing database
+.databases             List names and files of attached databases
+.dbinfo ?DB?           Show status information about the database
+.dump ?TABLE? ...      Dump the database in an SQL text format
+                         If TABLE specified, only dump tables matching
+                         LIKE pattern TABLE.
+.echo on|off           Turn command echo on or off
+.eqp on|off            Enable or disable automatic EXPLAIN QUERY PLAN
+.exit                  Exit this program
+.explain ?on|off|auto? Turn EXPLAIN output mode on or off or to automatic
+.fullschema            Show schema and the content of sqlite_stat tables
+.headers on|off        Turn display of headers on or off
+.help                  Show this message
+.import FILE TABLE     Import data from FILE into TABLE
+.indexes ?TABLE?       Show names of all indexes
+                         If TABLE specified, only show indexes for tables
+                         matching LIKE pattern TABLE.
+.limit ?LIMIT? ?VAL?   Display or change the value of an SQLITE_LIMIT
+.load FILE ?ENTRY?     Load an extension library
+.log FILE|off          Turn logging on or off.  FILE can be stderr/stdout
+.mode MODE ?TABLE?     Set output mode where MODE is one of:
+                         ascii    Columns/rows delimited by 0x1F and 0x1E
+                         csv      Comma-separated values
+                         column   Left-aligned columns.  (See .width)
+                         html     HTML <table> code
+                         insert   SQL insert statements for TABLE
+                         line     One value per line
+                         list     Values delimited by .separator strings
+                         tabs     Tab-separated values
+                         tcl      TCL list elements
+.nullvalue STRING      Use STRING in place of NULL values
+.once FILENAME         Output for the next SQL command only to FILENAME
+.open ?FILENAME?       Close existing database and reopen FILENAME
+.output ?FILENAME?     Send output to FILENAME or stdout
+.print STRING...       Print literal STRING
+.prompt MAIN CONTINUE  Replace the standard prompts
+.quit                  Exit this program
+.read FILENAME         Execute SQL in FILENAME
+.restore ?DB? FILE     Restore content of DB (default "main") from FILE
+.save FILE             Write in-memory database into FILE
+.scanstats on|off      Turn sqlite3_stmt_scanstatus() metrics on or off
+.schema ?TABLE?        Show the CREATE statements
+                         If TABLE specified, only show tables matching
+                         LIKE pattern TABLE.
+.separator COL ?ROW?   Change the column separator and optionally the row
+                         separator for both the output mode and .import
+.shell CMD ARGS...     Run CMD ARGS... in a system shell
+.show                  Show the current values for various settings
+.stats on|off          Turn stats on or off
+.system CMD ARGS...    Run CMD ARGS... in a system shell
+.tables ?TABLE?        List names of tables
+                         If TABLE specified, only list tables matching
+                         LIKE pattern TABLE.
+.timeout MS            Try opening locked tables for MS milliseconds
+.timer on|off          Turn SQL timer on or off
+.trace FILE|off        Output each SQL statement as it is run
+.vfsinfo ?AUX?         Information about the top-level VFS
+.vfslist               List all available VFSes
+.vfsname ?AUX?         Print the name of the VFS stack
+.width NUM1 NUM2 ...   Set column widths for "column" mode
+                         Negative values right-justify
+sqlite> -- perintah meil[K[Klihat dtaba[K[K[K[K[Kdatabase
+sqlite> .database
+seq  name             file                                                      
+---  ---------------  ----------------------------------------------------------
+0    main             /home/syandal/belajar sqlite3/KodingKafe.db               
+sqlite> -- perintah keluar 
+sqlite> .quit
+syandal@remoteshare:~/belajar sqlite3$ # -----------------------
+syandal@remoteshare:~/belajar sqlite3$ # 4) Membuat dtabase [K[K[K[K[K[K[Kada[K[Ktabaase baru
+syandal@remoteshare:~/belajar sqlite3$ # caranya gampang sepertiini [K[K[K[K ini $[K$ sqlite3 namadatabasebaru.db
+syandal@remoteshare:~/belajar sqlite3$ #
+syandal@remoteshare:~/belajar sqlite3$ 
+syandal@remoteshare:~/belajar sqlite3$ #
+syandal@remoteshare:~/belajar sqlite3$ # caranya gampang seperti ini $ sqlite3 namadatabasebaru.db[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[32P4) Membuat databaase baru[2P-----------------------
+syandal@remoteshare:~/belajar sqlite3$ # 5 Meng[K[K[K[K[K[K5 [K) m[KE[KMengehapus [K[K[K[K[K[K[Khapus Database
+syandal@remoteshare:~/belajar sqlite3$ # untuk menghapus tidak ada perintah drop tetapi kita langsung men ghapus file nya
+syandal@remoteshare:~/belajar sqlite3$ # saat kita membuat sebuah database pada satu direktori .. nama da tabasenya harus unik.. alias satu nama untuk satu database
+syandal@remoteshare:~/belajar sqlite3$ # kita ga bisa bikin nama yang sama untuk dua database
+syandal@remoteshare:~/belajar sqlite3$ 
+syandal@remoteshare:~/belajar sqlite3$ 
+syandal@remoteshare:~/belajar sqlite3$ 
+syandal@remoteshare:~/belajar sqlite3$ # kita ga bisa bikin nama yang sama untuk dua database[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csaat kita membuat sebuah database pada satu direktori .. nama dattabasenya harus unik.. alias satu nama untuk satu databaseMuntuk menghapus tidak ada perintah drop tetapi kita langsung menghapus file nya[KM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C5) Menghapus Database[K
+[KM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C-----------------------
+syandal@remoteshare:~/belajar sqlite3$ # 6 membuat tabel
+syandal@remoteshare:~/belajar sqlite3$ # berikut dibawah ini saya akan membuat database baru bernama 'per usahaan' dan tabel baru bernama 'karyawan' 
+syandal@remoteshare:~/belajar sqlite3$ ls
+[0m[01;34mcode[0m          hasilkita.csv  KodingKafe2.db  KodingKafe.db   KodingSusu.db    tabelkaryawan1.sql
+hasilcsv.csv  KodingKafe     KodingKafe3.db  KodingKafe.sql  Perusahaanku.db
+syandal@remoteshare:~/belajar sqlite3$ # kita demoin bikin database karyawan[K[K[K[K[K[K[K[Kperusahaan1.db
+syandal@remoteshare:~/belajar sqlite3$ sqlite3 perusahaan1.db
+SQLite version 3.11.0 2016-02-15 17:29:24
+Enter ".help" for usage hints.
+sqlite> -- kita demoin bikin tabel karyawan
+sqlite> CREATE TABLE "karyawan" (
+   ...> id INT RIMARY[K[K[K[K[K[KPRIMARY KEY NOT NULL,
+   ...> nama TEXT NOT NULL,
+   ...> umur INT NOT NULL,
+   ...> alamat CH[K[KVARCHAr[KR(75),
+   ...> gapok REAL,
+   ...> jenis_kelamin C[KVARCHAR(1));
+sqlite> -- berikut perintah untuk melihat tabel yang ada dalam database
+sqlite> .table
+karyawan
+sqlite> -- ----------------
+sqlite> -- dua strip digunakan untuk komentar di dalam perintah sql
+sqlite> --
+sqlite> -- itu contoh membuat tabel baru .. CREATE TABLE untuk membuat tabel baru "karyawan" nama tabel n y
+sqlite> -- nah, id nama umur alamat gapok itu nama kolom
+sqlite> -- int text char real itu tipe data untuk input ke tabel
+sqlite> -- berikut kita demoin menginse[Kert data kedalam tabel
+sqlite> -- kita liat dulu isi table
+sqlite> SELECT COUNT * FROM karyawan;
+Error: near "FROM": syntax error
+sqlite> SELECT COUNT * FROM karyawan;[C[1P[1P[1@([1@i[1@d[1@)
+0
+sqlite> ok
+   ...> ;
+Error: near "ok": syntax error
+sqlite> -- ok isi barisnya masih [K[K[K[K[K[K[K[K[K[K[K[K[K[K[Krecordnya masih 0
+sqlite> -- kita mulai isi
+sqlite> -- dengan perintah
+sqlite> -- INSERT INTO
+sqlite> INSERT INTO "karyawan" VALUES(1,'Annonimouse',17,'Tangerang',3000000.0,NULL);
+sqlite> INSERT INTO "karyawan" VALUES(2,'Slamet',18,'Banyumas',3500000.0,NULL);
+sqlite> INSERT INTO "karyawan" VALUES(3,'Paul',28,'California',2750000.0,NULL);
+sqlite> INSERT INTO "karyawan" VALUES(4,'Alen',25,'Texas',2000000.0,NULL);
+sqlite> INSERT INTO "karyawan" VALUES(5,'Teddy',23,'Norway',2500000.0,NULL);
+sqlite> INSERT INTO "karyawan" VALUES(6,'Mark',25,'Rich-Mond',4500000.0,NULL);
+sqlite> INSERT INTO "karyawan" VALUES(7,'David',27,'Montana',5000000.0,NULL);
+sqlite> INSERT INTO "karyawan" VALUES(8,'Paul',32,'Kelipornia',2250000.0,NULL);
+sqlite> -- ok
+sqlite> ki[K[K-- kita hitung jumlah recordnya
+sqlite> -- [K[K[KSELECT COUNT(id) FROM karyawan;
+8
+sqlite> -- ok kita i[Kretrieve isi dari tabel karyawan pke [K[K[K[Kpake perintah select
+sqlite> --[K[KSELECT * FROM karyawan;
+1|Annonimouse|17|Tangerang|3000000.0|
+2|Slamet|18|Banyumas|3500000.0|
+3|Paul|28|California|2750000.0|
+4|Alen|25|Texas|2000000.0|
+5|Teddy|23|Norway|2500000.0|
+6|Mark|25|Rich-Mond|4500000.0|
+7|David|27|Montana|5000000.0|
+8|Paul|32|Kelipornia|2250000.0|
+sqlite> -- tampilannya berantakan
+sqlite> -- perintah berikut untuk merak[Kpikan tampilan tabel nya di shell sqlite
+sqlite> .header on
+sqlite> .mode column
+sqlite> .mode column[C[C[C[C[C[C[C[C[C[2Pheader on[C[C[C[C[C[C[C[C-- perintah berikut untuk merapikan tampilan tabel nya di shell sqlite[C[C[C[C[C[C[C[C[C[C[Ctampilannya berantakan[K[C[C[C[C[C[C[C[C[2PSELECT * FROM karyawan;
+id          nama         umur        alamat      gapok       jenis_kelamin
+----------  -----------  ----------  ----------  ----------  -------------
+1           Annonimouse  17          Tangerang   3000000.0                
+2           Slamet       18          Banyumas    3500000.0                
+3           Paul         28          California  2750000.0                
+4           Alen         25          Texas       2000000.0                
+5           Teddy        23          Norway      2500000.0                
+6           Mark         25          Rich-Mond   4500000.0                
+7           David        27          Montana     5000000.0                
+8           Paul         32          Kelipornia  2250000.0                
+sqlite> -- lebih manusiavi[K[Kwi :v
+sqlite> 
+sqlite> -- ---------------------
+sqlite> -- menghapus table[C[1@7[1@)[1@ 
+sqlite> -- sintaks nya  sqlite3> DROP TABLE namadatabase.namatabel;
+sqlite> -- berarti cara menghapus tabel karyawan gini 
+sqlite> DROP TABLE karyawan ; -- << udah se[K[Kkaya gitu aja[C[C[C[C[C[C[C[C-- berarti cara menghapus tabel karyawan gini [C[C[C[C[C[C[C[CDROP TABLE karyawan ; -- << udah kaya gitu aja[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K.table -- untuk liat hasilnya[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+sqlite> 
+sqlite> -- berarti cara menghapus tabel karyawan gini [C[C[C[C[C[C[C[C[C[C[Csintaks nya  sqlite3> DROP TABLE namadatabase.namatabel;[C[C[C[C[C[C[C[C[C[C[C7) menghapus table[K[C[C[C[C[C[C[C[C[C[C[C---------------------[C[C[C[C[C[C[C[C[C[C[C[3Plebih manusiawi :v[C[C[C[C[C[C[C[C[C[C[C---------------------
+sqlite> -- 8) dumb database
+sqlite> -- perintahnya
+sqlite> -- kita keluar dulu
+sqlite> .quit
+syandal@remoteshare:~/belajar sqlite3$ # perintahnya 
+syandal@remoteshare:~/belajar sqlite3$ # $ sqlite3 namadb.db .dump > namaSQL.sql 
+syandal@remoteshare:~/belajar sqlite3$ 
+syandal@remoteshare:~/belajar sqlite3$ 
+syandal@remoteshare:~/belajar sqlite3$ # ------------------------------------
+syandal@remoteshare:~/belajar sqlite3$ # 9) import file sql ke database
+syandal@remoteshare:~/belajar sqlite3$ # sedangkan untuk merestore dari file sql menjadi database sqlite  adalah
+syandal@remoteshare:~/belajar sqlite3$ # sintaksnya  $ sqlite3 namadb.db < namaSQL.sql 
+syandal@remoteshare:~/belajar sqlite3$ # terakhir 
+syandal@remoteshare:~/belajar sqlite3$ 
+syandal@remoteshare:~/belajar sqlite3$ # -------------------
+syandal@remoteshare:~/belajar sqlite3$ # 10) Perintah tambahan
+syandal@remoteshare:~/belajar sqlite3$ 
+syandal@remoteshare:~/belajar sqlite3$ # untuk melihat database
+syandal@remoteshare:~/belajar sqlite3$ # sqlite> .database
+syandal@remoteshare:~/belajar sqlite3$ 
+syandal@remoteshare:~/belajar sqlite3$ # sqlite> .database
+syandal@remoteshare:~/belajar sqlite3$ # sqlite> [K[K[K[K[K[K[K[K[K[K
+syandal@remoteshare:~/belajar sqlite3$ # untuk melihat table
+syandal@remoteshare:~/belajar sqlite3$ # sqlite> .table
+syandal@remoteshare:~/belajar sqlite3$ 
+syandal@remoteshare:~/belajar sqlite3$ # melihat schema
+syandal@remoteshare:~/belajar sqlite3$ # sqlite> .schema
+syandal@remoteshare:~/belajar sqlite3$ # sqlite> .schema namatable
+syandal@remoteshare:~/belajar sqlite3$ 
+syandal@remoteshare:~/belajar sqlite3$ # untuk perintah eksport ke csv pake perintah header juga
+syandal@remoteshare:~/belajar sqlite3$ # sqlite> .headers on
+syandal@remoteshare:~/belajar sqlite3$ # sqlite> .mode csv
+syandal@remoteshare:~/belajar sqlite3$ # sqlite> .output namadata.csv
+syandal@remoteshare:~/belajar sqlite3$ # sqlite> select * from karyawan;
+syandal@remoteshare:~/belajar sqlite3$ # sqlite> .quit
+syandal@remoteshare:~/belajar sqlite3$ 
+syandal@remoteshare:~/belajar sqlite3$ # nanti hasilnya namadata.csv
+syandal@remoteshare:~/belajar sqlite3$ 
+syandal@remoteshare:~/belajar sqlite3$ # -----------------------------
+syandal@remoteshare:~/belajar sqlite3$ # selesai :p
+syandal@remoteshare:~/belajar sqlite3$ exit
+exit
+
+Script done on Fri 27 Apr 2018 08:35:53 PM WIB

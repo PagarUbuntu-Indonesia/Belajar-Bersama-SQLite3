@@ -1,0 +1,234 @@
+**** BEGIN LOGGING AT Fri Apr  6 20:04:18 2018
+
+Apr 06 20:04:18 *	Now talking on #ubuntu-indonesia
+Apr 06 20:04:18 *	Topic for #ubuntu-indonesia is: Topic for #ubuntu-indonesia is: https://git.io/lui#log :: Beladjar, diskoesi, berbagi, ataoe bertjanda tentoenja di Kanal ter-HOT dan ter-BOMBASTIS se-Indonesia :: Github: https://git.io/pui :: Kegiatan Belajar Bersama SQLite3, Pertemuan Keempat > Jum'at 16 Mar 2018, Pukul 20.00Wib :: https://git.io/vNa41 :p
+Apr 06 20:04:18 *	Topic for #ubuntu-indonesia set by Syandal_!Elite20008@gateway/shell/elitebnc/x-xctzsadxqprjhllv (Sat Mar 10 21:06:06 2018)
+Apr 06 19:00:32 -ChanServ-	You have been opped on #ubuntu-indonesia by smallint (IntegerManual)
+Apr 06 20:04:18 -*status-	Welcome to EliteBNC free IRC bouncer service!
+Apr 06 20:04:18 -*status-	You are using the Pi server.
+Apr 06 20:04:18 -*status-	Please read our rules at http://elitebnc.org/uap/
+Apr 06 20:04:18 -*status-	For bnc problems, you can use: /znc *report help
+Apr 06 20:14:31 <Syandal_>	!salam
+Apr 06 20:14:33 <sandi`aulia>	Syandal_ mengucapkan salam :
+Apr 06 20:14:34 <sandi`aulia>	Assalamu Alaikum
+Apr 06 20:14:34 <presiden>	sandi`aulia, Waalaikumsalam Warahmatullahi Wabarakatuh
+Apr 06 20:14:35 <Syandal_>	!pengumuman
+Apr 06 20:14:37 <sandi`aulia>	Argumennya harus diisi pilihannya sqlite, linux atau python3
+Apr 06 20:14:41 <Syandal_>	!pengumuman sqlite3
+Apr 06 20:14:42 <sandi`aulia>	Argumennya harus diisi pilihannya sqlite, linux atau python3
+Apr 06 20:15:08 <Syandal_>	^ dia crass
+Apr 06 20:15:12 <Syandal_>	!baris
+Apr 06 20:15:13 <sandi`aulia>	================================
+Apr 06 20:15:36 *	sandi`aulia is now known as Ayana
+Apr 06 20:15:45 <Syandal_>	Dear Penghuni kanal
+Apr 06 20:16:14 <Syandal_>	sebentar lagi kita akan melaksanakan diskusi online lanjutan untuk membahas materi sqlite3 pertemuan 6 (tamat)
+Apr 06 20:16:17 <Syandal_>	!baris
+Apr 06 20:16:18 <Ayana>	================================
+Apr 06 20:16:41 <Syandal_>	sebelum mulai kegiatan diskusi marilah kita berdoa di kediamannya masing2 .. berdoa mulai 
+Apr 06 20:16:59 <Syandal_>	selesai
+Apr 06 20:17:21 <Syandal_>	selanjutnya mari kita absen dulu kalo membernya udah > 250 ekor kegiatannya bisa kita mulai
+Apr 06 20:17:24 *	fathurhoho (~Thunderbi@202.124.203.170) has joined
+Apr 06 20:17:26 <Syandal_>	1) Syandal_
+Apr 06 20:17:42 <Ayana>	1) Ayana
+Apr 06 20:17:47 <Syandal_>	salah
+Apr 06 20:17:53 <Ayana>	2) Ayana
+Apr 06 20:22:11 <Syandal_>	!baris
+Apr 06 20:22:12 <Ayana>	================================
+Apr 06 20:22:35 <Syandal_>	baiklah karna member kanal ini ga ada tanda2 kemunculannya kegiatan diskusi ini kita mulai aja sekarang
+Apr 06 20:22:56 <Syandal_>	di pertemuan 6 kali ini kita akan membahas tentang :
+Apr 06 20:23:01 <Syandal_>	1 foreign key
+Apr 06 20:23:12 <Syandal_>	2 one-to-one relationship
+Apr 06 20:23:26 <Syandal_>	3 one-to-many relationship
+Apr 06 20:23:36 <Syandal_>	4 many-to-many relationship
+Apr 06 20:24:09 <Syandal_>	5 contoh skrip php untuk mengakses database sqlite (tentative kalo skripnya ga error :v)
+Apr 06 20:24:12 <Syandal_>	!baris
+Apr 06 20:24:13 <Ayana>	================================
+Apr 06 20:24:23 <Syandal_>	kita mulai aja ke bagian yang pertama
+Apr 06 20:24:27 <Syandal_>	FOREIGN KEY
+Apr 06 20:25:09 <Syandal_>	Foreign key adalah constrains yang digunakan untuk memaksakan relationship pada dua buah tabel yang saling bergantung.
+Apr 06 20:26:39 <Syandal_>	contoh
+Apr 06 20:26:39 <Syandal_>	sqlite> CREATE TABLE "kategorimenu" (
+Apr 06 20:26:39 <Syandal_>	         id_kategori int(1) primary key not null,
+Apr 06 20:26:39 <Syandal_>	         nama char(50)
+Apr 06 20:26:39 <Syandal_>	);
+Apr 06 20:26:39 <Syandal_>	sqlite> CREATE TABLE "menu" (
+Apr 06 20:26:39 <Syandal_>	         id int(3) primary key not null,
+Apr 06 20:26:39 <Syandal_>	         nama char(75),
+Apr 06 20:26:39 <Syandal_>	         harga real,
+Apr 06 20:26:39 <Syandal_>	         id_kategori int(1),
+Apr 06 20:26:39 <Syandal_>	         FOREIGN KEY(id_kategori) REFERENCES kategorimenu(id)
+Apr 06 20:26:39 <Syandal_>	);
+Apr 06 20:29:06 <Syandal_>	!baris
+Apr 06 20:29:08 <Ayana>	================================
+Apr 06 20:29:12 <Syandal_>	oke kita pindah ke demo
+Apr 06 20:34:04 *	fathurhoho has quit (Ping timeout: 264 seconds)
+Apr 06 20:34:33 *	fathurhoho (~Thunderbi@202.62.17.87) has joined
+Apr 06 20:49:04 <Syandal_>	gitulah FOREIGN KEY
+Apr 06 20:49:15 <Syandal_>	jadi data dari kedua tabel saling bergantung
+Apr 06 20:49:23 <Syandal_>	biarpun contoh di demo nya nggak :D
+Apr 06 20:49:57 <Syandal_>	Apa yang terjadi jika kita menghapus tabel kategori menu, yang terelasi dengan tabel menu.
+Apr 06 20:50:04 <Syandal_>	akan ada keterangan error
+Apr 06 20:50:14 <Syandal_>	jeda
+Apr 06 20:50:16 <Syandal_>	!baris
+Apr 06 20:50:18 <Ayana>	================================
+Apr 06 20:50:58 *	Syandal_ back
+Apr 06 20:51:06 <Syandal_>	ok kita ke pembahasan kedua
+Apr 06 20:51:17 <Syandal_>	ONE TO ONE RELATIONSHIP
+Apr 06 20:51:23 <Syandal_>	bahasa kerennya couple
+Apr 06 20:51:32 <Syandal_>	kebalikan dari jones
+Apr 06 20:51:53 *	fathurhoho has quit (Remote host closed the connection)
+Apr 06 20:51:57 <Syandal_>	adalah relationship paling dasar pada konsep database. aturannya setiap sebuah baris di tabel pertama hanya cocok ke satu baris pada tabel kedua. biasanya one-to-one relationship direpresentasikan menggunakan foreign key yang unique pada sebuah tabel yang referensi ke primary ke pada tabel lain.
+Apr 06 20:52:13 <Syandal_>	berikut ilustrasinya
+Apr 06 20:52:16 *	fathurhoho (~Thunderbi@202.62.17.87) has joined
+Apr 06 20:52:24 <Syandal_>	tabel menu                         tabel resep
+Apr 06 20:52:24 <Syandal_>	id_menu (PK) | nama menu           id_resep |  id_menu (FK)  | resepnya
+Apr 06 20:52:24 <Syandal_>	1              nasi goreng <-----> 1           1               panaskan minyak, dst
+Apr 06 20:52:24 <Syandal_>	2              nasi kuning  |----> 2           3               panaskan minyak, dst
+Apr 06 20:52:24 <Syandal_>	3              sambel    <--| |--> 3           5               masukan jeruk, es, aduk
+Apr 06 20:52:24 <Syandal_>	4              es teh manis   |
+Apr 06 20:52:24 <Syandal_>	5              es jeruk <-----|
+Apr 06 20:53:37 <Syandal_>	.
+Apr 06 20:53:40 <Syandal_>	.
+Apr 06 20:53:43 <Syandal_>	contohnya waktu membuat tabel
+Apr 06 20:53:43 <Syandal_>	sqlite> CREATE TABLE menu ( 
+Apr 06 20:53:43 <Syandal_>	        id_menu INT(3) NOT NULL PRIMARY KEY,
+Apr 06 20:53:43 <Syandal_>	        nama VARCHAR(75) NOT NULL );
+Apr 06 20:53:43 <Syandal_>	sqlite> CREATE TABLE resep (
+Apr 06 20:53:43 <Syandal_>	        id_resep INT(3) NOT NULL PRIMARY KEY,
+Apr 06 20:53:43 <Syandal_>	        id_menu INT(3) NOT NULL UNIQUE,
+Apr 06 20:53:43 <Syandal_>	        resepnya TEXT NOT NULL,
+Apr 06 20:53:43 <Syandal_>	        FOREIGN KEY (id_menu) REFERENCES menu (id_menu) );
+Apr 06 20:53:50 <Syandal_>	.
+Apr 06 20:53:53 <Syandal_>	.
+Apr 06 20:53:57 <Syandal_>	kita pindah ke demo
+Apr 06 21:04:16 <Syandal_>	contoh diatas akan mengisi data pada tabel resep menjadi unik karena kolom resep.id_menu adalah foreign key, jadi saat memasukan data baris (record) ke tabel tersebut, nilai pada kolom id_menu akan selalu unik, sehingga mengakibatkan hanya 1 baris kolom resep.id_menu yang cocok ke menu.id_menu.
+Apr 06 21:04:42 <Syandal_>	contoh input datanya kek biasa jadi nggak perlu didemoin
+Apr 06 21:04:55 *	Syandal_ takut ga jalan lagi :v
+Apr 06 21:04:58 <Syandal_>	!baris
+Apr 06 21:04:59 <Ayana>	================================
+Apr 06 21:05:02 <Syandal_>	jeda
+Apr 06 21:10:59 <Syandal_>	ok lanjut
+Apr 06 21:11:05 <Syandal_>	kita ke pembahasan selanjutnya
+Apr 06 21:11:17 <Syandal_>	ONE TO MANY RELATIONSHIP
+Apr 06 21:11:36 <Syandal_>	One-to-many relationship adalah menghubungkan diantara baris tunggal pada sebuah tabel ke banyak baris pada tabel lain. perbedaan dengan one to one relationship, adalah one-to-many mengijinkan duplikasi baris pada salah satu tabel yang mengacu ke baris tunggal di tabel sebelahnya.
+Apr 06 21:12:03 <Syandal_>	tabel kategori_menu                     tabel menu
+Apr 06 21:12:03 <Syandal_>	id_kategori | nama                      id  nama         id_kategori
+Apr 06 21:12:03 <Syandal_>	1             makanan <-----------|-->  1   Nasi Goreng  1
+Apr 06 21:12:03 <Syandal_>	2             lauk    <--------|  |-->  4   Nasi Kuning  1
+Apr 06 21:12:03 <Syandal_>	3             minuman <-----|  |----->  7   Ikan Mas     2
+Apr 06 21:12:03 <Syandal_>	dst                         |  |----->  11  Ikan Lele    2
+Apr 06 21:12:03 <Syandal_>	                            |-------->  23  Es Jeruk     3
+Apr 06 21:12:03 <Syandal_>	                            |-------->  24  Es Teh Manis 3
+Apr 06 21:12:13 <Syandal_>	.
+Apr 06 21:12:16 <Syandal_>	.
+Apr 06 21:12:29 <Syandal_>	berikut contohnya
+Apr 06 21:12:29 <Syandal_>	sqlite> CREATE TABLE kategori_menu ( 
+Apr 06 21:12:29 <Syandal_>	        id_kategori INT(1) PRIMARY KEY NOT NULL,
+Apr 06 21:12:29 <Syandal_>	        nama VARCHAR(50) );
+Apr 06 21:12:29 <Syandal_>	sqlite> CREATE TABLE menu (
+Apr 06 21:12:29 <Syandal_>	        id_menu INT(3) PRIMARY KEY NOT NULL ,
+Apr 06 21:12:29 <Syandal_>	        nama VARCHAR(75),
+Apr 06 21:12:29 <Syandal_>	        harga REAL,
+Apr 06 21:12:29 <Syandal_>	        id_kategori NOT NULL REFERENCES kategori_menu );
+Apr 06 21:12:31 <Syandal_>	.
+Apr 06 21:12:32 <Syandal_>	.
+Apr 06 21:12:49 <Syandal_>	karna contohnya sama kayak FOREIGN KEY jadi nggak perlu kita demoin
+Apr 06 21:15:01 <Syandal_>	jadi sebuah baris di tabel kategorimenu bisa terhubung ke banyak baris di tabel menu, relasi itu yang disebut sebagai one-to-many relationship
+Apr 06 21:15:04 <Syandal_>	!baris
+Apr 06 21:15:05 <Ayana>	================================
+Apr 06 21:15:06 <Syandal_>	jeda
+Apr 06 21:16:40 <Syandal_>	ok lanjut
+Apr 06 21:16:45 <Syandal_>	pembahasan berikutnya
+Apr 06 21:16:52 <Syandal_>	MANY TO MANY RELATIONSHIP
+Apr 06 21:17:02 <Syandal_>	Berikutnya adalah many-to-many relationship, adalah hubungan asosiatif dua buah tabel dimana kedua tabel bisa memiliki banyak hubungan terhadap keduanya.
+Apr 06 21:17:14 <Syandal_>	Misalnya ada tabel artikel dan tabel tag, setiap baris artikel bisa memiliki banyak tag dan setiap baris di tabel tag bisa memiliki banyak artikel. atau contohnya tabel manusia dan tabel grup, setiap manusia bisa bergabung di banyak grup dan setiap grup bisa berisi banyak manusia.
+Apr 06 21:17:30 <Syandal_>	berikut contohnya kita akan membuat hubungan tabel Meja <--> Transaksi
+Apr 06 21:17:33 <Syandal_>	.
+Apr 06 21:17:44 <Syandal_>	meja      transaksi    meja     transaksi
+Apr 06 21:17:44 <Syandal_>	|-----|    |-----|    |-----|    |-----|
+Apr 06 21:17:44 <Syandal_>	|     |/---|     |    |     |---\|     |
+Apr 06 21:17:44 <Syandal_>	|     |----|     |    |     |----|     |
+Apr 06 21:17:44 <Syandal_>	|     |\---|     |    |     |---/|     |
+Apr 06 21:17:44 <Syandal_>	|-----|    |-----|    |-----|    |-----|
+Apr 06 21:17:44 <Syandal_>	setiap meja bisa      setiap transaksi
+Apr 06 21:17:44 <Syandal_>	memiliki banyak       bisa terdiri dari
+Apr 06 21:17:44 <Syandal_>	transaksi             banyak meja
+Apr 06 21:17:46 <Syandal_>	.
+Apr 06 21:17:58 <Syandal_>	Karna di sqlite tidak mendukung many-to-many relationship maka kita menggunakan tabel bantuan untuk membuat relasi tersebut, berikut ilustrasinya
+Apr 06 21:18:00 <Syandal_>	.
+Apr 06 21:18:12 <Syandal_>	meja          mt_bantuan     transaksi
+Apr 06 21:18:12 <Syandal_>	|----|----|   |----|----|   |----|----|
+Apr 06 21:18:12 <Syandal_>	|mid | .. |   |mid | tid|   |tid | .. |
+Apr 06 21:18:12 <Syandal_>	|    |    |/--|    |    |--\|    |    |
+Apr 06 21:18:12 <Syandal_>	|    |    |---|    |    |---|    |    |
+Apr 06 21:18:12 <Syandal_>	|    |    |\--|    |    |--/|    |    |
+Apr 06 21:18:12 <Syandal_>	|    |    |   |    |    |   |    |    |
+Apr 06 21:18:12 <Syandal_>	|----|----|   |----|----|   |----|----|
+Apr 06 21:18:12 <Syandal_>	  ^             |     |             ^
+Apr 06 21:18:12 <Syandal_>	  |             |     |             |
+Apr 06 21:18:12 <Syandal_>	  |-------------|     |-------------|
+Apr 06 21:18:14 <Syandal_>	.
+Apr 06 21:18:34 <Syandal_>	pertama kita buat terlebih dahulu tabel meja
+Apr 06 21:18:34 <Syandal_>	sqlite> CREATE TABLE "meja" (
+Apr 06 21:18:34 <Syandal_>	        id_meja INT(2) PRIMARY KEY NOT NULL,
+Apr 06 21:18:34 <Syandal_>	        nama VARCHAR(50) );
+Apr 06 21:18:34 <Syandal_>	        
+Apr 06 21:18:34 <Syandal_>	lalu buat tabel transaksi
+Apr 06 21:18:34 <Syandal_>	sqlite> CREATE TABLE "transaksi" (
+Apr 06 21:18:34 <Syandal_>	        id_transaksi INTEGER PRIMARY KEY NOT NULL,
+Apr 06 21:18:34 <Syandal_>	        nama VARCHAR(50),
+Apr 06 21:18:34 <Syandal_>	        no_hp VARCHAR(20),
+Apr 06 21:18:34 <Syandal_>	        id_menu INT(3),
+Apr 06 21:18:34 <Syandal_>	        jumlah INTEGER,
+Apr 06 21:18:34 <Syandal_>	        total REAL );
+Apr 06 21:18:34 <Syandal_>	lalu buat tabel bantuan
+Apr 06 21:18:34 <Syandal_>	sqlite> CREATE TABLE "mt_bantuan" (
+Apr 06 21:18:34 <Syandal_>	        id_meja INT(2) NOT NULL REFERENCES meja,
+Apr 06 21:18:34 <Syandal_>	        id_transaksi INTEGER NOT NULL REFERENCES transaksi,
+Apr 06 21:18:34 <Syandal_>	        PRIMARY KEY (id_meja, id_transaksi) );
+Apr 06 21:18:36 <Syandal_>	.
+Apr 06 21:18:51 <Syandal_>	ok kita pindah ke demo
+Apr 06 21:26:39 <Syandal_>	.
+Apr 06 21:27:12 <Syandal_>	input datanya kayak biasa 
+Apr 06 21:27:49 <Syandal_>	contoh perintah selectnya
+Apr 06 21:29:56 <Syandal_>	sqlite> SELECT transaksi.nama AS nama_transaksi FROM meja JOIN mt_bantuan USING (id_meja) JOIN transaksi USING (id_transaksi) WHERE meja.nama = namayangmaudicari;
+Apr 06 21:29:58 <Syandal_>	.
+Apr 06 21:30:14 <Syandal_>	karna tingkat kesulitannya tinggi jadi ga kita contohin 
+Apr 06 21:30:22 <Syandal_>	mangap _/|\_
+Apr 06 21:30:41 <Syandal_>	!baris 
+Apr 06 21:30:43 <Ayana>	================================
+Apr 06 21:30:44 <Syandal_>	jeda
+Apr 06 21:40:49 <Syandal_>	ok
+Apr 06 21:40:57 <Syandal_>	kita lanjut ke pembahasan terakhir
+Apr 06 21:41:27 <Syandal_>	PHP & SQLITE
+Apr 06 21:41:44 <Syandal_>	pertama kita buat kode1.php yang isnya seperti ini >>
+Apr 06 21:41:45 <Syandal_>	.
+Apr 06 21:42:11 <Syandal_>	<?php
+Apr 06 21:42:11 <Syandal_>	  // buka database
+Apr 06 21:42:11 <Syandal_>	  $file_db = new PDO('sqlite:cobapesan.db');
+Apr 06 21:42:11 <Syandal_>	  // set atribut
+Apr 06 21:42:11 <Syandal_>	  $file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+Apr 06 21:42:11 <Syandal_>	  // buat tabel
+Apr 06 21:42:11 <Syandal_>	  $file_db->exec("CREATE TABLE IF NOT EXISTS pesan (
+Apr 06 21:42:11 <Syandal_>	                  id INTEGER PRIMARY KEY,
+Apr 06 21:42:11 <Syandal_>	                  judul TEXT,
+Apr 06 21:42:11 <Syandal_>	                  pesan TEXT,
+Apr 06 21:42:11 <Syandal_>	                  waktu INTEGER)");
+Apr 06 21:42:11 <Syandal_>	?>
+Apr 06 21:42:13 <Syandal_>	.
+Apr 06 21:42:16 <Syandal_>	lalu kita jalankan
+Apr 06 21:42:20 *	Syandal_ pindah ke demo
+Apr 06 21:51:54 <Syandal_>	!baris
+Apr 06 21:51:55 <Ayana>	================================
+Apr 06 21:52:01 <Syandal_>	karena di demo kode nya ga jalan
+Apr 06 21:52:25 <Syandal_>	ane taruh di file sharing aja di sf1.hashbang.sh:8228 user:ubuntuid pass:ubuntuid
+Apr 06 21:52:53 <Syandal_>	Ayana ada pertanyaan ga
+Apr 06 21:53:02 <Ayana>	ga
+Apr 06 21:53:23 <Syandal_>	ok karna ga ada yang mau nanya, jadi keseluruhan diskusi online sqlite kita udah selesai
+Apr 06 21:53:36 <Syandal_>	see you on next workshop
+Apr 06 21:53:39 <Syandal_>	!wasalam
+Apr 06 21:53:41 <Ayana>	Syandal_ membalas salam :  >> Waalaikum Salam Warrahmatullahi Wabarakatuh
+Apr 06 21:53:45 <Syandal_>	!baris
+Apr 06 21:53:46 <Ayana>	================================
+Apr 06 21:54:10 <Syandal_>	dear bung lappet untuk demo pertemuan 6 bisa diliat disini >> https://asciinema.org/a/Q85zsMqzrWtaP08NhWum0tMhB
+Apr 06 21:54:12 <Ayana>	^ Diskusi Online #ubuntu-indonesia materi SQLite pertemuan 6 - asciinema

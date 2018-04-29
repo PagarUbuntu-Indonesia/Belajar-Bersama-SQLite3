@@ -1,0 +1,1155 @@
+Script started on Fri 16 Mar 2018 08:00:09 PM WIB
+syandal@remoteshare:~$ pwd
+/home/syandal
+syandal@remoteshare:~$ cd belajar\ sqlite3/
+syandal@remoteshare:~/belajar sqlite3$ ls
+hasilcsv.csv   KodingKafe2.db  KodingSusu.db
+hasilkita.csv  KodingKafe.db   Perusahaanku.db
+KodingKafe     KodingKafe.sql  tabelkaryawan1.sql
+syandal@remoteshare:~/belajar sqlite3$ # pertama kita bahas[K[K[K[K[K[K akan mempraktekan klausa  FROM
+syandal@remoteshare:~/belajar sqlite3$ # buka latihan atabase[K[K[K[K[K[K[Kdatabaasae [K[K[K[Ke[K[Kse dulu
+syandal@remoteshare:~/belajar sqlite3$ sqlite3 KodingKafe2.db 
+SQLite version 3.11.0 2016-02-15 17:29:24
+Enter ".help" for usage hints.
+sqlite> SELECT [K[K[K[K[K[K[K-- lalu kita coba perintah select untuk menampilkan data[K[K[K[K(retrive) data
+sqlite> SELECT * FROM menu INNER JOIN kateegori[K[K[K[K[Kgorimenu ON menu.id_kategori = katego rimenu.id;
+1|Nasi Goreng|13000.0|1|1|makanan
+2|Nasi Lemes |15000.0|1|1|makanan
+3|Nasi Putih|4000.0|1|1|makanan
+4|Nasi Kuning|5000.0|1|1|makanan
+5|Nasi Uduk|5000.0|1|1|makanan
+6|Nasi Kibuli|10000.0|1|1|makanan
+7|Ikan Kangmas Goreng|10000.0|2|2|lauk
+8|Ikan Kangmas Bakar|12000.0|2|2|lauk
+9|Ikan Kangmas Asem Manis Kek Syandal_|12000.0|2|2|lauk
+10|Ikan Lele Goreng|8000.0|2|2|lauk
+11|Ikan Lele Bakar|8000.0|2|2|lauk
+12|Ayam Goreng|13000.0|2|2|lauk
+13|Ayam Goreng Geprek|13000.0|2|2|lauk
+14|Ayam Bakar|14000.0|2|2|lauk
+15|Bebek Goreng|14000.0|2|2|lauk
+16|Bebek Kremes|15000.0|2|2|lauk
+17|Bebek Bakar|15000.0|2|2|lauk
+18|Kepiting Kari|16000.0|2|2|lauk
+19|Kepiting Kremes|16000.0|2|2|lauk
+20|Kerang Kari|15000.0|2|2|lauk
+21|Kerang Masak Bening|14000.0|2|2|lauk
+22|Air Jeruk Anget|6000.0|3|3|minuman
+23|Es Jeruk Manis|7000.0|3|3|minuman
+24|Es Teh Manis|5000.0|3|3|minuman
+25|Teh Anget Manis|4000.0|3|3|minuman
+26|Es Terong Belanda|4000.0|3|3|minuman
+27|Es Timun Serut|4000.0|3|3|minuman
+28|Es Kelapa Muda|4000.0|3|3|minuman
+29|Sayur Asem Kek Integermanula|6000.0|4|4|sayur
+30|Sayur Sop|6000.0|4|4|sayur
+31|Sayur Bening|6000.0|4|4|sayur
+32|Oseng Kangkung|6000.0|4|4|sayur
+33|Oseng Terong|6000.0|4|4|sayur
+34|Terong Dicabein|6000.0|4|4|sayur
+35|Puding|5000.0|5|5|cuci mulut
+36|Es Krim|5000.0|5|5|cuci mulut
+37|Semangka|5000.0|5|5|cuci mulut
+38|Melon|5000.0|5|5|cuci mulut
+39|Pisang|5000.0|5|5|cuci mulut
+40|Sambel Terasi|2000.0|6|6|sambel
+41|Sambel Ijo|2000.0|6|6|sambel
+42|Sambel Tomat|2000.0|6|6|sambel
+43|Sambel Dabu-dabu|2000.0|6|6|sambel
+sqlite> -- kita format dulu tampilannya
+sqlite> .header on
+sqlite> .mode column
+sqlite> .mode column[C[C[C[C[C[C[C[C[C[2Pheader on[C[C[C[C[C[C[C[C-- kita format dulu tampilannya[C[C[C[C[C[C[C[CSELECT * FROM menu INNER JOIN kategorimenu ON menu.id_kategori = kategorrimenu.id;
+id          nama         harga       id_kategori  id          nama      
+----------  -----------  ----------  -----------  ----------  ----------
+1           Nasi Goreng  13000.0     1            1           makanan   
+2           Nasi Lemes   15000.0     1            1           makanan   
+3           Nasi Putih   4000.0      1            1           makanan   
+4           Nasi Kuning  5000.0      1            1           makanan   
+5           Nasi Uduk    5000.0      1            1           makanan   
+6           Nasi Kibuli  10000.0     1            1           makanan   
+7           Ikan Kangma  10000.0     2            2           lauk      
+8           Ikan Kangma  12000.0     2            2           lauk      
+9           Ikan Kangma  12000.0     2            2           lauk      
+10          Ikan Lele G  8000.0      2            2           lauk      
+11          Ikan Lele B  8000.0      2            2           lauk      
+12          Ayam Goreng  13000.0     2            2           lauk      
+13          Ayam Goreng  13000.0     2            2           lauk      
+14          Ayam Bakar   14000.0     2            2           lauk      
+15          Bebek Goren  14000.0     2            2           lauk      
+16          Bebek Kreme  15000.0     2            2           lauk      
+17          Bebek Bakar  15000.0     2            2           lauk      
+18          Kepiting Ka  16000.0     2            2           lauk      
+19          Kepiting Kr  16000.0     2            2           lauk      
+20          Kerang Kari  15000.0     2            2           lauk      
+21          Kerang Masa  14000.0     2            2           lauk      
+22          Air Jeruk A  6000.0      3            3           minuman   
+23          Es Jeruk Ma  7000.0      3            3           minuman   
+24          Es Teh Mani  5000.0      3            3           minuman   
+25          Teh Anget M  4000.0      3            3           minuman   
+26          Es Terong B  4000.0      3            3           minuman   
+27          Es Timun Se  4000.0      3            3           minuman   
+28          Es Kelapa M  4000.0      3            3           minuman   
+29          Sayur Asem   6000.0      4            4           sayur     
+30          Sayur Sop    6000.0      4            4           sayur     
+31          Sayur Benin  6000.0      4            4           sayur     
+32          Oseng Kangk  6000.0      4            4           sayur     
+33          Oseng Teron  6000.0      4            4           sayur     
+34          Terong Dica  6000.0      4            4           sayur     
+35          Puding       5000.0      5            5           cuci mulut
+36          Es Krim      5000.0      5            5           cuci mulut
+37          Semangka     5000.0      5            5           cuci mulut
+38          Melon        5000.0      5            5           cuci mulut
+39          Pisang       5000.0      5            5           cuci mulut
+40          Sambel Tera  2000.0      6            6           sambel    
+41          Sambel Ijo   2000.0      6            6           sambel    
+42          Sambel Toma  2000.0      6            6           sambel    
+43          Sambel Dabu  2000.0      6            6           sambel    
+sqlite> -- itu hasilnya apa ya
+sqlite> -- perintahnya sama juga seperti ini
+sqlite> -- perintahnya sama juga seperti ini[C[C[C[C[C[C[C[C[C[C[C[14Pitu hasilnya apa ya[C[C[C[C[C[C[C[CSELECT * FROM menu INNER JOIN kategorimenu ON menu.id_kategori = kategorrimenu.id;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cm* FROM menu INNER JOIN kategorimenu ON menu.id_kategori = kategorimenu.id;M[C[C[C[C[Ce* FROM menu INNER JOIN kategorimenu ON menu.id_kategori = kategorimenu.id;M[C[C[C[C[Cn* FROM menu INNER JOIN kategorimenu ON menu.id_kategori = kategorimenu.id;M[C[C[C[C[Cu* FROM menu INNER JOIN kategorimenu ON menu.id_kategori = kategorimenu.id;M[C[C[C[C[C.* FROM menu INNER JOIN kategorimenu ON menu.id_kategori = kategorimenu.id;M[C[C[C[C[C
+
+id          nama         harga       id_kategori
+----------  -----------  ----------  -----------
+1           Nasi Goreng  13000.0     1          
+2           Nasi Lemes   15000.0     1          
+3           Nasi Putih   4000.0      1          
+4           Nasi Kuning  5000.0      1          
+5           Nasi Uduk    5000.0      1          
+6           Nasi Kibuli  10000.0     1          
+7           Ikan Kangma  10000.0     2          
+8           Ikan Kangma  12000.0     2          
+9           Ikan Kangma  12000.0     2          
+10          Ikan Lele G  8000.0      2          
+11          Ikan Lele B  8000.0      2          
+12          Ayam Goreng  13000.0     2          
+13          Ayam Goreng  13000.0     2          
+14          Ayam Bakar   14000.0     2          
+15          Bebek Goren  14000.0     2          
+16          Bebek Kreme  15000.0     2          
+17          Bebek Bakar  15000.0     2          
+18          Kepiting Ka  16000.0     2          
+19          Kepiting Kr  16000.0     2          
+20          Kerang Kari  15000.0     2          
+21          Kerang Masa  14000.0     2          
+22          Air Jeruk A  6000.0      3          
+23          Es Jeruk Ma  7000.0      3          
+24          Es Teh Mani  5000.0      3          
+25          Teh Anget M  4000.0      3          
+26          Es Terong B  4000.0      3          
+27          Es Timun Se  4000.0      3          
+28          Es Kelapa M  4000.0      3          
+29          Sayur Asem   6000.0      4          
+30          Sayur Sop    6000.0      4          
+31          Sayur Benin  6000.0      4          
+32          Oseng Kangk  6000.0      4          
+33          Oseng Teron  6000.0      4          
+34          Terong Dica  6000.0      4          
+35          Puding       5000.0      5          
+36          Es Krim      5000.0      5          
+37          Semangka     5000.0      5          
+38          Melon        5000.0      5          
+39          Pisang       5000.0      5          
+40          Sambel Tera  2000.0      6          
+41          Sambel Ijo   2000.0      6          
+42          Sambel Toma  2000.0      6          
+43          Sambel Dabu  2000.0      6          
+sqlite> SELECT menu.* FROM menu INNER JOIN kategorimenu ON menu.id_kategori = kaategorimenu.id;M[35P-- perintahnya sama juga seperti ini
+[KM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[14Pitu hasilnya apa ya[C[C[C[C[C[C[C[CSELECT * FROM menu INNER JOIN kategorimenu ON menu.id_kategori = kategorrimenu.id;M.mode column[K
+[KM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[2Pheader on[K[K[K[K[K[K[K[K[K[Kok[K[K-- ok kita coba latihan kedua
+sqlite> -- nilai ri[K[Kliteral
+sqlite> SELECT *, 2 AS 'Kodde K[K[K[K[Ke Kategori' FROM menu LIMIT 10;
+id          nama         harga       id_kategori  Kode Kategori
+----------  -----------  ----------  -----------  -------------
+1           Nasi Goreng  13000.0     1            2            
+2           Nasi Lemes   15000.0     1            2            
+3           Nasi Putih   4000.0      1            2            
+4           Nasi Kuning  5000.0      1            2            
+5           Nasi Uduk    5000.0      1            2            
+6           Nasi Kibuli  10000.0     1            2            
+7           Ikan Kangma  10000.0     2            2            
+8           Ikan Kangma  12000.0     2            2            
+9           Ikan Kangma  12000.0     2            2            
+10          Ikan Lele G  8000.0      2            2            
+sqlite> -- kita perhatiin diatas akan namha[K[Kbah kolom baru yang nama kolomnya Kode  Kategori dan isini hanya angka dua [K[K[K[K2 aja
+sqlite> -- ok kita coba yang ga pake spasi
+sqlite> -- ok kita coba yang ga pake spasi[C[C[C[C[C[C[C[C[C[C[Ckita perhatiin diatas akan nambah kolom baru yang nama kolomnya Kode  Kategori dan isini hanya angka 2 ajaM[C[C[C[C[C[C[C[C[21PSELECT *, 2 AS 'Kode Kategori' FROM menu LIMIT 10;
+[KM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P
+id          nama         harga       id_kategori  KodeKategori
+----------  -----------  ----------  -----------  ------------
+1           Nasi Goreng  13000.0     1            2           
+2           Nasi Lemes   15000.0     1            2           
+3           Nasi Putih   4000.0      1            2           
+4           Nasi Kuning  5000.0      1            2           
+5           Nasi Uduk    5000.0      1            2           
+6           Nasi Kibuli  10000.0     1            2           
+7           Ikan Kangma  10000.0     2            2           
+8           Ikan Kangma  12000.0     2            2           
+9           Ikan Kangma  12000.0     2            2           
+10          Ikan Lele G  8000.0      2            2           
+sqlite> S[K-- kita coba yang barusan
+sqlite> SELECT id_kategori AS 'IDKategori' FROM menu;
+IDKategori
+----------
+1         
+1         
+1         
+1         
+1         
+1         
+2         
+2         
+2         
+2         
+2         
+2         
+2         
+2         
+2         
+2         
+2         
+2         
+2         
+2         
+2         
+3         
+3         
+3         
+3         
+3         
+3         
+3         
+4         
+4         
+4         
+4         
+4         
+4         
+5         
+5         
+5         
+5         
+5         
+6         
+6         
+6         
+6         
+sqlite> -- mangap kepanjangan
+sqlite> -- kita ulang
+sqlite> -- kita ulangmangap kepanjangan[C[C[C[C[C[C[C[CSELECT id_kategori AS 'IDKategori' FROM menu; ;L;I;M;I;T; ;1;0;
+IDKategori
+----------
+1         
+1         
+1         
+1         
+1         
+1         
+2         
+2         
+2         
+2         
+sqlite> -- kita coba praktei[K [Kkin ALIAS pada nama tabel
+sqlite> SELECT m.* FROM menu AS m;
+id          nama         harga       id_kategori
+----------  -----------  ----------  -----------
+1           Nasi Goreng  13000.0     1          
+2           Nasi Lemes   15000.0     1          
+3           Nasi Putih   4000.0      1          
+4           Nasi Kuning  5000.0      1          
+5           Nasi Uduk    5000.0      1          
+6           Nasi Kibuli  10000.0     1          
+7           Ikan Kangma  10000.0     2          
+8           Ikan Kangma  12000.0     2          
+9           Ikan Kangma  12000.0     2          
+10          Ikan Lele G  8000.0      2          
+11          Ikan Lele B  8000.0      2          
+12          Ayam Goreng  13000.0     2          
+13          Ayam Goreng  13000.0     2          
+14          Ayam Bakar   14000.0     2          
+15          Bebek Goren  14000.0     2          
+16          Bebek Kreme  15000.0     2          
+17          Bebek Bakar  15000.0     2          
+18          Kepiting Ka  16000.0     2          
+19          Kepiting Kr  16000.0     2          
+20          Kerang Kari  15000.0     2          
+21          Kerang Masa  14000.0     2          
+22          Air Jeruk A  6000.0      3          
+23          Es Jeruk Ma  7000.0      3          
+24          Es Teh Mani  5000.0      3          
+25          Teh Anget M  4000.0      3          
+26          Es Terong B  4000.0      3          
+27          Es Timun Se  4000.0      3          
+28          Es Kelapa M  4000.0      3          
+29          Sayur Asem   6000.0      4          
+30          Sayur Sop    6000.0      4          
+31          Sayur Benin  6000.0      4          
+32          Oseng Kangk  6000.0      4          
+33          Oseng Teron  6000.0      4          
+34          Terong Dica  6000.0      4          
+35          Puding       5000.0      5          
+36          Es Krim      5000.0      5          
+37          Semangka     5000.0      5          
+38          Melon        5000.0      5          
+39          Pisang       5000.0      5          
+40          Sambel Tera  2000.0      6          
+41          Sambel Ijo   2000.0      6          
+42          Sambel Toma  2000.0      6          
+43          Sambel Dabu  2000.0      6          
+sqlite> SELECT m.* FROM menu AS m; ;L;I;M;I;T; ;1;0;
+id          nama         harga       id_kategori
+----------  -----------  ----------  -----------
+1           Nasi Goreng  13000.0     1          
+2           Nasi Lemes   15000.0     1          
+3           Nasi Putih   4000.0      1          
+4           Nasi Kuning  5000.0      1          
+5           Nasi Uduk    5000.0      1          
+6           Nasi Kibuli  10000.0     1          
+7           Ikan Kangma  10000.0     2          
+8           Ikan Kangma  12000.0     2          
+9           Ikan Kangma  12000.0     2          
+10          Ikan Lele G  8000.0      2          
+sqlite> -- kita akan nyoba query yang pake a[Knama tabelnya panjang
+sqlite> SELECT menu.nama, kategorimenu.nama FROM menu INNER JOIN kategorimenu O N menu.id_kategori = kategorimenu.id LIMIT 10;
+nama         nama      
+-----------  ----------
+Nasi Goreng  makanan   
+Nasi Lemes   makanan   
+Nasi Putih   makanan   
+Nasi Kuning  makanan   
+Nasi Uduk    makanan   
+Nasi Kibuli  makanan   
+Ikan Kangma  lauk      
+Ikan Kangma  lauk      
+Ikan Kangma  lauk      
+Ikan Lele G  lauk      
+sqlite> -- sekarang tabelnya kita coba pake nama alias
+sqlite> SELECT m.nama, k.nama FROM menu AS m INNER JOIN kategorimenu AS k ON m. id_kategori = k.id LIMIT 10;
+nama         nama      
+-----------  ----------
+Nasi Goreng  makanan   
+Nasi Lemes   makanan   
+Nasi Putih   makanan   
+Nasi Kuning  makanan   
+Nasi Uduk    makanan   
+Nasi Kibuli  makanan   
+Ikan Kangma  lauk      
+Ikan Kangma  lauk      
+Ikan Kangma  lauk      
+Ikan Lele G  lauk      
+sqlite> SELECT * FROM menu WHERE id_kategori = 3;
+id          nama             harga       id_kategori
+----------  ---------------  ----------  -----------
+22          Air Jeruk Anget  6000.0      3          
+23          Es Jeruk Manis   7000.0      3          
+24          Es Teh Manis     5000.0      3          
+25          Teh Anget Manis  4000.0      3          
+26          Es Terong Belan  4000.0      3          
+27          Es Timun Serut   4000.0      3          
+28          Es Kelapa Muda   4000.0      3          
+sqlite> -- diatas cuman contoh memfilter hasil SELECT n[Khanya yang nilai id_kateg ori = 3
+sqlite> SELET[KCT 'ID dan Nama' || id || nama AS NamaDanID FROM menu LIMIT 10;
+NamaDanID              
+-----------------------
+ID dan Nama1Nasi Goreng
+ID dan Nama2Nasi Lemes 
+ID dan Nama3Nasi Putih 
+ID dan Nama4Nasi Kuning
+ID dan Nama5Nasi Uduk  
+ID dan Nama6Nasi Kibuli
+ID dan Nama7Ikan Kangma
+ID dan Nama8Ikan Kangma
+ID dan Nama9Ikan Kangma
+ID dan Nama10Ikan Lele 
+sqlite> -- ow
+sqlite> -- kurang spasi
+sqlite> -- kurang spasiow[KSELECT 'ID dan Nama' || id || nama AS NamaDanID FROM menu LIMIT 10;[C[C[C
+NamaDanID              
+-----------------------
+ID dan Nama1Nasi Goreng
+ID dan Nama2Nasi Lemes 
+ID dan Nama3Nasi Putih 
+ID dan Nama4Nasi Kuning
+ID dan Nama5Nasi Uduk  
+ID dan Nama6Nasi Kibuli
+ID dan Nama7Ikan Kangma
+ID dan Nama8Ikan Kangma
+ID dan Nama9Ikan Kangma
+ID dan Nama10Ikan Lele 
+sqlite> SELECT 'ID dan Nama' || id || nama AS NamaDanID FROM menu LIMIT 10;[C[C[C[C[C[1@ 
+NamaDanID               
+------------------------
+ID dan Nama 1Nasi Goreng
+ID dan Nama 2Nasi Lemes 
+ID dan Nama 3Nasi Putih 
+ID dan Nama 4Nasi Kuning
+ID dan Nama 5Nasi Uduk  
+ID dan Nama 6Nasi Kibuli
+ID dan Nama 7Ikan Kangma
+ID dan Nama 8Ikan Kangma
+ID dan Nama 9Ikan Kangma
+ID dan Nama 10Ikan Lele 
+sqlite> SELECT CAST('12.5' AS REAL) ToReal, CAST [K(12.5 AS INTEGER) AS ToInteger; M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K;
+ToReal      ToInteger 
+----------  ----------
+12.5        12        
+sqlite> -- oww
+sqlite> -- selanjutnya kita uji coba operator aritmatik
+sqlite> SELECT 25+6, 25-6, 25%6, 25/6, 25*6;
+25+6        25-6        25%6        25/6        25*6      
+----------  ----------  ----------  ----------  ----------
+31          19          1           4           150       
+sqlite> -- selanjutnya kita coba operator perbandingan
+sqlite> SELECT 
+   ...> 10<6 AS '<' [K, 10<=6 AS '<=',
+   ...> 10<6 AS '<', 10<=6 AS '<=',[1P[1@>[C[C[C[C[C[C[C[C[1P[1@>[C[C[C[C[C[C[1P[1@>[C[C[C[C[C[C[C[C[1P=',>=',[C[C[C
+   ...> 10>6 AS '>', 10>=6 AS '>=',[C[1P[1@=[C[C[C[C[C[C[C[1P[1@=[C[C[C[C[C[C[1P[C[1@=[C[C[C[C[C[C[C[C[1P=',[C=',[C[C[C
+   ...> 10=6 AS '=', 10==6 AS '==',[1@![C[C[C[C[C[C[C[1@![C[C[C[C[C[C[C[C[1P[1P[1@<[1@>[C[C[C[C[C[C[C[C[1P',[1P',<',>',[C[C[K;
+<           <=          >           >=          =           ==          !=          <>        
+----------  ----------  ----------  ----------  ----------  ----------  ----------  ----------
+0           0           1           1           0           0           1           1         
+sqlite> menarik
+   ...> ;
+Error: near "menarik": syntax error
+sqlite> [Ksqlite> SELECT * FROM menu WHERE nama LIKE 'Nasi%';
+id          nama         harga       id_kategori
+----------  -----------  ----------  -----------
+1           Nasi Goreng  13000.0     1          
+2           Nasi Lemes   15000.0     1          
+3           Nasi Putih   4000.0      1          
+4           Nasi Kuning  5000.0      1          
+5           Nasi Uduk    5000.0      1          
+6           Nasi Kibuli  10000.0     1          
+sqlite> selec[K[K[K[K[KSELECT * FROM menu WHERE nama LIKE '%g'''[K[K;
+id          nama         harga       id_kategori
+----------  -----------  ----------  -----------
+1           Nasi Goreng  13000.0     1          
+4           Nasi Kuning  5000.0      1          
+7           Ikan Kangma  10000.0     2          
+10          Ikan Lele G  8000.0      2          
+12          Ayam Goreng  13000.0     2          
+15          Bebek Goren  14000.0     2          
+21          Kerang Masa  14000.0     2          
+31          Sayur Benin  6000.0      4          
+32          Oseng Kangk  6000.0      4          
+33          Oseng Teron  6000.0      4          
+35          Puding       5000.0      5          
+39          Pisang       5000.0      5          
+sqlite> SELECT * FROM menu WHERE nama LIKE '%g';[1P';n';g';%';
+id          nama         harga       id_kategori
+----------  -----------  ----------  -----------
+1           Nasi Goreng  13000.0     1          
+4           Nasi Kuning  5000.0      1          
+7           Ikan Kangma  10000.0     2          
+8           Ikan Kangma  12000.0     2          
+9           Ikan Kangma  12000.0     2          
+10          Ikan Lele G  8000.0      2          
+12          Ayam Goreng  13000.0     2          
+13          Ayam Goreng  13000.0     2          
+15          Bebek Goren  14000.0     2          
+18          Kepiting Ka  16000.0     2          
+19          Kepiting Kr  16000.0     2          
+20          Kerang Kari  15000.0     2          
+21          Kerang Masa  14000.0     2          
+22          Air Jeruk A  6000.0      3          
+25          Teh Anget M  4000.0      3          
+26          Es Terong B  4000.0      3          
+31          Sayur Benin  6000.0      4          
+32          Oseng Kangk  6000.0      4          
+33          Oseng Teron  6000.0      4          
+34          Terong Dica  6000.0      4          
+35          Puding       5000.0      5          
+37          Semangka     5000.0      5          
+39          Pisang       5000.0      5          
+sqlite> SELECT 'Jack' GLOB 'j%';
+'Jack' GLOB 'j%'
+----------------
+0               
+sqlite> SELECT 'Jack' GLOB 'j%';[1P 'j%';[1P 'j%';[1P 'j%';[1P 'j%';L 'j%';I 'j%';K 'j%';E 'j%';
+'Jack' LIKE 'j%'
+----------------
+1               
+sqlite> SELECT * FROM menu WHERE (id > 5) AND (nama LIKE 'N%');
+id          nama         harga       id_kategori
+----------  -----------  ----------  -----------
+6           Nasi Kibuli  10000.0     1          
+sqlite> -- ^ itu contoh operator logikal AND
+sqlite> -- ^ itu contoh operator logikal AND[C[C[C[C[C[C[C[CSELECT * FROM menu WHERE (id > 5) AND (nama LIKE 'N%');[1P[1P[1P[1@O[1@R
+id          nama         harga       id_kategori
+----------  -----------  ----------  -----------
+1           Nasi Goreng  13000.0     1          
+2           Nasi Lemes   15000.0     1          
+3           Nasi Putih   4000.0      1          
+4           Nasi Kuning  5000.0      1          
+5           Nasi Uduk    5000.0      1          
+6           Nasi Kibuli  10000.0     1          
+7           Ikan Kangma  10000.0     2          
+8           Ikan Kangma  12000.0     2          
+9           Ikan Kangma  12000.0     2          
+10          Ikan Lele G  8000.0      2          
+11          Ikan Lele B  8000.0      2          
+12          Ayam Goreng  13000.0     2          
+13          Ayam Goreng  13000.0     2          
+14          Ayam Bakar   14000.0     2          
+15          Bebek Goren  14000.0     2          
+16          Bebek Kreme  15000.0     2          
+17          Bebek Bakar  15000.0     2          
+18          Kepiting Ka  16000.0     2          
+19          Kepiting Kr  16000.0     2          
+20          Kerang Kari  15000.0     2          
+21          Kerang Masa  14000.0     2          
+22          Air Jeruk A  6000.0      3          
+23          Es Jeruk Ma  7000.0      3          
+24          Es Teh Mani  5000.0      3          
+25          Teh Anget M  4000.0      3          
+26          Es Terong B  4000.0      3          
+27          Es Timun Se  4000.0      3          
+28          Es Kelapa M  4000.0      3          
+29          Sayur Asem   6000.0      4          
+30          Sayur Sop    6000.0      4          
+31          Sayur Benin  6000.0      4          
+32          Oseng Kangk  6000.0      4          
+33          Oseng Teron  6000.0      4          
+34          Terong Dica  6000.0      4          
+35          Puding       5000.0      5          
+36          Es Krim      5000.0      5          
+37          Semangka     5000.0      5          
+38          Melon        5000.0      5          
+39          Pisang       5000.0      5          
+40          Sambel Tera  2000.0      6          
+41          Sambel Ijo   2000.0      6          
+42          Sambel Toma  2000.0      6          
+43          Sambel Dabu  2000.0      6          
+sqlite> SELEC[K[K[K[K[K-- ^ diatas contoh operator OR
+sqlite> -- selanjutnya operator BEET[K[KTWEEN
+sqlite> SELECT * FROM menu WHERE id BEE[KTWEEN 5 AND 15;
+id          nama        harga       id_kategori
+----------  ----------  ----------  -----------
+5           Nasi Uduk   5000.0      1          
+6           Nasi Kibul  10000.0     1          
+7           Ikan Kangm  10000.0     2          
+8           Ikan Kangm  12000.0     2          
+9           Ikan Kangm  12000.0     2          
+10          Ikan Lele   8000.0      2          
+11          Ikan Lele   8000.0      2          
+12          Ayam Goren  13000.0     2          
+13          Ayam Goren  13000.0     2          
+14          Ayam Bakar  14000.0     2          
+15          Bebek Gore  14000.0     2          
+sqlite> -- hmmm
+sqlite> -- kita coba operaat[K[Ktor IN
+sqlite> SELECT * FROM menu WHERE id IN(2, 4, 6, 8, 10);
+id          nama         harga       id_kategori
+----------  -----------  ----------  -----------
+2           Nasi Lemes   15000.0     1          
+4           Nasi Kuning  5000.0      1          
+6           Nasi Kibuli  10000.0     1          
+8           Ikan Kangma  12000.0     2          
+10          Ikan Lele G  8000.0      2          
+sqlite> -- equivalent sama query berikut
+sqlite> SELECT * FROM menu WHERE (id=2) OR (id=4) OR (id=6) OR (id=8) OR (id=10);
+id          nama         harga       id_kategori
+----------  -----------  ----------  -----------
+2           Nasi Lemes   15000.0     1          
+4           Nasi Kuning  5000.0      1          
+6           Nasi Kibuli  10000.0     1          
+8           Ikan Kangma  12000.0     2          
+10          Ikan Lele G  8000.0      2          
+sqlite> --ok kita coba not in
+sqlite> [Ksqlite> SELE[K[K[K[K--ok kita coba not in[C[C[C[C[C[C[C[CSELECT * FROM menu WHERE (id=2) OR (id=4) OR (id=6) OR (id=8) OR (id=10);[C[C[C[C[C[C[C[C[41P-- equivalent sama query berikut[C[C[C[C[C[C[C[CSELECT * FROM menu WHERE id IN(2, 4, 6, 8, 10);[C[1@ [1@N[1@O[1@T
+id          nama         harga       id_kategori
+----------  -----------  ----------  -----------
+1           Nasi Goreng  13000.0     1          
+3           Nasi Putih   4000.0      1          
+5           Nasi Uduk    5000.0      1          
+7           Ikan Kangma  10000.0     2          
+9           Ikan Kangma  12000.0     2          
+11          Ikan Lele B  8000.0      2          
+12          Ayam Goreng  13000.0     2          
+13          Ayam Goreng  13000.0     2          
+14          Ayam Bakar   14000.0     2          
+15          Bebek Goren  14000.0     2          
+16          Bebek Kreme  15000.0     2          
+17          Bebek Bakar  15000.0     2          
+18          Kepiting Ka  16000.0     2          
+19          Kepiting Kr  16000.0     2          
+20          Kerang Kari  15000.0     2          
+21          Kerang Masa  14000.0     2          
+22          Air Jeruk A  6000.0      3          
+23          Es Jeruk Ma  7000.0      3          
+24          Es Teh Mani  5000.0      3          
+25          Teh Anget M  4000.0      3          
+26          Es Terong B  4000.0      3          
+27          Es Timun Se  4000.0      3          
+28          Es Kelapa M  4000.0      3          
+29          Sayur Asem   6000.0      4          
+30          Sayur Sop    6000.0      4          
+31          Sayur Benin  6000.0      4          
+32          Oseng Kangk  6000.0      4          
+33          Oseng Teron  6000.0      4          
+34          Terong Dica  6000.0      4          
+35          Puding       5000.0      5          
+36          Es Krim      5000.0      5          
+37          Semangka     5000.0      5          
+38          Melon        5000.0      5          
+39          Pisang       5000.0      5          
+40          Sambel Tera  2000.0      6          
+41          Sambel Ijo   2000.0      6          
+42          Sambel Toma  2000.0      6          
+43          Sambel Dabu  2000.0      6          
+sqlite> -- hasilnya ekqui[K[K[K[K[Kequivalent sama perintah berikut ini
+sqlite> -- hasilnya equivalent sama perintah berikut ini[C[C[C[C[C[C[C[CSELECT * FROM menu WHERE id NOT IN(2, 4, 6, 8, 10);[C[C[C[C[C[C[C[C[30P--ok kita coba not in[C[C[C[C[C[C[C[CSELECT * FROM menu WHERE (id=2) OR (id=4) OR (id=6) OR (id=8) OR (id=10);[1P[1@<[1@>[C[C[C[C[C[1P[1P[1@A[1@N[1@D[C[C[C[C[C[C[1P[1@<[1@>[C[C[C[C[C[1P[1P[1@A[1@N[1@D[C[C[C[C[C[1P[1@<[1@>[C[C[C[C[C[1P[1P[1@A[1@N[1@D[C[C[C[C[C[1P[1@<[1@>[C[C[C[C[C[1P (id=10);[1P (id=10);< (id=10);> (id=10);
+id          nama         harga       id_kategori
+----------  -----------  ----------  -----------
+1           Nasi Goreng  13000.0     1          
+3           Nasi Putih   4000.0      1          
+5           Nasi Uduk    5000.0      1          
+7           Ikan Kangma  10000.0     2          
+9           Ikan Kangma  12000.0     2          
+11          Ikan Lele B  8000.0      2          
+12          Ayam Goreng  13000.0     2          
+13          Ayam Goreng  13000.0     2          
+14          Ayam Bakar   14000.0     2          
+15          Bebek Goren  14000.0     2          
+16          Bebek Kreme  15000.0     2          
+17          Bebek Bakar  15000.0     2          
+18          Kepiting Ka  16000.0     2          
+19          Kepiting Kr  16000.0     2          
+20          Kerang Kari  15000.0     2          
+21          Kerang Masa  14000.0     2          
+22          Air Jeruk A  6000.0      3          
+23          Es Jeruk Ma  7000.0      3          
+24          Es Teh Mani  5000.0      3          
+25          Teh Anget M  4000.0      3          
+26          Es Terong B  4000.0      3          
+27          Es Timun Se  4000.0      3          
+28          Es Kelapa M  4000.0      3          
+29          Sayur Asem   6000.0      4          
+30          Sayur Sop    6000.0      4          
+31          Sayur Benin  6000.0      4          
+32          Oseng Kangk  6000.0      4          
+33          Oseng Teron  6000.0      4          
+34          Terong Dica  6000.0      4          
+35          Puding       5000.0      5          
+36          Es Krim      5000.0      5          
+37          Semangka     5000.0      5          
+38          Melon        5000.0      5          
+39          Pisang       5000.0      5          
+40          Sambel Tera  2000.0      6          
+41          Sambel Ijo   2000.0      6          
+42          Sambel Toma  2000.0      6          
+43          Sambel Dabu  2000.0      6          
+sqlite> SELECT nama FROM kateegori[K[K[K[K[K[Kegorimenu AS k WHERE EXIST (SELECT id_kategori FROM menu AS M WHERE k.id = m. id_kate[KMsqlite> SELECT nama FROM kategorimenu AS k WHERE EXIST (SELECT id_kategori FROM menu AS M WHERE k.id  = m.id_kategori);
+Error: near "SELECT": syntax error
+sqlite> -- yah
+sqlite> -- kita mau nyoba oerator [K[K[K[K[K[K[Kperator EXISTS
+sqlite> -- kita mau nyoba operator EXISTS[C[C[C[C[C[C[C[C[C[C[Cyah[KSELECT nama FROM kategorimenu AS k WHERE EXIST (SELECT id_kategori FROM menu AS M WHERE k.id  = m.id_kategori);M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CS (SELECT id_kategori FROM menu AS M WHERE k.id[1@ M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+
+nama      
+----------
+makanan   
+lauk      
+minuman   
+sayur     
+cuci mulut
+sambel    
+sqlite> -- tu[K[Kbingung kan
+sqlite> -- kita percobaan not [K[K[K[KNOT EXISTS 
+sqlite> SELECT nama FROM kategorimenu AS k WHERE NOT EXISTS (SELECT id_kategori FROM menu AS m WHERE  [K k.id = id[K[Km.id_kategori);
+sqlite> -- ga ada [K hasil
+sqlite> -- karena semua id kategori dipake di id kate[K[K[K[K[K_kategori di tabel menu
+sqlite> -- coba kita ceek dulu
+sqlite> SELECT * FROM menu WHERE id_kategori = 5;
+id          nama        harga       id_kategori
+----------  ----------  ----------  -----------
+35          Puding      5000.0      5          
+36          Es Krim     5000.0      5          
+37          Semangka    5000.0      5          
+38          Melon       5000.0      5          
+39          Pisang      5000.0      5          
+sqlite> -- ok semua katgori [K[K[K[K[K[Ke[Ktegori mei[K[Kinuman hi[K[Kkita hapus
+sqlite> DELETE FROM menu WHERE id_kategori = 5;
+sqlite> -- kita cek lagi
+sqlite> -- kita cek lagi[C[C[C[C[C[C[C[CDELETE FROM menu WHERE id_kategori = 5;[C[C[C[C[C[C[C[C-- ok semua kategori minuman kita hapus[C[C[C[C[C[C[C[CSELECT * FROM menu WHERE id_kategori = 5;
+sqlite> SELECT * FROM menu WHERE id_kategori = 5; ;O;R; ;[1P;[1P;[1P;[1P;[1P;4; ;O;R; ;i;d;_;k;a;t;e;g;o;r;i; ;=; ;5;
+id          nama                          harga       id_kategori
+----------  ----------------------------  ----------  -----------
+29          Sayur Asem Kek Integermanula  6000.0      4          
+30          Sayur Sop                     6000.0      4          
+31          Sayur Bening                  6000.0      4          
+32          Oseng Kangkung                6000.0      4          
+33          Oseng Terong                  6000.0      4          
+34          Terong Dicabein               6000.0      4          
+sqlite> -- ok katgor[K[K[K[Ktegori 4 ada di tabel menu dan kategori 5 ga ada di tabel menu
+sqlite> -- kita coba lagi n[KNOT EXISTS
+sqlite> -- kita coba lagi NOT EXISTS[C[C[C[C[C[C[C[C[C[C[Cok kategori 4 ada di tabel menu dan kategori 5 ga ada di tabel menu[C[C[C[C[C[C[C[C[10PSELECT * FROM menu WHERE id_kategori = 4 OR id_kategori = 5;5;[K[C[C[C[C[C[C[C[C[25P-- kita cek lagi[C[C[C[C[C[C[C[CDELETE FROM menu WHERE id_kategori = 5;[C[C[C[C[C[C[C[C-- ok semua kategori minuman kita hapus[C[C[C[C[C[C[C[CSELECT * FROM menu WHERE id_kategori = 5;[C[C[C[C[C[C[C[C[19P-- coba kita ceek dulu[C[C[C[C[C[C[C[C[C[C[Ckarena semua id kategori dipake di id_kategori di tabel menu[C[C[C[C[C[C[C[C[C[C[Cga ada hasil[K[C[C[C[C[C[C[C[CSELECT nama FROM kategorimenu AS k WHERE NOT EXISTS (SELECT id_kategori FROM menu AS m WHERE  k.id = m.id_kategori);
+nama      
+----------
+cuci mulut
+sqlite> -- kita ulang lagi selece[Kt sela[K[Kkalian id nya
+sqlite> -- kita ulang lagi select sekalian id nya[C[C[C[C[C[C[C[CSELECT nama FROM kategorimenu AS k WHERE NOT EXISTS (SELECT id_kategori FROM menu AS m WHERE  k.id = m.id_kategori);M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cinama FROM kategorimenu AS k WHERE NOT EXISTS (SELECT id_kategori FROM menu AS m WHERE[1@ M[C[C[C[C[C[C[C[C[C[C[C[C[C[Cdnama FROM kategorimenu AS k WHERE NOT EXISTS (SELECT id_kategori FROM menu AS m WHER[1@EM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C,nama FROM kategorimenu AS k WHERE NOT EXISTS (SELECT id_kategori FROM menu AS m WHE[1@RM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+
+id          nama      
+----------  ----------
+5           cuci mulut
+sqlite> -- ok id 5 ga eksis di tabel menu
+sqlite> -- selanjutnya percobaan pengurutan menggunakan operator ORDER BY
+sqlite> SELECT m.nama, k.nama FROM menu AS m INNER JOIn[KN kategorimenu AS k ON m.id_kategori = k.id OR DER BY k.nama ASC, m.nama DESC;
+nama                 nama      
+-------------------  ----------
+Kerang Masak Bening  lauk      
+Kerang Kari          lauk      
+Kepiting Kremes      lauk      
+Kepiting Kari        lauk      
+Ikan Lele Goreng     lauk      
+Ikan Lele Bakar      lauk      
+Ikan Kangmas Goreng  lauk      
+Ikan Kangmas Bakar   lauk      
+Ikan Kangmas Asem M  lauk      
+Bebek Kremes         lauk      
+Bebek Goreng         lauk      
+Bebek Bakar          lauk      
+Ayam Goreng Geprek   lauk      
+Ayam Goreng          lauk      
+Ayam Bakar           lauk      
+Nasi Uduk            makanan   
+Nasi Putih           makanan   
+Nasi Lemes           makanan   
+Nasi Kuning          makanan   
+Nasi Kibuli          makanan   
+Nasi Goreng          makanan   
+Teh Anget Manis      minuman   
+Es Timun Serut       minuman   
+Es Terong Belanda    minuman   
+Es Teh Manis         minuman   
+Es Kelapa Muda       minuman   
+Es Jeruk Manis       minuman   
+Air Jeruk Anget      minuman   
+Sambel Tomat         sambel    
+Sambel Terasi        sambel    
+Sambel Ijo           sambel    
+Sambel Dabu-dabu     sambel    
+Terong Dicabein      sayur     
+Sayur Sop            sayur     
+Sayur Bening         sayur     
+Sayur Asem Kek Inte  sayur     
+Oseng Terong         sayur     
+Oseng Kangkung       sayur     
+sqlite> [Ksqlite> SL[KELECT * FROM menu LIMIT 4, 3;
+id          nama        harga       id_kategori
+----------  ----------  ----------  -----------
+5           Nasi Uduk   5000.0      1          
+6           Nasi Kibul  10000.0     1          
+7           Ikan Kangm  10000.0     2          
+sqlite> -- ^ ditas percobaan opear[Krator limit
+sqlite> -- percobaan DISTINCT untuk menghapus duplikat 
+sqlite> -- kita coba query berikut
+sqlite> sqlite> SELECT k.nama FROM menu AS m INNER JOIN kategorimenu AS k;
+Error: near "sqlite": syntax error
+sqlite> sqlite> SELECT k.nama FROM menu AS m INNER JOIN kategorimenu AS k;[C[C[1P[1P[1P[1P[1P[1P[1P[1P
+nama      
+----------
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+makanan   
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+lauk      
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+minuman   
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+sayur     
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+cuci mulut
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sambel    
+sqlite> -- nilainya banyak yang duplikat
+sqlite> -- skarang coba dist[K[K[K[K[K DISTINCT
+sqlite> -- skarang coba DISTINCT[C[C[C[C[C[C[C[C[C[C[Cnilainya banyak yang duplikat[C[C[C[C[C[C[C[CSELECT k.nama FROM menu AS m INNER JOIN kategorimenu AS k;[1@D[1@I[1@S[1@T[1@I[1@N[1@C[1@T[1@ 
+nama      
+----------
+makanan   
+lauk      
+minuman   
+sayur     
+cuci mulut
+sambel    
+sqlite> -- yang duplikat nggak ditampilin lagi
+sqlite> AVG(harga) FROM menu;
+Error: near "AVG": syntax error
+sqlite> -- mangap salah
+sqlite> SELECT AVG(harga) FROM menu;
+AVG(harga)      
+----------------
+8552.63157894737
+sqlite> -- akan menampilkan nilai rata2 dari kolom harga
+sqlite> -- kita coba count
+sqlite> SELECT COUNT [K(id)_)k)a)t)e)g)a)o)r)i)m)e)[1P)[1P)[1P)[1P)[1P)[1P)o)r)i)[C, COUNT [K(DISTICNT [K[K[K[KNCT id_kategori), COUNT(*) FROM menu;
+COUNT(id_kategori)  COUNT(DISTINCT id_kategori)  COUNT(*)  
+------------------  ---------------------------  ----------
+38                  5                            38        
+sqlite> SL[KELECT[K[K[K[K[K[K-- ok percobaan GROUP_CONCAT()
+sqlite> SELECT GROUP_CONCAT(k.nama) FROM menu AD [K[KS m INNER JOIN kategorimenu AS k ON m.id_kategoir[K[Kri = k.id;
+GROUP_CONCAT(k.nama)                                                                                                                                                                                                                              
+--------------------------------------------------------------------------------------------------------------------                                                                                                                              
+makanan,makanan,makanan,makanan,makanan,makanan,lauk,lauk,lauk,lauk,lauk,lauk,lauk,lauk,lauk,lauk,lauk,lauk,lauk,lauk,lauk,minuman,minuman,minuman,minuman,minuman,minuman,minuman,sayur,sayur,sayur,sayur,sayur,sayur,sambel,sambel,sambel,sambel
+sqlite> -- hasilnya kek gitu
+sqlite> -- percobaan GROUP_CONCAT(DISTINCT .. )
+sqlite> -- percobaan GROUP_CONCAT(DISTINCT .. )[C[C[C[C[C[C[C[C[C[C[C[19Phasilnya kek gitu[C[C[C[C[C[C[C[CSELECT GROUP_CONCAT(k.nama) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id; k.nama) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id; M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CD k.nama) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id;;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CI k.nama) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CS k.nama) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CT k.nama) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CI k.nama) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CN k.nama) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CC k.nama) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CT k.nama) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+[C[C[C[C[C[C[C[C
+GROUP_CONCAT(DISTINCT k.nama)    
+---------------------------------
+makanan,lauk,minuman,sayur,sambel
+sqlite> -- hasilnya semua duplikat dihapus
+sqlite> -- hasilnya semua duplikat dihapus[C[C[C[C[C[C[C[C[K-- hasilnya semua duplikat dihapus[C[C[C[C[C[C[C[CSELECT GROUP_CONCAT(DISTINCT k.nama) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori  = k.id;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ck.nama) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori =[1P k.id;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ck.nama) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = [1Pk.id;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ck.nama) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k[1P.id;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ck.nama) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.[1Pid;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ck.nama) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.i[1Pd;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ck.nama) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id[1P;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ck.nama) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id;[KM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ck.nama) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id; [KM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P
+[KM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C ) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id; M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P
+[KM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C,) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id; M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C ) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id;;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C') FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C ) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C&) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C ) FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C') FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kategori = k.id;M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+
+GROUP_CONCAT(k.nama, ' & ')                                                                                                                                                                                                                                                                                                 
+--------------------------------------------------------------------------------------------------------------------                                                                                                                                                                                                        
+makanan & makanan & makanan & makanan & makanan & makanan & lauk & lauk & lauk & lauk & lauk & lauk & lauk & lauk & lauk & lauk & lauk & lauk & lauk & lauk & lauk & minuman & minuman & minuman & minuman & minuman & minuman & minuman & sayur & sayur & sayur & sayur & sayur & sayur & sambel & sambel & sambel & sambel
+sqlite> -- bedanya pada pemisahnya pake &
+sqlite> -- percobaan MAX [K() dan MIN()
+sqlite> SELECT MAX(harga) [K, MIN(harga) FROM menu;
+MAX(harga)  MIN(harga)
+----------  ----------
+16000.0     2000.0    
+sqlite> -- kita coba SUM() dan TOTAL [K()
+sqlite> SELECT SUM(harga) [K, TOTAL [K(harga) FROM menu;
+SUM(harga)  TOTAL(harga)
+----------  ------------
+325000.0    325000.0    
+sqlite> SELECT k.nama, COUNT(m.id) AS HitungMenu FROM menu AS m INNER JOIN kategoir[K[Krimenu AS k ON m.id_kate goir[K[Kri = k.id GROUP BY k.nama;
+nama        HitungMenu
+----------  ----------
+lauk        15        
+makanan     6         
+minuman     7         
+sambel      4         
+sayur       6         
+sqlite> -- contoh diatas GROUPU[K BY berdasarkan nama kategoir[K[Kri
+sqlite> -- perintah GO[KROUP BY tadi kita tambahin having
+sqlite> -- perintah GROUP BY tadi kita tambahin having[C[C[C[C[C[C[C[C[C[C[Ccontoh diatas GROUP BY berdasarkan nama kategori[C[C[C[C[C[C[C[CSELECT k.nama, COUNT(m.id) AS HitungMenu FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kateggori = k.id GROUP BY k.nama;[C[K HAVING COUNT(m.id) = 5;
+sqlite> SELECT k.nama, COUNT(m.id) AS HitungMenu FROM menu AS m INNER JOIN kategorimenu AS k ON m.id_kateggori = k.id GROUP BY k.nama HAVING COUNT(m.id) = 5;[1P;6;
+nama        HitungMenu
+----------  ----------
+makanan     6         
+sayur       6         
+sqlite> -- ^ hasilnya kaya gitu
+sqlite> -- kita coba sub query
+sqlite> SELECT * FROM menu WHERE id IN (SELECT [K[K[K[K[K[K[K
+   ...> SELECT id FROM menu WHER[KRE harga > 5000[K[K[K[K7000);
+id          nama         harga       id_kategori
+----------  -----------  ----------  -----------
+1           Nasi Goreng  13000.0     1          
+2           Nasi Lemes   15000.0     1          
+6           Nasi Kibuli  10000.0     1          
+7           Ikan Kangma  10000.0     2          
+8           Ikan Kangma  12000.0     2          
+9           Ikan Kangma  12000.0     2          
+10          Ikan Lele G  8000.0      2          
+11          Ikan Lele B  8000.0      2          
+12          Ayam Goreng  13000.0     2          
+13          Ayam Goreng  13000.0     2          
+14          Ayam Bakar   14000.0     2          
+15          Bebek Goren  14000.0     2          
+16          Bebek Kreme  15000.0     2          
+17          Bebek Bakar  15000.0     2          
+18          Kepiting Ka  16000.0     2          
+19          Kepiting Kr  16000.0     2          
+20          Kerang Kari  15000.0     2          
+21          Kerang Masa  14000.0     2          
+sqlite> -- percobaan UNION
+sqlite> SELECT id_kategori AS ID[KDGabgungan FROM menu UNION SELECT id FROM kategorimenu;
+IDGabgungan
+-----------
+1          
+2          
+3          
+4          
+5          
+6          
+sqlite> -- percobaan intersect
+sqlite> SELECT id_kaetgo[K[K[K[K[Kategori FROM menu INTERSECT SELECT id FROM kategorimenu;
+id_kategori
+-----------
+1          
+2          
+3          
+4          
+6          
+sqlite> SELECT id FROM kategorimenu EXCEPT SELECT id_kategori FROM menu;
+id        
+----------
+5         
+sqlite> -- itu percobaan execpt[K[Kept
+sqlite> -- percobaan null
+sqlite> SELECT * FROM menu WHERE kategor[K[K[K[K[K[K[Kid_kategori = null;
+sqlite> SELECT * FROM menu WHERE id_kategori = null;[K[K[K[K[K[K[K[K IS NULL;
+sqlite> -- percobaan kondisional when
+sqlite> [Ksqlite> SELECT nama,
+   ...> CASE 
+   ...>   WHEN id_kategori IS NULL THEN 'ga ada kategori'
+   ...>   ELSE id_kategori
+   ...> END
+   ...> AS KategoriMenu
+   ...> FROM menu;
+nama         KategoriMenu
+-----------  ------------
+Nasi Goreng  1           
+Nasi Lemes   1           
+Nasi Putih   1           
+Nasi Kuning  1           
+Nasi Uduk    1           
+Nasi Kibuli  1           
+Ikan Kangma  2           
+Ikan Kangma  2           
+Ikan Kangma  2           
+Ikan Lele G  2           
+Ikan Lele B  2           
+Ayam Goreng  2           
+Ayam Goreng  2           
+Ayam Bakar   2           
+Bebek Goren  2           
+Bebek Kreme  2           
+Bebek Bakar  2           
+Kepiting Ka  2           
+Kepiting Kr  2           
+Kerang Kari  2           
+Kerang Masa  2           
+Air Jeruk A  3           
+Es Jeruk Ma  3           
+Es Teh Mani  3           
+Teh Anget M  3           
+Es Terong B  3           
+Es Timun Se  3           
+Es Kelapa M  3           
+Sayur Asem   4           
+Sayur Sop    4           
+Sayur Benin  4           
+Oseng Kangk  4           
+Oseng Teron  4           
+Terong Dica  4           
+Sambel Tera  6           
+Sambel Ijo   6           
+Sambel Toma  6           
+Sambel Dabu  6           
+sqlite> .quit
+syandal@remoteshare:~/belajar sqlite3$ eixt[K[K[Kxit
+exit
+
+Script done on Fri 16 Mar 2018 11:33:01 PM WIB

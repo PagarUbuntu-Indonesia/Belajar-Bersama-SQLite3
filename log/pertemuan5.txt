@@ -1,0 +1,256 @@
+**** BEGIN LOGGING AT Fri Mar 23 20:10:32 2018
+
+Mar 23 20:10:32 *	Now talking on #ubuntu-indonesia
+Mar 23 20:10:32 *	Topic for #ubuntu-indonesia is: Topic for #ubuntu-indonesia is: https://git.io/lui#log :: Beladjar, diskoesi, berbagi, ataoe bertjanda tentoenja di Kanal ter-HOT dan ter-BOMBASTIS se-Indonesia :: Github: https://git.io/pui :: Kegiatan Belajar Bersama SQLite3, Pertemuan Keempat > Jum'at 16 Mar 2018, Pukul 20.00Wib :: https://git.io/vNa41 :p
+Mar 23 20:10:32 *	Topic for #ubuntu-indonesia set by Syandal_!Elite20008@gateway/shell/elitebnc/x-xctzsadxqprjhllv (Sat Mar 10 21:06:06 2018)
+Mar 23 20:10:32 -*status-	Welcome to EliteBNC free IRC bouncer service!
+Mar 23 20:10:32 -*status-	You are using the Pi server.
+Mar 23 20:10:32 -*status-	Please read our rules at http://elitebnc.org/uap/
+Mar 23 20:10:32 -*status-	For bnc problems, you can use: /znc *report help
+Mar 23 20:10:35 <Syandal_>	!baris
+Mar 23 20:10:37 <Ayana>	================================
+Mar 23 20:10:38 <Syandal_>	!salam
+Mar 23 20:10:41 <Ayana>	Syandal_ mengucapkan salam :
+Mar 23 20:10:41 <Ayana>	Assalamu Alaikum
+Mar 23 20:10:41 <presiden>	Ayana, Waalaikumsalam Warahmatullahi Wabarakatuh
+Mar 23 20:10:43 <Syandal_>	!baris
+Mar 23 20:10:44 <Ayana>	================================
+Mar 23 20:11:07 <Ayana>	karna 7 dari 10 perempuan indonesia memakai ...
+Mar 23 20:11:11 Usage: ME <action>, sends the action to the current channel (actions are written in the 3rd person, like /me jumps)
+Mar 23 20:11:15 Usage: ME <action>, sends the action to the current channel (actions are written in the 3rd person, like /me jumps)
+Mar 23 20:11:17 Usage: ME <action>, sends the action to the current channel (actions are written in the 3rd person, like /me jumps)
+Mar 23 20:11:20 *	Syandal_ .
+Mar 23 20:14:36 <Syandal_>	!pengumuman sqlite
+Mar 23 20:14:37 <Ayana>	Pengumuman
+Mar 23 20:14:37 <Ayana>	==========
+Mar 23 20:14:37 <Ayana>	Dear penghuni kanal #ubuntu-indonesia, kali ini kita akan mengadakan kegiatan Belajar Bersama SQLite3
+Mar 23 20:14:37 <Ayana>	Untuk info silabus dan browsur silahkan buka dihalaman ini >> https://git.io/vNa41, Pertemuan 1 Jumat 23 Feb 2018
+Mar 23 20:14:37 <Ayana>	Untuk demo live selama kegiatan diskusi bisa menggunakan remote ssh view@sqlite.remoteshare.xyz, password : rahasia123, powered by : netarsl
+Mar 23 20:14:38 <Ayana>	Untuk file sharing komunitas #ubuntu-indonesia >> sf1.hashbang.sh:8228, untuk gallery sf1.hashbang.sh:8229
+Mar 23 20:14:38 <Ayana>	Log pertemuan 1 :     (belum ada)
+Mar 23 20:14:39 <Ayana>	Log pertemuan 2 :     (belum ada)
+Mar 23 20:14:39 <Ayana>	Log pertemuan 3 :     (belum ada)
+Mar 23 20:14:40 <Ayana>	Log pertemuan 4 :     (belum ada)
+Mar 23 20:14:40 <Ayana>	Log pertemuan 5 :     (belum ada)
+Mar 23 20:14:41 <Ayana>	Log pertemuan 6 :     (belum ada)
+Mar 23 20:14:41 <Ayana>	Regards
+Mar 23 20:14:42 <Ayana>	~annonimouse
+Mar 23 20:14:45 <Syandal_>	!baris
+Mar 23 20:14:46 <Ayana>	================================
+Mar 23 20:15:15 <Syandal_>	seperti biasa halaman demo bisa diakses lewat ssh dialamat view@sqlite.remoteshare.xyz pass:rahasia123
+Mar 23 20:22:38 <Syandal_>	Assalamu alaikum
+Mar 23 20:22:39 <presiden>	Syandal_, Waalaikumsalam Warahmatullahi Wabarakatuh
+Mar 23 20:22:55 <Syandal_>	hari ini seperti biasa kita akan mengadakan diskusi online tentang sqlite3 untuk pertemuan 5
+Mar 23 20:23:16 <Syandal_>	sebelum memulai kegiatan kita absen dulu, kalo membernya udah > 250 nick baru kegiatan bisa kita mulai
+Mar 23 20:23:17 <presiden>	monggo
+Mar 23 20:23:20 <Syandal_>	1) Syandal_
+Mar 23 20:23:28 <presiden>	250) Triawarman
+Mar 23 20:23:33 <Ayana>	2) Ayana
+Mar 23 20:23:39 <Syandal_>	:3
+Mar 23 20:23:51 <presiden>	(senyum sinis kek di sinetron-sinetron
+Mar 23 20:23:53 <Syandal_>	bentar .. narik nafas dulu
+Mar 23 20:24:05 <presiden>	Mugiono kentut
+Mar 23 20:25:02 *	presiden siapin sruputan dulu
+Mar 23 20:25:59 <Syandal_>	^ itu op nya ada yang baru
+Mar 23 20:26:14 <Syandal_>	baiklah sambil menunggu member yang lain kegiatan diskusinya kita mulai aja
+Mar 23 20:26:34 <Syandal_>	hari ini kita akan mendiskusikan materi ini
+Mar 23 20:26:35 <Syandal_>	- inner join
+Mar 23 20:26:35 <Syandal_>	- left outer join
+Mar 23 20:26:35 <Syandal_>	- cross join
+Mar 23 20:26:35 <Syandal_>	- klausa having
+Mar 23 20:26:35 <Syandal_>	- keywoard distinc
+Mar 23 20:26:35 <Syandal_>	- limit
+Mar 23 20:26:39 <Syandal_>	!baris
+Mar 23 20:26:40 <Ayana>	================================
+Mar 23 20:27:36 <Syandal_>	Pengenalan Klausa Join pada sqlite
+Mar 23 20:27:36 <Syandal_>	Pada saat tertentu kita membutuhkan pengambilan data dari banyak tabel, untuk itu digunakan klausa JOIN, kita bisa menghubungkan dua atau lebih tabel atau subquery dengan melakukan JOIN tabel, juga bisa mendefinisikan kolom yang akan di join dan kondisinya.
+Mar 23 20:27:36 <Syandal_>	Setiap Klausa JOIN berisi
+Mar 23 20:27:36 <Syandal_>	- nama tabel atau subquery sebagai left table, nama tabel atau subquery sebelum klausa join  
+Mar 23 20:27:36 <Syandal_>	- JOIN operator (diantara INNER JOIN, LEFT OUTER JOIN, atau CROSS JOIN).
+Mar 23 20:27:36 <Syandal_>	- JOIN constraint (sebagai kondisi baris yang cocok dengan kondisi akan dipilih)
+Mar 23 20:28:11 <Syandal_>	!baris
+Mar 23 20:28:12 <Ayana>	================================
+Mar 23 20:28:15 <Syandal_>	1)
+Mar 23 20:28:23 <Syandal_>	Sqlite Inner Join
+Mar 23 20:28:37 <Syandal_>	INNER JOIN akan menghasilkan hanya baris yang cocok dengan kondisi join dan mengabaikan semua baris lainnya yang tidak cocok dengan kondisi
+Mar 23 20:28:56 <Syandal_>	   /\  /\
+Mar 23 20:28:56 <Syandal_>	  /  \/  \
+Mar 23 20:28:56 <Syandal_>	 /   /\   \
+Mar 23 20:28:56 <Syandal_>	\   \xx/ B /
+Mar 23 20:28:56 <Syandal_>	 \   \/   /
+Mar 23 20:28:56 <Syandal_>	  \  /\  /
+Mar 23 20:28:56 <Syandal_>	   \/  \/  
+Mar 23 20:33:19 <Syandal_>	contohnya
+Mar 23 20:33:23 <Syandal_>	sqlite> SELECT menu.nama, kategorimenu.nama FROM menu 
+Mar 23 20:33:23 <Syandal_>	        INNER JOIN kategorimenu ON menu.id_kategori = kategorimenu.id;
+Mar 23 20:33:32 <Syandal_>	baiklah kita pindah ke demo
+Mar 23 20:33:40 <Syandal_>	!baris
+Mar 23 20:33:41 <Ayana>	================================
+Mar 23 20:40:30 <Syandal_>	im back
+Mar 23 20:41:18 <presiden>	wb
+Mar 23 20:41:20 <Syandal_>	pada contoh query sql diatas akan mengambil data dari kolom nama pada tabel menu dan kolom nama pada tabel kategorimenu dan digabungkan dengan inner join
+Mar 23 20:41:27 <Syandal_>	!baris
+Mar 23 20:41:28 <Ayana>	================================
+Mar 23 20:41:33 <Syandal_>	!jeda 5 menit
+Mar 23 20:41:38 <Syandal_>	ada yang mau di tanyain ga
+Mar 23 20:42:37 <presiden>	lanjut om
+Mar 23 20:48:19 <Syandal_>	ok lanjut
+Mar 23 20:48:22 <Syandal_>	!baris
+Mar 23 20:48:23 <Ayana>	================================
+Mar 23 20:48:35 <Syandal_>	Sqlite Join - USING
+Mar 23 20:48:45 <Syandal_>	kita bisa menggunakan INNER JOIN diikuti USING
+Mar 23 20:49:00 <Syandal_>	contoh
+Mar 23 20:49:00 <Syandal_>	sqlite> SELECT menu.nama, kategorimenu.nama FROM menu
+Mar 23 20:49:00 <Syandal_>	        INNER JOIN kategorimenu USING(id_kategori);
+Mar 23 20:49:14 <Syandal_>	Pada JOIN - USING sqlite akan melakukan join otomatis dan membandingkan dua kolom yang memiliki nama yang sama.
+Mar 23 20:49:22 <Syandal_>	ok kita pindah ke demo
+Mar 23 20:51:53 <Mugiono>	Lanjut.
+Mar 23 20:57:01 <presiden>	udah selesai kentutnya om, Mugiono?
+Mar 23 21:00:52 <Syandal_>	ok
+Mar 23 21:01:14 <Syandal_>	INNER JOIN sama kayak INNER JOIN - USING
+Mar 23 21:01:16 <Syandal_>	!baris
+Mar 23 21:01:17 <Ayana>	================================
+Mar 23 21:01:24 <Syandal_>	jeda 5 menit
+Mar 23 21:05:52 *	FUI_Tamu459 (7688b14d@gateway/web/freenode/ip.118.136.177.77) has joined
+Mar 23 21:10:09 *	FarNab48 (~FarNab48@114.125.10.106) has joined
+Mar 23 21:10:28 <Syandal_>	ok lanjut
+Mar 23 21:10:37 <Syandal_>	!baris
+Mar 23 21:10:38 <Ayana>	================================
+Mar 23 21:10:53 <Syandal_>	Sqlite Natural Join
+Mar 23 21:11:11 <Syandal_>	Standart sql mendukung 3 jenis outer join: left, right dan full, tapi sqlite hanya mendukung left outer join.
+Mar 23 21:11:41 <Syandal_>	mangap salah
+Mar 23 21:11:45 <Syandal_>	!baris
+Mar 23 21:11:47 <Ayana>	================================
+Mar 23 21:11:49 <Syandal_>	Sqlite Natural Join
+Mar 23 21:12:00 <Syandal_>	Natural join mirip JOIN - USING, perbedaannya natural join otomatis menguji kesamaan diantara nilai setiap kolom yang ada di kedua tabel.
+Mar 23 21:12:12 <Syandal_>	Perbedaan diantara Inner Join dan Natural Join
+Mar 23 21:12:12 <Syandal_>	- pada INNER JOIN kita harus menentukan kondisi join untuk menggabungkan dua tabel, dan pada natural join kita tidak perlu menulis kondisi join, kita hanya menulis kedua nama tabel. selanjutnya natural join otomatis menguji kesamaan diantara nila setiap kolom yang ada di kedua tabel.
+Mar 23 21:12:12 <Syandal_>	- pada natural join semua kolom pada kedua tabel dangan nama yang sama akan cocok satu sama lain. contoh jika kita punya dua tabel dengan dua nama kolom yang sama di kedua tabel, maka natural join akan membandingkan kedua kolom bukan hanya salah satu kolom.
+Mar 23 21:12:31 <Syandal_>	contoh
+Mar 23 21:12:31 <Syandal_>	sqlite> SELECT menu.nama, kategorimenu.nama FROM menu NATURAL JOIN kategorimenu;
+Mar 23 21:12:33 *	FarNab48 (~FarNab48@114.125.10.106) has left
+Mar 23 21:12:36 <Syandal_>	ok kita pinah ke demo
+Mar 23 21:12:58 <Syandal_>	^ itu yang baru quit member jkt48 mungkin
+Mar 23 21:16:29 <Syandal_>	ok karna natural join hasilnya ga muncul jadi nggak ada penjelasan
+Mar 23 21:16:51 <Syandal_>	untuk contoh perintahnya bisa dicoba di pc nya masing2
+Mar 23 21:16:53 <Syandal_>	!baris
+Mar 23 21:16:54 <Ayana>	================================
+Mar 23 21:16:57 <Syandal_>	jeda 3 menit
+Mar 23 21:17:31 <Syandal_>	1)
+Mar 23 21:17:40 <Syandal_>	Sqlite LEFT OUTER JOIN
+Mar 23 21:17:53 <Syandal_>	Standart sql mendukung 3 jenis outer join: left, right dan full, tapi sqlite hanya mendukung left outer join.
+Mar 23 21:17:53 <Syandal_>	Pada left outer join semua nilai dari kolom pada tabel kiri melalui perintah SELECT akan termasuk pada hasil query, jadi nilai cocok atau tidak dengan kondisi kolom kiri selalu muncul sebagai hasil.
+Mar 23 21:17:53 <Syandal_>	jadi misalnya tabel kiri memiliki 'n' baris maka hasil query juga akan 'n baris. sedangkan pada tabel kanan jika nilai tidak cocok dengan kondisi join akan menghasilkan null.
+Mar 23 21:18:04 <Syandal_>	   /\  /\
+Mar 23 21:18:04 <Syandal_>	  /xx\/  \
+Mar 23 21:18:04 <Syandal_>	 /xxx/\   \
+Mar 23 21:18:04 <Syandal_>	\xxx\xx/ B /
+Mar 23 21:18:04 <Syandal_>	 \xxx\/   /
+Mar 23 21:18:04 <Syandal_>	  \xx/\  /
+Mar 23 21:18:04 <Syandal_>	   \/  \/   
+Mar 23 21:20:19 <Syandal_>	contoh
+Mar 23 21:20:19 <Syandal_>	sqlite> SELECT menu.nama, kategorimenu.nama FROM menu LEFT JOIN kategorimenu ON menu.id_kategori = kategorimenu.id;
+Mar 23 21:20:28 <Syandal_>	klausa OUTER opsional, kita bisa menulis LEFT OUTER JOIN atau LEFT JOIN akan menghasilkan data yang sama.
+Mar 23 21:20:36 <Syandal_>	ok kita pindah ke demo
+Mar 23 21:22:21 <presiden>	o
+Mar 23 21:22:23 <presiden>	k
+Mar 23 21:25:46 <Syandal_>	itu tadi contoh mengambil data dari kolom nama pada tabel menu dan kolom nama dari tabel kategorimenu digabung menggunakan LEFT OUTER JOIN
+Mar 23 21:25:49 <Syandal_>	!baris
+Mar 23 21:25:50 <Ayana>	================================
+Mar 23 21:25:53 <Syandal_>	jeda 5 menit
+Mar 23 21:28:58 <Syandal_>	ok lanjut
+Mar 23 21:29:05 <Syandal_>	3)
+Mar 23 21:29:08 <lappet>	ok
+Mar 23 21:29:16 <Syandal_>	Sqlite Cross Join
+Mar 23 21:30:14 <Syandal_>	Cross join akan menghasilkan nilai dari kolom yang di SELECT pada gabungan dua tabel, yang datanya cocok semua nilai dari tabel pertama dan tabel kedua.
+Mar 23 21:30:14 <Syandal_>	jadi semua nilai di tabel pertama akan cocok dengan 'n' baris dari tabel ke dua.
+Mar 23 21:30:14 <Syandal_>	pada CROSS JOIN kita tidak perlu menentukan kondisi join karna tidak dibutuhkan.
+Mar 23 21:30:14 <Syandal_>	hasil dari CROSS JOIN adalah gabungan dari semua nilai dari tabel pertama dengan semua nilai pada tabel kedua.
+Mar 23 21:32:14 <Syandal_>	contoh
+Mar 23 21:32:36 <Syandal_>	sqlite> SELECT * FROM menu CROSS JOIN kategorimenu;
+Mar 23 21:32:50 <Syandal_>	ok kita pindah ke demo
+Mar 23 21:37:46 <Syandal_>	kesimpulannya pada CROS JOIN akan menggabungkan semua data pada kedua tabel
+Mar 23 21:37:54 <Syandal_>	!baris
+Mar 23 21:37:55 <Ayana>	================================
+Mar 23 21:38:00 <Syandal_>	jeda 5 menit
+Mar 23 21:39:45 <Syandal_>	ok lanjut
+Mar 23 21:39:51 <Syandal_>	pembahasan ke 4) 
+Mar 23 21:40:02 <Syandal_>	Klausa HAVING sqlite
+Mar 23 21:40:11 <Syandal_>	Klausa having fungsinya mirip dengan klausa WHERE, digunakan untuk memfilter nilai dari tiap baris tabel. setiap nilai yang bernilai false akan dibuang. 
+Mar 23 21:40:24 <Syandal_>	perbedaan HAVING dengan WHERE, klausa WHERE ditempatkan pada kondisi pemilihan kolom, sedangkan HAVING digunakan setelah GROUP BY yang menginjinkan HAVING untuk memfilter hasil keluaran dari GROUP BY. 
+Mar 23 21:40:32 <Syandal_>	HAVING dan WHERE dapat menggunakan alias AS untuk mengganti nama kolom. 
+Mar 23 21:40:51 <Syandal_>	Sintaks
+Mar 23 21:40:51 <Syandal_>	sqlite> SELECT .. FROM .. WHERE .. GROUP BY.. HAVING .. ORDER BY ... ;
+Mar 23 21:43:04 <Syandal_>	contoh
+Mar 23 21:43:37 <Syandal_>	sqlite> SELECT * FROM menu GROUP BY nama HAVING (count(nama) < 2);
+Mar 23 21:43:48 <Syandal_>	kita pindah ke demo
+Mar 23 21:46:28 <Syandal_>	!baris
+Mar 23 21:46:29 <Ayana>	================================
+Mar 23 21:46:32 <Syandal_>	jeda 5 menit
+Mar 23 21:49:02 <Syandal_>	ok lanjut
+Mar 23 21:49:23 <Syandal_>	pembahasan ke 5) DISTINC Keyword
+Mar 23 21:49:32 <Syandal_>	Digunakan untuk membuang duplikat dari baris 
+Mar 23 21:49:41 <Syandal_>	contoh
+Mar 23 21:49:41 <Syandal_>	sqlite> SELECT DISTINC nama FROM menu;
+Mar 23 21:49:46 <Syandal_>	okk pindah ke demo
+Mar 23 21:53:54 <Syandal_>	perintah diatas jika ada baris hasil yang sama akan dihapus
+Mar 23 21:53:57 <Syandal_>	!baris
+Mar 23 21:53:58 <Ayana>	================================
+Mar 23 21:54:02 <Syandal_>	jeda 5 menit
+Mar 23 21:59:08 <Syandal_>	ok lanjut
+Mar 23 21:59:12 <Syandal_>	pembahasan ke 6
+Mar 23 21:59:25 <Syandal_>	Klausa ORDER BY
+Mar 23 21:59:25 <Syandal_>	Klausa ORDER BY digunakan untuk mengurutkan baris hasil dari SELECT. 
+Mar 23 21:59:31 <Syandal_>	Sintaks
+Mar 23 22:00:05 <Syandal_>	sqlite> SELECT daftarkolom FROM tabel ORDER BY kolom1 ASC, kolom2 DESC;
+Mar 23 22:00:08 <Syandal_>	contoh
+Mar 23 22:01:13 <Syandal_>	sqlite> SELECT * FROM menu ORDER BY id_kategori ASC, id DESC;
+Mar 23 22:01:17 <Syandal_>	ok pindah ke demo
+Mar 23 22:04:02 <Syandal_>	pada query diatas akan mengurutkan data hasil perintah SELECT .. diurutkan berdasarkan kolom di_kategori .. setelah itu diurutkan berdasarkan kolom id;
+Mar 23 22:04:06 <Syandal_>	!baris
+Mar 23 22:04:07 <Ayana>	================================
+Mar 23 22:04:10 <Syandal_>	jeda 3 menit
+Mar 23 22:07:07 *	Mugiono engga tahu mau nanya apa. Lanjut.
+Mar 23 22:07:15 <Syandal_>	:3
+Mar 23 22:07:36 <Syandal_>	nanti nunggu versi blog yang ditulis sama pak lappet aja
+Mar 23 22:07:45 <Syandal_>	ok pembahasan terakhir ke 7
+Mar 23 22:07:50 <Syandal_>	Klausa LIMIT
+Mar 23 22:07:58 <Syandal_>	Klausa LIMIT digunakan untuk membatasi jumlah data yang dihasilkan statemen SELECT.
+Mar 23 22:07:59 <lappet>	siap. mudah2an gak terlalu meleset
+Mar 23 22:08:22 <Syandal_>	^ akhirnya dia muncul
+Mar 23 22:08:29 <Syandal_>	tadi pak apg muncul om
+Mar 23 22:08:31 <Syandal_>	Sintaks
+Mar 23 22:08:31 <Syandal_>	sqlite> SELECT .. FROM .. LIMIT .. ;
+Mar 23 22:08:31 <Syandal_>	sqlite> SELECT .. FROM .. LIMIT [nobaris] .. OFFSET [no kolom];
+Mar 23 22:08:48 <Syandal_>	contoh
+Mar 23 22:08:48 <Syandal_>	sqlite> SELECT * FROM menu LIMIT 10;
+Mar 23 22:08:54 <Syandal_>	kita pindah ke demo
+Mar 23 22:10:08 <Syandal_>	perintah diatas untuk menampilkan 10 baris data dari tabel menu
+Mar 23 22:10:13 <Syandal_>	contoh2
+Mar 23 22:10:20 <Syandal_>	sqlite> SELECT * FROM menu LIMIT 3 OFFSET 10;
+Mar 23 22:11:29 <Syandal_>	perintah diatas menampilkan 3 baris dimulai dari baris setelah ke 10 yaitu baris ke 11 dari tabel menu
+Mar 23 22:11:32 <Syandal_>	contoh3
+Mar 23 22:11:40 <Syandal_>	sqlite> SELECT * FROM menu LIMIT 3, 10;
+Mar 23 22:12:11 *	Mugiono sambil download https://www.alldeb.net/gudang_alldeb/20180323/default-jdk_20180323_ubuntu_trusty_amd64.alldeb tapi lelet banget. Entah dari Server atau dariku.
+Mar 23 22:12:55 <Syandal_>	^ contoh terakhir akan menampilkan 10 baris data dimulai dari baris ke empat dari tabel menu
+Mar 23 22:12:59 <Syandal_>	!baris
+Mar 23 22:13:01 <Ayana>	================================
+Mar 23 22:13:07 <Syandal_>	semua materi hari ini udah selesai
+Mar 23 22:13:14 <Syandal_>	ada yang mau didiskusiin ga?
+Mar 23 22:13:25 <Syandal_>	^ itu all deb jdk mungkin file nya besar
+Mar 23 22:13:34 <Syandal_>	setau ane jdk file nya besar
+Mar 23 22:13:45 <Ayana>	gak
+Mar 23 22:13:59 <Mugiono>	Syandal_: ga, cuma 61MB.
+Mar 23 22:14:33 <lappet>	terima kasih bg Syandal_. sya telat, jdi kurang ngerti. ntar sya baca ulang dari log
+Mar 23 22:15:16 <Syandal_>	menari
+Mar 23 22:15:34 <Syandal_>	dear bung lappet .. demo hari ini ada disini >> https://asciinema.org/a/WzegZHLiyEOLxg5aYaBCIezGt
+Mar 23 22:15:36 <Ayana>	^ Diskusi Online Ubuntu-Indonesia materi SQLite3 pertemuan 5 - asciinema
+Mar 23 22:15:49 <Syandal_>	log nya bisa di cari di file sharing kaya biasa
+Mar 23 22:15:53 <lappet>	hari ini agak lebih rame.
+Mar 23 22:16:05 <Syandal_>	karna ayana ga ada pertanyaan jadi pertemuan 5 sampe disini
+Mar 23 22:16:08 <Syandal_>	!wasalam
+Mar 23 22:16:09 <Ayana>	Syandal_ membalas salam :  >> Waalaikum Salam Warrahmatullahi Wabarakatuh
+Mar 23 22:16:12 <Syandal_>	!baris
+Mar 23 22:16:13 <Ayana>	================================
+Mar 23 22:16:17 <Ayana>	gak
+Mar 23 22:17:07 <Mugiono>	Syandal_: cukup panjang ya sqlite3.

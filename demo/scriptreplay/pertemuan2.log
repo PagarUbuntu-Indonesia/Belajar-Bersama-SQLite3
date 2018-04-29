@@ -1,0 +1,291 @@
+Script started on Sat 28 Apr 2018 11:47:14 AM WIB
+syandal@remoteshare:~$ # materi sqlite [K2[K3 s[Ksudah selesai tapi demo untuk pertemuan 2 belum j[Kada
+syandal@remoteshare:~$ # jadi karna itulah demo ini dibuat
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # langsung aja
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # ---------------------------
+syandal@remoteshare:~$ # Dik[Ksku[K[K[K[K[KKegiatan Belajar Bersama SQLI[Kite kanal irc #ubuntu-indonesia materi pertemuan 2
+syandal@remoteshare:~$ # yang dipelajari adalah
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # Pertemuan 2 - Sqlite3
+syandal@remoteshare:~$ # ---------------------
+syandal@remoteshare:~$ # Syntax dasar Sqlite
+syandal@remoteshare:~$ # Syntax dasar Sqlite[C[1@1[1@ [1P[1@.[1@ 
+syandal@remoteshare:~$ ## [K[K 2. Tipe Data
+syandal@remoteshare:~$ # 3. Constraint
+syandal@remoteshare:~$ # 4. Alter & Drop table
+syandal@remoteshare:~$ # 5. Views & Index
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # --------------------------
+syandal@remoteshare:~$ # 1) Syntax Dasar SQLite
+syandal@remoteshare:~$ # Syntax dasar sqlite diantaranya :
+syandal@remoteshare:~$ # - case sensitive
+syandal@remoteshare:~$ # - komentar
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # case sensitive maksudnya huruf kecil dan besar dianggap beda
+syandal@remoteshare:~$ # untuk komentar per baris menggunakan tanda dua minus kaya gini --
+syandal@remoteshare:~$ # contoh
+syandal@remoteshare:~$ # sqlite> .table -- ini adalah komentar
+syandal@remoteshare:~$ # untuk komentar yang lebih dari satu baris menggunakan pasangan ini /*   .. ini b agian komentar .. sampe sini */
+syandal@remoteshare:~$ # komentar tergantung versi sqlite nya.. ada yang support komentar ada yang ga
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # ---------------------
+syandal@remoteshare:~$ # 2) Tipe data
+syandal@remoteshare:~$ # Tipe Data SQlite 
+syandal@remoteshare:~$ # Tipe data adalah atribut yang mejelaskan tipe data dari tiap obyek, seperti kolo m, variabel dan ekspresi.
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # Tipe kelas
+syandal@remoteshare:~$ # ada 5 tipe yang bisa dipakai saat memasukan data ke database sqlite
+syandal@remoteshare:~$ # - NULL
+syandal@remoteshare:~$ # - INTEGER
+syandal@remoteshare:~$ # - REAL
+syandal@remoteshare:~$ # - TEXT
+syandal@remoteshare:~$ # - BLOB
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # berikut list lengkapnya
+syandal@remoteshare:~$ # - INT
+syandal@remoteshare:~$ # - INTEGER
+syandal@remoteshare:~$ # - TINYINT
+syandal@remoteshare:~$ # - SMALLINT
+syandal@remoteshare:~$ # - MEDIUMINT          =>  INTEGER
+syandal@remoteshare:~$ # - BIGINT
+syandal@remoteshare:~$ # - UNSIGNED BIG INT
+syandal@remoteshare:~$ # - INT2
+syandal@remoteshare:~$ # - INT8
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # - CHARACTER(n)
+syandal@remoteshare:~$ # - VARCHAR(n)
+syandal@remoteshare:~$ # - VARYING CHARACTER(n)
+syandal@remoteshare:~$ # - NCHAR(n)               => TEXT
+syandal@remoteshare:~$ # - NATIVE CHARACTER(n)
+syandal@remoteshare:~$ # - NVARCHAR(n)
+syandal@remoteshare:~$ # - TEXT
+syandal@remoteshare:~$ # - CLOB
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # - BLOB
+syandal@remoteshare:~$ # - no datatype specified    => NONE
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # - REAL  
+syandal@remoteshare:~$ # - DOUBLE
+syandal@remoteshare:~$ # - DOUBLE PRECISION    => REAL
+syandal@remoteshare:~$ # - FLOAT
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # - NUMERIC
+syandal@remoteshare:~$ # - DECIMAL
+syandal@remoteshare:~$ # - BOOLEAN             => NUMERIC
+syandal@remoteshare:~$ # - DATE
+syandal@remoteshare:~$ # - DATETIME
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # ---------------------------------
+syandal@remoteshare:~$ # perintah membuat tabel sintaksnya 
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # CREATE TABLE namatable (
+syandal@remoteshare:~$ #    namakolom typedata constraint[optional],
+syandal@remoteshare:~$ #   namakolom typedata constraint[optional],[C[C[C[1@ 
+syandal@remoteshare:~$ #   .. ..[C[C
+syandal@remoteshare:~$ # );
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # perintah memasukan data ke dalam tabel contoohnya[K[K[K[K[Khnya
+syandal@remoteshare:~$ # INSERT INTO karyawan VALUES (1, 'Iyon', 22, 'Banyumas', 2500000);
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # untuk menghapus tabel menggunakan perintah "DROP TABLE" diikuti nama tabel, cont ohnya 
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # sqlite> DROP TABLE karyawan;
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # selanjutnya mengganti nama tabel
+syandal@remoteshare:~$ # Untuk mengganti nama tabel kita bisa menggunakan perintah "ALTER TABLE" contohny a
+syandal@remoteshare:~$ # sqlite> ALTER TABLE karyawan RENAME TO kuliit;
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # untuk melihat perubahan nama table dengan perintah .table
+syandal@remoteshare:~$ # sqlite> .table
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # selanjutnya menambah kolom pada tabel
+syandal@remoteshare:~$ # Untuk mnambahkan kolom bisa menggunakan perintah "ALTER TABLE", misalnya kita me nambahkan sebuah kolom
+syandal@remoteshare:~$ # qlite> ALTER TABLE kuliit ADD COLUMN lamamengabdi INT(3);
+syandal@remoteshare:~$ # untuk melihat hasilnya dengan perintah .schema
+syandal@remoteshare:~$ # sqlite> .schema kuliit
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # ----------------------------------
+syandal@remoteshare:~$ # 4) Consta[Kraint
+syandal@remoteshare:~$ # misalnya ada member femalegeek.. dia constraint sejatinya kek gini >> ganteng, m apan, perhatian, dst
+syandal@remoteshare:~$ # kalo di database constraint kek gini >> primary key, not null, default, unique,  check, foreign key, dst
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # disini constraint = paksaan
+syandal@remoteshare:~$ # ----------------------
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # Pengenalan Constraint
+syandal@remoteshare:~$ # Constraint memberlakukan batasan dan aturan pada nilai yang dimasukan ke kolom u ntuk validasi data
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # - Primary key
+syandal@remoteshare:~$ #   semua nilai unik dan digunakan untuk identitas tabel
+syandal@remoteshare:~$ #   contoh
+syandal@remoteshare:~$ #   NamaKolom INTEGER NOT NULL PRIMARY KEY;
+syandal@remoteshare:~$ #   atau
+syandal@remoteshare:~$ #   PRIMARY KEY(NamaKolom);
+syandal@remoteshare:~$ #   atau
+syandal@remoteshare:~$ #   PRIMARY KEY (NamaKolom1, NamaKolom2);
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # - Not Null
+syandal@remoteshare:~$ #   Mencegah nilai kosong, dan nilai kolom harus diisi saat memasukan data
+syandal@remoteshare:~$ #   contoh
+syandal@remoteshare:~$ #   NamaKolom INTEGER NOT NULL
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # - Default
+syandal@remoteshare:~$ #   Jika nilai tidak dimasukan saat memasukan data nilai default yang akan dimasuk an ke kolom
+syandal@remoteshare:~$ #   contoh
+syandal@remoteshare:~$ #   NamaKolom INTEGER DEFAULT 0;
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # - Unique
+syandal@remoteshare:~$ #   Mencegah nilai ganda dalam suatu kolom
+syandal@remoteshare:~$ #   contoh
+syandal@remoteshare:~$ #   IdKaryawan INTEGER NOT NULL UNIQUE;
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # - Chek
+syandal@remoteshare:~$ #   Mengecek kondisi nilai saat dimasukan, jika nilai tidak cuco dengan kondisi ma ka tidak akan dimasukan.
+syandal@remoteshare:~$ #   contoh
+syandal@remoteshare:~$ #   JumlahPesan INTEGER NOT NULL CHECK(JumlahPesan >= 1);
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # - Foreign Key
+syandal@remoteshare:~$ #   Saat menggunakan banyak tabel dan saling relasi satu sama lain dan kita mengin ginkan nilai yang dimasukan harus ada di tabel lain maka kita membutuhkan Foreign Key
+syandal@remoteshare:~$ #   Di Sqlite Foreign Key di nonaktifkan secara default, untuk mengaktifkannya den gan perintah 
+syandal@remoteshare:~$ #
+syandal@remoteshare:~$ #   PRAGMA foreign_keys = ON;
+syandal@remoteshare:~$ #  Contoh Contoh[C[C[C[C[C[C
+syandal@remoteshare:~$ #   |-----menu-----|            |--kategorimenu--|
+syandal@remoteshare:~$ #   | id           |      |------> id            |
+syandal@remoteshare:~$ #   | nama         |      |     |  nama          |
+syandal@remoteshare:~$ #  | harga        |      |     |----------------|[C[C[1@ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+syandal@remoteshare:~$ #   | id_kategori <-------|
+syandal@remoteshare:~$ #   |--------------|
+syandal@remoteshare:~$ 
+syandal@remoteshare:~$ # ok kita prakteik [K[K[Kki membuat table dengan constraint foreign key
+syandal@remoteshare:~$ # [K[Kcd belajar\ sqlite3/
+syandal@remoteshare:~/belajar sqlite3$ ls
+[0m[01;34mcode[0m          hasilkita.csv  KodingKafe2.db  KodingKafe.db   KodingSusu.db   Perusahaanku.db
+hasilcsv.csv  KodingKafe     KodingKafe3.db  KodingKafe.sql  perusahaan1.db  tabelkaryawan1.sql
+syandal@remoteshare:~/belajar sqlite3$ # kita bikin database baru aja 
+syandal@remoteshare:~/belajar sqlite3$ sqlite3 Koid[K[KdingKafe3.db [K[K[K[K[K4.db
+SQLite version 3.11.0 2016-02-15 17:29:24
+Enter ".help" for usage hints.
+sqlite>  -- buat tabel kategori menu[K[K[K[K[Kmenu
+sqlite> CRE[K[K[K.table
+sqlite> CREATE TABLE "kategorimenu" (
+   ...> id INT(1) PRIMARY KEY NOT NULL,
+   ...> nama C[KVARCHAR(50) );
+sqlite> 
+sqlite> -- --[K[Kkita buat tabel menu
+sqlite> .table
+kategorimenu
+sqlite> .schmea[K[K[Kema kategr[Korimenu
+CREATE TABLE "kategorimenu" (
+id INT(1) PRIMARY KEY NOT NULL,
+nama VARCHAR(50) );
+sqlite> CREATE TBA[K[KABLE "menu" (
+   ...> id INT(3) PRIMARY KEY NOT NULL,
+   ...> nama VARCHAR(75), 
+   ...> harga REAL,
+   ...> FOREIGN KEY [K(id_kategori[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kid_kategori INT(10[K),
+   ...> FOREIGN KEY [K(id_kategori) REFERENCES kategorimenu(id) );
+sqlite> .tab[K[K[K[K
+sqlite> -- kita liat hasilnya
+sqlite> .table
+kategorimenu  menu        
+sqlite> -- kita liat schm[Kema nya 
+sqlite> .schema
+CREATE TABLE "kategorimenu" (
+id INT(1) PRIMARY KEY NOT NULL,
+nama VARCHAR(50) );
+CREATE TABLE "menu" (
+id INT(3) PRIMARY KEY NOT NULL,
+nama VARCHAR(75), 
+harga REAL,
+id_kategori INT(1),
+FOREIGN KEY(id_kategori) REFERENCES kategorimenu(id) );
+sqlite> 
+sqlite> -- 5) View dan Indeks
+sqlite> -- View digunakan untuk menyajikan data dari tabel. view sangat mirip dengan tabel tetapi tidak b isa digunakan untuk menyimpan ke dalam tabel. view dibuat menggunakan statemen select.
+sqlite> -- Membuat statemn view
+sqlite> -- Untuk membuatnya kita mnggunakan statemen CREATE VIEW diikuti dengan nama view dan isikan quer y.
+sqlite> 
+sqlite> -- kita kasi perintah untuk melihat table
+sqlite> .bt[K[Ktable
+kategorimenu  menu        
+sqlite> -- kita bikin view baru namanya sem[K[K[K[KS[K Semua [KMenuView
+sqlite> CREATE VIEW SemuaMenuView
+   ...> AS 
+   ...>   SELECT 
+   ...>   m.id,
+   ...>    [Km.nama,
+   ...>   m.harga,
+   ...>   m.id_kategori
+   ...> FROM menu AS m
+   ...> INNER JOIN kategorimenu AS k ON m.id_kategori -[K= k.id;
+sqlite> -- kita liat hasilnya
+sqlite> .table
+SemuaMenuView  kategorimenu   menu         
+sqlite> -- ^ udah ada view baru
+sqlite> .schmea [K[K[K[Kema SemuaMenuView
+CREATE VIEW SemuaMenuView
+AS 
+  SELECT 
+  m.id,
+  m.nama,
+  m.harga,
+  m.id_kategori
+FROM menu AS m
+INNER JOIN kategorimenu AS k ON m.id_kategori = k.id;
+sqlite> s[KSELECT * f[KFROM SemuaMenuView;
+sqlite> 
+sqlite> #[K-- Temporary View
+sqlite> -- 
+sqlite> -- adalah view yang digunakan pada koneksi database saat ini, jika kita keluar dari database, tem porary view akan dihapus secara otomatis.
+sqlite> -- perintahnya sama dengan view hanya bedanya menggunakan statemen CREATE TEMP VIEW atau
+sqlite> 
+sqlite> -- Hapus View
+sqlite> -- untuk menghapus view dengan perintah DROP
+sqlite> -- sqlite> DROP VIEW SemuaMenuView;
+sqlite> 
+sqlite> -- ---------------------
+sqlite> -- Index
+sqlite> -- index pada sqlite fungsinya sama seperti daftar isi pada buku, saat kita mencari sebuah baris  pada tabel sqlite dengan kriteria pencarian maka sqlite akan mencari semua baris sampe menemukan baris ya ng cuco dengan kriteria pencarian kita. proses pencarian akan menjadi lambat ketika kita punya tabel besa r
+sqlite> -- index digunakan untuk speed up dan optimasi database untuk menambah performa
+sqlite> -- ketika index dibuat pada sebuah kolom, sqlite akan membuat struktur data index dimana setiap f ield sebagai pointer untuk setiap baris tempat nilainya berada
+sqlite> -- saat kita menjalankan query dengan kondisi pencarian pada kolom bagian dari index, sqlite akan  melihat nilai pada index pertama kali.
+sqlite> -- tapi jika kolom yang kita cari bukan bagian index, sqlite akan mencari pada nilai kolom untuk  menemukan data, proses ini lebih lambat dari index
+sqlite> 
+sqlite> -- Membuat Index
+sqlite> - [K- Untuk membuat index dengan perintah CREATE INDEX
+sqlite> -- - diikuti nama index
+sqlite> -- - setelah nama index kita harus memasukkan kata "ON" diikuti nama tabel
+sqlite> -- - setelah itu list dari nama kolom untuk digunakan sebagai index
+sqlite> -- - bisa menggunakan salah satu 'ASC' atau 'DESC' untuk pengurutan
+sqlite> --[K[K
+sqlite> -- kita contohin aja langsung
+sqlite> -- kit [Ka liat dulu aja udah ada index apa belum
+sqlite> -- dengan cara
+sqlite> PG[KRAGMA index_list(menu);
+0|sqlite_autoindex_menu_1|1|pk|0
+sqlite> 
+sqlite> - kit[K[K[K[K- kita buat indeks baru
+sqlite> CREATE INDEX NamaMenuIndex ON menu(nama);
+sqlite> 
+sqlite> -- kita liat laig
+sqlite> -- kita liat laig[C[C[C[C[C[C[C[CCREATE INDEX NamaMenuIndex ON menu(nama);[C[C[C[C[C[C[C[C[17P-- kita buat indeks baru[C[C[C[C[C[C[C[CPRAGMA index_list(menu);
+0|NamaMenuIndex|0|c|0
+1|sqlite_autoindex_menu_1|1|pk|0
+sqlite> -- ^ udah ada
+sqlite> -- 
+sqlite> -- index bukan hanya dibuat berdasarkan kolom tetapi bisa juga berdasarkan ekspresi seperti conto h berikut
+sqlite> 
+sqlite> -- qlite> CREATE INDEX JumlahOrderIndex ON transaksi(id, id_menu*jumlah); 
+sqlite> 
+sqlite> -- ok pertemuan kedua selesai
+sqlite> -- --------------------------
+sqlite> 
+sqlite> -- \(^_^)/
+sqlite> .quit
+syandal@remoteshare:~/belajar sqlite3$ exit
+exit
+
+Script done on Sat 28 Apr 2018 12:35:52 PM WIB

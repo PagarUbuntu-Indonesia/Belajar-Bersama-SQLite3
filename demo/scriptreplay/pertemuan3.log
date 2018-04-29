@@ -1,0 +1,386 @@
+Script started on Fri 09 Mar 2018 07:56:16 PM WIB
+syandal@remoteshare:~$ # Untuk pertemuan 3 kali ini kita akan membahas tentang  :
+syandal@remoteshare:~$ # - Perintah DML 
+syandal@remoteshare:~$ # - Penanganan Konflik
+syandal@remoteshare:~$ # - Transaksi
+syandal@remoteshare:~$ sql[K[K[K# kita buka dulu database koding ko[K[K[K[K[K[K[K[K[KKodingKafe.db
+syandal@remoteshare:~$ pwd
+/home/syandal
+syandal@remoteshare:~$ cd belajar\ sqlite3/
+syandal@remoteshare:~/belajar sqlite3$ sqlite3 Kodingk[KKafe.b[Kdb 
+SQLite version 3.11.0 2016-02-15 17:29:24
+Enter ".help" for usage hints.
+sqlite> .table
+kategorimenu   meja           menusalah      promopaket   
+kategorisalah  menu           paket          transaksi    
+sqlite> .schema menu
+CREATE TABLE "menu" (
+nama VARCHAR(75),
+harga REAL,
+id_kategori INT,
+FOREIGN KEY(id_kategori) REFERENCES kategorimenu(id));
+sqlite> INSERT INTO menu(id, nama, harga, id_kategori) VALUES (46, "Es Kosong",  2000.0, 3), (47, "Cah Jamur", 6000.0, 4);
+Error: table menu has no column named id
+sqlite> -- mangap salah tabel kita keluar dulu
+sqlite> .quit
+syandal@remoteshare:~/belajar sqlite3$ ls
+hasilcsv.csv   KodingKafe2.db  KodingSusu.db
+hasilkita.csv  KodingKafe.db   Perusahaanku.db
+KodingKafe     KodingKafe.sql  tabelkaryawan1.sql
+syandal@remoteshare:~/belajar sqlite3$ sqlite3 KodingKafe2.db 
+SQLite version 3.11.0 2016-02-15 17:29:24
+Enter ".help" for usage hints.
+sqlite> .table
+SemuaMenuView  meja           paket          transaksi    
+kategorimenu   menu           promopaket   
+sqlite> .schema menu
+CREATE TABLE "menu" (
+id int(3) primary key not null,
+nama char(75),
+harga real,
+id_kategori int(1)
+);
+CREATE INDEX IndexMenu ON menu(nama);
+sqlite> -- ok
+sqlite> kita liat dulu isi ta[1@-[1@-[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cbel menu 
+sqlite> sle[K[K[KSELECT * FORM menu WHERE id > 45;
+Error: near "FORM": syntax error
+sqlite> SELECT * FORM menu WHERE id > 45;[C[C[1P[1P[1P[1@R[1@O[1@M
+sqlite> SELECT * FROM menu WHERE id > 45;[C[1P;0;
+41|Sambel Ijo|2000.0|6
+42|Sambel Tomat|2000.0|6
+43|Sambel Dabu-dabu|2000.0|6
+44|Sambel Bali|2000.0|6
+45|Cabe-cabean|2000.0|6
+sqlite> .header[K[K[K[K[K[K[K-- kita format dulu
+sqlite> .header on
+sqlite> .mode column
+sqlite> .mode column[C[C[C[C[C[C[C[C[C[2Pheader on[C[C[C[C[C[C[C[C-- kita format dulu[C[C[C[C[C[C[C[CSELECT * FROM menu WHERE id > 40;
+id          nama        harga       id_kategori
+----------  ----------  ----------  -----------
+41          Sambel Ijo  2000.0      6          
+42          Sambel Tom  2000.0      6          
+43          Sambel Dab  2000.0      6          
+44          Sambel Bal  2000.0      6          
+45          Cabe-cabea  2000.0      6          
+sqlite> ok [K[K[K-- ok kita masukin record baru, 1 perintah INSERT untuk dua baris
+sqlite> INSERT INTO menu(id, nama, harga, id_kategori) VALUES (46, "Es Kosong",  2000.0, 3), (47, "Cah Jamur", 6000.0, 4);
+sqlite> -- ok kita liat lagi hasilnya
+sqlite> -- ok kita liat lagi hasilnya[C[C[C[C[C[C[C[CINSERT INTO menu(id, nama, harga, id_kategori) VALUES (46, "Es Kosong",  2000.0, 3), (47, "Cah Jamur", 6000.0, 4);M[C[C[C[C[C[C[C[C[6P-- ok kita masukin record baru, 1 perintah INSERT untuk dua baris
+[KM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[32PSELECT * FROM menu WHERE id > 40;
+id          nama        harga       id_kategori
+----------  ----------  ----------  -----------
+41          Sambel Ijo  2000.0      6          
+42          Sambel Tom  2000.0      6          
+43          Sambel Dab  2000.0      6          
+44          Sambel Bal  2000.0      6          
+45          Cabe-cabea  2000.0      6          
+46          Es Kosong   2000.0      3          
+47          Cah Jamur   6000.0      4          
+sqlite> --[K[K-- ok kita coba
+sqlite> -- pertama kita liat dulu semua harga Nas[K[K[K[Ky[K yang namanya Nasi pake klausa LIN M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[KM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CK E
+sqlite> sqlite> SELECT * FROM menu WHERE nama LIKE 'Nasi%';
+Error: near "sqlite": syntax error
+sqlite> SELECT * FROM menu WHERE nama LIKE 'Nasi%';
+id          nama         harga       id_kategori
+----------  -----------  ----------  -----------
+1           Nasi Goreng  15000.0     1          
+2           Nasi Lemes   15000.0     1          
+3           Nasi Putih   4000.0      1          
+4           Nasi Kuning  5000.0      1          
+5           Nasi Uduk    5000.0      1          
+6           Nasi Kibuli  10000.0     1          
+sqlite> -- ok harga 15ribay kiga [K[K[Kta ganti jadi 13 [Kribay
+sqlite> UPDATE menu SET harga=13000.0 WHERE nama="Nasi Goreng";
+sqlite> -- ok kita liat hasilnya;[K
+sqlite> -- ok kita liat hasilnya[C[C[C[C[C[C[C[CUPDATE menu SET harga=13000.0 WHERE nama="Nasi Goreng";[C[C[C[C[C[C[C[C[12P-- ok harga 15ribay kita ganti jadi 13ribay[C[C[C[C[C[C[C[CSELECT * FROM menu WHERE nama LIKE 'Nasi%';
+id          nama         harga       id_kategori
+----------  -----------  ----------  -----------
+1           Nasi Goreng  13000.0     1          
+2           Nasi Lemes   15000.0     1          
+3           Nasi Putih   4000.0      1          
+4           Nasi Kuning  5000.0      1          
+5           Nasi Uduk    5000.0      1          
+6           Nasi Kibuli  10000.0     1          
+sqlite> -- uda berubah :p
+sqlite> -- kita co[K[Kmau nyoba mengah[K[Khapus semua [K[K[K[Kbuah record yang nama nya C[KCah Jamur
+sqlite> -- pertama kita liat dulu
+sqlite> SELECT * FROM menu WHERE nama = 'Cah Jamur';
+id          nama        harga       id_kategori
+----------  ----------  ----------  -----------
+47          Cah Jamur   6000.0      4          
+sqlite> -- trus kita hapus
+sqlite> DELETE FROM menu WE[KHERE nama = Cah[K[K[K'Cah Jamur';
+sqlite> -- trus kita liat lagi 
+sqlite> -- trus kita liat lagi [C[C[C[C[C[C[C[CDELETE FROM menu WHERE nama = 'Cah Jamur';[C[C[C[C[C[C[C[C[24P-- trus kita hapus[C[C[C[C[C[C[C[CSELECT * FROM menu WHERE nama = 'Cah Jamur';
+sqlite> -- ternyata datanya uda ga ada
+sqlite> SELECT * FROM menu WHERE id > 40;
+id          nama        harga       id_kategori
+----------  ----------  ----------  -----------
+41          Sambel Ijo  2000.0      6          
+42          Sambel Tom  2000.0      6          
+43          Sambel Dab  2000.0      6          
+44          Sambel Bal  2000.0      6          
+45          Cabe-cabea  2000.0      6          
+46          Es Kosong   2000.0      3          
+sqlite> -- kita mau hapus record yang memiliki id 45 dan 46
+sqlite> -- kita liat dulu datanya
+sqlite> -- kita liat dulu datanyamau hapus record yang memiliki id 45 dan 46[C[C[C[C[C[C[C[C[18PSELECT * FROM menu WHERE id > 40;[C[C[C[C[C[C[C[C[3P-- ternyata datanya uda ga ada[C[C[C[C[C[C[C[CSELECT * FROM menu WHERE id > 40;
+id          nama        harga       id_kategori
+----------  ----------  ----------  -----------
+41          Sambel Ijo  2000.0      6          
+42          Sambel Tom  2000.0      6          
+43          Sambel Dab  2000.0      6          
+44          Sambel Bal  2000.0      6          
+45          Cabe-cabea  2000.0      6          
+46          Es Kosong   2000.0      3          
+sqlite> -- trus kita hapus
+sqlite> DELETE FROM menu WHERE id=45 OR id=46;
+sqlite> -- trus kitaliat hasinya
+sqlite> -- trus kitaliat hasinya[C[C[C[C[C[C[C[CDELETE FROM menu WHERE id=45 OR id=46;[C[C[C[C[C[C[C[C[20P-- trus kita hapus[C[C[C[C[C[C[C[CSELECT * FROM menu WHERE id > 40;
+id          nama        harga       id_kategori
+----------  ----------  ----------  -----------
+41          Sambel Ijo  2000.0      6          
+42          Sambel Tom  2000.0      6          
+43          Sambel Dab  2000.0      6          
+44          Sambel Bal  2000.0      6          
+sqlite> -- ternyata datanya uda ga ada
+sqlite> -- ok kita mencoba meb[Kmbuat transaksi
+sqlite> -- untuk melihat efek dari rollback
+sqlite> -- pertama kita liat dulu isi dari tabel menu
+sqlite> SELECT * FROM menu;
+id          nama         harga       id_kategori
+----------  -----------  ----------  -----------
+1           Nasi Goreng  13000.0     1          
+2           Nasi Lemes   15000.0     1          
+3           Nasi Putih   4000.0      1          
+4           Nasi Kuning  5000.0      1          
+5           Nasi Uduk    5000.0      1          
+6           Nasi Kibuli  10000.0     1          
+7           Ikan Kangma  10000.0     2          
+8           Ikan Kangma  12000.0     2          
+9           Ikan Kangma  12000.0     2          
+10          Ikan Lele G  8000.0      2          
+11          Ikan Lele B  8000.0      2          
+12          Ayam Goreng  13000.0     2          
+13          Ayam Goreng  13000.0     2          
+14          Ayam Bakar   14000.0     2          
+15          Bebek Goren  14000.0     2          
+16          Bebek Kreme  15000.0     2          
+17          Bebek Bakar  15000.0     2          
+18          Kepiting Ka  16000.0     2          
+19          Kepiting Kr  16000.0     2          
+20          Kerang Kari  15000.0     2          
+21          Kerang Masa  14000.0     2          
+22          Air Jeruk A  6000.0      3          
+23          Es Jeruk Ma  7000.0      3          
+24          Es Teh Mani  5000.0      3          
+25          Teh Anget M  4000.0      3          
+26          Es Terong B  4000.0      3          
+27          Es Timun Se  4000.0      3          
+28          Es Kelapa M  4000.0      3          
+29          Sayur Asem   6000.0      4          
+30          Sayur Sop    6000.0      4          
+31          Sayur Benin  6000.0      4          
+32          Oseng Kangk  6000.0      4          
+33          Oseng Teron  6000.0      4          
+34          Terong Dica  6000.0      4          
+35          Puding       5000.0      5          
+36          Es Krim      5000.0      5          
+37          Semangka     5000.0      5          
+38          Melon        5000.0      5          
+39          Pisang       5000.0      5          
+40          Sambel Tera  2000.0      6          
+41          Sambel Ijo   2000.0      6          
+42          Sambel Toma  2000.0      6          
+43          Sambel Dabu  2000.0      6          
+44          Sambel Bali  2000.0      6          
+sqlite> -- ok isinya banyak
+sqlite> -- kita mulai transaksi dengan perintah BEGIN;
+sqlite> BEGIN;
+sqlite> -- trus kita hapus beberapa baris
+sqlite> DELETE FROM menu WHERE id> 5 AND id < 40;
+sqlite> -- trus kita liat hasilnya
+sqlite> -- trus kita liat hasilnya[C[C[C[C[C[C[C[CDELETE FROM menu WHERE id> 5 AND id < 40;[C[C[C[C[C[C[C[C[8P-- trus kita hapus beberapa baris[C[C[C[C[C[C[C[CBEGIN;[K-- kita mulai transaksi dengan perintah BEGIN;[C[C[C[C[C[C[C[C[C[C[C[27Pok isinya banyak[C[C[C[C[C[C[C[CSELECT * FROM menu;
+id          nama         harga       id_kategori
+----------  -----------  ----------  -----------
+1           Nasi Goreng  13000.0     1          
+2           Nasi Lemes   15000.0     1          
+3           Nasi Putih   4000.0      1          
+4           Nasi Kuning  5000.0      1          
+5           Nasi Uduk    5000.0      1          
+40          Sambel Tera  2000.0      6          
+41          Sambel Ijo   2000.0      6          
+42          Sambel Toma  2000.0      6          
+43          Sambel Dabu  2000.0      6          
+44          Sambel Bali  2000.0      6          
+sqlite> -- isinya jadi tinggal dikit
+sqlite> -- ok kita rollback;
+sqlite> ROLLBACK;
+sqlite> -- kita liat lagi isinya
+sqlite> -- kita liat lagi isinya[C[C[C[C[C[C[C[C[15PROLLBACK;-- ok kita rollback;[C[C[C[C[C[C[C[C[C[C[Cisinya jadi tinggal dikit[C[C[C[C[C[C[C[C[9PSELECT * FROM menu;
+id          nama         harga       id_kategori
+----------  -----------  ----------  -----------
+1           Nasi Goreng  13000.0     1          
+2           Nasi Lemes   15000.0     1          
+3           Nasi Putih   4000.0      1          
+4           Nasi Kuning  5000.0      1          
+5           Nasi Uduk    5000.0      1          
+6           Nasi Kibuli  10000.0     1          
+7           Ikan Kangma  10000.0     2          
+8           Ikan Kangma  12000.0     2          
+9           Ikan Kangma  12000.0     2          
+10          Ikan Lele G  8000.0      2          
+11          Ikan Lele B  8000.0      2          
+12          Ayam Goreng  13000.0     2          
+13          Ayam Goreng  13000.0     2          
+14          Ayam Bakar   14000.0     2          
+15          Bebek Goren  14000.0     2          
+16          Bebek Kreme  15000.0     2          
+17          Bebek Bakar  15000.0     2          
+18          Kepiting Ka  16000.0     2          
+19          Kepiting Kr  16000.0     2          
+20          Kerang Kari  15000.0     2          
+21          Kerang Masa  14000.0     2          
+22          Air Jeruk A  6000.0      3          
+23          Es Jeruk Ma  7000.0      3          
+24          Es Teh Mani  5000.0      3          
+25          Teh Anget M  4000.0      3          
+26          Es Terong B  4000.0      3          
+27          Es Timun Se  4000.0      3          
+28          Es Kelapa M  4000.0      3          
+29          Sayur Asem   6000.0      4          
+30          Sayur Sop    6000.0      4          
+31          Sayur Benin  6000.0      4          
+32          Oseng Kangk  6000.0      4          
+33          Oseng Teron  6000.0      4          
+34          Terong Dica  6000.0      4          
+35          Puding       5000.0      5          
+36          Es Krim      5000.0      5          
+37          Semangka     5000.0      5          
+38          Melon        5000.0      5          
+39          Pisang       5000.0      5          
+40          Sambel Tera  2000.0      6          
+41          Sambel Ijo   2000.0      6          
+42          Sambel Toma  2000.0      6          
+43          Sambel Dabu  2000.0      6          
+44          Sambel Bali  2000.0      6          
+sqlite> -- ternyata gitu[K[K[K[Khasilnya kembali banyak
+sqlite> --l [K[K latihan berikutnya kita mau hapus sebuah baris pada r[Ktransaksi
+sqlite> -- kita mulai
+sqlite> BEGIN;
+sqlite> ---[K kita itung dulu jumlah barisnya
+sqlite> SELECT COUNT(*) WHERE menu;
+Error: no such column: menu
+sqlite> -- perintahnya slah
+sqlite> SLE[K[KELECT COUNT(*) FROM menu;
+COUNT(*)  
+----------
+44        
+sqlite> -- lha ini.. ok jumlah barisnya 44
+sqlite> -- seekarang kita hapus 2[K1 baris
+sqlite> DELETE FROM menu WHERE id = 44;
+sqlite> C[K-- kita simpan[K[K[K[K[K[K[K liat dulu
+sqlite> -- kita liat dulu[C[C[C[C[C[C[C[CDELETE FROM menu WHERE id = 44;[C[C[C[C[C[C[C[C-- seekarang kita hapus 1 baris[C[C[C[C[C[C[C[CDELETE FROM menu WHERE id = 44;[C[C[C[C[C[C[C[C-- seekarang kita hapus 1 baris[C[C[C[C[C[C[C[C[C[C[Clha ini.. ok jumlah barisnya 44[C[C[C[C[C[C[C[C[8PSELECT COUNT(*) FROM menu;
+COUNT(*)  
+----------
+43        
+sqlite> -- barisnya tinggal 33
+sqlite> -- baru kita simpan transaksinya
+sqlite> COMMIT;
+sqlite> -- kita ro[K[K[K liat lagi
+sqlite> -- kita liat lagi[C[C[C[C[C[C[C[C[10PCOMMIT;-- baru kita simpan transaksinya[C[C[C[C[C[C[C[C[C[C[C[C[C[C[10Pisnya tinggal 33[C[C[C[C[C[C[C[CSELECT COUNT(*) FROM menu;
+COUNT(*)  
+----------
+43        
+sqlite> -- ok masih 43
+sqlite> -- coba kita ROLLBACK
+sqlite> ROLLBACK;
+Error: cannot rollback - no transaction is active
+sqlite> -- co[K[Ktransaksinya uda ditutp [K[Kup pake ko[K[Kcommit tadi
+sqlite> -- transaksinya uda ditutup pake commit tadi[C[C[C[C[C[C[C[CROLLBACK;[K-- coba kita ROLLBACK[C[C[C[C[C[C[C[C[C[C[C[7Pok masih 43[C[C[C[C[C[C[C[CSELECT COUNT(*) FROM menu;
+COUNT(*)  
+----------
+43        
+sqlite> --  baiklah kita akan mencoba confli[Kc[Kict resolve
+sqlite> -- pertama buat tabel baru untuk latihan namanya kategorimenu2
+sqlite> CREATE TABLE "kategorimenu2" (
+   ...> id INT(1) PRIMARY KEY NOT NULL ON CONI[KFLICT IF[KGNORE,
+   ...> nama VARCHAR(50));
+sqlite> -- kita liat tabelnya
+sqlite> .schema kategorimenu2
+CREATE TABLE "kategorimenu2" (
+id INT(1) PRIMARY KEY NOT NULL ON CONFLICT IGNORE,
+nama VARCHAR(50));
+sqlite> ok kita isi data [K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K-- ok kita isi data conflict nya
+sqlite> INSERT INTO "kategorimenu" VALUES(1,'makanan');
+Error: UNIQUE constraint failed: kategorimenu.id
+sqlite> -- mangap salah
+sqlite> -- mangap salah[C[C[C[C[C[C[C[CINSERT INTO "kategorimenu" VALUES(1,'makanan');[C[C[C[C[1@2
+sqlite> INSERT INTO "kategorimenu2" VALUES(2,'lauk');
+sqlite> INSERT INTO "kategorimenu2" VALUES(2,'minuman');
+Error: UNIQUE constraint failed: kategorimenu2.id
+sqlite> INSERT INTO "kategorimenu2" VALUES(4,'sayur');
+sqlite> INSERT INTO "kategorimenu2" VALUES(4,'cuci mulut');
+Error: UNIQUE constraint failed: kategorimenu2.id
+sqlite> INSERT INTO "kategorimenu2" VALUES(6,'sambel');
+sqlite> -- kita liat isi tabelnya
+sqlite> SELECT * FROM kategorimenu2;
+id          nama      
+----------  ----------
+1           makanan   
+2           lauk      
+4           sayur     
+6           sambel    
+sqlite> -- ok hasilnya record yang waktu infputnya[K[K[K[K[K[K[Kputnya conflik diabaikan
+sqlite> -- baikal[K[Klah kita ke percobaan yang kedua const[K[K[Knflik resolve nya REPLACE
+sqlite> -- kita buat dulu tabelnya namanya kategorimenu3
+sqlite> CREATE TABLE "kategorimenu3" (
+   ...> id INT(1) PRIMARY KEY NOT NULL ON CONFLICT REPLACE,
+   ...> nama VARCHAR(50));
+sqlite> - kita [K[K[K[K[K[K[K-- kita liat tabelnya
+sqlite> .schema kategorimenu3
+CREATE TABLE "kategorimenu3" (
+id INT(1) PRIMARY KEY NOT NULL ON CONFLICT REPLACE,
+nama VARCHAR(50));
+sqlite> -- trus kita isi data yang conflict sama constraint
+sqlite> INSERT INTO "kategorimenu3" VALUES(1,'makanan');
+sqlite> INSERT INTO "kategorimenu3" VALUES(2,'lauk');
+sqlite> INSERT INTO "kategorimenu3" VALUES(2,'minuman');
+Error: UNIQUE constraint failed: kategorimenu3.id
+sqlite> INSERT INTO "kategorimenu3" VALUES(4,'sayur');
+sqlite> INSERT INTO "kategorimenu3" VALUES(4,'cuci mulut');
+Error: UNIQUE constraint failed: kategorimenu3.id
+sqlite> INSERT INTO "kategorimenu3" VALUES(6,'sambel');
+sqlite> -- ok kita liat isinya
+sqlite> SELECT * FROM kategorimenu3;
+id          nama      
+----------  ----------
+1           makanan   
+2           lauk      
+4           sayur     
+6           sambel    
+sqlite> -- ok hasilnya sama kayak ignore
+sqlite> -- kita bandingin sama tabel kategorimenu2
+sqlite> SELECT * FROM kage[K[Ktegorimenu2
+   ...> ;
+id          nama      
+----------  ----------
+1           makanan   
+2           lauk      
+4           sayur     
+6           sambel    
+sqlite> -- harusnya untuk yang replace datanya ditimpa oleh data terakhir 
+sqlite> -- 1 makanan
+sqlite> -- 2 minuman
+sqlite> -- 4 cucimul[K[K[K mulut
+sqlite> -- 6 sambel
+sqlite> -- sekian untuk dme[K[Kemo hari ini
+sqlite> -- regards
+sqlite> -- ann[Konimi[Kouse
+sqlite> .quit
+syandal@remoteshare:~/belajar sqlite3$ exit
+exit
+
+Script done on Fri 09 Mar 2018 09:55:37 PM WIB
