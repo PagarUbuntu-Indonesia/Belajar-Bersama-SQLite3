@@ -42,6 +42,10 @@ Bismillahirrahmanirrahim - بِسْمِ اللَّهِ الرَّحْمَنِ ا
 ### Pranala Luar (Silabus)
 * https://git.io/vNa41
 
+### Hasil Diskusi
+* Semua hasil diskusi ada di repo ini
+* Selain itu hasil diskusi juga ditulis di blog nya haluang >> https://haluang.surge.sh/bebas/sqlite/ << jadi versi artikelnya bisa dibaca disini.
+
 ### Lisensi
 Semua ilmu pengetahuan hanya milik Allah
 
@@ -50,7 +54,7 @@ Semua ilmu pengetahuan hanya milik Allah
 * Jika membutuhkan log diskusi belajar ada di direktori 'log'
 * Untuk file-file *.sql jangan dijalankan langsung atau di import langsung, lebih baik dibuka menggunakan teks editor dan dibaca keterangannya.
 
-Sekian \(^_^)/
+Sekian 
 
 ~annonimouse
 
