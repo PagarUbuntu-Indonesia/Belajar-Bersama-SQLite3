@@ -45,6 +45,13 @@ Bismillahirrahmanirrahim - بِسْمِ اللَّهِ الرَّحْمَنِ ا
 ### Hasil Diskusi
 * Semua hasil diskusi ada di repo ini
 * Selain itu hasil diskusi juga ditulis di blog nya haluang >> https://haluang.surge.sh/bebas/sqlite/ << jadi versi artikelnya bisa dibaca disini.
+* Untuk animasi demo versi online bisa dilihat disini 
+     * Pertemuan 1 https://asciinema.org/a/EKByjxvBcNawR7LJOmXHpdoZ6
+     * Pertemuan 2 https://asciinema.org/a/5sLK37d2p3OOH13pfERUD6Sxa
+     * Pertemuan 3 https://asciinema.org/a/VUko3NAJgbqce6qXnTFQOQMBL
+     * Pertemuan 4 https://asciinema.org/a/f3fXm8s8QIIiBkT44g6xbEg8x
+     * Pertemuan 5 https://asciinema.org/a/WzegZHLiyEOLxg5aYaBCIezGt
+     * Pertemuan 6 https://asciinema.org/a/Q85zsMqzrWtaP08NhWum0tMhB
 
 ### Lisensi
 Semua ilmu pengetahuan hanya milik Allah
